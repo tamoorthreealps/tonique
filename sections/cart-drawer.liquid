@@ -2,6 +2,11 @@
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {{ 'custom-cart-subscription.js' | asset_url | script_tag }}
 
+<style>
+  .cd-pill::before        { background-image: url('{{ 'cd-pill-grey.svg' | asset_url }}'); }
+  .cd-pill--reached::before { background-image: url('{{ 'cd-pill-gold.svg' | asset_url }}'); }
+</style>
+
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 

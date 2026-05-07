@@ -310,30 +310,23 @@ cart-drawer.is-empty .drawer__header {
   min-width: 0;
 }
 
-/* Barcode stripe track via ::before — avoids Dawn's empty-div display:none rule */
+/* Barcode stripe track via ::before — avoids Dawn's empty-div display:none rule.
+   Background image is set via asset_url in sections/cart-drawer.liquid <style> block. */
 .cd-pill::before {
   content: '';
   display: block;
   width: 100%;
   height: 12px;
   flex-shrink: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    #D8D1BF 0px,
-    #D8D1BF 1.4px,
-    #f9f7f0 1.4px,
-    #f9f7f0 2.8px
-  );
+  background-repeat: repeat-x;
+  background-size: auto 12px;
+  background-position: left center;
 }
 
 .cd-pill--reached::before {
-  background: repeating-linear-gradient(
-    90deg,
-    #977B4F 0px,
-    #977B4F 1.4px,
-    #f9f7f0 1.4px,
-    #f9f7f0 2.8px
-  );
+  background-repeat: repeat-x;
+  background-size: auto 12px;
+  background-position: left center;
 }
 
 .cd-pill__label {
