@@ -270,7 +270,7 @@ cart-drawer.is-empty .drawer__inner.cd-drawer {
 
 .cd-product-card__btn:hover { opacity: 0.88; color: #fff; }
 
-/* ---- SHIPPING PROGRESS BAR ---- */
+/* ---- SHIPPING BAR WRAPPER ---- */
 
 .cd-shipping-bar {
   padding: 16px 24px 12px;
@@ -290,12 +290,22 @@ cart-drawer.is-empty .drawer__inner.cd-drawer {
   .cd-shipping-bar__text { font-size: 14px; }
 }
 
-.cd-shipping-bar__amount {
-  color: var(--cd-gold);
-  font-weight: 600;
+/* ---- REWARD PILLS ---- */
+
+.cd-pills {
+  display: flex;
+  gap: 8px;
 }
 
-.cd-shipping-bar__track {
+.cd-pill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.cd-pill__track {
   height: 16px;
   background: repeating-linear-gradient(
     90deg,
@@ -306,39 +316,42 @@ cart-drawer.is-empty .drawer__inner.cd-drawer {
   );
   border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 8px;
 }
 
-.cd-shipping-bar__fill {
+.cd-pill__fill {
   height: 100%;
   background: repeating-linear-gradient(
     90deg,
-    var(--cd-gold) 0px,
-    var(--cd-gold) 2px,
+    #977b4f 0px,
+    #977b4f 2px,
     rgba(151, 123, 79, 0.35) 2px,
     rgba(151, 123, 79, 0.35) 6px
   );
   transition: width 0.4s ease;
-  min-width: 0;
 }
 
-.cd-shipping-bar__milestones {
-  display: flex;
-  justify-content: space-between;
-  gap: 4px;
+.cd-pill--reached .cd-pill__track {
+  background: #977b4f;
 }
 
-.cd-milestone {
+.cd-pill--reached .cd-pill__fill {
+  background: #977b4f;
+  width: 100% !important;
+}
+
+.cd-pill__label {
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cd-muted);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.cd-milestone--reached {
-  color: var(--cd-dark);
+.cd-pill--reached .cd-pill__label {
+  color: #977b4f;
   font-weight: 600;
 }
 
@@ -557,6 +570,9 @@ quantity-input.cd-quantity {
   color: var(--cd-dark);
   flex-shrink: 0;
 }
+
+/* Prevent child spans from becoming event.target — fixes Dawn's name check */
+.cd-qty__btn span { pointer-events: none; }
 
 .cd-qty__btn:hover { background: rgba(67, 55, 35, 0.05); }
 

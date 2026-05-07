@@ -64,6 +64,9 @@
       tabindex="-1"
     >
 
+      <!-- Stash section.id so JS can fetch this section via AJAX -->
+      <span id="CartDrawer-SectionId" data-section-id="{{ section.id }}" hidden></span>
+
       <!-- ===== HEADER ===== -->
       <div class="drawer__header cd-drawer__header">
         <h2 class="drawer__heading cd-drawer__title">
@@ -132,7 +135,7 @@
         </div>
       {%- endif -%}
 
-      <!-- ===== SHIPPING PROGRESS BAR (filled cart + blocks configured) ===== -->
+      <!-- ===== REWARD PILLS (filled cart + blocks configured) ===== -->
       {%- if cart != empty and section.blocks.size > 0 -%}
         <div class="cd-shipping-bar">
           {%- if all_unlocked -%}
@@ -145,20 +148,32 @@
             <p class="cd-shipping-bar__text">{{ bar_message }}</p>
           {%- endif -%}
 
-          <div class="cd-shipping-bar__track" aria-hidden="true">
-            <div class="cd-shipping-bar__fill" style="width: {{ progress_pct }}%"></div>
-          </div>
-
-          <div class="cd-shipping-bar__milestones">
+          <div class="cd-pills" aria-hidden="true">
+            {%- assign prev_pill_cents = 0 -%}
             {%- for block in section.blocks -%}
               {%- if block.type == 'threshold' -%}
                 {%- assign b_cents   = block.settings.amount | times: 100 -%}
                 {%- assign b_reached = false -%}
-                {%- if cart_cents >= b_cents -%}{%- assign b_reached = true -%}{%- endif -%}
-                <span
-                  class="cd-milestone{% if b_reached %} cd-milestone--reached{% endif %}"
-                  {{ block.shopify_attributes }}
-                >${{ block.settings.amount }} &middot; {{ block.settings.reward_label }}</span>
+                {%- assign pill_pct  = 0 -%}
+                {%- if cart_cents >= b_cents -%}
+                  {%- assign b_reached = true -%}
+                  {%- assign pill_pct  = 100 -%}
+                {%- elsif cart_cents > prev_pill_cents -%}
+                  {%- assign pill_range = b_cents | minus: prev_pill_cents -%}
+                  {%- assign pill_in    = cart_cents | minus: prev_pill_cents -%}
+                  {%- if pill_range > 0 -%}
+                    {%- assign pill_pct = pill_in | times: 100 | divided_by: pill_range -%}
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="cd-pill{% if b_reached %} cd-pill--reached{% endif %}" {{ block.shopify_attributes }}>
+                  <div class="cd-pill__track">
+                    <div class="cd-pill__fill" style="width: {{ pill_pct }}%"></div>
+                  </div>
+                  <span class="cd-pill__label">${{ block.settings.amount }} &middot; {{ block.settings.reward_label }}</span>
+                </div>
+
+                {%- assign prev_pill_cents = b_cents -%}
               {%- endif -%}
             {%- endfor -%}
           </div>
