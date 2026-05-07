@@ -1,6 +1,7 @@
 {% comment %}
-  Renders custom cart drawer - brand design
-  Usage: {% render 'cart-drawer' %}
+  Cart drawer content has moved to sections/cart-drawer.liquid.
+  Rendered via {% section 'cart-drawer' %} in layout/theme.liquid
+  so that section.blocks (reward thresholds) are available.
 {% endcomment %}
 
 {{ 'custom-cart-drawer.css' | asset_url | stylesheet_tag }}
