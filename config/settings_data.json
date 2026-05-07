@@ -138,6 +138,41 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "blocks": {
+          "threshold_Nb39ip": {
+            "type": "threshold",
+            "settings": {
+              "amount": 50,
+              "reward_label": "FREE SHIP",
+              "reward_message": "Add {remaining} more for free shipping."
+            }
+          },
+          "threshold_xhApCT": {
+            "type": "threshold",
+            "settings": {
+              "amount": 75,
+              "reward_label": "+SAMPLE",
+              "reward_message": "Add {remaining} more for free sample."
+            }
+          },
+          "threshold_UE3bwx": {
+            "type": "threshold",
+            "settings": {
+              "amount": 100,
+              "reward_label": "+TIN",
+              "reward_message": "Add {remaining} more for free tin."
+            }
+          }
+        },
+        "block_order": [
+          "threshold_Nb39ip",
+          "threshold_xhApCT",
+          "threshold_UE3bwx"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": [],
