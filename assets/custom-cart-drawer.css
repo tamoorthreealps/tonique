@@ -305,38 +305,27 @@ cart-drawer.is-empty .drawer__inner.cd-drawer {
   min-width: 0;
 }
 
+/* Barcode stripe track — grey when not reached */
 .cd-pill__track {
-  height: 16px;
+  height: 12px;
   background: repeating-linear-gradient(
     90deg,
-    rgba(151, 123, 79, 0.15) 0px,
-    rgba(151, 123, 79, 0.15) 2px,
-    transparent 2px,
-    transparent 6px
+    #D8D1BF 0px,
+    #D8D1BF 1.4px,
+    transparent 1.4px,
+    transparent 2.8px
   );
-  border-radius: 2px;
-  overflow: hidden;
 }
 
-.cd-pill__fill {
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    #977b4f 0px,
-    #977b4f 2px,
-    rgba(151, 123, 79, 0.35) 2px,
-    rgba(151, 123, 79, 0.35) 6px
-  );
-  transition: width 0.4s ease;
-}
-
+/* Barcode stripe track — gold when reached */
 .cd-pill--reached .cd-pill__track {
-  background: #977b4f;
-}
-
-.cd-pill--reached .cd-pill__fill {
-  background: #977b4f;
-  width: 100% !important;
+  background: repeating-linear-gradient(
+    90deg,
+    #977B4F 0px,
+    #977B4F 1.4px,
+    transparent 1.4px,
+    transparent 2.8px
+  );
 }
 
 .cd-pill__label {
@@ -344,14 +333,14 @@ cart-drawer.is-empty .drawer__inner.cd-drawer {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cd-muted);
+  color: #433723;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .cd-pill--reached .cd-pill__label {
-  color: #977b4f;
+  color: #977B4F;
   font-weight: 600;
 }
 

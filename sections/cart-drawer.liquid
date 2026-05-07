@@ -40,13 +40,27 @@
     endif
   endif
 
-  # Savings
+  # Savings — compare against the highest available compare-at price per item
+  # Priority: selling_plan_allocation.compare_at_price > variant.compare_at_price > original_price
   assign has_savings   = false
   assign total_savings = 0
   for item in cart.items
-    if item.original_line_price > item.final_line_price
-      assign has_savings   = true
-      assign item_saving   = item.original_line_price | minus: item.final_line_price
+    assign compare_unit = 0
+    if item.variant.compare_at_price > 0
+      assign compare_unit = item.variant.compare_at_price
+    endif
+    if item.selling_plan_allocation != nil
+      if item.selling_plan_allocation.compare_at_price > 0
+        assign compare_unit = item.selling_plan_allocation.compare_at_price
+      endif
+    endif
+    if compare_unit == 0
+      assign compare_unit = item.original_price
+    endif
+    if compare_unit > item.final_price
+      assign has_savings  = true
+      assign item_saving  = compare_unit | minus: item.final_price
+      assign item_saving  = item_saving | times: item.quantity
       assign total_savings = total_savings | plus: item_saving
     endif
   endfor
@@ -149,31 +163,18 @@
           {%- endif -%}
 
           <div class="cd-pills" aria-hidden="true">
-            {%- assign prev_pill_cents = 0 -%}
             {%- for block in section.blocks -%}
               {%- if block.type == 'threshold' -%}
                 {%- assign b_cents   = block.settings.amount | times: 100 -%}
                 {%- assign b_reached = false -%}
-                {%- assign pill_pct  = 0 -%}
                 {%- if cart_cents >= b_cents -%}
                   {%- assign b_reached = true -%}
-                  {%- assign pill_pct  = 100 -%}
-                {%- elsif cart_cents > prev_pill_cents -%}
-                  {%- assign pill_range = b_cents | minus: prev_pill_cents -%}
-                  {%- assign pill_in    = cart_cents | minus: prev_pill_cents -%}
-                  {%- if pill_range > 0 -%}
-                    {%- assign pill_pct = pill_in | times: 100 | divided_by: pill_range -%}
-                  {%- endif -%}
                 {%- endif -%}
 
                 <div class="cd-pill{% if b_reached %} cd-pill--reached{% endif %}" {{ block.shopify_attributes }}>
-                  <div class="cd-pill__track">
-                    <div class="cd-pill__fill" style="width: {{ pill_pct }}%"></div>
-                  </div>
+                  <div class="cd-pill__track"></div>
                   <span class="cd-pill__label">${{ block.settings.amount }} &middot; {{ block.settings.reward_label }}</span>
                 </div>
-
-                {%- assign prev_pill_cents = b_cents -%}
               {%- endif -%}
             {%- endfor -%}
           </div>
@@ -261,20 +262,31 @@
                         </p>
                       {%- endif -%}
 
-                      <!-- Price -->
+                      <!-- Price — use the best available compare-at as strikethrough -->
+                      {%- assign item_compare_unit = 0 -%}
+                      {%- if item.variant.compare_at_price > 0 -%}
+                        {%- assign item_compare_unit = item.variant.compare_at_price -%}
+                      {%- endif -%}
+                      {%- if item.selling_plan_allocation != nil -%}
+                        {%- if item.selling_plan_allocation.compare_at_price > 0 -%}
+                          {%- assign item_compare_unit = item.selling_plan_allocation.compare_at_price -%}
+                        {%- endif -%}
+                      {%- endif -%}
+                      {%- assign item_compare_line = item_compare_unit | times: item.quantity -%}
+
                       <div class="cd-cart-item__price-row">
-                        {%- if item.original_line_price != item.final_line_price -%}
-                          <s class="cd-cart-item__original-price">{{ item.original_line_price | money }}</s>
+                        {%- if item_compare_unit > item.final_price -%}
+                          <s class="cd-cart-item__original-price">{{ item_compare_line | money }}</s>
                           <span class="cd-cart-item__final-price">{{ item.final_line_price | money }}</span>
                         {%- else -%}
-                          <span class="cd-cart-item__final-price">{{ item.original_line_price | money }}</span>
+                          <span class="cd-cart-item__final-price">{{ item.final_line_price | money }}</span>
                         {%- endif -%}
                       </div>
 
-                      <!-- Subscription savings -->
-                      {%- if item.original_line_price > item.final_line_price -%}
-                        {%- assign line_saving = item.original_line_price | minus: item.final_line_price -%}
-                        <p class="cd-cart-item__savings">Save {{ line_saving | money }}/mo</p>
+                      <!-- Item savings -->
+                      {%- if item_compare_unit > item.final_price -%}
+                        {%- assign item_line_saving = item_compare_unit | minus: item.final_price | times: item.quantity -%}
+                        <p class="cd-cart-item__savings">Save {{ item_line_saving | money }}{% if item.selling_plan_allocation != nil %}/order{% endif %}</p>
                       {%- endif -%}
 
                       <!-- Delivery / selling plan -->
