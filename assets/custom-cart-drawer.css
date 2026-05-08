@@ -723,7 +723,7 @@ cart-drawer-items.is-empty + .drawer__footer { display: none; }
 .cd-totals__divider {
   border: none;
   border-top: 1px solid var(--cd-border);
-  margin: 8px 0;
+  margin: 0 0 16px;
   display:block !important;
 }
 
