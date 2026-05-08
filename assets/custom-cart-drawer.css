@@ -472,7 +472,7 @@ cart-drawer-items.is-empty { display: none; }
   letter-spacing: 0.02em;
 }
 
-.cd-cart-item__img { width: 100%; height: auto; display: block; }
+.cd-cart-item__img { width: 100%; height: 100%; display: block; object-fit:cover; }
 
 .cd-cart-item__details {
   flex: 1;
