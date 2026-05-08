@@ -444,6 +444,7 @@ cart-drawer-items.is-empty { display: none; }
   gap: 16px;
   padding: 0 24px 24px 0;
   border-bottom:unset;
+  background: linear-gradient(180deg, #F9F7F0 0%, #FFF 100%);
 }
 
 .cd-cart-item__image-col {
