@@ -3,8 +3,10 @@
 {{ 'custom-cart-subscription.js' | asset_url | script_tag }}
 
 <style>
-  .cd-pill::before        { background-image: url('{{ 'cd-pill-grey.svg' | asset_url }}'); }
-  .cd-pill--reached::before { background-image: url('{{ 'cd-pill-gold.svg' | asset_url }}'); }
+  :root {
+    --cd-pill-grey-url: url('{{ 'cd-pill-grey.svg' | asset_url }}');
+    --cd-pill-gold-url: url('{{ 'cd-pill-gold.svg' | asset_url }}');
+  }
 </style>
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
@@ -168,17 +170,23 @@
           {%- endif -%}
 
           <div class="cd-pills" aria-hidden="true">
+            {%- assign pill_index = 0 -%}
             {%- for block in section.blocks -%}
               {%- if block.type == 'threshold' -%}
-                {%- assign b_cents   = block.settings.amount | times: 100 -%}
-                {%- assign b_reached = false -%}
-                {%- if cart_cents >= b_cents -%}
-                  {%- assign b_reached = true -%}
-                {%- endif -%}
+                {%- assign b_cents      = block.settings.amount | times: 100 -%}
+                {%- assign b_reached    = false -%}
+                {%- assign pill_delay   = pill_index | times: 120 -%}
+                {%- if cart_cents >= b_cents -%}{%- assign b_reached = true -%}{%- endif -%}
 
-                <div class="cd-pill{% if b_reached %} cd-pill--reached{% endif %}" {{ block.shopify_attributes }}>
+                <div
+                  class="cd-pill{% if b_reached %} cd-pill--reached{% endif %}"
+                  style="--pill-delay: {{ pill_delay }}ms"
+                  {{ block.shopify_attributes }}
+                >
                   <span class="cd-pill__label">${{ block.settings.amount }} &middot; {{ block.settings.reward_label }}</span>
                 </div>
+
+                {%- assign pill_index = pill_index | plus: 1 -%}
               {%- endif -%}
             {%- endfor -%}
           </div>
