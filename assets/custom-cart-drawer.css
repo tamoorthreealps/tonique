@@ -518,15 +518,17 @@ cart-drawer-items.is-empty { display: none; }
 .cd-cart-item__price-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 4px;
   flex-wrap: wrap;
 }
 
 .cd-cart-item__original-price {
-  color: var(--cd-muted);
+  color: #827A69;
   font-size: 14px;
   text-decoration: line-through;
+  font-weight:300;
+  line-height:20px;
 }
 
 .cd-cart-item__final-price {
