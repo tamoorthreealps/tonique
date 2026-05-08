@@ -328,10 +328,10 @@ cart-drawer.is-empty .drawer__header {
    ============================================= */
 
 .cd-shipping-bar {
-  padding: 16px 24px 12px;
-  border-bottom: 1px solid var(--cd-border);
-  flex-shrink: 0;
-  background: var(--cd-bg);
+  padding: 16px 22px 20px 24px;
+    flex-shrink: 0;
+    border-bottom: 1px solid #D8D1BF;
+    background-color: #FFF;
 }
 
 .cd-shipping-bar__text {
