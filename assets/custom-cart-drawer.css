@@ -68,14 +68,17 @@ cart-drawer.is-empty .drawer__header {
   }
 
   .drawer__inner.cd-drawer {
-    width: 540px !important;
-    max-width: 100vw !important;
-    height: 100% !important;
-    max-height: none !important;
-    border-radius: 0 !important;
-    border: none !important;
-    border-left: 1px solid var(--cd-border) !important;
-    transform: translateX(100%) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 95vh !important;
+    border-radius: 16px 16px 0 0 !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: none !important;
+    border-top: 1px solid var(--cd-border) !important;
+    /* Switch transform axis: slide up instead of slide left */
+    transform: translateY(100%) !important;
     transition: transform 0.35s ease !important;
   }
 
