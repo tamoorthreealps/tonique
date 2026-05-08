@@ -734,7 +734,9 @@ cart-drawer-items.is-empty + .drawer__footer { display: none; }
 letter-spacing: 1.28px;
   text-transform: uppercase;
 }
-
+.cd-totals__row--total span:nth-child(2){
+  letter-spacing:0;
+}
 .cd-checkout-btn {
   display: block;
   width: 100%;
