@@ -162,10 +162,11 @@
           {%- if all_unlocked -%}
             <p class="cd-shipping-bar__text">You&rsquo;ve unlocked all rewards!</p>
           {%- elsif next_threshold_block != nil -%}
-            {%- assign next_block_cents = next_threshold_block.settings.amount | times: 100 -%}
-            {%- assign remaining_cents  = next_block_cents | minus: cart_cents -%}
-            {%- assign remaining_money  = remaining_cents | money -%}
-            {%- assign bar_message = next_threshold_block.settings.reward_message | replace: '{remaining}', remaining_money -%}
+            {%- assign next_block_cents   = next_threshold_block.settings.amount | times: 100 -%}
+            {%- assign remaining_cents   = next_block_cents | minus: cart_cents -%}
+            {%- assign remaining_money   = remaining_cents | money -%}
+            {%- assign remaining_span    = '<span class="cd-shipping-bar__amount">' | append: remaining_money | append: '</span>' -%}
+            {%- assign bar_message = next_threshold_block.settings.reward_message | replace: '{remaining}', remaining_span -%}
             <p class="cd-shipping-bar__text">{{ bar_message }}</p>
           {%- endif -%}
 
