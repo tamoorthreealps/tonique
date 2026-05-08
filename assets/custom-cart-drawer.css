@@ -741,7 +741,7 @@ letter-spacing: 1.28px;
 .cd-checkout-btn {
   display: block;
   width: 100%;
-  background: var(--cd-gold);
+  background: linear-gradient(90deg, #A88958 0%, #B9A179 50%, #A88958 100%), #433723;
   color: #fff;
   font-size: 11px;
   font-weight: 600;
