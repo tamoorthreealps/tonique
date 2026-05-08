@@ -724,6 +724,7 @@ cart-drawer-items.is-empty + .drawer__footer { display: none; }
   border: none;
   border-top: 1px solid var(--cd-border);
   margin: 8px 0;
+  display:block !important;
 }
 
 .cd-totals__row--total {
