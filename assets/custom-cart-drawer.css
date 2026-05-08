@@ -617,7 +617,6 @@ cart-drawer-items.is-empty { display: none; }
 .cd-cart-item__actions quantity-popover {
   display: flex;
   align-items: center;
-  gap: 8px;
   width: 100%;
       justify-content: space-between;
     flex-wrap: wrap;
