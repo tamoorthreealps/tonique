@@ -553,7 +553,10 @@ cart-drawer-items.is-empty { display: none; }
   border: 1px solid var(--cd-border);
   padding: 8px 10px;
   margin-bottom: 12px;
-  border-radius: 2px;
+      height: 36px;
+    max-width: 192px;
+    overflow: hidden;
+    background-color: #FFF;
 }
 
 .cd-cart-item__delivery-label {
