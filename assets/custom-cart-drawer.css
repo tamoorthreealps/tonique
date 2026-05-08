@@ -437,13 +437,13 @@ cart-drawer-items.is-empty { display: none; }
 
 .drawer__contents { flex: 1; }
 
-.cd-items-list { padding: 0 24px; }
+.cd-items-list { padding: 0; }
 
 .cd-cart-item {
   display: flex;
   gap: 16px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--cd-border);
+  padding: 0 24px 24px 0;
+  border-bottom:unset;
 }
 
 .cd-cart-item__image-col {
