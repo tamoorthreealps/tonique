@@ -542,7 +542,8 @@ cart-drawer-items.is-empty { display: none; }
   font-size: 12px;
   color: var(--cd-green);
   font-weight: 500;
-  margin: 0 0 10px;
+  line-height:16px;
+  margin: 0 0 12px;
 }
 
 .cd-cart-item__delivery {
