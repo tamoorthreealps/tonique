@@ -708,10 +708,11 @@ cart-drawer-items.is-empty + .drawer__footer { display: none; }
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  font-weight: 500;
   color: var(--cd-dark);
-  padding: 4px 0;
-  letter-spacing: 0.02em;
+  padding:0;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.28px;
 }
 
 .cd-totals__row--savings { color: var(--cd-green); }
