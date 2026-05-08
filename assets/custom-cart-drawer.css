@@ -380,9 +380,9 @@ cart-drawer.is-empty .drawer__header {
   width: 100%;
   height: 12px;
   background-image: var(--cd-pill-gold-url);
-  background-repeat: repeat-x;
-  background-size: auto 12px;
-  background-position: left center;
+      background-repeat: no-repeat;
+    background-size: auto 12px;
+    background-position: center;
   clip-path: inset(0 100% 0 0);
 }
 
