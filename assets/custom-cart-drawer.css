@@ -482,6 +482,7 @@ cart-drawer-items.is-empty { display: none; }
   min-width: 0;
   display: flex;
   flex-direction: column;
+  padding-top:16px;
 }
 
 .cd-cart-item__plan-type {
