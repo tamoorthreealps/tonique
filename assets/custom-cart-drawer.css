@@ -715,7 +715,9 @@ cart-drawer-items.is-empty + .drawer__footer { display: none; }
   margin:0 0 8px;
   letter-spacing: 0.28px;
 }
-
+.cd-totals__row.cd-totals__row_shipping{
+  margin:0 0 15px;
+}
 .cd-totals__row--savings { color: var(--cd-green); }
 
 .cd-totals__divider {
