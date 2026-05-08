@@ -509,7 +509,7 @@ cart-drawer-items.is-empty { display: none; }
 
 .cd-cart-item__variant {
   font-size: 11px;
-  color: var(--cd-muted);
+  color: #433723;
   font-weight:400;
   margin: 0 0 8px;
   line-height: 16px;
