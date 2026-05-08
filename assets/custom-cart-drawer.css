@@ -694,7 +694,7 @@ letter-spacing: 1.12px;
 
 .cd-drawer__footer {
   border-top: 1px solid var(--cd-border) !important;
-  padding: 16px 24px !important;
+  padding: 16px 24px 30px 24px !important;
   flex-shrink: 0;
   background: var(--cd-bg);
 }
