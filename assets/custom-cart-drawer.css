@@ -449,14 +449,13 @@ cart-drawer-items.is-empty { display: none; }
 
 .cd-cart-item__image-col {
   position: relative;
-  width: 100px;
+  width: 160px;
   flex-shrink: 0;
-  background: var(--cd-bg);
   border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 120px;
+  height: 160px;
 }
 
 .cd-cart-item__badge {
