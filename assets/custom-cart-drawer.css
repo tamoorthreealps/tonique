@@ -649,14 +649,15 @@ quantity-input.cd-quantity {
 .cd-qty__btn:hover { background: rgba(67, 55, 35, 0.05); }
 
 .cd-qty__input {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   text-align: center;
   border: none;
-  border-left: 1px solid var(--cd-border);
-  border-right: 1px solid var(--cd-border);
   background: none;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
+line-height: 16px;
+letter-spacing: 1.12px;
   color: var(--cd-dark);
   -moz-appearance: textfield;
   padding: 0;
