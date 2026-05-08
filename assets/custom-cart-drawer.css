@@ -471,8 +471,11 @@ cart-drawer-items.is-empty { display: none; }
   z-index: 1;
   letter-spacing: 0.02em;
 }
-
-.cd-cart-item__img { width: 100%; height: 100%; display: block; object-fit:cover; }
+.cd-cart-item__image-col a{
+  width:100%;
+  height:100%;
+}
+.cd-cart-item__img { width: 100%; height: 100%; display: block; object-fit:contain; }
 
 .cd-cart-item__details {
   flex: 1;
