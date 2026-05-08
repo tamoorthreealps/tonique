@@ -129,17 +129,14 @@ cart-drawer.is-empty .drawer__header {
 .cd-drawer__count { color: var(--cd-gold); }
 
 .cd-drawer__close {
-  font-size: 18px !important;
-  line-height: 1;
-  color: var(--cd-dark);
   min-width: unset !important;
   min-height: unset !important;
   top: unset !important;
   right: unset !important;
-  position: static !important;
+  position: relative !important;
   box-shadow: none !important;
-  padding: 4px 8px;
-  opacity: 0.65;
+  padding: 0;
+  opacity: 1;
   background: none;
   border: none;
   cursor: pointer;
