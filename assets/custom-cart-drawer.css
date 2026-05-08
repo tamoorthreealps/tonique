@@ -533,8 +533,9 @@ cart-drawer-items.is-empty { display: none; }
 
 .cd-cart-item__final-price {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--cd-dark);
+  line-height:20px;
 }
 
 .cd-cart-item__savings {
