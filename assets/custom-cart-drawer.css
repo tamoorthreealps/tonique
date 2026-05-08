@@ -335,7 +335,9 @@ cart-drawer.is-empty .drawer__header {
 }
 
 .cd-shipping-bar__text {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight:400;
+  line-height:20px;
   color: var(--cd-dark);
   margin: 0 0 12px;
   line-height: 1.5;
