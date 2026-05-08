@@ -451,7 +451,7 @@ cart-drawer-items.is-empty { display: none; }
   position: relative;
   width: 160px;
   flex-shrink: 0;
-  border-radius: 2px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
