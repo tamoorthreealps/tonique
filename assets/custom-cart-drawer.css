@@ -701,7 +701,7 @@ letter-spacing: 1.12px;
 
 cart-drawer-items.is-empty + .drawer__footer { display: none; }
 
-.cd-totals { margin-bottom: 16px; }
+.cd-totals { margin-bottom: 12px; }
 
 .cd-totals__row {
   display: flex;
@@ -733,6 +733,7 @@ cart-drawer-items.is-empty + .drawer__footer { display: none; }
   line-height: 24px;
 letter-spacing: 1.28px;
   text-transform: uppercase;
+  margin:0 !important
 }
 .cd-totals__row--total span:nth-child(2){
   letter-spacing:0;
