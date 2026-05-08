@@ -766,7 +766,9 @@ letter-spacing: 1.28px;
 
 .cd-drawer__tax-note {
   font-size: 12px;
-  color: var(--cd-muted);
+  font-weight:400;
+  line-height:14px;
+  color: #433723;
   text-align: center;
   margin: 0;
 }
