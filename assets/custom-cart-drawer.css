@@ -671,7 +671,6 @@ letter-spacing: 1.12px;
   border: none;
   cursor: pointer;
   color: var(--cd-muted);
-  padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
