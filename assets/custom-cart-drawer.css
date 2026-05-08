@@ -404,6 +404,7 @@ line-height: 20px;
 
 .cd-pill__label {
   font-size: 10px;
+  line-height:12px;
   font-weight: 500;
   letter-spacing: 0.6px;
   text-transform: uppercase;
