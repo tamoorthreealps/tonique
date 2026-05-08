@@ -1,5 +1,4 @@
-/* ===== CUSTOM CART DRAWER — Tonique Brand =====
-   Mobile-first: base = mobile, min-width:768px = tablet, min-width:992px = desktop */
+/* ===== CUSTOM CART DRAWER — Tonique Brand ===== */
 
 :root {
   --cd-bg:          #f9f7f0;
@@ -12,57 +11,39 @@
   --cd-green-badge: #2d5c1e;
 }
 
-/* =============================================
-   DAWN OVERRIDES
-   ============================================= */
+/* ---- Override Dawn defaults ---- */
 
-cart-drawer.is-empty .drawer__header {
-  display: flex !important;
-}
-
-/* Force flex column on inner drawer — overrides Dawn's display:grid */
+/* Force flex on the inner drawer always — Dawn uses display:grid which
+   doesn't accommodate our extra .cd-shipping-bar row */
 .drawer__inner.cd-drawer {
   display: flex !important;
   flex-direction: column !important;
   grid-template-rows: unset !important;
   align-items: unset !important;
   padding: 0 !important;
+  height: 100% !important;
   overflow: hidden !important;
 }
 
-/* =============================================
-   DRAWER ANIMATION — MOBILE: slide up from bottom
-   ============================================= */
-
-.drawer {
-  flex-direction: column !important;
-  justify-content: flex-end !important;
-  align-items: stretch !important;
+cart-drawer.is-empty .drawer__header {
+  display: flex !important;
 }
 
-.drawer__inner.cd-drawer {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  max-height: 90vh !important;
-  border-radius: 16px 16px 0 0 !important;
-  border: none !important;
-  border-top: 1px solid var(--cd-border) !important;
-  transform: translateY(100%) !important;
-  transition: transform 0.35s ease !important;
+/* ---- Drawer shell ---- */
+
+.cd-drawer {
+  background-color: var(--cd-bg) !important;
+  width: 540px !important;
+  max-width: 100vw !important;
+  padding: 0 !important;
+  border-color: var(--cd-border) !important;
 }
 
-.drawer.active .drawer__inner.cd-drawer {
-  transform: translateY(0) !important;
-}
-
-/* =============================================
-   DRAWER ANIMATION — DESKTOP (992px+): slide in from right
-   ============================================= */
-
-@media screen and (min-width: 992px) {
+/* ---- Mobile: bottom-sheet slide-up ---- */
+@media screen and (max-width: 749px) {
+  /* Restack overlay so inner panel sits at the bottom */
   .drawer {
-    flex-direction: row !important;
+    flex-direction: column !important;
     justify-content: flex-end !important;
     align-items: stretch !important;
   }
@@ -72,7 +53,6 @@ cart-drawer.is-empty .drawer__header {
     max-width: 100% !important;
     height: auto !important;
     max-height: 95vh !important;
-    border-radius: 16px 16px 0 0 !important;
     border-right: none !important;
     border-left: none !important;
     border-bottom: none !important;
@@ -83,50 +63,38 @@ cart-drawer.is-empty .drawer__header {
   }
 
   .drawer.active .drawer__inner.cd-drawer {
-    transform: translateX(0) !important;
+    transform: translateY(0) !important;
   }
 }
 
-/* =============================================
-   DRAWER SHELL
-   ============================================= */
-
-.cd-drawer {
-  background-color: var(--cd-bg) !important;
-  padding: 0 !important;
-  border-color: var(--cd-border) !important;
-}
-
-/* =============================================
-   HEADER
-   ============================================= */
+/* ---- HEADER ---- */
 
 .cd-drawer__header {
-  height: 40px;
+  height: 48px;
   padding: 0 24px !important;
   border-bottom: 1px solid var(--cd-border);
   flex-shrink: 0;
   background: var(--cd-bg);
 }
 
-@media screen and (min-width: 992px) {
-  .cd-drawer__header { height: 48px; }
+@media screen and (max-width: 749px) {
+  .cd-drawer__header { height: 40px; }
 }
 
 .cd-drawer__title {
-  font-size: 12px !important;
+  font-size: 14px !important;
   font-weight: 500;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--cd-dark);
   margin: 0;
   line-height: 1;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 749px) {
   .cd-drawer__title {
-    font-size: 14px !important;
-    letter-spacing: 0.12em;
+    font-size: 12px !important;
+    letter-spacing: 0.13em;
   }
 }
 
@@ -152,67 +120,65 @@ cart-drawer.is-empty .drawer__header {
 .cd-drawer__close:hover { opacity: 1; }
 .cd-drawer__close .svg-wrapper { display: none; }
 
-/* =============================================
-   EMPTY STATE
-   ============================================= */
+/* ---- EMPTY STATE ---- */
 
 .cd-empty {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 24px 24px;
+  padding: 40px 32px 28px;
   overflow-y: auto;
 }
 
-@media screen and (min-width: 992px) {
-  .cd-empty { padding: 40px 32px 28px; }
+@media screen and (max-width: 749px) {
+  .cd-empty { padding: 32px 24px 24px; }
 }
 
-/* Dashed ring */
+/* Dashed ring — uses a wrapper so the inner number isn't affected by opacity */
 .cd-empty__ring-wrap {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@media screen and (min-width: 992px) {
-  .cd-empty__ring-wrap { width: 80px; height: 80px; }
+@media screen and (max-width: 749px) {
+  .cd-empty__ring-wrap { width: 64px; height: 64px; }
 }
 
 .cd-empty__ring {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 10px dashed var(--cd-gold);
+  border: 14px dashed var(--cd-gold);
   opacity: 0.35;
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 992px) {
-  .cd-empty__ring { border-width: 14px; }
+@media screen and (max-width: 749px) {
+  .cd-empty__ring { border-width: 10px; }
 }
 
 .cd-empty__number {
   position: relative;
   z-index: 1;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 300;
   color: var(--cd-gold);
   letter-spacing: 0.04em;
   line-height: 1;
 }
 
-@media screen and (min-width: 992px) {
-  .cd-empty__number { font-size: 32px; }
+@media screen and (max-width: 749px) {
+  .cd-empty__number { font-size: 24px; }
 }
 
 .cd-empty__title {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -222,12 +188,12 @@ cart-drawer.is-empty .drawer__header {
   line-height: 1.25;
 }
 
-@media screen and (min-width: 992px) {
-  .cd-empty__title { font-size: 32px; }
+@media screen and (max-width: 749px) {
+  .cd-empty__title { font-size: 24px; }
 }
 
 .cd-empty__subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--cd-dark);
   text-align: center;
   margin: 0 0 32px;
@@ -235,8 +201,8 @@ cart-drawer.is-empty .drawer__header {
   opacity: 0.75;
 }
 
-@media screen and (min-width: 992px) {
-  .cd-empty__subtitle { font-size: 16px; }
+@media screen and (max-width: 749px) {
+  .cd-empty__subtitle { font-size: 14px; }
 }
 
 .cd-empty__start { width: 100%; }
@@ -333,9 +299,7 @@ cart-drawer.is-empty .drawer__header {
 
 .cd-product-card__btn:hover { opacity: 0.88; color: #fff; }
 
-/* =============================================
-   REWARD PILLS
-   ============================================= */
+/* ---- SHIPPING BAR WRAPPER ---- */
 
 .cd-shipping-bar {
   padding: 16px 24px 12px;
@@ -345,15 +309,17 @@ cart-drawer.is-empty .drawer__header {
 }
 
 .cd-shipping-bar__text {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--cd-dark);
   margin: 0 0 12px;
   line-height: 1.5;
 }
 
-@media screen and (min-width: 992px) {
-  .cd-shipping-bar__text { font-size: 16px; }
+@media screen and (max-width: 749px) {
+  .cd-shipping-bar__text { font-size: 14px; }
 }
+
+/* ---- REWARD PILLS ---- */
 
 .cd-pills {
   display: flex;
@@ -423,9 +389,7 @@ cart-drawer.is-empty .drawer__header {
   font-weight: 600;
 }
 
-/* =============================================
-   CART ITEMS
-   ============================================= */
+/* ---- CART ITEMS ---- */
 
 cart-drawer-items {
   flex: 1;
@@ -541,7 +505,7 @@ cart-drawer-items.is-empty { display: none; }
   margin: 0 0 10px;
 }
 
-/* ---- Delivery row ---- */
+/* ---- DELIVERY ROW ---- */
 
 .cd-cart-item__delivery {
   display: flex;
@@ -568,7 +532,7 @@ cart-drawer-items.is-empty { display: none; }
   flex: 1;
 }
 
-/* ---- Subscription plan selector ---- */
+/* ---- SUBSCRIPTION PLAN SELECTOR ---- */
 
 .cd-plan-selector {
   flex: 1;
@@ -604,7 +568,7 @@ cart-drawer-items.is-empty { display: none; }
   pointer-events: none;
 }
 
-/* ---- Quantity + remove ---- */
+/* ---- QUANTITY + REMOVE ---- */
 
 .cd-cart-item__actions {
   display: flex;
@@ -685,9 +649,7 @@ quantity-input.cd-quantity {
   margin-top: 4px;
 }
 
-/* =============================================
-   FOOTER
-   ============================================= */
+/* ---- FOOTER ---- */
 
 .cd-drawer__footer {
   border-top: 1px solid var(--cd-border) !important;
@@ -759,18 +721,12 @@ cart-drawer-items.is-empty + .drawer__footer { display: none; }
   margin: 0;
 }
 
-/* =============================================
-   SCROLLBAR
-   ============================================= */
-
+/* ---- Scrollbar ---- */
 cart-drawer-items::-webkit-scrollbar { width: 3px; }
 cart-drawer-items::-webkit-scrollbar-thumb {
   background: rgba(151, 123, 79, 0.35);
   border-radius: 2px;
 }
 
-/* =============================================
-   MISC
-   ============================================= */
-
+/* ---- Loading spinner override ---- */
 .cd-cart-item .loading__spinner { display: none; }
