@@ -405,7 +405,7 @@ line-height: 20px;
 .cd-pill__label {
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
   color: #433723;
   white-space: nowrap;
@@ -415,7 +415,6 @@ line-height: 20px;
 
 .cd-pill--reached .cd-pill__label {
   color: #977B4F;
-  font-weight: 600;
 }
 
 /* =============================================
