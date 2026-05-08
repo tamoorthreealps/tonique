@@ -100,7 +100,6 @@ cart-drawer.is-empty .drawer__header {
 .cd-drawer__header {
   height: 40px;
   padding: 0 24px !important;
-  border-bottom: 1px solid var(--cd-border);
   flex-shrink: 0;
   background: var(--cd-bg);
 }
