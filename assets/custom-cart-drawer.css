@@ -619,13 +619,15 @@ cart-drawer-items.is-empty { display: none; }
   align-items: center;
   gap: 8px;
   width: 100%;
+      justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 quantity-input.cd-quantity {
   display: flex;
   align-items: center;
   border: 1px solid var(--cd-border);
-  border-radius: 2px;
+  background:#fff;
 }
 
 .cd-qty__btn {
