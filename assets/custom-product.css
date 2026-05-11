@@ -207,8 +207,8 @@
 
 .pp-video-btn {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  top: 20px;
+  left: 20px;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -394,10 +394,12 @@
     font-size: 13px;
   }
 
-  /* [3] Video Button */
+  /* [3] Video Button — top-left */
   .pp-video-btn {
-    bottom: 24px;
-    right: 24px;
+    top: 24px;
+    left: 24px;
+    bottom: auto;
+    right: auto;
     width: 60px;
     height: 60px;
   }
@@ -405,6 +407,46 @@
   .pp-video-btn svg {
     width: 26px;
     height: 26px;
+  }
+
+  /* [6] Gallery — thumbnail overlay layout (desktop only) */
+  /* media-gallery already has position:sticky via .product__column-sticky
+     which makes it a containing block for absolute children — no override needed. */
+
+  /* Lift thumbnail strip out of normal flow and overlay at bottom-left of gallery */
+  .product--thumbnail .thumbnail-slider {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 3;
+    width: 80px;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Vertical column */
+  .product--thumbnail .thumbnail-list {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    grid-template-columns: none !important;
+  }
+
+  /* Each thumbnail item: 80 × 80 square (::before padding trick still works) */
+  .product--thumbnail .thumbnail-list__item {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  /* Rounded thumbnail buttons to match card style */
+  .product--thumbnail .thumbnail {
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  /* Hide prev/next arrows inside the overlaid strip */
+  .product--thumbnail .thumbnail-slider .slider-button {
+    display: none !important;
   }
 
 }
