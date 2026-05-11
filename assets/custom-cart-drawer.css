@@ -120,8 +120,8 @@ cart-drawer.is-empty .drawer__header {
 
 @media screen and (min-width: 992px) {
   .cd-drawer__title {
-    font-size: 14px !important;
-    letter-spacing: 0.12em;
+    font-size: 14px;
+letter-spacing: 1.68px;
   }
 }
 
