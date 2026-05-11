@@ -401,6 +401,7 @@ line-height: 20px;
 @media screen and (min-width: 992px) {
   .cd-pill::before, .cd-pill::after{
     height:16px;
+        background-size: auto 16px;
   }
 }
 .cd-pill--reached::after {
