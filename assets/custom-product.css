@@ -1,11 +1,16 @@
-/* ========================
-   PRODUCT PAGE — CUSTOM STYLES
-   Mobile-first: base → min-width:768px → min-width:992px
-   ======================== */
+/* ================================================
+   MAIN PRODUCT PAGE — CUSTOM STYLES
+   Mobile-first base styles.
+   ALL desktop overrides are in the single @media block at the bottom.
+   ================================================ */
 
-/* ─── Pack Size Cards ─── */
+
+/* ─────────────────────────────────────────────────
+   [1] PACK SIZE CARDS
+   ───────────────────────────────────────────────── */
+
 .pp-pack-cards {
-  margin: 16px 0;
+  margin: 0 0 16px;
 }
 
 .pp-pack-cards__label {
@@ -14,7 +19,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0 0 10px;
-  color: var(--color-foreground);
+  color: rgb(var(--color-foreground));
 }
 
 .pp-pack-cards__grid {
@@ -27,25 +32,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 2px;
   flex: 1;
   min-width: 0;
-  padding: 12px 8px;
+  padding: 10px 6px;
   border: 1.5px solid rgba(var(--color-foreground), 0.2);
   border-radius: 6px;
   background: transparent;
   cursor: pointer;
   text-align: center;
   transition: border-color 0.2s ease, background-color 0.2s ease;
-  position: relative;
 }
 
 .pp-pack-card.is-selected {
   border-color: rgb(var(--color-foreground));
+  background-color: rgba(var(--color-foreground), 0.04);
 }
 
 .pp-pack-card.is-unavailable {
-  opacity: 0.4;
+  opacity: 0.38;
   cursor: not-allowed;
 }
 
@@ -53,8 +58,8 @@
   display: block;
   width: 100%;
   height: 1px;
-  background: rgba(var(--color-foreground), 0.15);
-  margin: 4px 0;
+  background: rgba(var(--color-foreground), 0.14);
+  margin: 5px 0;
 }
 
 .pp-pack-card__size {
@@ -65,25 +70,115 @@
 }
 
 .pp-pack-card__price {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.2;
   color: rgb(var(--color-foreground));
 }
 
 .pp-pack-card__per-unit {
+  font-size: 10px;
+  line-height: 1.3;
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+
+/* ─────────────────────────────────────────────────
+   [2] FLAVOR SWATCHES  (image circle + label)
+   ───────────────────────────────────────────────── */
+
+.pp-flavor-picker {
+  border: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+.pp-flavor-picker legend.form__label {
+  margin-bottom: 10px;
+}
+
+.pp-flavor-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Hide native radio */
+.pp-flavor-swatch input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.pp-flavor-swatch {
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pp-flavor-swatch__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.pp-flavor-swatch__img-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+  transition: border-color 0.2s ease, outline-color 0.2s ease;
+  background: rgba(var(--color-foreground), 0.07);
+  flex-shrink: 0;
+}
+
+.pp-flavor-swatch__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pp-flavor-swatch__name {
   font-size: 11px;
   line-height: 1.3;
-  color: rgba(var(--color-foreground), 0.6);
+  text-align: center;
+  color: rgb(var(--color-foreground));
+  max-width: 56px;
+  word-break: break-word;
 }
 
-/* ─── Metafield & Shipping Accordions ─── */
-.pp-mf-accordion,
-.pp-shipping-accordion {
-  /* Inherits Dawn accordion styles via .accordion class */
+/* Selected state — driven by native radio:checked */
+.pp-flavor-swatch input[type="radio"]:checked ~ .pp-flavor-swatch__inner .pp-flavor-swatch__img-wrap {
+  border-color: rgb(var(--color-foreground));
+  outline-color: rgb(var(--color-foreground));
 }
 
-/* ─── Video Play Button ─── */
+.pp-flavor-swatch input[type="radio"]:checked ~ .pp-flavor-swatch__inner .pp-flavor-swatch__name {
+  font-weight: 700;
+}
+
+/* Hover state */
+.pp-flavor-swatch:hover .pp-flavor-swatch__img-wrap {
+  border-color: rgba(var(--color-foreground), 0.35);
+}
+
+/* Focus-visible for keyboard accessibility */
+.pp-flavor-swatch input[type="radio"]:focus-visible ~ .pp-flavor-swatch__inner .pp-flavor-swatch__img-wrap {
+  outline-color: rgb(var(--color-foreground));
+}
+
+
+/* ─────────────────────────────────────────────────
+   [3] VIDEO PLAY BUTTON (overlay on product image)
+   ───────────────────────────────────────────────── */
+
 .pp-media-wrapper {
   position: relative;
 }
@@ -116,10 +211,14 @@
   width: 22px;
   height: 22px;
   display: block;
-  margin-left: 2px; /* optical centering for play icon */
+  margin-left: 2px;
 }
 
-/* ─── Video Modal ─── */
+
+/* ─────────────────────────────────────────────────
+   [4] VIDEO MODAL
+   ───────────────────────────────────────────────── */
+
 .pp-video-modal {
   position: fixed;
   inset: 0;
@@ -127,14 +226,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: pp-modal-fade 0.2s ease;
+  animation: pp-modal-fadein 0.18s ease;
 }
 
 .pp-video-modal[hidden] {
   display: none;
 }
 
-@keyframes pp-modal-fade {
+@keyframes pp-modal-fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
@@ -159,8 +258,8 @@
   top: 10px;
   right: 10px;
   z-index: 2;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.92);
   border: none;
@@ -179,7 +278,7 @@
 
 .pp-video-modal__content {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
 }
@@ -187,15 +286,82 @@
 .pp-video-modal__content iframe,
 .pp-video-modal__content video {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
-/* ─── Tablet ─── */
+
+/* ─────────────────────────────────────────────────
+   [5] ACCORDIONS  (metafield + shipping)
+   ───────────────────────────────────────────────── */
+
+/* These piggyback on Dawn's .accordion / .product__accordion styles.
+   Only add overrides needed for the custom accordion blocks. */
+
+.pp-mf-accordion + .pp-mf-accordion,
+.pp-mf-accordion + .pp-shipping-accordion {
+  margin-top: 0;
+}
+
+
+/* ─────────────────────────────────────────────────
+   ================================================
+   DESKTOP — min-width: 768px
+   All overrides in ONE media query block.
+   ================================================
+   ───────────────────────────────────────────────── */
+
 @media screen and (min-width: 768px) {
+
+  /* [1] Pack Size Cards */
+  .pp-pack-cards {
+    margin-bottom: 20px;
+  }
+
+  .pp-pack-cards__grid {
+    gap: 10px;
+  }
+
+  .pp-pack-card {
+    padding: 14px 10px;
+    border-radius: 8px;
+    gap: 3px;
+  }
+
+  .pp-pack-card__size {
+    font-size: 14px;
+  }
+
+  .pp-pack-card__price {
+    font-size: 13px;
+  }
+
+  .pp-pack-card__per-unit {
+    font-size: 11px;
+  }
+
+  /* [2] Flavor Swatches */
+  .pp-flavor-picker {
+    margin-bottom: 20px;
+  }
+
+  .pp-flavor-swatches {
+    gap: 12px;
+  }
+
+  .pp-flavor-swatch__img-wrap {
+    width: 52px;
+    height: 52px;
+  }
+
+  .pp-flavor-swatch__name {
+    font-size: 12px;
+    max-width: 60px;
+  }
+
+  /* [3] Video Button */
   .pp-video-btn {
     bottom: 24px;
     right: 24px;
@@ -208,39 +374,4 @@
     height: 26px;
   }
 
-  .pp-pack-card {
-    padding: 14px 10px;
-  }
-
-  .pp-pack-card__size {
-    font-size: 14px;
-  }
-
-  .pp-pack-card__price {
-    font-size: 14px;
-  }
-
-  .pp-pack-card__per-unit {
-    font-size: 12px;
-  }
-}
-
-/* ─── Desktop ─── */
-@media screen and (min-width: 992px) {
-  .pp-pack-cards {
-    margin: 20px 0;
-  }
-
-  .pp-pack-cards__grid {
-    gap: 10px;
-  }
-
-  .pp-pack-card {
-    padding: 16px 12px;
-    border-radius: 8px;
-  }
-
-  .pp-pack-card__size {
-    font-size: 15px;
-  }
 }
