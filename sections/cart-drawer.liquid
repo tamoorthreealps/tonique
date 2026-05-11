@@ -305,7 +305,7 @@
                       <!-- Item savings -->
                       {%- if item_compare_unit > item.final_price -%}
                         {%- assign item_line_saving = item_compare_unit | minus: item.final_price | times: item.quantity -%}
-                        <p class="cd-cart-item__savings">Save {{ item_line_saving | money }}{% if item.selling_plan_allocation != nil %}/order{% endif %}</p>
+                        <p class="cd-cart-item__savings">Save {{ item_line_saving | money }}{% if item.selling_plan_allocation != nil %}/mo{% endif %}</p>
                       {%- endif -%}
 
                       <!-- Delivery / selling plan -->
