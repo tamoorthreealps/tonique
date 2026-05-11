@@ -733,6 +733,9 @@ letter-spacing: 1.12px;
     line-height: 20px;
     margin:0 0 12px;
   }
+  .cd-cart-item__price-row{
+    gap:8px;
+  }
 }
 /* =============================================
    FOOTER
