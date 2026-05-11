@@ -430,6 +430,13 @@ line-height: 20px;
     height:16px;
         background-size: auto 16px;
   }
+  .cd-pill__label{
+    .cd-pill__label {
+      font-size: 12px;
+      line-height:16px;
+      letter-spacing: 0.96px;
+    }
+  }
 }
 /* =============================================
    CART ITEMS
