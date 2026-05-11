@@ -760,7 +760,7 @@ letter-spacing: 1.12px;
   border-top: 1px solid var(--cd-border) !important;
   padding: 16px 24px 30px 24px !important;
   flex-shrink: 0;
-  background: var(--cd-bg);
+  background: #FEFEFC;
 }
 
 cart-drawer-items.is-empty + .drawer__footer { display: none; }
