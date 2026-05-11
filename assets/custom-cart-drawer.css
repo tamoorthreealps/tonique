@@ -723,6 +723,11 @@ letter-spacing: 1.12px;
     letter-spacing: .48px;
     line-height: 16px;
   }
+  .cd-cart-item__name{
+    font-size: 18px;
+    letter-spacing: 2.16px;
+    line-height:28px;
+  }
 }
 /* =============================================
    FOOTER
