@@ -750,6 +750,10 @@ letter-spacing: 1.12px;
     font-size: 14px;
     margin: 0 0 16px;
 }
+.cd-qty__btn {
+    width: 32px;
+    height: 32px;
+}
 }
 /* =============================================
    FOOTER
