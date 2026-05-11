@@ -1,7 +1,7 @@
 /* ================================================
    MAIN PRODUCT PAGE — CUSTOM STYLES
    Mobile-first base styles.
-   ALL desktop overrides are in the single @media block at the bottom.
+   ALL desktop overrides in the single @media block at the bottom.
    ================================================ */
 
 
@@ -18,16 +18,19 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: rgb(var(--color-foreground));
 }
 
+/* Extra top space so badges can overflow above cards */
 .pp-pack-cards__grid {
   display: flex;
   gap: 8px;
+  padding-top: 14px;
 }
 
 .pp-pack-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +57,23 @@
   cursor: not-allowed;
 }
 
+/* Badge — floats above card top edge */
+.pp-pack-card__badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+  line-height: 1.8;
+}
+
 .pp-pack-card__divider {
   display: block;
   width: 100%;
@@ -63,10 +83,12 @@
 }
 
 .pp-pack-card__size {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   color: rgb(var(--color-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .pp-pack-card__price {
@@ -84,7 +106,8 @@
 
 
 /* ─────────────────────────────────────────────────
-   [2] FLAVOR SWATCHES  (image circle + label)
+   [2] FLAVOR SWATCHES  (pill: 24px circle + text inline)
+   Design ref: Figma 836:2225 — Flavor Button 158×24
    ───────────────────────────────────────────────── */
 
 .pp-flavor-picker {
@@ -100,10 +123,10 @@
 .pp-flavor-swatches {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* Hide native radio */
+/* Hide native radio — visually driven by :checked state */
 .pp-flavor-swatch input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -113,32 +136,34 @@
 }
 
 .pp-flavor-swatch {
-  display: flex;
+  display: inline-flex;
   cursor: pointer;
   user-select: none;
 }
 
-.pp-flavor-swatch__inner {
-  display: flex;
-  flex-direction: column;
+/* The pill itself */
+.pp-flavor-swatch__pill {
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  padding: 7px 14px 7px 7px;
+  border: 1.5px solid rgba(var(--color-foreground), 0.25);
+  border-radius: 100px;
+  background: transparent;
+  transition: border-color 0.2s ease, border-width 0.1s ease;
 }
 
-.pp-flavor-swatch__img-wrap {
-  width: 48px;
-  height: 48px;
+/* 24px circle swatch */
+.pp-flavor-swatch__dot {
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid transparent;
-  outline: 2px solid transparent;
-  outline-offset: 1px;
-  transition: border-color 0.2s ease, outline-color 0.2s ease;
-  background: rgba(var(--color-foreground), 0.07);
   flex-shrink: 0;
+  background: rgba(var(--color-foreground), 0.1);
 }
 
-.pp-flavor-swatch__img-wrap img {
+.pp-flavor-swatch__dot img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -146,32 +171,29 @@
 }
 
 .pp-flavor-swatch__name {
-  font-size: 11px;
-  line-height: 1.3;
-  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
   color: rgb(var(--color-foreground));
-  max-width: 56px;
-  word-break: break-word;
 }
 
-/* Selected state — driven by native radio:checked */
-.pp-flavor-swatch input[type="radio"]:checked ~ .pp-flavor-swatch__inner .pp-flavor-swatch__img-wrap {
+/* Selected pill */
+.pp-flavor-swatch input[type="radio"]:checked ~ .pp-flavor-swatch__pill {
   border-color: rgb(var(--color-foreground));
-  outline-color: rgb(var(--color-foreground));
+  border-width: 1.5px;
 }
 
-.pp-flavor-swatch input[type="radio"]:checked ~ .pp-flavor-swatch__inner .pp-flavor-swatch__name {
-  font-weight: 700;
+/* Hover */
+.pp-flavor-swatch:hover .pp-flavor-swatch__pill {
+  border-color: rgba(var(--color-foreground), 0.55);
 }
 
-/* Hover state */
-.pp-flavor-swatch:hover .pp-flavor-swatch__img-wrap {
-  border-color: rgba(var(--color-foreground), 0.35);
-}
-
-/* Focus-visible for keyboard accessibility */
-.pp-flavor-swatch input[type="radio"]:focus-visible ~ .pp-flavor-swatch__inner .pp-flavor-swatch__img-wrap {
-  outline-color: rgb(var(--color-foreground));
+/* Focus visible */
+.pp-flavor-swatch input[type="radio"]:focus-visible ~ .pp-flavor-swatch__pill {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
 }
 
 
@@ -297,8 +319,8 @@
    [5] ACCORDIONS  (metafield + shipping)
    ───────────────────────────────────────────────── */
 
-/* These piggyback on Dawn's .accordion / .product__accordion styles.
-   Only add overrides needed for the custom accordion blocks. */
+/* Inherits Dawn .accordion / .product__accordion styles.
+   Add only targeted overrides here. */
 
 .pp-mf-accordion + .pp-mf-accordion,
 .pp-mf-accordion + .pp-shipping-accordion {
@@ -322,6 +344,7 @@
 
   .pp-pack-cards__grid {
     gap: 10px;
+    padding-top: 16px;
   }
 
   .pp-pack-card {
@@ -330,8 +353,14 @@
     gap: 3px;
   }
 
+  .pp-pack-card__badge {
+    font-size: 11px;
+    top: -14px;
+    padding: 2px 10px;
+  }
+
   .pp-pack-card__size {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .pp-pack-card__price {
@@ -348,17 +377,21 @@
   }
 
   .pp-flavor-swatches {
-    gap: 12px;
+    gap: 10px;
   }
 
-  .pp-flavor-swatch__img-wrap {
-    width: 52px;
-    height: 52px;
+  .pp-flavor-swatch__pill {
+    padding: 8px 16px 8px 8px;
+    gap: 10px;
+  }
+
+  .pp-flavor-swatch__dot {
+    width: 26px;
+    height: 26px;
   }
 
   .pp-flavor-swatch__name {
-    font-size: 12px;
-    max-width: 60px;
+    font-size: 13px;
   }
 
   /* [3] Video Button */
