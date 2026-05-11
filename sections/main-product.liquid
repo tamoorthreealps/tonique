@@ -546,13 +546,14 @@
                                   form="{{ product_form_id }}"
                                   {% if value == option.selected_value %}checked{% endif %}
                                 >
-                                <span class="pp-flavor-swatch__inner">
-                                  <span class="pp-flavor-swatch__img-wrap">
+                                {%- comment -%} Pill button: small 24px circle + flavor name inline {%- endcomment -%}
+                                <span class="pp-flavor-swatch__pill">
+                                  <span class="pp-flavor-swatch__dot">
                                     <img
                                       src="{{ pp_flavor_img }}"
                                       alt="{{ value | escape }}"
-                                      width="52"
-                                      height="52"
+                                      width="24"
+                                      height="24"
                                       loading="lazy"
                                     >
                                   </span>
@@ -794,8 +795,9 @@
                           {%- if variant.id == product.selected_or_first_available_variant.id -%}
                             {%- assign pp_is_selected = true -%}
                           {%- endif -%}
+                          {%- assign pp_badge = variant.metafields.custom.badge_label -%}
                           <button
-                            class="pp-pack-card{% if pp_is_selected %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
+                            class="pp-pack-card{% if pp_is_selected %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}{% if pp_badge != blank %} has-badge{% endif %}"
                             type="button"
                             data-option-value="{{ pp_opt_val | escape }}"
                             data-option-position="{{ pp_pack_option_index | plus: 1 }}"
@@ -803,6 +805,9 @@
                             data-pack-size="{{ pp_pack_size }}"
                             {% unless variant.available %}disabled{% endunless %}
                           >
+                            {%- if pp_badge != blank -%}
+                              <span class="pp-pack-card__badge">{{ pp_badge | escape }}</span>
+                            {%- endif -%}
                             <span class="pp-pack-card__size">{{ pp_opt_val | escape }}</span>
                             <span class="pp-pack-card__divider"></span>
                             <span class="pp-pack-card__price">{{ variant.price | money }}</span>
@@ -817,14 +822,18 @@
                         {%- assign pp_pack_size = variant.metafields.custom.pack_size | times: 1 -%}
                         {%- if pp_pack_size == 0 -%}{%- assign pp_pack_size = 1 -%}{%- endif -%}
                         {%- assign pp_price_per_unit = variant.price | divided_by: pp_pack_size -%}
+                        {%- assign pp_badge = variant.metafields.custom.badge_label -%}
                         <button
-                          class="pp-pack-card{% if variant.id == product.selected_or_first_available_variant.id %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
+                          class="pp-pack-card{% if variant.id == product.selected_or_first_available_variant.id %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}{% if pp_badge != blank %} has-badge{% endif %}"
                           type="button"
                           data-option-value="{{ variant.title | escape }}"
                           data-variant-id="{{ variant.id }}"
                           data-pack-size="{{ pp_pack_size }}"
                           {% unless variant.available %}disabled{% endunless %}
                         >
+                          {%- if pp_badge != blank -%}
+                            <span class="pp-pack-card__badge">{{ pp_badge | escape }}</span>
+                          {%- endif -%}
                           <span class="pp-pack-card__size">{{ variant.title | escape }}</span>
                           <span class="pp-pack-card__divider"></span>
                           <span class="pp-pack-card__price">{{ variant.price | money }}</span>
