@@ -746,6 +746,10 @@ letter-spacing: 1.12px;
     font-weight: 500;
     line-height: 24px;
   }
+  .cd-cart-item__savings {
+    font-size: 14px;
+    margin: 0 0 16px;
+}
 }
 /* =============================================
    FOOTER
