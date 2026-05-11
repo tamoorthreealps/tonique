@@ -432,7 +432,7 @@ line-height: 20px;
         background-size: auto 16px;
   }
   .cd-pill::after{
-    background-image: var(--cd-pill-grey-url-desktop);
+    background-image: var(--cd-pill-gold-url-desktop);
     height:16px;
         background-size: auto 16px;
   }
