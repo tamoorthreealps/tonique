@@ -12,6 +12,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -20,18 +27,18 @@
           "type": "price",
           "settings": {}
         },
-        "pack_size_cards": {
-          "type": "pack_size_cards",
-          "settings": {
-            "label": "Pack Size",
-            "option_name": "Pack Size"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
+          }
+        },
+        "pack_size_cards_EkfXQG": {
+          "type": "pack_size_cards",
+          "settings": {
+            "label": "Pack Size",
+            "option_name": "Pack Size"
           }
         },
         "recharge_subscriptions_subscription_widget_v2_cPCrFw": {
@@ -49,27 +56,33 @@
             "show_gift_card_recipient": true
           }
         },
-        "metafield_accordions": {
-          "type": "metafield_accordions",
+        "description": {
+          "type": "description",
           "settings": {}
         },
-        "shipping_accordion": {
-          "type": "shipping_accordion",
+        "share": {
+          "type": "share",
           "settings": {
-            "heading": "Shipping"
+            "share_label": "Share"
           }
+        },
+        "metafield_accordions_Njrdwt": {
+          "type": "metafield_accordions",
+          "settings": {}
         }
       },
       "block_order": [
+        "vendor",
         "title",
         "price",
-        "pack_size_cards",
         "variant_picker",
+        "pack_size_cards_EkfXQG",
         "recharge_subscriptions_subscription_widget_v2_cPCrFw",
         "quantity_selector",
         "buy_buttons",
-        "metafield_accordions",
-        "shipping_accordion"
+        "description",
+        "share",
+        "metafield_accordions_Njrdwt"
       ],
       "settings": {
         "enable_sticky_info": true,
