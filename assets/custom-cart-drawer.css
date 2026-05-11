@@ -398,7 +398,11 @@ line-height: 20px;
   background-position: left center;
   clip-path: inset(0 100% 0 0);
 }
-
+@media screen and (min-width: 992px) {
+  .cd-pill::before, .cd-pill::after{
+    height:16px;
+  }
+}
 .cd-pill--reached::after {
   animation: cd-pill-fill 0.65s ease forwards;
   animation-delay: var(--pill-delay, 0ms);
