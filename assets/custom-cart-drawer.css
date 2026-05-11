@@ -121,6 +121,7 @@ cart-drawer.is-empty .drawer__header {
 @media screen and (min-width: 992px) {
   .cd-drawer__title {
     font-size: 14px;
+line-height: 24px;
 letter-spacing: 1.68px;
   }
 }
@@ -350,6 +351,9 @@ line-height: 20px;
 }
 @media screen and (min-width: 992px) {
   .cd-shipping-bar__text { font-size: 16px; }
+  .cd-shipping-bar {
+  padding: 16px 24px 20px;
+  }
 }
 
 .cd-pills {
