@@ -736,6 +736,16 @@ letter-spacing: 1.12px;
   .cd-cart-item__price-row{
     gap:8px;
   }
+  .cd-cart-item__original-price{
+        font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+  .cd-cart-item__final-price{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  }
 }
 /* =============================================
    FOOTER
