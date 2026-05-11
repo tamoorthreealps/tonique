@@ -12,13 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
@@ -26,6 +19,13 @@
         "price": {
           "type": "price",
           "settings": {}
+        },
+        "pack_size_cards": {
+          "type": "pack_size_cards",
+          "settings": {
+            "label": "Pack Size",
+            "option_name": "Pack Size"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -49,27 +49,27 @@
             "show_gift_card_recipient": true
           }
         },
-        "description": {
-          "type": "description",
+        "metafield_accordions": {
+          "type": "metafield_accordions",
           "settings": {}
         },
-        "share": {
-          "type": "share",
+        "shipping_accordion": {
+          "type": "shipping_accordion",
           "settings": {
-            "share_label": "Share"
+            "heading": "Shipping"
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "price",
+        "pack_size_cards",
         "variant_picker",
         "recharge_subscriptions_subscription_widget_v2_cPCrFw",
         "quantity_selector",
         "buy_buttons",
-        "description",
-        "share"
+        "metafield_accordions",
+        "shipping_accordion"
       ],
       "settings": {
         "enable_sticky_info": true,
