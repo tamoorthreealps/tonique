@@ -714,6 +714,9 @@ letter-spacing: 1.12px;
     width:220px;
     height:220px;
   }
+  .cd-cart-item__details{
+    padding-top:24px;
+  }
 }
 /* =============================================
    FOOTER
