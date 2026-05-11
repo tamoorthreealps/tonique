@@ -398,12 +398,7 @@ line-height: 20px;
   background-position: left center;
   clip-path: inset(0 100% 0 0);
 }
-@media screen and (min-width: 992px) {
-  .cd-pill::before, .cd-pill::after{
-    height:16px;
-        background-size: auto 16px;
-  }
-}
+
 .cd-pill--reached::after {
   animation: cd-pill-fill 0.65s ease forwards;
   animation-delay: var(--pill-delay, 0ms);
@@ -424,12 +419,18 @@ line-height: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align:center;
 }
 
 .cd-pill--reached .cd-pill__label {
   color: #977B4F;
 }
-
+@media screen and (min-width: 992px) {
+  .cd-pill::before, .cd-pill::after{
+    height:16px;
+        background-size: auto 16px;
+  }
+}
 /* =============================================
    CART ITEMS
    ============================================= */
