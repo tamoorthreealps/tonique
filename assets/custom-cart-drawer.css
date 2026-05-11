@@ -648,8 +648,8 @@ quantity-input.cd-quantity {
 }
 
 .cd-qty__btn {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   background: none;
   border: none;
   cursor: pointer;
@@ -750,10 +750,7 @@ letter-spacing: 1.12px;
     font-size: 14px;
     margin: 0 0 16px;
 }
-.cd-qty__btn {
-    width: 32px;
-    height: 32px;
-}
+
 }
 /* =============================================
    FOOTER
