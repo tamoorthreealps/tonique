@@ -490,7 +490,86 @@
                 %}
 
               {%- when 'variant_picker' -%}
-                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+                {%- unless product.has_only_default_variant -%}
+                  {%- comment -%}
+                    Find which option name is handled by pack_size_cards block so we can skip it.
+                    We locate the pack_size_cards block settings directly from section.blocks.
+                  {%- endcomment -%}
+                  {%- assign pp_pack_block = section.blocks | where: 'type', 'pack_size_cards' | first -%}
+                  {%- assign pp_hidden_opt = pp_pack_block.settings.option_name | default: 'Pack Size' -%}
+
+                  <variant-selects
+                    id="variant-selects-{{ section.id }}"
+                    data-section="{{ section.id }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- for option in product.options_with_values -%}
+                      {%- comment -%} Skip the pack size option — it is handled by pack_size_cards block {%- endcomment -%}
+                      {%- if option.name == pp_hidden_opt -%}
+                        {%- comment -%}
+                          Render hidden radio inputs so variant-selects JS can still read all option values.
+                        {%- endcomment -%}
+                        <fieldset class="pp-hidden-option" style="display:none;" aria-hidden="true">
+                          {%- for value in option.values -%}
+                            <input
+                              type="radio"
+                              name="options[{{ option.name | escape }}]"
+                              value="{{ value | escape }}"
+                              form="{{ product_form_id }}"
+                              {% if value == option.selected_value %}checked{% endif %}
+                            >
+                          {%- endfor -%}
+                        </fieldset>
+                      {%- else -%}
+                        {%- comment -%}
+                          Render custom image + text swatch picker for this option.
+                          Image filename convention: {flavor-name-handleized}.png uploaded to Shopify Files.
+                          e.g. "Wild Berry" → wild-berry.png
+                        {%- endcomment -%}
+                        <fieldset
+                          class="js product-form__input pp-flavor-picker"
+                          data-option-name="{{ option.name | handleize }}"
+                        >
+                          <legend class="form__label">
+                            {{ option.name }}:
+                            <span data-selected-value>{{- option.selected_value -}}</span>
+                          </legend>
+                          <div class="pp-flavor-swatches">
+                            {%- for value in option.values -%}
+                              {%- assign pp_flavor_handle = value | handleize -%}
+                              {%- assign pp_flavor_img = pp_flavor_handle | append: '.png' | file_url -%}
+                              <label class="pp-flavor-swatch">
+                                <input
+                                  type="radio"
+                                  name="options[{{ option.name | escape }}]"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  {% if value == option.selected_value %}checked{% endif %}
+                                >
+                                <span class="pp-flavor-swatch__inner">
+                                  <span class="pp-flavor-swatch__img-wrap">
+                                    <img
+                                      src="{{ pp_flavor_img }}"
+                                      alt="{{ value | escape }}"
+                                      width="52"
+                                      height="52"
+                                      loading="lazy"
+                                    >
+                                  </span>
+                                  <span class="pp-flavor-swatch__name">{{ value | escape }}</span>
+                                </span>
+                              </label>
+                            {%- endfor -%}
+                          </div>
+                        </fieldset>
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    <script type="application/json" data-selected-variant>
+                      {{ product.selected_or_first_available_variant | json }}
+                    </script>
+                  </variant-selects>
+                {%- endunless -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
