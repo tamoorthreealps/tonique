@@ -848,6 +848,10 @@ letter-spacing: 1.28px;
     font-size: 14px;
     line-height: 16px;
 }
+.cd-drawer__close svg{
+  width:16px;
+  height:16px;
+}
 }
 /* =============================================
    SCROLLBAR
