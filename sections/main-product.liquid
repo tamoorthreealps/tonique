@@ -102,7 +102,15 @@
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
-                {% render block %}
+                {%- comment -%}
+                  Skip Recharge subscription widget when our custom subscription_widget
+                  block is present — it replaces it visually and functionally.
+                {%- endcomment -%}
+                {%- assign pp_has_sub_block = section.blocks | where: 'type', 'subscription_widget' | first -%}
+                {%- if pp_has_sub_block and block.type contains 'subscription-widget' -%}
+                {%- else -%}
+                  {% render block %}
+                {%- endif -%}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -868,6 +876,204 @@
                     </div>
                   {%- endif -%}
                 {%- endfor -%}
+
+              {%- when 'subscription_widget' -%}
+                {%- liquid
+                  comment
+                    Find the selling plan group. Uses block setting name if set,
+                    otherwise falls back to the first group on the product.
+                  endcomment
+                  assign pp_spg = null
+                  if block.settings.selling_plan_group_name != blank
+                    assign pp_spg = product.selling_plan_groups | where: 'name', block.settings.selling_plan_group_name | first
+                  endif
+                  unless pp_spg
+                    assign pp_spg = product.selling_plan_groups | first
+                  endunless
+                -%}
+                {%- if pp_spg -%}
+                  {%- liquid
+                    assign pp_sp_first = pp_spg.selling_plans | first
+                    assign pp_variant  = product.selected_or_first_available_variant
+                    assign pp_pack_sz  = pp_variant.metafields.custom.pack_size | default: 1
+
+                    comment Find allocation for the first selling plan on the current variant endcomment
+                    assign pp_alloc = null
+                    for alloc in pp_variant.selling_plan_allocations
+                      if alloc.selling_plan_id == pp_sp_first.id
+                        assign pp_alloc = alloc
+                        break
+                      endif
+                    endfor
+
+                    comment Prices endcomment
+                    if pp_alloc
+                      assign pp_sub_price    = pp_alloc.price
+                      assign pp_sub_compare  = pp_alloc.compare_at_price | default: pp_variant.price
+                      assign pp_sub_per_unit = pp_sub_price | divided_by: pp_pack_sz
+                    else
+                      assign pp_sub_price    = pp_variant.price
+                      assign pp_sub_compare  = pp_variant.compare_at_price
+                      assign pp_sub_per_unit = pp_sub_price | divided_by: pp_pack_sz
+                    endif
+
+                    assign pp_ot_per_unit = pp_variant.price | divided_by: pp_pack_sz
+
+                    comment Savings endcomment
+                    assign pp_savings_mo = pp_sub_compare | minus: pp_sub_price
+                    assign pp_savings_yr = pp_savings_mo | times: 12
+                    if pp_sub_compare > 0
+                      assign pp_savings_pct = pp_savings_mo | times: 100 | divided_by: pp_sub_compare | round
+                    else
+                      assign pp_savings_pct = 0
+                    endif
+                  -%}
+
+                  {%- comment -%}
+                    Embed per-variant allocation data so JS can update prices
+                    immediately when the user clicks a pack size card, before
+                    the server re-render completes.
+                  {%- endcomment -%}
+                  <script type="application/json" id="pp-sub-data-{{ section.id }}">
+                    {
+                      "selling_plan_group_id": {{ pp_spg.id | json }},
+                      "variants": {
+                        {%- for v in product.variants -%}
+                          {%- assign v_pack = v.metafields.custom.pack_size | default: 1 -%}
+                          {{ v.id | json }}: {
+                            "price": {{ v.price }},
+                            "pack_size": {{ v_pack }},
+                            "allocations": [
+                              {%- for a in v.selling_plan_allocations -%}
+                                {
+                                  "selling_plan_id": {{ a.selling_plan_id }},
+                                  "price": {{ a.price }},
+                                  "compare_at_price": {{ a.compare_at_price | default: v.price }}
+                                }{%- unless forloop.last -%},{%- endunless -%}
+                              {%- endfor -%}
+                            ]
+                          }{%- unless forloop.last -%},{%- endunless -%}
+                        {%- endfor -%}
+                      }
+                    }
+                  </script>
+
+                  {%- comment -%}
+                    Hidden selling_plan input associated with the product form.
+                    JS sets this to the chosen plan id (subscribe) or empty string (one-time).
+                  {%- endcomment -%}
+                  <input
+                    type="hidden"
+                    name="selling_plan"
+                    id="pp-selling-plan-{{ section.id }}"
+                    form="{{ product_form_id }}"
+                    value="{{ pp_sp_first.id }}"
+                    class="pp-selling-plan-input"
+                  >
+
+                  <div
+                    class="pp-sub-widget quick-add-hidden"
+                    id="pp-sub-widget-{{ section.id }}"
+                    data-section-id="{{ section.id }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.label != blank -%}
+                      <p class="pp-sub-widget__label">{{ block.settings.label }}</p>
+                    {%- endif -%}
+
+                    {%- comment -%}──── SUBSCRIBE & SAVE ────{%- endcomment -%}
+                    <div class="pp-sub-option pp-sub-option--subscribe is-selected">
+                      <label class="pp-sub-option__header">
+                        <input
+                          class="pp-sub-type-radio"
+                          type="radio"
+                          name="pp-purchase-type-{{ section.id }}"
+                          value="subscribe"
+                          checked
+                        >
+                        <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
+                        <div class="pp-sub-option__title-wrap">
+                          <span class="pp-sub-option__title">{{ block.settings.subscribe_label }}</span>
+                          <span class="pp-sub-option__subtitle">
+                            {%- assign pp_plan_freq = pp_sp_first.options | map: 'value' | join: ' ' -%}
+                            Ships every {{ pp_plan_freq | downcase }}
+                          </span>
+                        </div>
+                        <div class="pp-sub-option__pricing">
+                          {%- if pp_sub_compare > pp_sub_price -%}
+                            <s class="pp-sub-option__price-compare">{{ pp_sub_compare | money }}</s>
+                          {%- endif -%}
+                          <span class="pp-sub-option__price pp-sub-subscribe-price">{{ pp_sub_price | money }}</span>
+                          <span class="pp-sub-option__per-unit pp-sub-subscribe-per-unit">{{ pp_sub_per_unit | money }}/pouch</span>
+                        </div>
+                      </label>
+
+                      <div class="pp-sub-option__body">
+                        {%- if pp_savings_mo > 0 -%}
+                          <div class="pp-sub-savings-banner">
+                            <span class="pp-sub-savings-banner__text">
+                              {{ pp_savings_mo | money }} off every month&nbsp;·&nbsp;{{ pp_savings_yr | money }}/year
+                            </span>
+                            <span class="pp-sub-savings-banner__pct">You save {{ pp_savings_pct }}%</span>
+                          </div>
+                        {%- endif -%}
+
+                        <ul class="pp-sub-benefits">
+                          {%- if block.settings.benefit_1 != blank -%}
+                            <li>{{ block.settings.benefit_1 }}</li>
+                          {%- endif -%}
+                          {%- if block.settings.benefit_2 != blank -%}
+                            <li>{{ block.settings.benefit_2 }}</li>
+                          {%- endif -%}
+                          {%- if block.settings.benefit_3 != blank -%}
+                            <li>{{ block.settings.benefit_3 }}</li>
+                          {%- endif -%}
+                        </ul>
+
+                        {%- if pp_spg.selling_plans.size > 0 -%}
+                          <div class="pp-sub-delivery">
+                            <p class="pp-sub-delivery__label">{{ block.settings.delivery_label }}</p>
+                            <div class="pp-sub-delivery__select-wrap">
+                              <select
+                                class="pp-sub-delivery__select"
+                                aria-label="{{ block.settings.delivery_label | escape }}"
+                              >
+                                {%- for sp in pp_spg.selling_plans -%}
+                                  <option value="{{ sp.id }}">
+                                    {{- sp.options | map: 'value' | join: ' ' -}}
+                                  </option>
+                                {%- endfor -%}
+                              </select>
+                              <span class="pp-sub-delivery__chevron" aria-hidden="true">
+                                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+
+                    {%- comment -%}──── ONE-TIME ────{%- endcomment -%}
+                    <div class="pp-sub-option pp-sub-option--onetime">
+                      <label class="pp-sub-option__header">
+                        <input
+                          class="pp-sub-type-radio"
+                          type="radio"
+                          name="pp-purchase-type-{{ section.id }}"
+                          value="onetime"
+                        >
+                        <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
+                        <span class="pp-sub-option__title">{{ block.settings.onetime_label }}</span>
+                        <div class="pp-sub-option__pricing">
+                          <span class="pp-sub-option__price pp-sub-onetime-price">{{ pp_variant.price | money }}</span>
+                          <span class="pp-sub-option__per-unit pp-sub-onetime-per-unit">{{ pp_ot_per_unit | money }}/pouch</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                {%- endif -%}
 
               {%- when 'shipping_accordion' -%}
                 {%- if block.settings.heading != blank -%}
@@ -2355,6 +2561,64 @@
         {
           "type": "paragraph",
           "content": "Renders accordions from product metafields: custom.benefits (Benefits), custom.how_to_use (How to use it), custom.overview (OVERVIEW). Each accordion only appears if the metafield has content."
+        }
+      ]
+    },
+    {
+      "type": "subscription_widget",
+      "name": "Subscription Widget",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Replaces the default Recharge app widget when added. Works with any product that has selling plan groups. Leave selling_plan_group_name blank to use the first group."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Section label",
+          "default": "SELECT YOUR CADENCE:"
+        },
+        {
+          "type": "text",
+          "id": "subscribe_label",
+          "label": "Subscribe option label",
+          "default": "SUBSCRIBE & SAVE"
+        },
+        {
+          "type": "text",
+          "id": "onetime_label",
+          "label": "One-time option label",
+          "default": "ONE-TIME"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1",
+          "label": "Benefit 1",
+          "default": "Skip, pause, or cancel anytime"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "label": "Benefit 2",
+          "default": "Free shipping"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "label": "Benefit 3 (optional)",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "delivery_label",
+          "label": "Delivery frequency label",
+          "default": "DELIVERY EVERY"
+        },
+        {
+          "type": "text",
+          "id": "selling_plan_group_name",
+          "label": "Selling plan group name (blank = first group)",
+          "default": ""
         }
       ]
     },

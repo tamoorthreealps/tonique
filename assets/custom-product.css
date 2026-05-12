@@ -321,7 +321,257 @@
 
 
 /* ─────────────────────────────────────────────────
-   [5] ACCORDIONS  (metafield + shipping)
+   [5] SUBSCRIPTION WIDGET
+   ───────────────────────────────────────────────── */
+
+.pp-sub-widget {
+  margin: 0 0 16px;
+}
+
+.pp-sub-widget__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgb(var(--color-foreground));
+  margin: 0 0 10px;
+}
+
+/* ── Option card ── */
+.pp-sub-option {
+  border: 1.5px solid rgba(var(--color-foreground), 0.2);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.pp-sub-option + .pp-sub-option {
+  margin-top: 8px;
+}
+
+.pp-sub-option.is-selected {
+  border-color: rgb(var(--color-foreground));
+}
+
+/* ── Header row ── */
+.pp-sub-option__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Hide native radio */
+.pp-sub-type-radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Custom radio dot */
+.pp-sub-option__radio-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--color-foreground), 0.3);
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.pp-sub-option__radio-dot::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: rgb(var(--color-foreground));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pp-sub-option.is-selected .pp-sub-option__radio-dot {
+  border-color: rgb(var(--color-foreground));
+}
+
+.pp-sub-option.is-selected .pp-sub-option__radio-dot::after {
+  opacity: 1;
+}
+
+/* ── Title / subtitle ── */
+.pp-sub-option__title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.pp-sub-option__title {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(var(--color-foreground));
+  line-height: 1.2;
+}
+
+.pp-sub-option--onetime .pp-sub-option__title {
+  /* Title is a direct flex child when there's no subtitle */
+  flex: 1;
+  min-width: 0;
+}
+
+.pp-sub-option__subtitle {
+  display: block;
+  font-size: 11px;
+  color: rgba(var(--color-foreground), 0.6);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* ── Pricing ── */
+.pp-sub-option__pricing {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.pp-sub-option__price-compare {
+  display: block;
+  font-size: 11px;
+  color: rgba(var(--color-foreground), 0.45);
+  text-decoration: line-through;
+  line-height: 1.4;
+}
+
+.pp-sub-option__price {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(var(--color-foreground));
+  line-height: 1.3;
+}
+
+.pp-sub-option__per-unit {
+  display: block;
+  font-size: 10px;
+  color: rgba(var(--color-foreground), 0.55);
+  line-height: 1.4;
+}
+
+/* ── Body (subscribe expanded content) ── */
+.pp-sub-option__body {
+  padding: 0 16px 14px;
+  border-top: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+/* ── Savings banner ── */
+.pp-sub-savings-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: rgba(76, 127, 49, 0.1);
+  border: 1px solid rgba(76, 127, 49, 0.3);
+  border-radius: 6px;
+  padding: 7px 12px;
+  margin-bottom: 12px;
+}
+
+.pp-sub-savings-banner__text,
+.pp-sub-savings-banner__pct {
+  font-size: 11px;
+  font-weight: 600;
+  color: #3a6325;
+  line-height: 1.4;
+}
+
+/* ── Benefits list ── */
+.pp-sub-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+
+.pp-sub-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(var(--color-foreground), 0.7);
+  line-height: 1.4;
+}
+
+.pp-sub-benefits li + li {
+  margin-top: 4px;
+}
+
+/* SVG checkmark inline */
+.pp-sub-benefits li::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7L5.5 10.5L12 3.5' stroke='%233a6325' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ── Delivery select ── */
+.pp-sub-delivery {
+  border-top: 1px solid rgba(var(--color-foreground), 0.1);
+  padding-top: 12px;
+}
+
+.pp-sub-delivery__label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgb(var(--color-foreground));
+  margin: 0 0 8px;
+}
+
+.pp-sub-delivery__select-wrap {
+  position: relative;
+}
+
+.pp-sub-delivery__select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1.5px solid rgba(var(--color-foreground), 0.2);
+  border-radius: 6px;
+  padding: 11px 40px 11px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  color: rgb(var(--color-foreground));
+  background: transparent;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.pp-sub-delivery__select:focus {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+.pp-sub-delivery__chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgb(var(--color-foreground));
+  display: flex;
+  align-items: center;
+}
+
+
+/* ─────────────────────────────────────────────────
+   [7] ACCORDIONS  (metafield + shipping)
    ───────────────────────────────────────────────── */
 
 /* Inherits Dawn .accordion / .product__accordion styles.
