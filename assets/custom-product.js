@@ -141,6 +141,16 @@
       if (!subData || !subData.variants) return;
       var vData = subData.variants[String(variantId)];
       if (!vData) return;
+
+      var hasAllocations = vData.allocations && vData.allocations.length > 0;
+
+      // Hide widget and clear plan if variant has no subscription allocations
+      widget.style.display = hasAllocations ? '' : 'none';
+      if (sellingPlanInput) {
+        sellingPlanInput.disabled = !hasAllocations;
+        if (!hasAllocations) { sellingPlanInput.value = ''; return; }
+      }
+
       var packSize = vData.pack_size || 1;
       var planId   = frequencySelect ? parseInt(frequencySelect.value, 10) : null;
       var alloc    = null;
@@ -148,7 +158,7 @@
         for (var i = 0; i < vData.allocations.length; i++) {
           if (vData.allocations[i].selling_plan_id === planId) { alloc = vData.allocations[i]; break; }
         }
-        if (!alloc && vData.allocations.length) alloc = vData.allocations[0];
+        if (!alloc) alloc = vData.allocations[0];
       }
       var subPriceEl   = widget.querySelector('.pp-sub-subscribe-price');
       var subPerUnitEl = widget.querySelector('.pp-sub-subscribe-per-unit');
@@ -157,6 +167,9 @@
       if (alloc) {
         if (subPriceEl)   subPriceEl.textContent   = formatMoney(alloc.price);
         if (subPerUnitEl) subPerUnitEl.textContent = formatMoney(Math.round(alloc.price / packSize)) + '/pouch';
+        if (sellingPlanInput && subscribeOpt.classList.contains('is-selected')) {
+          sellingPlanInput.value = String(alloc.selling_plan_id);
+        }
       }
       if (otPriceEl)   otPriceEl.textContent   = formatMoney(vData.price);
       if (otPerUnitEl) otPerUnitEl.textContent = formatMoney(Math.round(vData.price / packSize)) + '/pouch';
