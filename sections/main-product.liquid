@@ -498,8 +498,8 @@
                   {%- assign pp_pack_block = section.blocks | where: 'type', 'pack_size_cards' | first -%}
                   {%- assign pp_hidden_opt = pp_pack_block.settings.option_name | default: 'Pack Size' -%}
 
-                  <variant-selects
-                    id="variant-selects-{{ section.id }}"
+                  <variant-radios
+                    id="variant-radios-{{ section.id }}"
                     data-section="{{ section.id }}"
                     {{ block.shopify_attributes }}
                   >
@@ -569,7 +569,7 @@
                     <script type="application/json" data-selected-variant>
                       {{ product.selected_or_first_available_variant | json }}
                     </script>
-                  </variant-selects>
+                  </variant-radios>
                 {%- endunless -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
