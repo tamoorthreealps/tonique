@@ -100,10 +100,21 @@
     }
     if (!sectionId) return;
 
+    console.log('[pp-sub] init — sectionId:', sectionId);
+
     // Load the embedded per-variant JSON (all variants, all allocations)
     var subData = null;
     var dataEl  = document.getElementById('pp-sub-data-' + sectionId);
-    if (dataEl) { try { subData = JSON.parse(dataEl.textContent); } catch (e) {} }
+    if (dataEl) {
+      try {
+        subData = JSON.parse(dataEl.textContent);
+        console.log('[pp-sub] subData loaded — variants:', Object.keys(subData.variants || {}));
+      } catch (e) {
+        console.error('[pp-sub] subData JSON.parse failed:', e.message, '\nRaw:', dataEl.textContent.slice(0, 200));
+      }
+    } else {
+      console.warn('[pp-sub] pp-sub-data-' + sectionId + ' element not found');
+    }
 
     // ── Event delegation — all handlers on document survive DOM changes ───────
 
@@ -160,9 +171,10 @@
     // ── Update widget prices from embedded JSON (no network request) ──────────
 
     function updateWidget(variantId) {
-      if (!subData || !subData.variants) return;
+      if (!subData || !subData.variants) { console.warn('[pp-sub] updateWidget: subData missing'); return; }
       var vData = subData.variants[String(variantId)];
-      if (!vData) return;
+      console.log('[pp-sub] updateWidget — variantId:', variantId, 'vData:', vData);
+      if (!vData) { console.warn('[pp-sub] updateWidget: variant', variantId, 'not in subData. Keys:', Object.keys(subData.variants)); return; }
 
       var w                = document.querySelector('.pp-sub-widget');
       var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
@@ -234,22 +246,29 @@
 
     function onVariantChange(variantId) {
       var id = String(variantId);
+      console.log('[pp-sub] onVariantChange — id:', id, 'last:', lastVariantId);
       if (!id || id === lastVariantId) return;
       lastVariantId = id;
       updateWidget(id);
     }
 
+    // Primary: input[name="id"] change event (Dawn dispatches this explicitly)
     document.addEventListener('change', function (e) {
       if (e.target.name === 'id' && e.target.closest('#product-form-' + sectionId)) {
+        console.log('[pp-sub] input[name=id] change — value:', e.target.value);
         onVariantChange(e.target.value);
       }
     });
 
+    // Backup: PubSub variantChange
     if (window.subscribe && window.PUB_SUB_EVENTS) {
       window.subscribe(window.PUB_SUB_EVENTS.variantChange, function (pubSubData) {
         var variant = pubSubData && pubSubData.data && pubSubData.data.variant;
+        console.log('[pp-sub] PubSub variantChange — variant:', variant && variant.id);
         if (variant) onVariantChange(variant.id);
       });
+    } else {
+      console.warn('[pp-sub] window.subscribe or PUB_SUB_EVENTS not available');
     }
 
     // ── On submit: enforce selling_plan based on our widget state ─────────────
