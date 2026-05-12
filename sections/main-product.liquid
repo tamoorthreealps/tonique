@@ -102,20 +102,7 @@
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
-                {%- comment -%}
-                  Skip Recharge subscription widget when our custom subscription_widget
-                  block is present — it replaces it visually and functionally.
-                  Check both block.type (full shopify://apps/... URL) and block.id for 'recharge'.
-                {%- endcomment -%}
-                {%- assign pp_has_sub_block = section.blocks | where: 'type', 'subscription_widget' | first -%}
-                {%- assign pp_is_recharge = false -%}
-                {%- if block.type contains 'recharge' or block.type contains 'subscription-widget' or block.id contains 'recharge' -%}
-                  {%- assign pp_is_recharge = true -%}
-                {%- endif -%}
-                {%- if pp_has_sub_block and pp_is_recharge -%}
-                {%- else -%}
-                  {% render block %}
-                {%- endif -%}
+                {% render block %}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -167,6 +154,8 @@
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
+                 {%- when 'subscription_widget' -%}
+                  {% render 'subscription-widget', block:block%}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -882,14 +871,6 @@
                   {%- endif -%}
                 {%- endfor -%}
 
-              {%- when 'subscription_widget' -%}
-                {%- render 'subscription-widget',
-                  product: product,
-                  block: block,
-                  section: section,
-                  product_form_id: product_form_id
-                -%}
-
               {%- when 'shipping_accordion' -%}
                 {%- if block.settings.heading != blank -%}
                   <div
@@ -1076,6 +1057,11 @@
           "label": "t:sections.main-product.blocks.sku.settings.text_style.label"
         }
       ]
+    },
+    {
+      "type": "subscription_widget",
+      "name": "Subscription Widget",
+      "limit": 1
     },
     {
       "type": "inventory",
@@ -2376,64 +2362,6 @@
         {
           "type": "paragraph",
           "content": "Renders accordions from product metafields: custom.benefits (Benefits), custom.how_to_use (How to use it), custom.overview (OVERVIEW). Each accordion only appears if the metafield has content."
-        }
-      ]
-    },
-    {
-      "type": "subscription_widget",
-      "name": "Subscription Widget",
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "Replaces the default Recharge app widget when added. Works with any product that has selling plan groups. Leave selling_plan_group_name blank to use the first group."
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Section label",
-          "default": "SELECT YOUR CADENCE:"
-        },
-        {
-          "type": "text",
-          "id": "subscribe_label",
-          "label": "Subscribe option label",
-          "default": "SUBSCRIBE & SAVE"
-        },
-        {
-          "type": "text",
-          "id": "onetime_label",
-          "label": "One-time option label",
-          "default": "ONE-TIME"
-        },
-        {
-          "type": "text",
-          "id": "benefit_1",
-          "label": "Benefit 1",
-          "default": "Skip, pause, or cancel anytime"
-        },
-        {
-          "type": "text",
-          "id": "benefit_2",
-          "label": "Benefit 2",
-          "default": "Free shipping"
-        },
-        {
-          "type": "text",
-          "id": "benefit_3",
-          "label": "Benefit 3 (optional)",
-          "default": ""
-        },
-        {
-          "type": "text",
-          "id": "delivery_label",
-          "label": "Delivery frequency label",
-          "default": "DELIVERY EVERY"
-        },
-        {
-          "type": "text",
-          "id": "selling_plan_group_name",
-          "label": "Selling plan group name (blank = first group)",
-          "default": ""
         }
       ]
     },
