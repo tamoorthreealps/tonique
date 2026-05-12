@@ -212,6 +212,37 @@
 
     // Initialise
     setPurchaseType('subscribe');
+
+    // Hide Recharge's app-embed injected widget. CSS covers known class names;
+    // the MutationObserver catches anything injected after page load regardless
+    // of element name or class.
+    hideRechargeWidget();
+  }
+
+  function hideRechargeWidget() {
+    var RECHARGE_PATTERNS = /recharge|rc_widget|rca-widget|rc-subscription/i;
+
+    function suppressEl(el) {
+      if (!(el instanceof Element)) return;
+      var tag  = el.tagName.toLowerCase();
+      var id   = el.id   || '';
+      var cls  = (typeof el.className === 'string') ? el.className : '';
+      if (RECHARGE_PATTERNS.test(tag) || RECHARGE_PATTERNS.test(id) || RECHARGE_PATTERNS.test(cls)) {
+        el.style.setProperty('display', 'none', 'important');
+        el.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    // Scan existing DOM
+    document.querySelectorAll('body *').forEach(suppressEl);
+
+    // Watch for future injections
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (m) {
+        m.addedNodes.forEach(suppressEl);
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   // ─── Video Popup ──────────────────────────────────────────────────────────

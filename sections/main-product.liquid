@@ -986,6 +986,17 @@
                   data-section-id="{{ section.id }}"
                   {{ block.shopify_attributes }}
                 >
+                  {%- if request.design_mode -%}
+                    <div class="pp-sub-widget__editor-notice">
+                      Subscription Widget
+                      {%- if pp_spg -%}
+                        &nbsp;— selling plans found ({{ pp_spg.selling_plans.size }} plan{{ pp_spg.selling_plans.size | pluralize: '', 's' }})
+                      {%- else -%}
+                        &nbsp;— no selling plans on this product; subscribe option hidden
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+
                   {%- if block.settings.label != blank -%}
                     <p class="pp-sub-widget__label">{{ block.settings.label }}</p>
                   {%- endif -%}

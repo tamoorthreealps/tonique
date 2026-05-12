@@ -324,8 +324,36 @@
    [5] SUBSCRIPTION WIDGET
    ───────────────────────────────────────────────── */
 
+/* ─── Recharge app-embed suppression ────────────────────────────────────────
+   When our custom subscription widget is present (.pp-sub-widget in the DOM),
+   hide the Recharge Storefront Experiences widget that the app embed injects
+   via JavaScript. Targets all known Recharge V2 element names / classes.
+   ─────────────────────────────────────────────────────────────────────────── */
+body:has(.pp-sub-widget) recharge-subscription-widget,
+body:has(.pp-sub-widget) rca-subscribe-widget,
+body:has(.pp-sub-widget) rca-widget,
+body:has(.pp-sub-widget) rc-subscription-widget,
+body:has(.pp-sub-widget) .rc_widget,
+body:has(.pp-sub-widget) .rc-subscription-widget,
+body:has(.pp-sub-widget) .ReChargeWidget,
+body:has(.pp-sub-widget) #ReChargeWidget,
+body:has(.pp-sub-widget) [data-rc-widget],
+body:has(.pp-sub-widget) .rca-widget-container {
+  display: none !important;
+}
+
 .pp-sub-widget {
   margin: 0 0 16px;
+}
+
+.pp-sub-widget__editor-notice {
+  background: #e8f4fd;
+  border: 1px dashed #3b82f6;
+  border-radius: 4px;
+  color: #1d4ed8;
+  font-size: 11px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
 }
 
 .pp-sub-widget__label {
