@@ -20,11 +20,13 @@
 <style>.recharge-subscription-widget { display: none !important; }</style>
 
 {%- liquid
-  assign pp_spg     = product.selling_plan_groups | first
-  assign pp_variant = product.selected_or_first_available_variant
-  assign pp_pack_sz = pp_variant.metafields.custom.pack_size | default: 1
+  assign pp_spg         = product.selling_plan_groups | first
+  assign pp_variant     = product.selected_or_first_available_variant
+  assign pp_pack_sz     = pp_variant.metafields.custom.pack_size | default: 1
+  assign pp_variant_has_sub = false
 
-  if pp_spg
+  if pp_spg and pp_variant.selling_plan_allocations.size > 0
+    assign pp_variant_has_sub = true
     assign pp_sp_first = pp_spg.selling_plans | first
     assign pp_alloc = null
     for alloc in pp_variant.selling_plan_allocations
@@ -79,10 +81,10 @@
   name="selling_plan"
   id="pp-selling-plan-{{ section.id }}"
   form="{{ product_form_id }}"
-  {% if pp_spg %}value="{{ pp_sp_first.id }}"{% else %}disabled{% endif %}
+  {% if pp_variant_has_sub %}value="{{ pp_sp_first.id }}"{% else %}disabled{% endif %}
 >
 
-{%- if pp_spg -%}
+{%- if pp_variant_has_sub -%}
 <div
   class="pp-sub-widget"
   id="pp-sub-widget-{{ section.id }}"
