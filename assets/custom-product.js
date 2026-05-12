@@ -21,35 +21,23 @@
     var cards = document.querySelectorAll('.pp-pack-card');
     if (!cards.length) return;
 
-    // Click handler — drive variant picker radios/selects
+    // Click handler — trigger the hidden Dawn radio so variant-selects / product-info
+    // fire exactly the same event flow as a real user interaction.
     cards.forEach(function (card) {
       card.addEventListener('click', function () {
         var optionValue = this.dataset.optionValue;
 
-        // Try variant-radios first (button picker type)
-        var picker = document.querySelector('variant-radios, variant-selects');
-        if (picker) {
-          // Radio buttons
-          var matched = false;
-          picker.querySelectorAll('input[type="radio"]').forEach(function (input) {
-            if (!matched && input.value === optionValue) {
-              input.checked = true;
-              input.dispatchEvent(new Event('change', { bubbles: true }));
-              matched = true;
-            }
-          });
-
-          // Select fallback
-          if (!matched) {
-            picker.querySelectorAll('select').forEach(function (select) {
-              var opt = select.querySelector('option[value="' + optionValue + '"]');
-              if (opt) {
-                select.value = optionValue;
-                select.dispatchEvent(new Event('change', { bubbles: true }));
-              }
-            });
+        // The pack-size fieldset is hidden (.pp-hidden-option) but its Dawn-rendered
+        // radio inputs carry data-option-value-id and data-product-url, which is what
+        // variant-selects → product-info need. Calling .click() fires the native
+        // click + change events even on display:none elements.
+        var matched = false;
+        document.querySelectorAll('.pp-hidden-option input[type="radio"]').forEach(function (input) {
+          if (!matched && input.value === optionValue) {
+            input.click();
+            matched = true;
           }
-        }
+        });
 
         // Update selected state visually
         cards.forEach(function (c) { c.classList.remove('is-selected'); });
