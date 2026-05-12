@@ -43,11 +43,20 @@
         },
         "recharge_subscriptions_subscription_widget_v2_cPCrFw": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "disabled": true,
           "settings": {}
         },
         "subscription_widget_Y4jwPa": {
           "type": "subscription_widget",
-          "settings": {}
+          "settings": {
+            "label": "SELECT YOUR CADENCE:",
+            "subscribe_label": "SUBSCRIBE & SAVE",
+            "onetime_label": "ONE-TIME",
+            "benefit_1": "Skip, pause, or cancel anytime",
+            "benefit_2": "Free shipping",
+            "benefit_3": "",
+            "delivery_label": "DELIVERY EVERY"
+          }
         },
         "quantity_selector": {
           "type": "quantity_selector",
