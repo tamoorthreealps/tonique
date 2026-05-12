@@ -58,7 +58,7 @@
     "variants": {
       {%- for v in product.variants -%}
         {%- assign v_pack = v.metafields.custom.pack_size | default: 1 -%}
-        {{ v.id | json }}: {
+        "{{ v.id }}": {
           "price": {{ v.price }},
           "pack_size": {{ v_pack }},
           "allocations": [

@@ -235,6 +235,30 @@
       });
     }
 
+    // ── On submit: enforce selling_plan based on our widget state ─────────────
+    // Recharge injects its own enabled selling_plan input into the form even
+    // when its UI is hidden. We intercept submit and disable every selling_plan
+    // input in the form when the user has chosen one-time.
+
+    var productForm = document.getElementById('product-form-' + sectionId);
+    if (productForm) {
+      productForm.addEventListener('submit', function () {
+        var w = document.querySelector('.pp-sub-widget');
+        var subscribeOpt = w && w.querySelector('.pp-sub-option--subscribe');
+        var isSubSelected = subscribeOpt && subscribeOpt.classList.contains('is-selected');
+
+        productForm.querySelectorAll('[name="selling_plan"]').forEach(function (inp) {
+          if (!isSubSelected) {
+            inp.disabled = true;
+            inp.value    = '';
+          } else if (inp === document.getElementById('pp-selling-plan-' + sectionId)) {
+            // Our own input — keep it enabled with its value
+            inp.disabled = false;
+          }
+        });
+      });
+    }
+
     // ── Initialise default purchase type ─────────────────────────────────────
 
     var w = document.querySelector('.pp-sub-widget');
