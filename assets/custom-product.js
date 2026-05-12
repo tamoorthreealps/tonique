@@ -224,14 +224,31 @@
       }
     }
 
-    // ── Listen for variant changes via Dawn's PubSub ──────────────────────────
-    // Dawn publishes PUB_SUB_EVENTS.variantChange after updating the DOM;
-    // data.data.variant is the resolved variant object.
+    // ── Listen for variant changes ────────────────────────────────────────────
+    // Primary: Dawn explicitly sets input[name="id"] value and dispatches a
+    // bubbling "change" event in updateVariantInputs() — fires for every
+    // variant change including pack size card clicks.
+    // Backup: PUB_SUB_EVENTS.variantChange publishes the full variant object.
+
+    var lastVariantId = null;
+
+    function onVariantChange(variantId) {
+      var id = String(variantId);
+      if (!id || id === lastVariantId) return;
+      lastVariantId = id;
+      updateWidget(id);
+    }
+
+    document.addEventListener('change', function (e) {
+      if (e.target.name === 'id' && e.target.closest('#product-form-' + sectionId)) {
+        onVariantChange(e.target.value);
+      }
+    });
 
     if (window.subscribe && window.PUB_SUB_EVENTS) {
       window.subscribe(window.PUB_SUB_EVENTS.variantChange, function (pubSubData) {
         var variant = pubSubData && pubSubData.data && pubSubData.data.variant;
-        if (variant) updateWidget(variant.id);
+        if (variant) onVariantChange(variant.id);
       });
     }
 
