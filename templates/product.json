@@ -45,6 +45,10 @@
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         },
+        "subscription_widget_Y4jwPa": {
+          "type": "subscription_widget",
+          "settings": {}
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -78,6 +82,7 @@
         "variant_picker",
         "pack_size_cards_EkfXQG",
         "recharge_subscriptions_subscription_widget_v2_cPCrFw",
+        "subscription_widget_Y4jwPa",
         "quantity_selector",
         "buy_buttons",
         "description",
