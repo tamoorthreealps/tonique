@@ -89,104 +89,127 @@
 
   // ─── Subscription Widget ─────────────────────────────────────────────────
   function initSubscriptionWidget() {
-    var widget = document.querySelector('.pp-sub-widget');
-    if (!widget) return;
-
-    var sectionId        = widget.dataset.sectionId;
-    var subscribeOpt     = widget.querySelector('.pp-sub-option--subscribe');
-    var onetimeOpt       = widget.querySelector('.pp-sub-option--onetime');
-    var frequencySelect  = widget.querySelector('.pp-sub-delivery__select');
-    var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
-
-    var subData = null;
-    var dataEl  = document.getElementById('pp-sub-data-' + sectionId);
-    if (dataEl) {
-      try { subData = JSON.parse(dataEl.textContent); } catch (e) {}
+    // Resolve sectionId from widget or from the hidden selling_plan input
+    var sectionId = null;
+    var initWidget = document.querySelector('.pp-sub-widget');
+    if (initWidget) {
+      sectionId = initWidget.dataset.sectionId;
+    } else {
+      var initInput = document.querySelector('input[id^="pp-selling-plan-"]');
+      if (initInput) sectionId = initInput.id.replace('pp-selling-plan-', '');
     }
+    if (!sectionId) return;
 
-    function setPurchaseType(type) {
+    // ── Event delegation — survives DOM replacement on re-render ─────────────
+
+    document.addEventListener('change', function (e) {
+      if (e.target.matches('.pp-sub-type-radio')) {
+        var w = e.target.closest('.pp-sub-widget');
+        if (w) setPurchaseType(w, e.target.value);
+      } else if (e.target.matches('.pp-sub-delivery__select')) {
+        var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
+        var subscribeOpt = document.querySelector('.pp-sub-option--subscribe');
+        if (sellingPlanInput && subscribeOpt && subscribeOpt.classList.contains('is-selected')) {
+          sellingPlanInput.value = e.target.value;
+        }
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      var opt = e.target.closest('.pp-sub-option');
+      if (!opt) return;
+      if (e.target.closest('select')) return;
+      var radio = opt.querySelector('.pp-sub-type-radio');
+      if (radio && !radio.checked) {
+        radio.checked = true;
+        radio.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+
+    // ── Purchase type helper ──────────────────────────────────────────────────
+
+    function setPurchaseType(w, type) {
+      var sid = w.dataset.sectionId;
+      var subscribeOpt    = w.querySelector('.pp-sub-option--subscribe');
+      var onetimeOpt      = w.querySelector('.pp-sub-option--onetime');
+      var frequencySelect = w.querySelector('.pp-sub-delivery__select');
+      var sellingPlanInput = document.getElementById('pp-selling-plan-' + sid);
+
       var isSub = type === 'subscribe';
-      subscribeOpt.classList.toggle('is-selected', isSub);
-      onetimeOpt.classList.toggle('is-selected', !isSub);
+      if (subscribeOpt) subscribeOpt.classList.toggle('is-selected', isSub);
+      if (onetimeOpt)   onetimeOpt.classList.toggle('is-selected', !isSub);
       if (sellingPlanInput) {
         sellingPlanInput.disabled = !isSub;
         sellingPlanInput.value    = isSub && frequencySelect ? frequencySelect.value : '';
       }
     }
 
-    widget.querySelectorAll('.pp-sub-type-radio').forEach(function (radio) {
-      radio.addEventListener('change', function () { setPurchaseType(this.value); });
-    });
+    // ── Re-render widget via Shopify sections API ─────────────────────────────
 
-    [subscribeOpt, onetimeOpt].forEach(function (opt) {
-      opt.addEventListener('click', function (e) {
-        if (e.target.closest('select')) return;
-        var radio = opt.querySelector('.pp-sub-type-radio');
-        if (radio && !radio.checked) {
-          radio.checked = true;
-          radio.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      });
-    });
+    function reRenderWidget(variantId) {
+      var productInfo = document.querySelector('product-info');
+      var productUrl  = (productInfo && productInfo.dataset.url) || window.location.pathname.split('?')[0];
+      var url = productUrl + '?variant=' + variantId + '&sections=' + encodeURIComponent(sectionId);
 
-    if (frequencySelect && sellingPlanInput) {
-      frequencySelect.addEventListener('change', function () {
-        if (subscribeOpt.classList.contains('is-selected')) {
-          sellingPlanInput.value = this.value;
-        }
-      });
+      fetch(url)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var html = data[sectionId];
+          if (!html) return;
+
+          var parser = new DOMParser();
+          var doc    = parser.parseFromString(html, 'text/html');
+
+          // Swap JSON data blob
+          var newDataEl = doc.getElementById('pp-sub-data-' + sectionId);
+          var oldDataEl = document.getElementById('pp-sub-data-' + sectionId);
+          if (oldDataEl && newDataEl) oldDataEl.replaceWith(newDataEl.cloneNode(true));
+
+          // Swap selling_plan input
+          var newInput = doc.getElementById('pp-selling-plan-' + sectionId);
+          var oldInput = document.getElementById('pp-selling-plan-' + sectionId);
+          if (oldInput && newInput) {
+            oldInput.replaceWith(newInput.cloneNode(true));
+          } else if (oldInput && !newInput) {
+            oldInput.disabled = true;
+            oldInput.value    = '';
+          }
+
+          // Swap widget div
+          var newWidget = doc.getElementById('pp-sub-widget-' + sectionId);
+          var oldWidget = document.getElementById('pp-sub-widget-' + sectionId);
+
+          if (newWidget && oldWidget) {
+            oldWidget.replaceWith(newWidget.cloneNode(true));
+          } else if (newWidget && !oldWidget) {
+            // Variant now has subscriptions — insert after the selling_plan input
+            var inp = document.getElementById('pp-selling-plan-' + sectionId);
+            if (inp) inp.after(newWidget.cloneNode(true));
+          } else if (!newWidget && oldWidget) {
+            oldWidget.remove();
+          }
+
+          // Re-apply default purchase type on the freshly swapped widget
+          var w = document.getElementById('pp-sub-widget-' + sectionId);
+          if (w) setPurchaseType(w, 'subscribe');
+        })
+        .catch(function () {});
     }
 
-    function updateSubPrices(variantId) {
-      if (!subData || !subData.variants) return;
-      var vData = subData.variants[String(variantId)];
-      if (!vData) return;
+    // ── Trigger re-render on variant change ───────────────────────────────────
 
-      var hasAllocations = vData.allocations && vData.allocations.length > 0;
-
-      // Hide widget and clear plan if variant has no subscription allocations
-      widget.style.display = hasAllocations ? '' : 'none';
-      if (sellingPlanInput) {
-        sellingPlanInput.disabled = !hasAllocations;
-        if (!hasAllocations) { sellingPlanInput.value = ''; return; }
-      }
-
-      var packSize = vData.pack_size || 1;
-      var planId   = frequencySelect ? parseInt(frequencySelect.value, 10) : null;
-      var alloc    = null;
-      if (planId && vData.allocations) {
-        for (var i = 0; i < vData.allocations.length; i++) {
-          if (vData.allocations[i].selling_plan_id === planId) { alloc = vData.allocations[i]; break; }
-        }
-        if (!alloc) alloc = vData.allocations[0];
-      }
-      var subPriceEl   = widget.querySelector('.pp-sub-subscribe-price');
-      var subPerUnitEl = widget.querySelector('.pp-sub-subscribe-per-unit');
-      var otPriceEl    = widget.querySelector('.pp-sub-onetime-price');
-      var otPerUnitEl  = widget.querySelector('.pp-sub-onetime-per-unit');
-      if (alloc) {
-        if (subPriceEl)   subPriceEl.textContent   = formatMoney(alloc.price);
-        if (subPerUnitEl) subPerUnitEl.textContent = formatMoney(Math.round(alloc.price / packSize)) + '/pouch';
-        if (sellingPlanInput && subscribeOpt.classList.contains('is-selected')) {
-          sellingPlanInput.value = String(alloc.selling_plan_id);
-        }
-      }
-      if (otPriceEl)   otPriceEl.textContent   = formatMoney(vData.price);
-      if (otPerUnitEl) otPerUnitEl.textContent = formatMoney(Math.round(vData.price / packSize)) + '/pouch';
-    }
-
-    if (window.subscribe && window.PUB_SUB_EVENTS) {
-      window.subscribe(window.PUB_SUB_EVENTS.optionValueSelectionChange, function () {
-        var obs = new MutationObserver(function () {
-          var el = document.querySelector('variant-selects [data-selected-variant]');
-          if (el) { try { var v = JSON.parse(el.textContent); if (v) updateSubPrices(v.id); } catch (e) {} }
-          obs.disconnect();
-        });
-        obs.observe(document.querySelector('variant-selects') || document.body, { childList: true, subtree: true });
+    var productInfo = document.querySelector('product-info');
+    if (productInfo) {
+      productInfo.addEventListener('variant:changed', function (e) {
+        var variant = e.detail && e.detail.variant;
+        if (variant) reRenderWidget(variant.id);
       });
     }
 
-    setPurchaseType('subscribe');
+    // ── Initialise default purchase type ─────────────────────────────────────
+
+    var w = document.querySelector('.pp-sub-widget');
+    if (w) setPurchaseType(w, 'subscribe');
   }
 
   // ─── Video Popup ──────────────────────────────────────────────────────────
