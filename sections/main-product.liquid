@@ -105,9 +105,14 @@
                 {%- comment -%}
                   Skip Recharge subscription widget when our custom subscription_widget
                   block is present — it replaces it visually and functionally.
+                  Check both block.type (full shopify://apps/... URL) and block.id for 'recharge'.
                 {%- endcomment -%}
                 {%- assign pp_has_sub_block = section.blocks | where: 'type', 'subscription_widget' | first -%}
-                {%- if pp_has_sub_block and block.type contains 'subscription-widget' -%}
+                {%- assign pp_is_recharge = false -%}
+                {%- if block.type contains 'recharge' or block.type contains 'subscription-widget' or block.id contains 'recharge' -%}
+                  {%- assign pp_is_recharge = true -%}
+                {%- endif -%}
+                {%- if pp_has_sub_block and pp_is_recharge -%}
                 {%- else -%}
                   {% render block %}
                 {%- endif -%}
@@ -890,12 +895,15 @@
                   unless pp_spg
                     assign pp_spg = product.selling_plan_groups | first
                   endunless
+
+                  assign pp_variant  = product.selected_or_first_available_variant
+                  assign pp_pack_sz  = pp_variant.metafields.custom.pack_size | default: 1
+                  assign pp_ot_per_unit = pp_variant.price | divided_by: pp_pack_sz
                 -%}
+
                 {%- if pp_spg -%}
                   {%- liquid
                     assign pp_sp_first = pp_spg.selling_plans | first
-                    assign pp_variant  = product.selected_or_first_available_variant
-                    assign pp_pack_sz  = pp_variant.metafields.custom.pack_size | default: 1
 
                     comment Find allocation for the first selling plan on the current variant endcomment
                     assign pp_alloc = null
@@ -916,8 +924,6 @@
                       assign pp_sub_compare  = pp_variant.compare_at_price
                       assign pp_sub_per_unit = pp_sub_price | divided_by: pp_pack_sz
                     endif
-
-                    assign pp_ot_per_unit = pp_variant.price | divided_by: pp_pack_sz
 
                     comment Savings endcomment
                     assign pp_savings_mo = pp_sub_compare | minus: pp_sub_price
@@ -957,30 +963,34 @@
                       }
                     }
                   </script>
+                {%- endif -%}
 
-                  {%- comment -%}
-                    Hidden selling_plan input associated with the product form.
-                    JS sets this to the chosen plan id (subscribe) or empty string (one-time).
-                  {%- endcomment -%}
-                  <input
-                    type="hidden"
-                    name="selling_plan"
-                    id="pp-selling-plan-{{ section.id }}"
-                    form="{{ product_form_id }}"
-                    value="{{ pp_sp_first.id }}"
-                    class="pp-selling-plan-input"
-                  >
+                {%- comment -%}
+                  Hidden selling_plan input associated with the product form.
+                  JS sets this to the chosen plan id (subscribe) or empty string (one-time).
+                  Always rendered so JS can reference it; disabled when no selling plan is active.
+                {%- endcomment -%}
+                <input
+                  type="hidden"
+                  name="selling_plan"
+                  id="pp-selling-plan-{{ section.id }}"
+                  form="{{ product_form_id }}"
+                  value="{% if pp_spg and pp_sp_first %}{{ pp_sp_first.id }}{% endif %}"
+                  class="pp-selling-plan-input"
+                  {% unless pp_spg %}disabled{% endunless %}
+                >
 
-                  <div
-                    class="pp-sub-widget quick-add-hidden"
-                    id="pp-sub-widget-{{ section.id }}"
-                    data-section-id="{{ section.id }}"
-                    {{ block.shopify_attributes }}
-                  >
-                    {%- if block.settings.label != blank -%}
-                      <p class="pp-sub-widget__label">{{ block.settings.label }}</p>
-                    {%- endif -%}
+                <div
+                  class="pp-sub-widget quick-add-hidden"
+                  id="pp-sub-widget-{{ section.id }}"
+                  data-section-id="{{ section.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.label != blank -%}
+                    <p class="pp-sub-widget__label">{{ block.settings.label }}</p>
+                  {%- endif -%}
 
+                  {%- if pp_spg -%}
                     {%- comment -%}──── SUBSCRIBE & SAVE ────{%- endcomment -%}
                     <div class="pp-sub-option pp-sub-option--subscribe is-selected">
                       <label class="pp-sub-option__header">
@@ -1054,26 +1064,27 @@
                         {%- endif -%}
                       </div>
                     </div>
+                  {%- endif -%}
 
-                    {%- comment -%}──── ONE-TIME ────{%- endcomment -%}
-                    <div class="pp-sub-option pp-sub-option--onetime">
-                      <label class="pp-sub-option__header">
-                        <input
-                          class="pp-sub-type-radio"
-                          type="radio"
-                          name="pp-purchase-type-{{ section.id }}"
-                          value="onetime"
-                        >
-                        <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
-                        <span class="pp-sub-option__title">{{ block.settings.onetime_label }}</span>
-                        <div class="pp-sub-option__pricing">
-                          <span class="pp-sub-option__price pp-sub-onetime-price">{{ pp_variant.price | money }}</span>
-                          <span class="pp-sub-option__per-unit pp-sub-onetime-per-unit">{{ pp_ot_per_unit | money }}/pouch</span>
-                        </div>
-                      </label>
-                    </div>
+                  {%- comment -%}──── ONE-TIME ────{%- endcomment -%}
+                  <div class="pp-sub-option pp-sub-option--onetime{% unless pp_spg %} is-selected{% endunless %}">
+                    <label class="pp-sub-option__header">
+                      <input
+                        class="pp-sub-type-radio"
+                        type="radio"
+                        name="pp-purchase-type-{{ section.id }}"
+                        value="onetime"
+                        {% unless pp_spg %}checked{% endunless %}
+                      >
+                      <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
+                      <span class="pp-sub-option__title">{{ block.settings.onetime_label }}</span>
+                      <div class="pp-sub-option__pricing">
+                        <span class="pp-sub-option__price pp-sub-onetime-price">{{ pp_variant.price | money }}</span>
+                        <span class="pp-sub-option__per-unit pp-sub-onetime-per-unit">{{ pp_ot_per_unit | money }}/pouch</span>
+                      </div>
+                    </label>
                   </div>
-                {%- endif -%}
+                </div>
 
               {%- when 'shipping_accordion' -%}
                 {%- if block.settings.heading != blank -%}
