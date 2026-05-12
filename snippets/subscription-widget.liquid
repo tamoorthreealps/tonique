@@ -124,7 +124,7 @@
         {%- if block.settings.benefit_3 != blank -%}<li>{{ block.settings.benefit_3 }}</li>{%- endif -%}
       </ul>
 
-      {%- if pp_spg.selling_plans.size > 1 -%}
+      {%- if pp_spg.selling_plans.size >= 1 -%}
         <div class="pp-sub-delivery">
           <span class="pp-sub-delivery__label">{{ block.settings.delivery_label }}</span>
           <div class="pp-sub-delivery__select-wrap">
