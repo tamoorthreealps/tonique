@@ -100,17 +100,22 @@
     }
     if (!sectionId) return;
 
-    // ── Event delegation — survives DOM replacement on re-render ─────────────
+    // Load the embedded per-variant JSON (all variants, all allocations)
+    var subData = null;
+    var dataEl  = document.getElementById('pp-sub-data-' + sectionId);
+    if (dataEl) { try { subData = JSON.parse(dataEl.textContent); } catch (e) {} }
+
+    // ── Event delegation — all handlers on document survive DOM changes ───────
 
     document.addEventListener('change', function (e) {
       if (e.target.matches('.pp-sub-type-radio')) {
         var w = e.target.closest('.pp-sub-widget');
         if (w) setPurchaseType(w, e.target.value);
       } else if (e.target.matches('.pp-sub-delivery__select')) {
-        var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
-        var subscribeOpt = document.querySelector('.pp-sub-option--subscribe');
-        if (sellingPlanInput && subscribeOpt && subscribeOpt.classList.contains('is-selected')) {
-          sellingPlanInput.value = e.target.value;
+        var inp = document.getElementById('pp-selling-plan-' + sectionId);
+        var subOpt = document.querySelector('.pp-sub-option--subscribe');
+        if (inp && subOpt && subOpt.classList.contains('is-selected')) {
+          inp.value = e.target.value;
         }
       }
     });
@@ -126,10 +131,10 @@
       }
     });
 
-    // ── Purchase type helper ──────────────────────────────────────────────────
+    // ── Purchase type ─────────────────────────────────────────────────────────
 
     function setPurchaseType(w, type) {
-      var sid = w.dataset.sectionId;
+      var sid             = w.dataset.sectionId;
       var subscribeOpt    = w.querySelector('.pp-sub-option--subscribe');
       var onetimeOpt      = w.querySelector('.pp-sub-option--onetime');
       var frequencySelect = w.querySelector('.pp-sub-delivery__select');
@@ -138,71 +143,95 @@
       var isSub = type === 'subscribe';
       if (subscribeOpt) subscribeOpt.classList.toggle('is-selected', isSub);
       if (onetimeOpt)   onetimeOpt.classList.toggle('is-selected', !isSub);
+
       if (sellingPlanInput) {
-        sellingPlanInput.disabled = !isSub;
-        sellingPlanInput.value    = isSub && frequencySelect ? frequencySelect.value : '';
+        if (isSub) {
+          sellingPlanInput.disabled = false;
+          // Only override value when there's a multi-plan dropdown; otherwise
+          // keep the plan ID already written by Liquid.
+          if (frequencySelect) sellingPlanInput.value = frequencySelect.value;
+        } else {
+          sellingPlanInput.disabled = true;
+          sellingPlanInput.value    = '';
+        }
       }
     }
 
-    // ── Re-render widget via Shopify sections API ─────────────────────────────
+    // ── Update widget prices from embedded JSON (no network request) ──────────
 
-    function reRenderWidget(variantId) {
-      var productInfo = document.querySelector('product-info');
-      var productUrl  = (productInfo && productInfo.dataset.url) || window.location.pathname.split('?')[0];
-      var url = productUrl + '?variant=' + variantId + '&sections=' + encodeURIComponent(sectionId);
+    function updateWidget(variantId) {
+      if (!subData || !subData.variants) return;
+      var vData = subData.variants[String(variantId)];
+      if (!vData) return;
 
-      fetch(url)
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          var html = data[sectionId];
-          if (!html) return;
+      var w                = document.querySelector('.pp-sub-widget');
+      var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
+      var hasAlloc         = vData.allocations && vData.allocations.length > 0;
 
-          var parser = new DOMParser();
-          var doc    = parser.parseFromString(html, 'text/html');
+      // Show or hide the whole widget
+      if (w) w.style.display = hasAlloc ? '' : 'none';
+      if (sellingPlanInput && !hasAlloc) {
+        sellingPlanInput.disabled = true;
+        sellingPlanInput.value    = '';
+        return;
+      }
+      if (!hasAlloc) return;
 
-          // Swap JSON data blob
-          var newDataEl = doc.getElementById('pp-sub-data-' + sectionId);
-          var oldDataEl = document.getElementById('pp-sub-data-' + sectionId);
-          if (oldDataEl && newDataEl) oldDataEl.replaceWith(newDataEl.cloneNode(true));
+      // Pick the allocation matching the currently selected frequency (or first)
+      var frequencySelect = w && w.querySelector('.pp-sub-delivery__select');
+      var planId          = frequencySelect ? parseInt(frequencySelect.value, 10) : null;
+      var alloc           = vData.allocations[0];
+      if (planId) {
+        for (var i = 0; i < vData.allocations.length; i++) {
+          if (vData.allocations[i].selling_plan_id === planId) { alloc = vData.allocations[i]; break; }
+        }
+      }
 
-          // Swap selling_plan input
-          var newInput = doc.getElementById('pp-selling-plan-' + sectionId);
-          var oldInput = document.getElementById('pp-selling-plan-' + sectionId);
-          if (oldInput && newInput) {
-            oldInput.replaceWith(newInput.cloneNode(true));
-          } else if (oldInput && !newInput) {
-            oldInput.disabled = true;
-            oldInput.value    = '';
+      var packSize = vData.pack_size || 1;
+
+      // Update subscribe prices
+      var subPriceEl   = w && w.querySelector('.pp-sub-subscribe-price');
+      var subPerUnitEl = w && w.querySelector('.pp-sub-subscribe-per-unit');
+      var otPriceEl    = w && w.querySelector('.pp-sub-onetime-price');
+      var otPerUnitEl  = w && w.querySelector('.pp-sub-onetime-per-unit');
+      var savingsBanner = w && w.querySelector('.pp-sub-savings-banner');
+      var savingsText   = w && w.querySelector('.pp-sub-savings-banner__text');
+
+      if (alloc) {
+        if (subPriceEl)   subPriceEl.textContent   = formatMoney(alloc.price);
+        if (subPerUnitEl) subPerUnitEl.textContent = formatMoney(Math.round(alloc.price / packSize)) + '/pouch';
+
+        var savings = alloc.compare_at_price - alloc.price;
+        if (savingsBanner) {
+          if (savings > 0) {
+            var pct = Math.round(savings * 100 / alloc.compare_at_price);
+            if (savingsText) savingsText.textContent = 'Save ' + pct + '% (' + formatMoney(savings) + ' off)';
+            savingsBanner.style.display = '';
+          } else {
+            savingsBanner.style.display = 'none';
           }
+        }
+      }
+      if (otPriceEl)   otPriceEl.textContent   = formatMoney(vData.price);
+      if (otPerUnitEl) otPerUnitEl.textContent = formatMoney(Math.round(vData.price / packSize)) + '/pouch';
 
-          // Swap widget div
-          var newWidget = doc.getElementById('pp-sub-widget-' + sectionId);
-          var oldWidget = document.getElementById('pp-sub-widget-' + sectionId);
-
-          if (newWidget && oldWidget) {
-            oldWidget.replaceWith(newWidget.cloneNode(true));
-          } else if (newWidget && !oldWidget) {
-            // Variant now has subscriptions — insert after the selling_plan input
-            var inp = document.getElementById('pp-selling-plan-' + sectionId);
-            if (inp) inp.after(newWidget.cloneNode(true));
-          } else if (!newWidget && oldWidget) {
-            oldWidget.remove();
-          }
-
-          // Re-apply default purchase type on the freshly swapped widget
-          var w = document.getElementById('pp-sub-widget-' + sectionId);
-          if (w) setPurchaseType(w, 'subscribe');
-        })
-        .catch(function () {});
+      // Update selling_plan input based on currently selected purchase type
+      var subscribeOpt = w && w.querySelector('.pp-sub-option--subscribe');
+      var isSubSelected = subscribeOpt && subscribeOpt.classList.contains('is-selected');
+      if (sellingPlanInput) {
+        sellingPlanInput.disabled = !isSubSelected;
+        if (isSubSelected && alloc) sellingPlanInput.value = String(alloc.selling_plan_id);
+      }
     }
 
-    // ── Trigger re-render on variant change ───────────────────────────────────
+    // ── Listen for variant changes via Dawn's PubSub ──────────────────────────
+    // Dawn publishes PUB_SUB_EVENTS.variantChange after updating the DOM;
+    // data.data.variant is the resolved variant object.
 
-    var productInfo = document.querySelector('product-info');
-    if (productInfo) {
-      productInfo.addEventListener('variant:changed', function (e) {
-        var variant = e.detail && e.detail.variant;
-        if (variant) reRenderWidget(variant.id);
+    if (window.subscribe && window.PUB_SUB_EVENTS) {
+      window.subscribe(window.PUB_SUB_EVENTS.variantChange, function (pubSubData) {
+        var variant = pubSubData && pubSubData.data && pubSubData.data.variant;
+        if (variant) updateWidget(variant.id);
       });
     }
 
