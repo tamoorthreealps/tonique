@@ -504,29 +504,27 @@
                     {{ block.shopify_attributes }}
                   >
                     {%- for option in product.options_with_values -%}
-                      {%- comment -%} Skip the pack size option — it is handled by pack_size_cards block {%- endcomment -%}
                       {%- if option.name == pp_hidden_opt -%}
                         {%- comment -%}
-                          Hidden radio group for pack size. Kept so variant-selects can read
-                          the checked data-option-value-id when a pack card is clicked.
-                          CSS class pp-hidden-option enforces display:none with !important.
+                          Pack size option: render Dawn's standard button picker via the
+                          product-variant-options snippet so every input has the correct
+                          data-option-value-id, data-product-url and id that variant-selects
+                          and product-info.js depend on. The fieldset is hidden via CSS
+                          (.pp-hidden-option) — our custom pack cards drive this option visually.
                         {%- endcomment -%}
-                        <fieldset class="pp-hidden-option" aria-hidden="true">
-                          {%- for value in option.values -%}
-                            <input
-                              type="radio"
-                              name="{{ option.name }}-{{ option.position }}"
-                              value="{{ value | escape }}"
-                              form="{{ product_form_id }}"
-                              data-option-value-id="{{ value.id }}"
-                              {% if value.selected %}checked{% endif %}
-                            >
-                          {%- endfor -%}
+                        <fieldset class="js product-form__input product-form__input--pill pp-hidden-option">
+                          <legend class="form__label">{{ option.name }}</legend>
+                          {%- render 'product-variant-options',
+                            product: product,
+                            option: option,
+                            block: block,
+                            picker_type: 'button'
+                          -%}
                         </fieldset>
                       {%- else -%}
                         {%- comment -%}
-                          Custom flavor swatch picker.
-                          Image filename: {handleized-flavor}.png uploaded to Shopify Files.
+                          All other options (e.g. Flavor): custom pill-swatch picker.
+                          Image filename: {handleized-value}.png in Shopify Files.
                         {%- endcomment -%}
                         <fieldset
                           class="js product-form__input pp-flavor-picker"
