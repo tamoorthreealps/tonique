@@ -9,6 +9,11 @@
    [1] PACK SIZE CARDS
    ───────────────────────────────────────────────── */
 
+/* Force-hide the pack-size radio group regardless of inline style overrides */
+.pp-hidden-option {
+  display: none !important;
+}
+
 .pp-pack-cards {
   margin: 0 0 16px;
 }

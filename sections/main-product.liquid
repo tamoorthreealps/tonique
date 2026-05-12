@@ -498,8 +498,8 @@
                   {%- assign pp_pack_block = section.blocks | where: 'type', 'pack_size_cards' | first -%}
                   {%- assign pp_hidden_opt = pp_pack_block.settings.option_name | default: 'Pack Size' -%}
 
-                  <variant-radios
-                    id="variant-radios-{{ section.id }}"
+                  <variant-selects
+                    id="variant-selects-{{ section.id }}"
                     data-section="{{ section.id }}"
                     {{ block.shopify_attributes }}
                   >
@@ -507,24 +507,26 @@
                       {%- comment -%} Skip the pack size option — it is handled by pack_size_cards block {%- endcomment -%}
                       {%- if option.name == pp_hidden_opt -%}
                         {%- comment -%}
-                          Render hidden radio inputs so variant-selects JS can still read all option values.
+                          Hidden radio group for pack size. Kept so variant-selects can read
+                          the checked data-option-value-id when a pack card is clicked.
+                          CSS class pp-hidden-option enforces display:none with !important.
                         {%- endcomment -%}
-                        <fieldset class="pp-hidden-option" style="display:none;" aria-hidden="true">
+                        <fieldset class="pp-hidden-option" aria-hidden="true">
                           {%- for value in option.values -%}
                             <input
                               type="radio"
-                              name="options[{{ option.name | escape }}]"
+                              name="{{ option.name }}-{{ option.position }}"
                               value="{{ value | escape }}"
                               form="{{ product_form_id }}"
-                              {% if value == option.selected_value %}checked{% endif %}
+                              data-option-value-id="{{ value.id }}"
+                              {% if value.selected %}checked{% endif %}
                             >
                           {%- endfor -%}
                         </fieldset>
                       {%- else -%}
                         {%- comment -%}
-                          Render custom image + text swatch picker for this option.
-                          Image filename convention: {flavor-name-handleized}.png uploaded to Shopify Files.
-                          e.g. "Wild Berry" → wild-berry.png
+                          Custom flavor swatch picker.
+                          Image filename: {handleized-flavor}.png uploaded to Shopify Files.
                         {%- endcomment -%}
                         <fieldset
                           class="js product-form__input pp-flavor-picker"
@@ -541,12 +543,12 @@
                               <label class="pp-flavor-swatch">
                                 <input
                                   type="radio"
-                                  name="options[{{ option.name | escape }}]"
+                                  name="{{ option.name }}-{{ option.position }}"
                                   value="{{ value | escape }}"
                                   form="{{ product_form_id }}"
-                                  {% if value == option.selected_value %}checked{% endif %}
+                                  data-option-value-id="{{ value.id }}"
+                                  {% if value.selected %}checked{% endif %}
                                 >
-                                {%- comment -%} Pill button: small 24px circle + flavor name inline {%- endcomment -%}
                                 <span class="pp-flavor-swatch__pill">
                                   <span class="pp-flavor-swatch__dot">
                                     <img
@@ -569,7 +571,7 @@
                     <script type="application/json" data-selected-variant>
                       {{ product.selected_or_first_available_variant | json }}
                     </script>
-                  </variant-radios>
+                  </variant-selects>
                 {%- endunless -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
