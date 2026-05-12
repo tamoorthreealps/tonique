@@ -92,49 +92,35 @@
     var widget = document.querySelector('.pp-sub-widget');
     if (!widget) return;
 
-    var sectionId       = widget.dataset.sectionId;
-    var radios          = widget.querySelectorAll('.pp-sub-type-radio');
-    var subscribeOpt    = widget.querySelector('.pp-sub-option--subscribe');
-    var onetimeOpt      = widget.querySelector('.pp-sub-option--onetime');
-    var frequencySelect = widget.querySelector('.pp-sub-delivery__select');
+    var sectionId        = widget.dataset.sectionId;
+    var subscribeOpt     = widget.querySelector('.pp-sub-option--subscribe');
+    var onetimeOpt       = widget.querySelector('.pp-sub-option--onetime');
+    var frequencySelect  = widget.querySelector('.pp-sub-delivery__select');
     var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
 
-    // ── Load per-variant allocation data ────────────────────────────────────
     var subData = null;
     var dataEl  = document.getElementById('pp-sub-data-' + sectionId);
     if (dataEl) {
       try { subData = JSON.parse(dataEl.textContent); } catch (e) {}
     }
 
-    // ── Purchase type toggle ─────────────────────────────────────────────────
     function setPurchaseType(type) {
-      if (type === 'subscribe') {
-        subscribeOpt.classList.add('is-selected');
-        onetimeOpt.classList.remove('is-selected');
-        if (sellingPlanInput) {
-          sellingPlanInput.value = frequencySelect ? frequencySelect.value : '';
-          sellingPlanInput.disabled = false;
-        }
-      } else {
-        onetimeOpt.classList.add('is-selected');
-        subscribeOpt.classList.remove('is-selected');
-        if (sellingPlanInput) {
-          sellingPlanInput.value = '';
-          sellingPlanInput.disabled = true;
-        }
+      var isSub = type === 'subscribe';
+      subscribeOpt.classList.toggle('is-selected', isSub);
+      onetimeOpt.classList.toggle('is-selected', !isSub);
+      if (sellingPlanInput) {
+        sellingPlanInput.disabled = !isSub;
+        sellingPlanInput.value    = isSub && frequencySelect ? frequencySelect.value : '';
       }
     }
 
-    radios.forEach(function (radio) {
-      radio.addEventListener('change', function () {
-        setPurchaseType(this.value);
-      });
+    widget.querySelectorAll('.pp-sub-type-radio').forEach(function (radio) {
+      radio.addEventListener('change', function () { setPurchaseType(this.value); });
     });
 
-    // Clicking the card div also toggles
     [subscribeOpt, onetimeOpt].forEach(function (opt) {
       opt.addEventListener('click', function (e) {
-        if (e.target.closest('select')) return; // don't interfere with select
+        if (e.target.closest('select')) return;
         var radio = opt.querySelector('.pp-sub-type-radio');
         if (radio && !radio.checked) {
           radio.checked = true;
@@ -143,106 +129,51 @@
       });
     });
 
-    // Frequency select → update selling_plan input
-    if (frequencySelect) {
+    if (frequencySelect && sellingPlanInput) {
       frequencySelect.addEventListener('change', function () {
-        if (sellingPlanInput && subscribeOpt.classList.contains('is-selected')) {
+        if (subscribeOpt.classList.contains('is-selected')) {
           sellingPlanInput.value = this.value;
         }
       });
     }
 
-    // ── Update prices when variant changes ───────────────────────────────────
     function updateSubPrices(variantId) {
       if (!subData || !subData.variants) return;
       var vData = subData.variants[String(variantId)];
       if (!vData) return;
-
-      var packSize   = vData.pack_size || 1;
-      var otPrice    = vData.price;
-      var planId     = frequencySelect ? parseInt(frequencySelect.value, 10) : null;
-
-      // Find allocation for selected plan
-      var alloc = null;
+      var packSize = vData.pack_size || 1;
+      var planId   = frequencySelect ? parseInt(frequencySelect.value, 10) : null;
+      var alloc    = null;
       if (planId && vData.allocations) {
         for (var i = 0; i < vData.allocations.length; i++) {
-          if (vData.allocations[i].selling_plan_id === planId) {
-            alloc = vData.allocations[i];
-            break;
-          }
+          if (vData.allocations[i].selling_plan_id === planId) { alloc = vData.allocations[i]; break; }
         }
-        // Fallback to first allocation
         if (!alloc && vData.allocations.length) alloc = vData.allocations[0];
       }
-
-      // Subscribe price elements
       var subPriceEl   = widget.querySelector('.pp-sub-subscribe-price');
       var subPerUnitEl = widget.querySelector('.pp-sub-subscribe-per-unit');
+      var otPriceEl    = widget.querySelector('.pp-sub-onetime-price');
+      var otPerUnitEl  = widget.querySelector('.pp-sub-onetime-per-unit');
       if (alloc) {
-        if (subPriceEl) subPriceEl.textContent = formatMoney(alloc.price);
+        if (subPriceEl)   subPriceEl.textContent   = formatMoney(alloc.price);
         if (subPerUnitEl) subPerUnitEl.textContent = formatMoney(Math.round(alloc.price / packSize)) + '/pouch';
       }
-
-      // One-time price elements
-      var otPriceEl   = widget.querySelector('.pp-sub-onetime-price');
-      var otPerUnitEl = widget.querySelector('.pp-sub-onetime-per-unit');
-      if (otPriceEl) otPriceEl.textContent = formatMoney(otPrice);
-      if (otPerUnitEl) otPerUnitEl.textContent = formatMoney(Math.round(otPrice / packSize)) + '/pouch';
+      if (otPriceEl)   otPriceEl.textContent   = formatMoney(vData.price);
+      if (otPerUnitEl) otPerUnitEl.textContent = formatMoney(Math.round(vData.price / packSize)) + '/pouch';
     }
 
-    // Hook into Dawn's PubSub to catch variant changes
     if (window.subscribe && window.PUB_SUB_EVENTS) {
       window.subscribe(window.PUB_SUB_EVENTS.optionValueSelectionChange, function () {
-        // Wait for the server re-render to resolve the active variant
-        var observer = new MutationObserver(function () {
-          var variantScript = document.querySelector('variant-selects [data-selected-variant]');
-          if (variantScript) {
-            try {
-              var variant = JSON.parse(variantScript.textContent);
-              if (variant) updateSubPrices(variant.id);
-            } catch (e) {}
-          }
-          observer.disconnect();
+        var obs = new MutationObserver(function () {
+          var el = document.querySelector('variant-selects [data-selected-variant]');
+          if (el) { try { var v = JSON.parse(el.textContent); if (v) updateSubPrices(v.id); } catch (e) {} }
+          obs.disconnect();
         });
-        observer.observe(document.querySelector('variant-selects') || document.body, {
-          childList: true, subtree: true
-        });
+        obs.observe(document.querySelector('variant-selects') || document.body, { childList: true, subtree: true });
       });
     }
 
-    // Initialise
     setPurchaseType('subscribe');
-
-    // Hide Recharge's app-embed injected widget. CSS covers known class names;
-    // the MutationObserver catches anything injected after page load regardless
-    // of element name or class.
-    hideRechargeWidget();
-  }
-
-  function hideRechargeWidget() {
-    var RECHARGE_PATTERNS = /recharge|rc_widget|rca-widget|rc-subscription/i;
-
-    function suppressEl(el) {
-      if (!(el instanceof Element)) return;
-      var tag  = el.tagName.toLowerCase();
-      var id   = el.id   || '';
-      var cls  = (typeof el.className === 'string') ? el.className : '';
-      if (RECHARGE_PATTERNS.test(tag) || RECHARGE_PATTERNS.test(id) || RECHARGE_PATTERNS.test(cls)) {
-        el.style.setProperty('display', 'none', 'important');
-        el.setAttribute('aria-hidden', 'true');
-      }
-    }
-
-    // Scan existing DOM
-    document.querySelectorAll('body *').forEach(suppressEl);
-
-    // Watch for future injections
-    var observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (m) {
-        m.addedNodes.forEach(suppressEl);
-      });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   // ─── Video Popup ──────────────────────────────────────────────────────────
