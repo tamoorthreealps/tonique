@@ -369,9 +369,9 @@
   opacity: 0.75;
 }
 
-/* ── Desktop overrides (≥ 750px) ─────────────────────────────────────────── */
+/* ── Desktop overrides (≥ 786px) ─────────────────────────────────────────── */
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 786px) {
   .gh-bar {
     height: 72px;
     padding: 0 24px 0 0;
