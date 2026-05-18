@@ -15,7 +15,6 @@
 /* ── Announcement bar ────────────────────────────────────────────────────── */
 
 .gh-announce {
-  display: none;
   height: var(--gh-announce-height);
   background: var(--gh-gold);
   align-items: center;
