@@ -1,12 +1,11 @@
 {{ 'css--global-header.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign main_menu  = linklists[section.settings.main_menu]
+  assign main_menu = linklists[section.settings.main_menu]
   assign extra_menu = linklists[section.settings.extra_menu]
 -%}
 
 <header class="gh-header" role="banner">
-
   {%- comment -%} ── Announcement bar (mobile only, always visible) ── {%- endcomment -%}
   <div class="gh-announce" id="gh-announce" aria-label="Announcement">
     <span class="gh-announce__text">
@@ -26,7 +25,6 @@
 
   {%- comment -%} ── Main header bar ── {%- endcomment -%}
   <div class="gh-bar">
-
     {%- comment -%} Mobile: hamburger + logo {%- endcomment -%}
     <div class="gh-bar__left-mobile">
       <button
@@ -36,17 +34,18 @@
         aria-expanded="false"
         type="button"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="1" fill="#977B4F"/>
+          <rect y="7" width="24" height="1" fill="#977B4F"/>
+          <rect y="14" width="24" height="1" fill="#977B4F"/>
+        </svg>
       </button>
       <a href="{{ routes.root_url }}" class="gh-bar__logo" aria-label="{{ shop.name }}">
         {%- if section.settings.logo != blank -%}
-          {{- section.settings.logo | image_url: width: 212 | image_tag:
-            loading: 'eager',
-            alt: shop.name,
-            width: 106,
-            height: 16
+          {{-
+            section.settings.logo
+            | image_url: width: 212
+            | image_tag: loading: 'eager', alt: shop.name, width: 106, height: 16
           -}}
         {%- else -%}
           <span class="gh-bar__logo-text">{{ shop.name }}</span>
@@ -62,9 +61,14 @@
       {%- if main_menu.links.size > 0 -%}
         <nav class="gh-bar__nav" aria-label="Main navigation">
           {%- for link in main_menu.links -%}
-            <a href="{{ link.url }}"
-              {%- if link.active %} aria-current="page"{% endif -%}
-            >{{ link.title }}</a>
+            <a
+              href="{{ link.url }}"
+              {%- if link.active %}
+                aria-current="page"
+              {% endif -%}
+            >
+              {{- link.title -}}
+            </a>
           {%- endfor -%}
         </nav>
       {%- endif -%}
@@ -73,11 +77,10 @@
     {%- comment -%} Desktop: centered logo {%- endcomment -%}
     <a href="{{ routes.root_url }}" class="gh-bar__logo" aria-label="{{ shop.name }}">
       {%- if section.settings.logo != blank -%}
-        {{- section.settings.logo | image_url: width: 316 | image_tag:
-          loading: 'eager',
-          alt: shop.name,
-          width: 158,
-          height: 24
+        {{-
+          section.settings.logo
+          | image_url: width: 316
+          | image_tag: loading: 'eager', alt: shop.name, width: 158, height: 24
         -}}
       {%- else -%}
         <span class="gh-bar__logo-text">{{ shop.name }}</span>
@@ -96,12 +99,11 @@
         <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
       </a>
     </div>
-
-  </div>{%- comment -%} /.gh-bar {%- endcomment -%}
+  </div>
+  {%- comment -%} /.gh-bar {%- endcomment -%}
 
   {%- comment -%} ── Mobile slide-out menu ── {%- endcomment -%}
   <div class="gh-mobile-menu" id="gh-mobile-menu" hidden aria-label="Mobile navigation">
-
     <div class="gh-mobile-menu__announce">
       <span>
         {%- if section.settings.announcement_text != blank -%}
@@ -124,11 +126,10 @@
       </button>
       <a href="{{ routes.root_url }}" class="gh-mobile-menu__logo" aria-label="{{ shop.name }}">
         {%- if section.settings.logo != blank -%}
-          {{- section.settings.logo | image_url: width: 212 | image_tag:
-            loading: 'lazy',
-            alt: shop.name,
-            width: 106,
-            height: 16
+          {{-
+            section.settings.logo
+            | image_url: width: 212
+            | image_tag: loading: 'lazy', alt: shop.name, width: 106, height: 16
           -}}
         {%- else -%}
           <span class="gh-mobile-menu__logo-text">{{ shop.name }}</span>
@@ -143,9 +144,11 @@
     {%- comment -%} Featured product / image block {%- endcomment -%}
     <div class="gh-mobile-menu__featured">
       {%- if section.settings.menu_image != blank -%}
-        {{- section.settings.menu_image | image_url: width: 688 | image_tag:
-          loading: 'lazy',
-          alt: section.settings.menu_image_label | default: 'Shop now'
+        {{-
+          section.settings.menu_image
+          | image_url: width: 688
+          | image_tag: loading: 'lazy', alt: section.settings.menu_image_label
+          | default: 'Shop now'
         -}}
       {%- endif -%}
       <span class="gh-mobile-menu__featured-label">
@@ -174,39 +177,38 @@
         {%- endif -%}
       {%- endif -%}
     </nav>
-
-  </div>{%- comment -%} /.gh-mobile-menu {%- endcomment -%}
-
+  </div>
+  {%- comment -%} /.gh-mobile-menu {%- endcomment -%}
 </header>
 
 <script>
-(function () {
-  var btn    = document.querySelector('.gh-hamburger');
-  var close  = document.querySelector('.gh-mobile-menu__close');
-  var menu   = document.getElementById('gh-mobile-menu');
-  if (!btn || !menu) return;
+  (function () {
+    var btn = document.querySelector('.gh-hamburger');
+    var close = document.querySelector('.gh-mobile-menu__close');
+    var menu = document.getElementById('gh-mobile-menu');
+    if (!btn || !menu) return;
 
-  function openMenu() {
-    menu.removeAttribute('hidden');
-    btn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    if (close) close.focus();
-  }
+    function openMenu() {
+      menu.removeAttribute('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      if (close) close.focus();
+    }
 
-  function closeMenu() {
-    menu.setAttribute('hidden', '');
-    btn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    btn.focus();
-  }
+    function closeMenu() {
+      menu.setAttribute('hidden', '');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      btn.focus();
+    }
 
-  btn.addEventListener('click', openMenu);
-  if (close) close.addEventListener('click', closeMenu);
+    btn.addEventListener('click', openMenu);
+    if (close) close.addEventListener('click', closeMenu);
 
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !menu.hasAttribute('hidden')) closeMenu();
-  });
-})();
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hasAttribute('hidden')) closeMenu();
+    });
+  })();
 </script>
 
 {% schema %}
