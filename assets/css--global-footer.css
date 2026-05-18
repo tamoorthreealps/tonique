@@ -234,6 +234,18 @@
   gap: 12px;
 }
 
+.gf-bottom-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    max-width: 1204px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
 .gf-bottom__copy,
 .gf-bottom__credit,
 .gf-bottom__links a {
@@ -378,14 +390,15 @@
   }
 
   .gf-bottom {
-    padding: 20px 52px 20px calc(8.33% + 52px);
+    padding: 22px 0;
   }
 
   .gf-bottom__copy,
   .gf-bottom__credit,
   .gf-bottom__links a {
     font-size: 14px;
-    letter-spacing: 1.12px;
+        line-height: 20px;
+        letter-spacing: 1.12px;
   }
 
   .gf-bottom__links {
