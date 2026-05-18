@@ -9,28 +9,31 @@
 
 <footer class="gf-footer" role="contentinfo">
   <div class="gf-footer-container">
-    {%- comment -%} ── Marquee band ── {%- endcomment -%}
-    <div class="gf-marquee-band" aria-hidden="true">
-      <div class="gf-marquee__track" id="gf-marquee-track">
-        {%- assign marquee_text = section.settings.marquee_text | default: 'Beauty + Protein in One Clean Pouch' -%}
-        <p>{{ marquee_text }}</p>
-        <p>{{ marquee_text }}</p>
-        <p>{{ marquee_text }}</p>
-        <p>{{ marquee_text }}</p>
-        <p>{{ marquee_text }}</p>
-        <p>{{ marquee_text }}</p>
+    <div class="footer--top--info">
+      <div class="gf-top--container">
+        {%- comment -%} ── Marquee band ── {%- endcomment -%}
+        <div class="gf-marquee-band" aria-hidden="true">
+          <div class="gf-marquee__track" id="gf-marquee-track">
+            {%- assign marquee_text = section.settings.marquee_text | default: 'Beauty + Protein in One Clean Pouch' -%}
+            <p>{{ marquee_text }}</p>
+            <p>{{ marquee_text }}</p>
+            <p>{{ marquee_text }}</p>
+            <p>{{ marquee_text }}</p>
+            <p>{{ marquee_text }}</p>
+            <p>{{ marquee_text }}</p>
+          </div>
+        </div>
+
+        {%- comment -%} ── Logo band ── {%- endcomment -%}
+        <div class="gf-logo-band">
+          {%- if section.settings.logo != blank -%}
+            {{- section.settings.logo | image_url: width: 2312 | image_tag: loading: 'lazy', alt: shop.name -}}
+          {%- else -%}
+            <span class="gf-logo-band__text">{{ shop.name }}</span>
+          {%- endif -%}
+        </div>
       </div>
     </div>
-
-    {%- comment -%} ── Logo band ── {%- endcomment -%}
-    <div class="gf-logo-band">
-      {%- if section.settings.logo != blank -%}
-        {{- section.settings.logo | image_url: width: 2312 | image_tag: loading: 'lazy', alt: shop.name -}}
-      {%- else -%}
-        <span class="gf-logo-band__text">{{ shop.name }}</span>
-      {%- endif -%}
-    </div>
-
     {%- comment -%} ── Main: newsletter + nav ── {%- endcomment -%}
     <div class="gf-main">
       <div class="gf-main__grid">
