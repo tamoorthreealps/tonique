@@ -362,6 +362,10 @@
     gap: 32px;
   }
 
+  .gf-nav-panel .gf-nav-group:nth-child(3){
+    display:none;
+  }
+
   .gf-nav-group__links {
     flex-direction: column;
     gap: 14px;

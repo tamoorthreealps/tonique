@@ -187,6 +187,7 @@ if (!customElements.get('product-info')) {
           };
 
           updateSourceFromDestination('price');
+          updateSourceFromDestination('Subscription');
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');
