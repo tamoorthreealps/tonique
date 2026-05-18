@@ -223,6 +223,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  padding: 8px 24px;
 }
 
 .gh-mobile-menu__announce span {
@@ -232,7 +233,6 @@
   letter-spacing: 1.6px;
   text-transform: uppercase;
   color: #fefefc;
-  white-space: nowrap;
 }
 
 .gh-mobile-menu__header {
