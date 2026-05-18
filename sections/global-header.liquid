@@ -142,6 +142,9 @@
     </div>
 
     {%- comment -%} Featured product / image block {%- endcomment -%}
+     <span class="gh-mobile-menu__featured-label">
+        {{- section.settings.menu_image_label | default: 'Shop Protein Tonic' -}}
+      </span>
     <div class="gh-mobile-menu__featured">
       {%- if section.settings.menu_image != blank -%}
         {{-
@@ -151,14 +154,12 @@
           | default: 'Shop now'
         -}}
       {%- endif -%}
-      <span class="gh-mobile-menu__featured-label">
-        {{- section.settings.menu_image_label | default: 'Shop Protein Tonic' -}}
-      </span>
-    </div>
-
-    <a href="{{ routes.root_url }}" class="gh-mobile-menu__cta">
+      <a href="{{ routes.root_url }}" class="gh-mobile-menu__cta">
       {{- section.settings.cta_label | default: 'SHOP NOW' -}}
     </a>
+    </div>
+
+    
 
     {%- comment -%} Nav links {%- endcomment -%}
     <nav class="gh-mobile-menu__links" aria-label="Mobile navigation links">

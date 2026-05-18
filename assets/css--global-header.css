@@ -302,11 +302,10 @@
 }
 
 .gh-mobile-menu__featured {
-  position: relative;
-  margin: 24px 24px 0;
-  background: #e8e5d8;
-  aspect-ratio: 344 / 356;
-  overflow: hidden;
+    position: relative;
+    margin: 0px 24px 0;
+    background: #e8e5d8;
+    height: 356px;
 }
 
 .gh-mobile-menu__featured img {
@@ -317,35 +316,31 @@
 }
 
 .gh-mobile-menu__featured-label {
-  position: absolute;
-  bottom: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(50%);
-  text-align: center;
-  font-family: 'Archivo', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #977b4f;
+    font-family: Archivo, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: #977b4f;
+    line-height: 24px;
 }
 
 .gh-mobile-menu__cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 16px auto 0;
-  width: calc(100% - 48px);
-  height: 40px;
-  background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
-  font-family: 'Archivo', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.56px;
-  text-transform: uppercase;
-  color: #f9f6ec;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    min-height: 40px;
+    background: linear-gradient(90deg, #A88958 0%, #B9A179 50%, #A88958 100%);
+    font-family: Archivo, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: .56px;
+    text-transform: uppercase;
+    color: #f9f6ec;
+    text-decoration: none;
 }
 
 .gh-mobile-menu__links {
