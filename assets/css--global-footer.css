@@ -184,10 +184,10 @@
 /* ── Nav columns panel ───────────────────────────────────────────────────── */
 
 .gf-nav-panel {
-  padding: 44px 24px;
+  padding: 32px 24px 51.79px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 36px;
 }
 
 .gf-nav-group__label {
@@ -215,7 +215,7 @@
   letter-spacing: 0.14px;
   color: #29241c;
   text-decoration: none;
-  line-height: 1.4;
+  line-height: 20px;
 }
 
 .gf-nav-group__links a:hover {
