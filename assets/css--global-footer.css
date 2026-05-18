@@ -73,6 +73,8 @@
 .gf-main__grid {
   display: grid;
   grid-template-columns: 1fr;
+  max-width: 1512px;
+  margin: 0 auto;
 }
 
 /* ── Newsletter panel ────────────────────────────────────────────────────── */
