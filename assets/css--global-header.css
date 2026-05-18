@@ -7,17 +7,17 @@
     overflow: hidden;
     text-align: center;
     display: flex;
-    padding: 10px 24px;
+    padding: 8px 24px;
 }
 
 .gh-announce__text {
     font-family: Archivo, sans-serif;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 10px;
     line-height: 16px;
-    letter-spacing: 2.08px;
+    letter-spacing: 1.60px;
     text-transform: uppercase;
-    color: #FEFEFC;
+    color: #fefefc;
 }
 
 /* ── Base header bar ─────────────────────────────────────────────────────── */
@@ -424,5 +424,16 @@
   .gh-hamburger,
   .gh-mobile-menu {
     display: none !important;
+  }
+
+  /* announcement--bar */
+  .gh-announce {
+      padding: 10px 24px;
+  }
+
+  .gh-announce__text {
+      font-size: 13px;
+      line-height: 16px;
+      letter-spacing: 2.08px;
   }
 }
