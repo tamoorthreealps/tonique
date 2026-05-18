@@ -39,6 +39,7 @@
       <div class="gf-main__grid">
         {%- comment -%} Newsletter {%- endcomment -%}
         <div class="gf-newsletter">
+          <div class="gf-newsletter-content">
           <span class="gf-newsletter__label">
             {{- section.settings.newsletter_label | default: 'JOIN THE LIST' -}}
           </span>
@@ -84,6 +85,7 @@
               | default: 'By signing up, you agree to receive marketing emails. Unsubscribe anytime.'
             -}}
           </span>
+          </div>
         </div>
 
         {%- comment -%} Nav columns {%- endcomment -%}
