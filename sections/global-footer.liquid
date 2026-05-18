@@ -147,6 +147,7 @@
 
     {%- comment -%} ── Bottom bar ── {%- endcomment -%}
     <div class="gf-bottom">
+      <div class="gf-bottom-container">
       <p class="gf-bottom__copy">
         &copy; {{ 'now' | date: '%Y' }}
         {{ shop.name | upcase }}
@@ -171,6 +172,7 @@
       {%- else -%}
         <span class="gf-bottom__credit" style="text-decoration:none;cursor:default;"></span>
       {%- endif -%}
+      </div>
     </div>
   </div>
 </footer>
