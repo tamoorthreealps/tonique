@@ -14,19 +14,26 @@
     "global-footer": {
       "type": "global-footer",
       "settings": {
+        "logo": "shopify://shop_images/Logo_1.svg",
         "marquee_text": "Beauty + Protein in One Clean Pouch",
         "newsletter_label": "JOIN THE LIST",
         "newsletter_heading": "15% off your first order",
         "newsletter_body": "Plus early access to drops, ritual tips, and the occasional good thing.",
         "newsletter_btn": "GET 15% OFF",
         "newsletter_disclaimer": "By signing up, you agree to receive marketing emails. Unsubscribe anytime.",
-        "shop_label": "SHOP",
         "shop_menu": "main-menu",
+        "shop_label": "SHOP",
+        "help_menu": "",
         "help_label": "HELP",
+        "legal_menu": "",
         "legal_label": "LEGAL",
-        "social_label": "SOCIAL"
+        "social_menu": "",
+        "social_label": "SOCIAL",
+        "site_credit_url": ""
       }
     }
   },
-  "order": ["global-footer"]
+  "order": [
+    "global-footer"
+  ]
 }
