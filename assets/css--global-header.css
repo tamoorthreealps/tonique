@@ -279,8 +279,7 @@
 
 .gh-mobile-menu__logo {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 60px;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -373,7 +372,7 @@
 /* ── Desktop overrides (≥ 786px) ─────────────────────────────────────────── */
 
 @media screen and (min-width: 786px) {
-  .gh-bar__logo {
+  .gh-bar__logo, .gh-mobile-menu__logo {
     left: 50%;
     transform: translateX(-50%);
   }
