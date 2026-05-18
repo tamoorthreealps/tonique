@@ -105,13 +105,14 @@
     const marquee = document.querySelector('.tonique-footer__marquee');
     const track = marquee.querySelector('.tonique-footer__marquee-track');
 
+    if (!marquee || !track) return;
+
     const items = Array.from(track.children);
 
-    while (track.scrollWidth < window.innerWidth * 3) {
-      items.forEach((item) => {
-        track.appendChild(item.cloneNode(true));
-      });
-    }
+    items.forEach((item) => {
+      const clone = item.cloneNode(true);
+      track.appendChild(clone);
+    });
 
     let position = 0;
     const speed = 0.5;
@@ -131,5 +132,5 @@
     animate();
   }
 
-  document.addEventListener('DOMContentLoaded', initFooterMarquee);
+  window.addEventListener('load', initFooterMarquee);
 </script>
