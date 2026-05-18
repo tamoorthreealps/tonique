@@ -2,157 +2,152 @@
   Renders the custom subscription widget block.
 
   Accepts:
-  - product:          {Object} product object
-  - block:            {Object} block object (settings: label, subscribe_label, onetime_label,
-                               benefit_1/2/3, delivery_label, selling_plan_group_name)
-  - section:          {Object} section object (used for unique IDs)
-  - product_form_id:  {String} id of the product form to associate the selling_plan input
-
-  Usage:
-  {%- render 'subscription-widget',
-    product: product,
-    block: block,
-    section: section,
-    product_form_id: product_form_id
-  -%}
+  - product
+  - block
+  - section
+  - product_form_id
 {% endcomment %}
- <div id="Subscription-{{ section.id }}">
-<style>.recharge-subscription-widget { display: none !important; }</style>
 
-{%- liquid
-  assign pp_spg         = product.selling_plan_groups | first
-  assign pp_variant     = product.selected_or_first_available_variant
-  assign pp_pack_sz     = pp_variant.metafields.custom.pack_size | default: 1
-  assign pp_variant_has_sub = false
+<div id="Subscription-{{ section.id }}">
+  <style>.recharge-subscription-widget { display: none !important; }</style>
 
-  if pp_spg and pp_variant.selling_plan_allocations.size > 0
-    assign pp_variant_has_sub = true
-    assign pp_sp_first = pp_spg.selling_plans | first
-    assign pp_alloc = null
-    for alloc in pp_variant.selling_plan_allocations
-      if alloc.selling_plan_id == pp_sp_first.id
-        assign pp_alloc = alloc
-        break
-      endif
-    endfor
+  {%- liquid
+    assign pp_variant = product.selected_or_first_available_variant
+    assign pp_pack_sz = pp_variant.metafields.custom.pack_size | default: 1
+    assign pp_variant_has_sub = false
+    assign pp_alloc = nil
 
-    if pp_alloc
-      assign pp_sub_price   = pp_alloc.price
+    if pp_variant.selling_plan_allocations.size > 0
+      assign pp_variant_has_sub = true
+      assign pp_alloc = pp_variant.selling_plan_allocations | first
+      assign pp_sp_first_id = pp_alloc.selling_plan_id
+      assign pp_sub_price = pp_alloc.price
       assign pp_sub_compare = pp_alloc.compare_at_price | default: pp_variant.price
-    else
-      assign pp_sub_price   = pp_variant.price
-      assign pp_sub_compare = pp_variant.compare_at_price
-    endif
 
-    assign pp_savings = pp_sub_compare | minus: pp_sub_price
-    if pp_sub_compare > 0
-      assign pp_savings_pct = pp_savings | times: 100 | divided_by: pp_sub_compare | round
-    else
-      assign pp_savings_pct = 0
+      assign pp_savings = pp_sub_compare | minus: pp_sub_price
+      if pp_sub_compare > 0
+        assign pp_savings_pct = pp_savings | times: 100 | divided_by: pp_sub_compare | round
+      else
+        assign pp_savings_pct = 0
+      endif
     endif
-  endif
--%}
+  -%}
 
-<script type="application/json" id="pp-sub-data-{{ section.id }}">
-  {
-    "variants": {
-      {%- for v in product.variants -%}
-        {%- assign v_pack = v.metafields.custom.pack_size | default: 1 -%}
-        "{{ v.id }}": {
-          "price": {{ v.price }},
-          "pack_size": {{ v_pack }},
-          "allocations": [
-            {%- for a in v.selling_plan_allocations -%}
-              {
-                "selling_plan_id": {{ a.selling_plan_id }},
-                "price": {{ a.price }},
-                "compare_at_price": {{ a.compare_at_price | default: v.price }}
-              }{%- unless forloop.last -%},{%- endunless -%}
-            {%- endfor -%}
-          ]
-        }{%- unless forloop.last -%},{%- endunless -%}
-      {%- endfor -%}
+  <script type="application/json" id="pp-sub-data-{{ section.id }}">
+    {
+      "variants": {
+        {%- for v in product.variants -%}
+          {%- assign v_pack = v.metafields.custom.pack_size | default: 1 -%}
+          "{{ v.id }}": {
+            "price": {{ v.price }},
+            "pack_size": {{ v_pack }},
+            "allocations": [
+              {%- for a in v.selling_plan_allocations -%}
+                {
+                  "selling_plan_id": {{ a.selling_plan_id }},
+                  "name": {{ a.selling_plan.name | json }},
+                  "price": {{ a.price }},
+                  "compare_at_price": {{ a.compare_at_price | default: v.price }}
+                }{%- unless forloop.last -%},{%- endunless -%}
+              {%- endfor -%}
+            ]
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      }
     }
-  }
-</script>
+  </script>
 
-<input
-  type="hidden"
-  name="selling_plan"
-  id="pp-selling-plan-{{ section.id }}"
-  form="{{ product_form_id }}"
-  {% if pp_variant_has_sub %}value="{{ pp_sp_first.id }}"{% else %}disabled{% endif %}
->
+  <input
+    type="hidden"
+    name="selling_plan"
+    id="pp-selling-plan-{{ section.id }}"
+    form="{{ product_form_id }}"
+    {% if pp_variant_has_sub %}value="{{ pp_sp_first_id }}"{% else %}disabled{% endif %}
+  >
 
-{%- if pp_variant_has_sub -%}
-<div
-  class="pp-sub-widget"
-  id="pp-sub-widget-{{ section.id }}"
-  data-section-id="{{ section.id }}"
-  {{ block.shopify_attributes }}
->
-  {%- if block.settings.label != blank -%}
-    <p class="pp-sub-widget__label">{{ block.settings.label }}</p>
-  {%- endif -%}
-
-  <div class="pp-sub-option pp-sub-option--subscribe is-selected">
-    <label class="pp-sub-option__header">
-      <input class="pp-sub-type-radio" type="radio" name="pp-purchase-type-{{ section.id }}" value="subscribe" checked>
-      <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
-      <div class="pp-sub-option__title-wrap">
-        <span class="pp-sub-option__title">{{ block.settings.subscribe_label }}</span>
-      </div>
-      <div class="pp-sub-option__pricing">
-        {%- if pp_sub_compare > pp_sub_price -%}
-          <s class="pp-sub-option__price-compare">{{ pp_sub_compare | money }}</s>
-        {%- endif -%}
-        <span class="pp-sub-option__price pp-sub-subscribe-price">{{ pp_sub_price | money }}</span>
-        <span class="pp-sub-option__per-unit pp-sub-subscribe-per-unit">{{ pp_sub_price | divided_by: pp_pack_sz | money }}/pouch</span>
-      </div>
-    </label>
-
-    <div class="pp-sub-option__body">
-      {%- if pp_savings > 0 -%}
-        <div class="pp-sub-savings-banner">
-          <span class="pp-sub-savings-banner__text">Save {{ pp_savings_pct }}% ({{ pp_savings | money }} off)</span>
-        </div>
+  {%- if pp_variant_has_sub -%}
+    <div
+      class="pp-sub-widget"
+      id="pp-sub-widget-{{ section.id }}"
+      data-section-id="{{ section.id }}"
+      {{ block.shopify_attributes }}
+    >
+      {%- if block.settings.label != blank -%}
+        <p class="pp-sub-widget__label">{{ block.settings.label }}</p>
       {%- endif -%}
 
-      <ul class="pp-sub-benefits">
-        {%- if block.settings.benefit_1 != blank -%}<li>{{ block.settings.benefit_1 }}</li>{%- endif -%}
-        {%- if block.settings.benefit_2 != blank -%}<li>{{ block.settings.benefit_2 }}</li>{%- endif -%}
-        {%- if block.settings.benefit_3 != blank -%}<li>{{ block.settings.benefit_3 }}</li>{%- endif -%}
-      </ul>
+      <div class="pp-sub-option pp-sub-option--subscribe is-selected">
+        <label class="pp-sub-option__header">
+          <input class="pp-sub-type-radio" type="radio" name="pp-purchase-type-{{ section.id }}" value="subscribe" checked>
+          <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
 
-      {%- if pp_spg.selling_plans.size >= 1 -%}
-        <div class="pp-sub-delivery">
-          <span class="pp-sub-delivery__label">{{ block.settings.delivery_label }}</span>
-          <div class="pp-sub-delivery__select-wrap">
-            <select class="pp-sub-delivery__select" aria-label="{{ block.settings.delivery_label | escape }}">
-              {%- for sp in pp_spg.selling_plans -%}
-                <option value="{{ sp.id }}">{{ sp.options | map: 'value' | join: ' ' }}</option>
-              {%- endfor -%}
-            </select>
-            <span class="pp-sub-delivery__chevron" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="pp-sub-option__title-wrap">
+            <span class="pp-sub-option__title">{{ block.settings.subscribe_label }}</span>
+          </div>
+
+          <div class="pp-sub-option__pricing">
+            {%- if pp_sub_compare > pp_sub_price -%}
+              <s class="pp-sub-option__price-compare">{{ pp_sub_compare | money }}</s>
+            {%- endif -%}
+            <span class="pp-sub-option__price pp-sub-subscribe-price">{{ pp_sub_price | money }}</span>
+            <span class="pp-sub-option__per-unit pp-sub-subscribe-per-unit">
+              {{ pp_sub_price | divided_by: pp_pack_sz | money }}/pouch
             </span>
           </div>
-        </div>
-      {%- endif -%}
-    </div>
-  </div>
+        </label>
 
-  <div class="pp-sub-option pp-sub-option--onetime">
-    <label class="pp-sub-option__header">
-      <input class="pp-sub-type-radio" type="radio" name="pp-purchase-type-{{ section.id }}" value="onetime">
-      <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
-      <span class="pp-sub-option__title">{{ block.settings.onetime_label }}</span>
-      <div class="pp-sub-option__pricing">
-        <span class="pp-sub-option__price pp-sub-onetime-price">{{ pp_variant.price | money }}</span>
-        <span class="pp-sub-option__per-unit pp-sub-onetime-per-unit">{{ pp_variant.price | divided_by: pp_pack_sz | money }}/pouch</span>
+        <div class="pp-sub-option__body">
+          <div class="pp-sub-savings-banner" {% if pp_savings <= 0 %}style="display:none"{% endif %}>
+            <span class="pp-sub-savings-banner__text">
+              Save {{ pp_savings_pct }}% ({{ pp_savings | money }} off)
+            </span>
+          </div>
+
+          <ul class="pp-sub-benefits">
+            {%- if block.settings.benefit_1 != blank -%}<li>{{ block.settings.benefit_1 }}</li>{%- endif -%}
+            {%- if block.settings.benefit_2 != blank -%}<li>{{ block.settings.benefit_2 }}</li>{%- endif -%}
+            {%- if block.settings.benefit_3 != blank -%}<li>{{ block.settings.benefit_3 }}</li>{%- endif -%}
+          </ul>
+
+          <div class="pp-sub-delivery">
+            <span class="pp-sub-delivery__label">{{ block.settings.delivery_label }}</span>
+
+            <div class="pp-sub-delivery__select-wrap">
+              <select class="pp-sub-delivery__select" aria-label="{{ block.settings.delivery_label | escape }}">
+                {%- for alloc in pp_variant.selling_plan_allocations -%}
+                  <option
+                    value="{{ alloc.selling_plan_id }}"
+                    {% if forloop.first %}selected{% endif %}
+                  >
+                    {{ alloc.selling_plan.name }}
+                  </option>
+                {%- endfor -%}
+              </select>
+
+              <span class="pp-sub-delivery__chevron" aria-hidden="true">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-    </label>
-  </div>
-</div>
-{%- endif -%}
+
+      <div class="pp-sub-option pp-sub-option--onetime">
+        <label class="pp-sub-option__header">
+          <input class="pp-sub-type-radio" type="radio" name="pp-purchase-type-{{ section.id }}" value="onetime">
+          <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
+          <span class="pp-sub-option__title">{{ block.settings.onetime_label }}</span>
+
+          <div class="pp-sub-option__pricing">
+            <span class="pp-sub-option__price pp-sub-onetime-price">{{ pp_variant.price | money }}</span>
+            <span class="pp-sub-option__per-unit pp-sub-onetime-per-unit">
+              {{ pp_variant.price | divided_by: pp_pack_sz | money }}/pouch
+            </span>
+          </div>
+        </label>
+      </div>
+    </div>
+  {%- endif -%}
 </div>
