@@ -189,19 +189,31 @@
     var menu = document.getElementById('gh-mobile-menu');
     if (!btn || !menu) return;
 
-    function openMenu() {
-      menu.removeAttribute('hidden');
-      btn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      if (close) close.focus();
-    }
+function openMenu() {
+  menu.removeAttribute('hidden');
 
-    function closeMenu() {
-      menu.setAttribute('hidden', '');
-      btn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      btn.focus();
-    }
+  requestAnimationFrame(() => {
+    menu.classList.add('is-open');
+  });
+
+  btn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+
+  if (close) close.focus();
+}
+
+function closeMenu() {
+  menu.classList.remove('is-open');
+
+  btn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+
+  setTimeout(() => {
+    menu.setAttribute('hidden', '');
+  }, 400);
+
+  btn.focus();
+}
 
     btn.addEventListener('click', openMenu);
     if (close) close.addEventListener('click', closeMenu);
