@@ -7,27 +7,27 @@
 .gf-marquee-band {
   background: #f5efdd;
   border-top: 1px solid #977b4f;
-  border-bottom: 1px solid #977b4f;
   overflow: hidden;
-  padding: 18px 0;
+  padding: 36px 0;
 }
 
 .gf-marquee__track {
   display: flex;
-  gap: 48px;
+  gap: 160px;
   width: max-content;
   animation: gf-scroll 20s linear infinite;
 }
 
 .gf-marquee__track p {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 2.24px;
-  text-transform: uppercase;
-  color: #977b4f;
-  white-space: nowrap;
-  margin: 0;
+    font-family: Archivo, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 5.76px;
+    text-transform: uppercase;
+    color: #977B4F;
+    white-space: nowrap;
+    margin: 0;
 }
 
 @keyframes gf-scroll {
