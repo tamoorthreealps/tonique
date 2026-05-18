@@ -9,14 +9,12 @@
   --gh-border:     1px solid #977b4f;
   --gh-height-desktop: 72px;
   --gh-height-mobile:  48px;
-  --gh-announce-height: 32px;
 }
 
 
 /* ── Announcement bar ────────────────────────────────────────────────────── */
 
 .gh-announce {
-  height: var(--gh-announce-height);
   background: var(--gh-gold);
   align-items: center;
   justify-content: center;
@@ -231,7 +229,6 @@
 }
 
 .gh-mobile-menu__announce {
-  height: var(--gh-announce-height);
   background: var(--gh-gold);
   display: flex;
   align-items: center;
