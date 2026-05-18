@@ -11,13 +11,13 @@
 }
 
 .gh-announce__text {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 500;
-  font-size: 10px;
-  letter-spacing: 2.08px;
-  text-transform: uppercase;
-  color: #fefefc;
-  white-space: nowrap;
+    font-family: Archivo, sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 2.08px;
+    text-transform: uppercase;
+    color: #FEFEFC;
 }
 
 /* ── Base header bar ─────────────────────────────────────────────────────── */
