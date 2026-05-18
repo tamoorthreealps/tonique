@@ -1,21 +1,7 @@
-/* ─── Global Header ────────────────────────────────────────────────────── */
-
-:root {
-  --gh-gold:       #977b4f;
-  --gh-cream:      #fefefc;
-  --gh-linen:      #f5efdd;
-  --gh-brown:      #29241c;
-  --gh-gradient:   linear-gradient(90deg, #a88958, #b9a179, #a88958);
-  --gh-border:     1px solid #977b4f;
-  --gh-height-desktop: 72px;
-  --gh-height-mobile:  48px;
-}
-
-
 /* ── Announcement bar ────────────────────────────────────────────────────── */
 
 .gh-announce {
-  background: var(--gh-gold);
+  background: #977b4f;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -28,7 +14,7 @@
   font-size: 10px;
   letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: var(--gh-cream);
+  color: #fefefc;
   white-space: nowrap;
 }
 
@@ -38,17 +24,17 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--gh-cream);
+  background: #fefefc;
 }
 
 .gh-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--gh-height-mobile);
+  height: 48px;
   padding: 0 24px;
-  background: var(--gh-cream);
-  border-bottom: 0.75px solid var(--gh-gold);
+  background: #fefefc;
+  border-bottom: 0.75px solid #977b4f;
 }
 
 /* ── Desktop left nav ────────────────────────────────────────────────────── */
@@ -66,13 +52,13 @@
   height: 100%;
   width: 196px;
   padding: 0 16px;
-  border-right: var(--gh-border);
+  border-right: 1px solid #977b4f;
   font-family: 'Archivo', sans-serif;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.64px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
@@ -92,7 +78,7 @@
   font-size: 14px;
   letter-spacing: 0.56px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -126,7 +112,7 @@
   display: block;
   width: 100%;
   height: 1px;
-  background: var(--gh-gold);
+  background: #977b4f;
 }
 
 /* ── Logo ────────────────────────────────────────────────────────────────── */
@@ -152,7 +138,7 @@
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
 }
 
 /* ── Right nav ───────────────────────────────────────────────────────────── */
@@ -171,7 +157,7 @@
   font-size: 14px;
   letter-spacing: 0.56px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -193,7 +179,7 @@
   font-size: 12px;
   letter-spacing: 0.48px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
   white-space: nowrap;
 }
 
@@ -203,12 +189,12 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  background: var(--gh-gold);
+  background: #977b4f;
   border-radius: 100px;
   font-family: 'Archivo', sans-serif;
   font-weight: 600;
   font-size: 10px;
-  color: var(--gh-cream);
+  color: #fefefc;
   flex-shrink: 0;
 }
 
@@ -218,7 +204,7 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--gh-cream);
+  background: #fefefc;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -229,7 +215,7 @@
 }
 
 .gh-mobile-menu__announce {
-  background: var(--gh-gold);
+  background: #977b4f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,7 +228,7 @@
   font-size: 10px;
   letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: var(--gh-cream);
+  color: #fefefc;
   white-space: nowrap;
 }
 
@@ -250,9 +236,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--gh-height-mobile);
+  height: 48px;
   padding: 0 24px;
-  border-bottom: 0.75px solid var(--gh-gold);
+  border-bottom: 0.75px solid #977b4f;
   flex-shrink: 0;
 }
 
@@ -272,7 +258,7 @@
   display: block;
   width: 100%;
   height: 1px;
-  background: var(--gh-gold);
+  background: #977b4f;
   transition: transform 0.2s, opacity 0.2s;
 }
 
@@ -309,7 +295,7 @@
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
 }
 
 .gh-mobile-menu__featured {
@@ -339,7 +325,7 @@
   font-size: 20px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
 }
 
 .gh-mobile-menu__cta {
@@ -349,7 +335,7 @@
   margin: 16px auto 0;
   width: calc(100% - 48px);
   height: 40px;
-  background: var(--gh-gradient);
+  background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
   font-family: 'Archivo', sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -372,7 +358,7 @@
   font-size: 14px;
   letter-spacing: 0.28px;
   text-transform: uppercase;
-  color: var(--gh-gold);
+  color: #977b4f;
   text-decoration: none;
   line-height: 20px;
 }
@@ -385,9 +371,9 @@
 
 @media screen and (min-width: 750px) {
   .gh-bar {
-    height: var(--gh-height-desktop);
+    height: 72px;
     padding: 0 24px 0 0;
-    border-bottom: var(--gh-border);
+    border-bottom: 1px solid #977b4f;
     position: relative;
   }
 
