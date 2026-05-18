@@ -1,25 +1,13 @@
-/* ─── Global Footer ────────────────────────────────────────────────────── */
-
-:root {
-  --gf-gold:     #977b4f;
-  --gf-cream:    #fefefc;
-  --gf-linen:    #f5efdd;
-  --gf-dark:     #29241c;
-  --gf-brown:    #433723;
-  --gf-border:   1px solid #977b4f;
-  --gf-gradient: linear-gradient(90deg, #a88958, #b9a179, #a88958);
-}
-
 /* ── Marquee band ────────────────────────────────────────────────────────── */
 
 .gf-footer {
-  background: var(--gf-cream);
+  background: #fefefc;
 }
 
 .gf-marquee-band {
-  background: var(--gf-linen);
-  border-top: var(--gf-border);
-  border-bottom: var(--gf-border);
+  background: #f5efdd;
+  border-top: 1px solid #977b4f;
+  border-bottom: 1px solid #977b4f;
   overflow: hidden;
   padding: 18px 0;
 }
@@ -37,7 +25,7 @@
   font-size: 14px;
   letter-spacing: 2.24px;
   text-transform: uppercase;
-  color: var(--gf-gold);
+  color: #977b4f;
   white-space: nowrap;
   margin: 0;
 }
@@ -50,7 +38,7 @@
 /* ── Logo band ───────────────────────────────────────────────────────────── */
 
 .gf-logo-band {
-  background: var(--gf-linen);
+  background: #f5efdd;
   padding: 20px 24px 24px;
   text-align: center;
 }
@@ -70,14 +58,14 @@
   font-size: 48px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--gf-gold);
+  color: #977b4f;
   line-height: 1;
 }
 
 /* ── Main grid (newsletter + nav) ────────────────────────────────────────── */
 
 .gf-main {
-  border-top: var(--gf-border);
+  border-top: 1px solid #977b4f;
 }
 
 .gf-main__grid {
@@ -89,7 +77,7 @@
 
 .gf-newsletter {
   padding: 44px 24px;
-  border-bottom: var(--gf-border);
+  border-bottom: 1px solid #977b4f;
 }
 
 .gf-newsletter__label {
@@ -99,7 +87,7 @@
   font-size: 12px;
   letter-spacing: 1.44px;
   text-transform: uppercase;
-  color: var(--gf-gold);
+  color: #977b4f;
   margin-bottom: 16px;
 }
 
@@ -109,7 +97,7 @@
   font-size: 28px;
   letter-spacing: 2.24px;
   text-transform: uppercase;
-  color: var(--gf-gold);
+  color: #977b4f;
   margin: 0 0 8px;
   line-height: 1.3;
 }
@@ -119,7 +107,7 @@
   font-weight: 400;
   font-size: 14px;
   letter-spacing: 0.14px;
-  color: var(--gf-brown);
+  color: #433723;
   line-height: 1.6;
   margin: 0 0 24px;
 }
@@ -130,7 +118,7 @@
 
 .gf-newsletter__input-wrap {
   position: relative;
-  border-bottom: var(--gf-border);
+  border-bottom: 1px solid #977b4f;
   height: 48px;
   margin-bottom: 12px;
 }
@@ -146,12 +134,12 @@
   font-family: 'Archivo', sans-serif;
   font-weight: 400;
   font-size: 14px;
-  color: var(--gf-brown);
+  color: #433723;
   padding: 0;
 }
 
 .gf-newsletter__input::placeholder {
-  color: var(--gf-brown);
+  color: #433723;
   opacity: 0.6;
 }
 
@@ -161,14 +149,14 @@
   justify-content: center;
   width: 100%;
   height: 48px;
-  background: var(--gf-gradient);
+  background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
   border: none;
   font-family: 'Archivo', sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 0.64px;
   text-transform: uppercase;
-  color: var(--gf-cream);
+  color: #fefefc;
   cursor: pointer;
 }
 
@@ -181,7 +169,7 @@
   font-family: 'Archivo', sans-serif;
   font-weight: 400;
   font-size: 12px;
-  color: var(--gf-brown);
+  color: #433723;
   line-height: 1.6;
   margin-top: 14px;
 }
@@ -202,7 +190,7 @@
   font-size: 14px;
   letter-spacing: 2.24px;
   text-transform: uppercase;
-  color: var(--gf-gold);
+  color: #977b4f;
   margin-bottom: 14px;
 }
 
@@ -217,7 +205,7 @@
   font-weight: 400;
   font-size: 14px;
   letter-spacing: 0.14px;
-  color: var(--gf-dark);
+  color: #29241c;
   text-decoration: none;
   line-height: 1.4;
 }
@@ -229,7 +217,7 @@
 /* ── Bottom bar ──────────────────────────────────────────────────────────── */
 
 .gf-bottom {
-  border-top: var(--gf-border);
+  border-top: 1px solid #977b4f;
   padding: 16px 24px;
   display: flex;
   align-items: center;
@@ -245,7 +233,7 @@
   font-weight: 500;
   font-size: 12px;
   letter-spacing: 0.48px;
-  color: var(--gf-gold);
+  color: #977b4f;
   text-decoration: none;
   margin: 0;
 }
@@ -292,7 +280,7 @@
   .gf-newsletter {
     padding: 64px 52px 64px calc(8.33% + 52px);
     border-bottom: none;
-    border-right: var(--gf-border);
+    border-right: 1px solid #977b4f;
   }
 
   .gf-newsletter__label {
