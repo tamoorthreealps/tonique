@@ -8,12 +8,12 @@
   background: #f5efdd;
   border-top: 1px solid #977b4f;
   overflow: hidden;
-  padding: 36px 0;
+  padding: 20px 0;
 }
 
 .gf-marquee__track {
   display: flex;
-  gap: 160px;
+  gap: 48px;
   width: max-content;
   animation: gf-scroll 20s linear infinite;
 }
@@ -21,14 +21,16 @@
 .gf-marquee__track p {
     font-family: Archivo, sans-serif;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: 5.76px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 2.24px;
     text-transform: uppercase;
-    color: #977B4F;
+    color: #977b4f;
     white-space: nowrap;
     margin: 0;
 }
+
+
 
 @keyframes gf-scroll {
   from { transform: translateX(0); }
@@ -256,11 +258,23 @@
   opacity: 0.75;
 }
 
-/* ── Desktop overrides (≥ 750px) ─────────────────────────────────────────── */
+/* ── Desktop overrides (≥ 767px) ─────────────────────────────────────────── */
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 767px) {
+  .gf-marquee-band {
+  padding: 36px 0;
+}
+
+.gf-marquee__track {
+  gap: 160px;
+}
+.gf-marquee__track p {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 5.76px;
+}
   .gf-logo-band {
-    padding: 36px 24px 30px;
+    padding: 88px 25px 52px;
   }
 
   .gf-logo-band img {
