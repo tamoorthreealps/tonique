@@ -14,10 +14,13 @@
     "global-header": {
       "type": "global-header",
       "settings": {
+        "logo": "shopify://shop_images/Logo.svg",
         "main_menu": "main-menu",
+        "extra_menu": "",
         "cta_label": "SHOP NOW",
         "show_account": true,
         "announcement_text": "FREE SHIPPING ORDERS $75+",
+        "announcement_link": "",
         "menu_image_label": "Shop Protein Tonic"
       }
     }
