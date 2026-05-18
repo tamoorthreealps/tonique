@@ -294,43 +294,61 @@
   }
 
   .gf-newsletter {
-    padding: 64px 52px 64px calc(8.33% + 52px);
-    border-bottom: none;
-    border-right: 1px solid #977b4f;
+    padding: 0;
+        border-bottom: none;
+        border-right: 1px solid #977b4f;
   }
+
+  .gf-newsletter-content{
+    max-width: 394px;
+    padding: 64px 0 112px;
+    margin-left: 178px;
+}
 
   .gf-newsletter__label {
     font-size: 14px;
-    letter-spacing: 2.24px;
-    margin-bottom: 16px;
+        letter-spacing: 2.24px;
+        margin-bottom: 16px;
+        line-height: 20px;
   }
 
   .gf-newsletter__heading {
     font-size: 36px;
-    letter-spacing: 4.32px;
-    margin-bottom: 8px;
+        line-height: 48px;
+        letter-spacing: 4.32px;
+        margin-bottom: 8px;
   }
 
   .gf-newsletter__body {
-    font-size: 16px;
-    letter-spacing: 0.16px;
-    margin-bottom: 28px;
+            font-size: 16px;
+        line-height: 24px;
+        letter-spacing: .16px;
+        margin-bottom: 20px;
   }
 
   .gf-newsletter__input-wrap {
     height: 56px;
-    margin-bottom: 16px;
+        margin-bottom: 12px;
   }
 
   .gf-newsletter__input {
     font-size: 18px;
+        line-height: 28px;
+        letter-spacing: 0.18px;
   }
 
   .gf-newsletter__btn {
     height: 56px;
-    font-size: 18px;
-    letter-spacing: 0.72px;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: .72px;
   }
+  .gf-newsletter__disclaimer {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 14px;
+    letter-spacing: 0.14px;
+}
 
   .gf-nav-panel {
     padding: 64px 52px;
