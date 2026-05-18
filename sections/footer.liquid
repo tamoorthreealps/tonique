@@ -4,9 +4,11 @@
   <div class="tonique-footer__top">
     <div class="page-width">
       <div class="tonique-footer__marquee">
-        <span>CLEAN POUCH</span>
-        <span>BEAUTY + PROTEIN IN ONE CLEAN POUCH.</span>
-        <span>BEAUTY + PROTEIN IN ONE CLEAN POUCH.</span>
+        <div class="tonique-footer__marquee-track">
+          {% for i in (1..20) %}
+            <span>Beauty + Protein in One Clean Pouch.</span>
+          {% endfor %}
+        </div>
       </div>
 
       <div class="tonique-footer__logo">
@@ -21,21 +23,19 @@
         <div class="tonique-footer__newsletter">
           <span class="footer-label">JOIN THE LIST</span>
 
-          <h3>15% OFF YOUR <br> FIRST ORDER</h3>
+          <h3>
+            15% OFF YOUR <br>
+            FIRST ORDER
+          </h3>
 
-          <p>
-            Plus early access to drops, ritual tips, and the occasional good thing.
-          </p>
+          <p>Plus early access to drops, ritual tips, and the occasional good thing.</p>
 
           <form class="tonique-footer__form">
             <input type="email" placeholder="Email address">
             <button type="submit">GET 15% OFF</button>
           </form>
 
-          <small>
-            By signing up, you agree to receive marketing emails.
-            Unsubscribe anytime.
-          </small>
+          <small> By signing up, you agree to receive marketing emails. Unsubscribe anytime. </small>
         </div>
 
         <div class="tonique-footer__menus">
@@ -99,3 +99,37 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function initFooterMarquee() {
+    const marquee = document.querySelector('.tonique-footer__marquee');
+    const track = marquee.querySelector('.tonique-footer__marquee-track');
+
+    const items = Array.from(track.children);
+
+    while (track.scrollWidth < window.innerWidth * 3) {
+      items.forEach((item) => {
+        track.appendChild(item.cloneNode(true));
+      });
+    }
+
+    let position = 0;
+    const speed = 0.5;
+
+    function animate() {
+      position -= speed;
+
+      if (Math.abs(position) >= track.scrollWidth / 2) {
+        position = 0;
+      }
+
+      track.style.transform = `translateX(${position}px)`;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+
+  document.addEventListener('DOMContentLoaded', initFooterMarquee);
+</script>
