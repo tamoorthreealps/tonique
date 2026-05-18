@@ -55,15 +55,16 @@
   width: 196px;
   padding: 0 16px;
   border-right: 1px solid #977b4f;
-  font-family: 'Archivo', sans-serif;
+  font-family: Archivo, sans-serif;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 0.64px;
+  letter-spacing: .64px;
   text-transform: uppercase;
   color: #977b4f;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  line-height: 24px;
 }
 
 .gh-bar__nav {
@@ -75,14 +76,14 @@
 }
 
 .gh-bar__nav a {
-  font-family: 'Archivo', sans-serif;
+  font-family: Archivo, sans-serif;
   font-weight: 500;
   font-size: 14px;
-  letter-spacing: 0.56px;
+  line-height: 24px;
+  letter-spacing: .56px;
   text-transform: uppercase;
-  color: #977b4f;
+  color: #977B4F;
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .gh-bar__nav a:hover {
@@ -157,6 +158,7 @@
   font-family: 'Archivo', sans-serif;
   font-weight: 500;
   font-size: 14px;
+  line-height:24px;
   letter-spacing: 0.56px;
   text-transform: uppercase;
   color: #977b4f;
@@ -416,7 +418,7 @@
   .gh-bar__cart-count {
     width: 32px;
     height: 32px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
   }
 
