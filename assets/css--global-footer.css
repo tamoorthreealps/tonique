@@ -15,7 +15,7 @@
   display: flex;
   gap: 48px;
   width: max-content;
-  animation: gf-scroll 20s linear infinite;
+  animation: gf-scroll 40s linear infinite;
 }
 
 .gf-marquee__track p {
