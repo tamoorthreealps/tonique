@@ -1,171 +1,173 @@
 {{ 'css--global-footer.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign shop_menu   = linklists[section.settings.shop_menu]
-  assign help_menu   = linklists[section.settings.help_menu]
-  assign legal_menu  = linklists[section.settings.legal_menu]
+  assign shop_menu = linklists[section.settings.shop_menu]
+  assign help_menu = linklists[section.settings.help_menu]
+  assign legal_menu = linklists[section.settings.legal_menu]
   assign social_menu = linklists[section.settings.social_menu]
 -%}
 
 <footer class="gf-footer" role="contentinfo">
-
-  {%- comment -%} ── Marquee band ── {%- endcomment -%}
-  <div class="gf-marquee-band" aria-hidden="true">
-    <div class="gf-marquee__track" id="gf-marquee-track">
-      {%- assign marquee_text = section.settings.marquee_text | default: 'Beauty + Protein in One Clean Pouch' -%}
-      <p>{{ marquee_text }}</p>
-      <p>{{ marquee_text }}</p>
-      <p>{{ marquee_text }}</p>
-      <p>{{ marquee_text }}</p>
-      <p>{{ marquee_text }}</p>
-      <p>{{ marquee_text }}</p>
+  <div class="gf-footer-container">
+    {%- comment -%} ── Marquee band ── {%- endcomment -%}
+    <div class="gf-marquee-band" aria-hidden="true">
+      <div class="gf-marquee__track" id="gf-marquee-track">
+        {%- assign marquee_text = section.settings.marquee_text | default: 'Beauty + Protein in One Clean Pouch' -%}
+        <p>{{ marquee_text }}</p>
+        <p>{{ marquee_text }}</p>
+        <p>{{ marquee_text }}</p>
+        <p>{{ marquee_text }}</p>
+        <p>{{ marquee_text }}</p>
+        <p>{{ marquee_text }}</p>
+      </div>
     </div>
-  </div>
 
-  {%- comment -%} ── Logo band ── {%- endcomment -%}
-  <div class="gf-logo-band">
-    {%- if section.settings.logo != blank -%}
-      {{- section.settings.logo | image_url: width: 2312 | image_tag:
-        loading: 'lazy',
-        alt: shop.name
-      -}}
-    {%- else -%}
-      <span class="gf-logo-band__text">{{ shop.name }}</span>
-    {%- endif -%}
-  </div>
+    {%- comment -%} ── Logo band ── {%- endcomment -%}
+    <div class="gf-logo-band">
+      {%- if section.settings.logo != blank -%}
+        {{- section.settings.logo | image_url: width: 2312 | image_tag: loading: 'lazy', alt: shop.name -}}
+      {%- else -%}
+        <span class="gf-logo-band__text">{{ shop.name }}</span>
+      {%- endif -%}
+    </div>
 
-  {%- comment -%} ── Main: newsletter + nav ── {%- endcomment -%}
-  <div class="gf-main">
-    <div class="gf-main__grid">
+    {%- comment -%} ── Main: newsletter + nav ── {%- endcomment -%}
+    <div class="gf-main">
+      <div class="gf-main__grid">
+        {%- comment -%} Newsletter {%- endcomment -%}
+        <div class="gf-newsletter">
+          <span class="gf-newsletter__label">
+            {{- section.settings.newsletter_label | default: 'JOIN THE LIST' -}}
+          </span>
+          <h2 class="gf-newsletter__heading">
+            {{- section.settings.newsletter_heading | default: '15% off your first order' -}}
+          </h2>
+          <p class="gf-newsletter__body">
+            {{-
+              section.settings.newsletter_body
+              | default: 'Plus early access to drops, ritual tips, and the occasional good thing.'
+            -}}
+          </p>
 
-      {%- comment -%} Newsletter {%- endcomment -%}
-      <div class="gf-newsletter">
-        <span class="gf-newsletter__label">
-          {{- section.settings.newsletter_label | default: 'JOIN THE LIST' -}}
-        </span>
-        <h2 class="gf-newsletter__heading">
-          {{- section.settings.newsletter_heading | default: '15% off your first order' -}}
-        </h2>
-        <p class="gf-newsletter__body">
-          {{- section.settings.newsletter_body | default: 'Plus early access to drops, ritual tips, and the occasional good thing.' -}}
-        </p>
-
-        {%- form 'customer', id: 'gf-newsletter-form' -%}
-          {%- if form.posted_successfully? -%}
-            <p style="color:{{ section.settings.text_color | default: '#433723' }};font-size:14px;margin:0;">
-              You're subscribed. Thanks!
-            </p>
-          {%- else -%}
-            <div class="gf-newsletter__form">
-              <div class="gf-newsletter__input-wrap">
-                <label for="gf-email" class="visually-hidden">Email address</label>
-                <input
-                  id="gf-email"
-                  class="gf-newsletter__input"
-                  type="email"
-                  name="contact[email]"
-                  placeholder="Email address"
-                  autocomplete="email"
-                  required
-                >
+          {%- form 'customer', id: 'gf-newsletter-form' -%}
+            {%- if form.posted_successfully? -%}
+              <p style="color:{{ section.settings.text_color | default: '#433723' }};font-size:14px;margin:0;">
+                You're subscribed. Thanks!
+              </p>
+            {%- else -%}
+              <div class="gf-newsletter__form">
+                <div class="gf-newsletter__input-wrap">
+                  <label for="gf-email" class="visually-hidden">Email address</label>
+                  <input
+                    id="gf-email"
+                    class="gf-newsletter__input"
+                    type="email"
+                    name="contact[email]"
+                    placeholder="Email address"
+                    autocomplete="email"
+                    required
+                  >
+                </div>
+                <button type="submit" class="gf-newsletter__btn">
+                  {{- section.settings.newsletter_btn | default: 'GET 15% OFF' -}}
+                </button>
               </div>
-              <button type="submit" class="gf-newsletter__btn">
-                {{- section.settings.newsletter_btn | default: 'GET 15% OFF' -}}
-              </button>
+            {%- endif -%}
+          {%- endform -%}
+
+          <span class="gf-newsletter__disclaimer">
+            {{-
+              section.settings.newsletter_disclaimer
+              | default: 'By signing up, you agree to receive marketing emails. Unsubscribe anytime.'
+            -}}
+          </span>
+        </div>
+
+        {%- comment -%} Nav columns {%- endcomment -%}
+        <nav class="gf-nav-panel" aria-label="Footer navigation">
+          {%- if shop_menu.links.size > 0 -%}
+            <div class="gf-nav-group">
+              <span class="gf-nav-group__label">
+                {{- section.settings.shop_label | default: 'SHOP' -}}
+              </span>
+              <div class="gf-nav-group__links">
+                {%- for link in shop_menu.links -%}
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                {%- endfor -%}
+              </div>
             </div>
           {%- endif -%}
-        {%- endform -%}
 
-        <span class="gf-newsletter__disclaimer">
-          {{- section.settings.newsletter_disclaimer | default: 'By signing up, you agree to receive marketing emails. Unsubscribe anytime.' -}}
-        </span>
+          {%- if help_menu.links.size > 0 -%}
+            <div class="gf-nav-group">
+              <span class="gf-nav-group__label">
+                {{- section.settings.help_label | default: 'HELP' -}}
+              </span>
+              <div class="gf-nav-group__links">
+                {%- for link in help_menu.links -%}
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if legal_menu.links.size > 0 -%}
+            <div class="gf-nav-group">
+              <span class="gf-nav-group__label">
+                {{- section.settings.legal_label | default: 'LEGAL' -}}
+              </span>
+              <div class="gf-nav-group__links">
+                {%- for link in legal_menu.links -%}
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if social_menu.links.size > 0 -%}
+            <div class="gf-nav-group">
+              <span class="gf-nav-group__label">
+                {{- section.settings.social_label | default: 'SOCIAL' -}}
+              </span>
+              <div class="gf-nav-group__links">
+                {%- for link in social_menu.links -%}
+                  <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+        </nav>
       </div>
+    </div>
 
-      {%- comment -%} Nav columns {%- endcomment -%}
-      <nav class="gf-nav-panel" aria-label="Footer navigation">
+    {%- comment -%} ── Bottom bar ── {%- endcomment -%}
+    <div class="gf-bottom">
+      <p class="gf-bottom__copy">
+        &copy; {{ 'now' | date: '%Y' }}
+        {{ shop.name | upcase }}
+      </p>
 
-        {%- if shop_menu.links.size > 0 -%}
-          <div class="gf-nav-group">
-            <span class="gf-nav-group__label">
-              {{- section.settings.shop_label | default: 'SHOP' -}}
-            </span>
-            <div class="gf-nav-group__links">
-              {%- for link in shop_menu.links -%}
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
+      {%- if legal_menu.links.size > 0 -%}
+        <div class="gf-bottom__links" aria-label="Legal links">
+          {%- for link in legal_menu.links -%}
+            <a href="{{ link.url }}">{{ link.title | upcase }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
 
-        {%- if help_menu.links.size > 0 -%}
-          <div class="gf-nav-group">
-            <span class="gf-nav-group__label">
-              {{- section.settings.help_label | default: 'HELP' -}}
-            </span>
-            <div class="gf-nav-group__links">
-              {%- for link in help_menu.links -%}
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-        {%- if legal_menu.links.size > 0 -%}
-          <div class="gf-nav-group">
-            <span class="gf-nav-group__label">
-              {{- section.settings.legal_label | default: 'LEGAL' -}}
-            </span>
-            <div class="gf-nav-group__links">
-              {%- for link in legal_menu.links -%}
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-        {%- if social_menu.links.size > 0 -%}
-          <div class="gf-nav-group">
-            <span class="gf-nav-group__label">
-              {{- section.settings.social_label | default: 'SOCIAL' -}}
-            </span>
-            <div class="gf-nav-group__links">
-              {%- for link in social_menu.links -%}
-                <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-      </nav>
+      {%- if section.settings.site_credit_url != blank -%}
+        <a
+          href="{{ section.settings.site_credit_url }}"
+          class="gf-bottom__credit"
+          target="_blank"
+          rel="noopener"
+          >SITE CREDIT</a
+        >
+      {%- else -%}
+        <span class="gf-bottom__credit" style="text-decoration:none;cursor:default;"></span>
+      {%- endif -%}
     </div>
   </div>
-
-  {%- comment -%} ── Bottom bar ── {%- endcomment -%}
-  <div class="gf-bottom">
-    <p class="gf-bottom__copy">
-      &copy; {{ 'now' | date: '%Y' }} {{ shop.name | upcase }}
-    </p>
-
-    {%- if legal_menu.links.size > 0 -%}
-      <div class="gf-bottom__links" aria-label="Legal links">
-        {%- for link in legal_menu.links -%}
-          <a href="{{ link.url }}">{{ link.title | upcase }}</a>
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
-
-    {%- if section.settings.site_credit_url != blank -%}
-      <a
-        href="{{ section.settings.site_credit_url }}"
-        class="gf-bottom__credit"
-        target="_blank"
-        rel="noopener"
-      >SITE CREDIT</a>
-    {%- else -%}
-      <span class="gf-bottom__credit" style="text-decoration:none;cursor:default;"></span>
-    {%- endif -%}
-  </div>
-
 </footer>
 
 {% schema %}
