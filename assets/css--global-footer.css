@@ -255,7 +255,7 @@
 }
 
 .gf-bottom__links {
-  display: flex;
+  display: none;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -390,5 +390,6 @@
 
   .gf-bottom__links {
     gap: 48px;
+    display: flex;
   }
 }
