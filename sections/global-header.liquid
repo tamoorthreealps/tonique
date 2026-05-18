@@ -1,0 +1,279 @@
+{{ 'css--global-header.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign main_menu  = linklists[section.settings.main_menu]
+  assign extra_menu = linklists[section.settings.extra_menu]
+-%}
+
+<header class="gh-header" role="banner">
+
+  {%- comment -%} ── Announcement bar (mobile only, always visible) ── {%- endcomment -%}
+  <div class="gh-announce" id="gh-announce" aria-label="Announcement">
+    <span class="gh-announce__text">
+      {%- if section.settings.announcement_text != blank -%}
+        {%- if section.settings.announcement_link != blank -%}
+          <a href="{{ section.settings.announcement_link }}" style="color:inherit;text-decoration:none;">
+            {{- section.settings.announcement_text -}}
+          </a>
+        {%- else -%}
+          {{- section.settings.announcement_text -}}
+        {%- endif -%}
+      {%- else -%}
+        FREE SHIPPING ORDERS $75+
+      {%- endif -%}
+    </span>
+  </div>
+
+  {%- comment -%} ── Main header bar ── {%- endcomment -%}
+  <div class="gh-bar">
+
+    {%- comment -%} Mobile: hamburger + logo {%- endcomment -%}
+    <div class="gh-bar__left-mobile">
+      <button
+        class="gh-hamburger"
+        aria-label="Open menu"
+        aria-controls="gh-mobile-menu"
+        aria-expanded="false"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="{{ routes.root_url }}" class="gh-bar__logo" aria-label="{{ shop.name }}">
+        {%- if section.settings.logo != blank -%}
+          {{- section.settings.logo | image_url: width: 212 | image_tag:
+            loading: 'eager',
+            alt: shop.name,
+            width: 106,
+            height: 16
+          -}}
+        {%- else -%}
+          <span class="gh-bar__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    {%- comment -%} Desktop: left nav {%- endcomment -%}
+    <div class="gh-bar__left">
+      <a href="{{ routes.root_url }}" class="gh-bar__shop-now">
+        {{- section.settings.cta_label | default: 'SHOP NOW' -}}
+      </a>
+      {%- if main_menu.links.size > 0 -%}
+        <nav class="gh-bar__nav" aria-label="Main navigation">
+          {%- for link in main_menu.links -%}
+            <a href="{{ link.url }}"
+              {%- if link.active %} aria-current="page"{% endif -%}
+            >{{ link.title }}</a>
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Desktop: centered logo {%- endcomment -%}
+    <a href="{{ routes.root_url }}" class="gh-bar__logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.logo != blank -%}
+        {{- section.settings.logo | image_url: width: 316 | image_tag:
+          loading: 'eager',
+          alt: shop.name,
+          width: 158,
+          height: 24
+        -}}
+      {%- else -%}
+        <span class="gh-bar__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- comment -%} Right: account + cart {%- endcomment -%}
+    <div class="gh-bar__right">
+      {%- if section.settings.show_account -%}
+        <a href="{{ routes.account_url }}" class="gh-bar__account">
+          {{- 'ACCOUNT' -}}
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="gh-bar__cart" aria-label="Cart ({{ cart.item_count }} items)">
+        <span class="gh-bar__cart-label">CART</span>
+        <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+      </a>
+    </div>
+
+  </div>{%- comment -%} /.gh-bar {%- endcomment -%}
+
+  {%- comment -%} ── Mobile slide-out menu ── {%- endcomment -%}
+  <div class="gh-mobile-menu" id="gh-mobile-menu" hidden aria-label="Mobile navigation">
+
+    <div class="gh-mobile-menu__announce">
+      <span>
+        {%- if section.settings.announcement_text != blank -%}
+          {{- section.settings.announcement_text -}}
+        {%- else -%}
+          FREE SHIPPING ORDERS $75+
+        {%- endif -%}
+      </span>
+    </div>
+
+    <div class="gh-mobile-menu__header">
+      <button
+        class="gh-mobile-menu__close"
+        aria-label="Close menu"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="{{ routes.root_url }}" class="gh-mobile-menu__logo" aria-label="{{ shop.name }}">
+        {%- if section.settings.logo != blank -%}
+          {{- section.settings.logo | image_url: width: 212 | image_tag:
+            loading: 'lazy',
+            alt: shop.name,
+            width: 106,
+            height: 16
+          -}}
+        {%- else -%}
+          <span class="gh-mobile-menu__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+      <a href="{{ routes.cart_url }}" class="gh-bar__cart" aria-label="Cart">
+        <span class="gh-bar__cart-label">CART</span>
+        <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+      </a>
+    </div>
+
+    {%- comment -%} Featured product / image block {%- endcomment -%}
+    <div class="gh-mobile-menu__featured">
+      {%- if section.settings.menu_image != blank -%}
+        {{- section.settings.menu_image | image_url: width: 688 | image_tag:
+          loading: 'lazy',
+          alt: section.settings.menu_image_label | default: 'Shop now'
+        -}}
+      {%- endif -%}
+      <span class="gh-mobile-menu__featured-label">
+        {{- section.settings.menu_image_label | default: 'Shop Protein Tonic' -}}
+      </span>
+    </div>
+
+    <a href="{{ routes.root_url }}" class="gh-mobile-menu__cta">
+      {{- section.settings.cta_label | default: 'SHOP NOW' -}}
+    </a>
+
+    {%- comment -%} Nav links {%- endcomment -%}
+    <nav class="gh-mobile-menu__links" aria-label="Mobile navigation links">
+      {%- if extra_menu.links.size > 0 -%}
+        {%- for link in extra_menu.links -%}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- if main_menu.links.size > 0 -%}
+          {%- for link in main_menu.links -%}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+        {%- if section.settings.show_account -%}
+          <a href="{{ routes.account_url }}">Account</a>
+        {%- endif -%}
+      {%- endif -%}
+    </nav>
+
+  </div>{%- comment -%} /.gh-mobile-menu {%- endcomment -%}
+
+</header>
+
+<script>
+(function () {
+  var btn    = document.querySelector('.gh-hamburger');
+  var close  = document.querySelector('.gh-mobile-menu__close');
+  var menu   = document.getElementById('gh-mobile-menu');
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    menu.removeAttribute('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (close) close.focus();
+  }
+
+  function closeMenu() {
+    menu.setAttribute('hidden', '');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    btn.focus();
+  }
+
+  btn.addEventListener('click', openMenu);
+  if (close) close.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hasAttribute('hidden')) closeMenu();
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Global Header",
+  "class": "section-global-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Desktop nav menu",
+      "default": "main-menu",
+      "info": "Shows ABOUT, REFER etc. beside the SHOP NOW button on desktop."
+    },
+    {
+      "type": "link_list",
+      "id": "extra_menu",
+      "label": "Mobile menu links (optional)",
+      "info": "If set, overrides the desktop nav for the mobile slide-out menu. Leave blank to reuse the desktop nav."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show Account link",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "FREE SHIPPING ORDERS $75+"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Announcement link (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Mobile menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image",
+      "label": "Featured product image"
+    },
+    {
+      "type": "text",
+      "id": "menu_image_label",
+      "label": "Featured image label",
+      "default": "Shop Protein Tonic"
+    }
+  ]
+}
+{% endschema %}

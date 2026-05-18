@@ -1,0 +1,442 @@
+/* ─── Global Header ────────────────────────────────────────────────────── */
+
+:root {
+  --gh-gold:       #977b4f;
+  --gh-cream:      #fefefc;
+  --gh-linen:      #f5efdd;
+  --gh-brown:      #29241c;
+  --gh-gradient:   linear-gradient(90deg, #a88958, #b9a179, #a88958);
+  --gh-border:     1px solid #977b4f;
+  --gh-height-desktop: 72px;
+  --gh-height-mobile:  48px;
+  --gh-announce-height: 32px;
+}
+
+/* ── Announcement bar ────────────────────────────────────────────────────── */
+
+.gh-announce {
+  display: none;
+  height: var(--gh-announce-height);
+  background: var(--gh-gold);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gh-announce__text {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--gh-cream);
+  white-space: nowrap;
+}
+
+/* ── Base header bar ─────────────────────────────────────────────────────── */
+
+.gh-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--gh-cream);
+}
+
+.gh-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--gh-height-mobile);
+  padding: 0 24px;
+  background: var(--gh-cream);
+  border-bottom: 0.75px solid var(--gh-gold);
+}
+
+/* ── Desktop left nav ────────────────────────────────────────────────────── */
+
+.gh-bar__left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.gh-bar__shop-now {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 196px;
+  padding: 0 16px;
+  border-right: var(--gh-border);
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.64px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.gh-bar__nav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+  padding-left: 24px;
+  height: 100%;
+}
+
+.gh-bar__nav a {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.gh-bar__nav a:hover {
+  opacity: 0.75;
+}
+
+/* ── Hamburger (mobile only) ─────────────────────────────────────────────── */
+
+.gh-bar__left-mobile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gh-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.gh-hamburger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--gh-gold);
+}
+
+/* ── Logo ────────────────────────────────────────────────────────────────── */
+
+.gh-bar__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.gh-bar__logo img {
+  display: block;
+  height: 16px;
+  width: auto;
+}
+
+.gh-bar__logo-text {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+}
+
+/* ── Right nav ───────────────────────────────────────────────────────────── */
+
+.gh-bar__right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+}
+
+.gh-bar__account {
+  display: none;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.gh-bar__account:hover {
+  opacity: 0.75;
+}
+
+.gh-bar__cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.gh-bar__cart-label {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+  white-space: nowrap;
+}
+
+.gh-bar__cart-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: var(--gh-gold);
+  border-radius: 100px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  color: var(--gh-cream);
+  flex-shrink: 0;
+}
+
+/* ── Mobile menu overlay ─────────────────────────────────────────────────── */
+
+.gh-mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--gh-cream);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.gh-mobile-menu[hidden] {
+  display: none;
+}
+
+.gh-mobile-menu__announce {
+  height: var(--gh-announce-height);
+  background: var(--gh-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gh-mobile-menu__announce span {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--gh-cream);
+  white-space: nowrap;
+}
+
+.gh-mobile-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--gh-height-mobile);
+  padding: 0 24px;
+  border-bottom: 0.75px solid var(--gh-gold);
+  flex-shrink: 0;
+}
+
+.gh-mobile-menu__close {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+}
+
+.gh-mobile-menu__close span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--gh-gold);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.gh-mobile-menu__close span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.gh-mobile-menu__close span:nth-child(2) {
+  opacity: 0;
+}
+
+.gh-mobile-menu__close span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.gh-mobile-menu__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.gh-mobile-menu__logo img {
+  height: 16px;
+  width: auto;
+  display: block;
+}
+
+.gh-mobile-menu__logo-text {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+}
+
+.gh-mobile-menu__featured {
+  position: relative;
+  margin: 24px 24px 0;
+  background: #e8e5d8;
+  aspect-ratio: 344 / 356;
+  overflow: hidden;
+}
+
+.gh-mobile-menu__featured img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gh-mobile-menu__featured-label {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(50%);
+  text-align: center;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+}
+
+.gh-mobile-menu__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px auto 0;
+  width: calc(100% - 48px);
+  height: 40px;
+  background: var(--gh-gradient);
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  color: #f9f6ec;
+  text-decoration: none;
+}
+
+.gh-mobile-menu__links {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gh-mobile-menu__links a {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  color: var(--gh-gold);
+  text-decoration: none;
+  line-height: 20px;
+}
+
+.gh-mobile-menu__links a:hover {
+  opacity: 0.75;
+}
+
+/* ── Desktop overrides (≥ 750px) ─────────────────────────────────────────── */
+
+@media screen and (min-width: 750px) {
+  .gh-bar {
+    height: var(--gh-height-desktop);
+    padding: 0 24px 0 0;
+    border-bottom: var(--gh-border);
+    position: relative;
+  }
+
+  .gh-bar__left-mobile {
+    display: none;
+  }
+
+  .gh-bar__left {
+    display: flex;
+    height: 100%;
+  }
+
+  .gh-bar__shop-now {
+    display: flex;
+  }
+
+  .gh-bar__nav {
+    display: flex;
+  }
+
+  .gh-bar__logo img {
+    height: 24px;
+  }
+
+  .gh-bar__logo-text {
+    font-size: 22px;
+  }
+
+  .gh-bar__account {
+    display: block;
+  }
+
+  .gh-bar__cart-label {
+    font-size: 14px;
+    letter-spacing: 0.56px;
+  }
+
+  .gh-bar__cart-count {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* Hide mobile-only elements on desktop */
+  .gh-hamburger,
+  .gh-mobile-menu {
+    display: none !important;
+  }
+}

@@ -1,1 +1,23 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","settings":{"color_scheme":"scheme-1","newsletter_enable":true,"newsletter_heading":"Subscribe to our emails","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":true,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":0,"padding_top":36,"padding_bottom":36}}},"order":["footer"]}
+{
+  "name": "Footer",
+  "type": "footer",
+  "sections": {
+    "global-footer": {
+      "type": "global-footer",
+      "settings": {
+        "marquee_text": "Beauty + Protein in One Clean Pouch",
+        "newsletter_label": "JOIN THE LIST",
+        "newsletter_heading": "15% off your first order",
+        "newsletter_body": "Plus early access to drops, ritual tips, and the occasional good thing.",
+        "newsletter_btn": "GET 15% OFF",
+        "newsletter_disclaimer": "By signing up, you agree to receive marketing emails. Unsubscribe anytime.",
+        "shop_label": "SHOP",
+        "shop_menu": "main-menu",
+        "help_label": "HELP",
+        "legal_label": "LEGAL",
+        "social_label": "SOCIAL"
+      }
+    }
+  },
+  "order": ["global-footer"]
+}
