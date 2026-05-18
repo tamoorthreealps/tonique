@@ -262,7 +262,7 @@
 
 @media screen and (min-width: 767px) {
   .gf-marquee-band {
-  padding: 36px 0;
+  padding: 40px 0;
 }
 
 .gf-marquee__track {
@@ -274,7 +274,7 @@
     letter-spacing: 5.76px;
 }
   .gf-logo-band {
-    padding: 92px 25px 52px;
+    padding: 88px 25px 52px;
   }
 
   .gf-logo-band img {
