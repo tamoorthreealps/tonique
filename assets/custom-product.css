@@ -231,7 +231,7 @@ display: inline-flex;
 }
 
 .pp-video-btn:hover {
-  transform: scale(1.08);
+  transform: scale(1.03);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
@@ -792,8 +792,9 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
 
   /* Rounded thumbnail buttons to match card style */
   .product--thumbnail .thumbnail {
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: inherit;
   }
 
   /* Hide prev/next arrows inside the overlaid strip */
