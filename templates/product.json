@@ -134,8 +134,121 @@
         "padding_bottom": 0
       }
     },
+    "text_scroller_y98phK": {
+      "type": "text-scroller",
+      "blocks": {
+        "item_UtfWaR": {
+          "type": "item",
+          "settings": {
+            "text": "No sucralose"
+          }
+        },
+        "item_A83pMy": {
+          "type": "item",
+          "settings": {
+            "text": "No sodium benzoate"
+          }
+        },
+        "item_bkL6JA": {
+          "type": "item",
+          "settings": {
+            "text": "No artificial sweeteners"
+          }
+        },
+        "item_LM3jzE": {
+          "type": "item",
+          "settings": {
+            "text": "No sucralose"
+          }
+        },
+        "item_gDpDeh": {
+          "type": "item",
+          "settings": {
+            "text": "No sodium benzoate"
+          }
+        },
+        "item_NAGrhH": {
+          "type": "item",
+          "settings": {
+            "text": "No artificial sweeteners"
+          }
+        }
+      },
+      "block_order": [
+        "item_UtfWaR",
+        "item_A83pMy",
+        "item_bkL6JA",
+        "item_LM3jzE",
+        "item_gDpDeh",
+        "item_NAGrhH"
+      ],
+      "name": "Text Scroller",
+      "settings": {}
+    },
+    "why_tonique_QYHPbC": {
+      "type": "why-tonique",
+      "blocks": {
+        "reason_keDA3d": {
+          "type": "reason",
+          "settings": {
+            "title": "A complete protein.",
+            "description": "Collagen alone isn't complete. Tonique blends it with whey isolate so you get all 9 essential amino acids in one pouch.",
+            "badge_top_desktop": 22,
+            "badge_left_desktop": 14,
+            "badge_top_mobile": 28,
+            "badge_left_mobile": 30
+          }
+        },
+        "reason_Ciqj9c": {
+          "type": "reason",
+          "settings": {
+            "title": "Five nutrients, built in.",
+            "description": "Every pouch delivers collagen, whey protein, vitamin C, biotin, and hyaluronic acid — no stacking required.",
+            "badge_top_desktop": 44,
+            "badge_left_desktop": 80,
+            "badge_top_mobile": 46,
+            "badge_left_mobile": 68
+          }
+        },
+        "reason_QqAGpU": {
+          "type": "reason",
+          "settings": {
+            "title": "A gram of fiber that does real work.",
+            "description": "Inulin feeds your gut microbiome and helps keep you feeling satisfied without bloat.",
+            "badge_top_desktop": 66,
+            "badge_left_desktop": 14,
+            "badge_top_mobile": 66,
+            "badge_left_mobile": 30
+          }
+        },
+        "reason_jfgmQF": {
+          "type": "reason",
+          "settings": {
+            "title": "Monkfruit, not sucralose.",
+            "description": "Sweetened naturally with monkfruit — no artificial sweeteners, no aftertaste, just clean flavor.",
+            "badge_top_desktop": 88,
+            "badge_left_desktop": 80,
+            "badge_top_mobile": 84,
+            "badge_left_mobile": 68
+          }
+        }
+      },
+      "block_order": [
+        "reason_keDA3d",
+        "reason_Ciqj9c",
+        "reason_QqAGpU",
+        "reason_jfgmQF"
+      ],
+      "name": "Why Tonique",
+      "settings": {
+        "heading": "4 reasons WHY TONIQUE",
+        "subtext": "Semper vel lacus cras nam. Tempor egestas ipsum consequat libero at sed aenean aenean. Quam sociis id quam.",
+        "product_image": "shopify://shop_images/bottle.svg"
+      }
+    },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -155,6 +268,8 @@
   },
   "order": [
     "main",
+    "text_scroller_y98phK",
+    "why_tonique_QYHPbC",
     "related-products"
   ]
 }
