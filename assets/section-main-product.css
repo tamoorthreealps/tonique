@@ -1319,7 +1319,7 @@ a.product__text {
   padding-top: min(var(--constrained-height), var(--ratio-percent));
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 991px) {
   .product-media-container.media-fit-cover {
     display: flex;
     align-self: stretch;
@@ -1327,7 +1327,10 @@ a.product__text {
 
   .product-media-container.media-fit-cover .media {
     /* allow media img element to scale relative to modal-opener/product-media-container */
-    position: initial;
+            position: initial;
+        max-height: 392px;
+        min-height: 392px;
+        padding: 0;
   }
 }
 
