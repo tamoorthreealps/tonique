@@ -799,6 +799,9 @@
               {%- when 'product-benefits-list' -%}
                 {% render 'component-product-benefits-list', block: block %}
 
+              {%- when 'product-testimonial' -%}
+                {% render 'component-product-testimonial-card', block: block %}
+
               {%- when 'pack_size_cards' -%}
                 {%- comment -%} Find pack size option index {%- endcomment -%}
                 {%- assign pp_pack_option_index = null -%}
