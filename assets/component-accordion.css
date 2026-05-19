@@ -1,72 +1,75 @@
-.product__accordion__head{
-    margin-top: 48px;
+.product__accordion__head {
+	margin-top: 48px;
 }
+
 .accordion summary {
-display: flex;
-    position: relative;
-    line-height: 1;
-    padding: 20px 0;
+	display: flex;
+	position: relative;
+	line-height: 1;
+	padding: 20px 0;
 }
 
 .accordion .summary__title {
-  display: flex;
-  flex: 1;
-  align-items: center;
-    gap: 12px;
+	display: flex;
+	flex: 1;
+	align-items: center;
+	gap: 12px;
 }
 
-.accordion .summary__title + .icon-caret {
-  height: calc(var(--font-heading-scale) * 0.6rem);
-  display:none;
+.accordion .summary__title+.icon-caret {
+	height: calc(var(--font-heading-scale) * 0.6rem);
+	display: none;
 }
 
-.accordion + .accordion {
-  margin-top: 0;
-  border-top: none;
+.accordion+.accordion {
+	margin-top: 0;
+	border-top: none;
 }
 
 .accordion {
-  border-top: 1px solid #433723;
-  border-bottom: 1px solid #433723;
+	border-top: 1px solid #433723;
+	border-bottom: 1px solid #433723;
 }
 
 .summar__title__icon {
-    width: 12px;
-    height: 12px;
+	width: 12px;
+	height: 12px;
 }
-.accordion details[open] .summar__title__icon{
-  transform: rotate(45deg);
+
+.accordion details[open] .summar__title__icon {
+	transform: rotate(45deg);
 }
+
 .accordion__title {
-margin: 0;
-    word-break: break-word;
-    color: #433723;
-    font-size: 16px;
-    line-height: 24px;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 1.28px;
+	margin: 0;
+	word-break: break-word;
+	color: #433723;
+	font-size: 16px;
+	line-height: 24px;
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 1.28px;
 }
 
 .accordion .svg-wrapper {
-  align-self: center;
-  fill: rgb(var(--color-foreground));
-  height: calc(var(--font-heading-scale) * 2rem);
-  margin-right: calc(var(--font-heading-scale) * 1rem);
-  width: calc(var(--font-heading-scale) * 2rem);
+	align-self: center;
+	fill: rgb(var(--color-foreground));
+	height: calc(var(--font-heading-scale) * 2rem);
+	margin-right: calc(var(--font-heading-scale) * 1rem);
+	width: calc(var(--font-heading-scale) * 2rem);
 }
 
-.accordion details[open] > summary .icon-caret {
-  transform: rotate(180deg);
+.accordion details[open]>summary .icon-caret {
+	transform: rotate(180deg);
 }
 
 .accordion__content {
-  margin-bottom: 1.5rem;
-  word-break: break-word;
-  overflow-x: auto;
-  padding: 0 0.6rem;
+	margin-bottom: 1.5rem;
+	word-break: break-word;
+	overflow-x: auto;
+	padding: 0 0.6rem;
 }
 
 .accordion__content img {
-  max-width: 100%;
+	max-width: 100%;
 }
