@@ -246,6 +246,107 @@
         "product_image": "shopify://shop_images/bottle.svg"
       }
     },
+    "icons_with_text_YTmHdg": {
+      "type": "icons-with-text",
+      "blocks": {
+        "icon_item_4EkDC9": {
+          "type": "icon_item",
+          "settings": {
+            "label": "Beauty + performance support"
+          }
+        },
+        "icon_item_PzL6Er": {
+          "type": "icon_item",
+          "settings": {
+            "label": "Supports skin firmness & elasticity"
+          }
+        },
+        "icon_item_H4Y9aB": {
+          "type": "icon_item",
+          "settings": {
+            "label": "Helps reduce the appearance of wrinkles"
+          }
+        },
+        "icon_item_dLBPGL": {
+          "type": "icon_item",
+          "settings": {
+            "label": "Supports lean muscle mass & recovery"
+          }
+        },
+        "icon_item_6p9qna": {
+          "type": "icon_item",
+          "settings": {
+            "label": "Supports joint comfort & mobility"
+          }
+        },
+        "icon_item_yGwBRr": {
+          "type": "icon_item",
+          "settings": {
+            "label": "Contributes to healthy bone mass"
+          }
+        }
+      },
+      "block_order": [
+        "icon_item_4EkDC9",
+        "icon_item_PzL6Er",
+        "icon_item_H4Y9aB",
+        "icon_item_dLBPGL",
+        "icon_item_6p9qna",
+        "icon_item_yGwBRr"
+      ],
+      "name": "Icons with Text",
+      "settings": {}
+    },
+    "video_reviews_fG9rNh": {
+      "type": "video-reviews",
+      "blocks": {
+        "video_card_BBgWBL": {
+          "type": "video_card",
+          "settings": {
+            "video": "shopify://files/videos/file_example_MP4_480_1_5MG.mp4",
+            "badge_label": "CLEAN LABEL",
+            "handle": "@mayarstudio",
+            "role": "Pilates instructor"
+          }
+        },
+        "video_card_zMHhpz": {
+          "type": "video_card",
+          "settings": {
+            "badge_label": "DAILY USE",
+            "handle": "@mayarstudio",
+            "role": "Strength coach"
+          }
+        },
+        "video_card_Y8AbLX": {
+          "type": "video_card",
+          "settings": {
+            "badge_label": "TASTE",
+            "handle": "Jess T.",
+            "role": "Wellness creator"
+          }
+        },
+        "video_card_tcMGtN": {
+          "type": "video_card",
+          "settings": {
+            "badge_label": "FOR YOU",
+            "handle": "@mayarstudio",
+            "role": "Working mom"
+          }
+        }
+      },
+      "block_order": [
+        "video_card_BBgWBL",
+        "video_card_zMHhpz",
+        "video_card_Y8AbLX",
+        "video_card_tcMGtN"
+      ],
+      "name": "Video Reviews",
+      "settings": {
+        "heading": "See why they keep one in their bag",
+        "subtext": "From Pilates instructors to busy moms, see how Tonique fits into the moments that matter.",
+        "disclaimer": "*Testimonials featured in videos or other promotional materials may include individuals who have received compensation, free product, or other incentives."
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -270,6 +371,8 @@
     "main",
     "text_scroller_y98phK",
     "why_tonique_QYHPbC",
+    "icons_with_text_YTmHdg",
+    "video_reviews_fG9rNh",
     "related-products"
   ]
 }
