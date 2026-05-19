@@ -682,6 +682,10 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
     max-width: 100%;
     width: 100%;
 }
+.quantity--buy--buttons .quantity:after{
+  box-shadow: none;
+      border: 1px solid #D9D7D3;
+}
 @media screen and (min-width: 768px) {
 
 
