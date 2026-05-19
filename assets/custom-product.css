@@ -336,12 +336,13 @@
 }
 
 .pp-sub-widget__label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgb(var(--color-foreground));
-  margin: 0 0 10px;
+font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .56px;
+    margin: 0 0 16px;
+    color: #433723;
 }
 
 /* ── Option card ── */
