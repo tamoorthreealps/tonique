@@ -1,16 +1,32 @@
 <div class="component--product--testimonial--card">
     <div class="component--product--testimonial--card__image">
-        <img src="https://placehold.co/300x300" alt="testimonial">
+        {% if block.settings.image != blank %}
+            <img 
+                src="{{ block.settings.image | image_url: width: 600 }}" 
+                alt="testimonial"
+                width=""
+                height=""
+            >
+        {% endif %}
     </div>
 
     <div class="component--product--testimonial--card__content">
-        <p class="component--product--testimonial--card__text">
-            “Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac.”
-        </p>
+        {% if block.settings.quote != blank %}
+            <p class="component--product--testimonial--card__text">
+                {{ block.settings.quote }}
+            </p>
+        {% endif %}
 
-        <div class="component--product--testimonial--card__signature">
-            <img src="https://placehold.co/120x60" alt="signature">
-        </div>
+        {% if block.settings.signature != blank %}
+            <div class="component--product--testimonial--card__signature">
+                <img 
+                    src="{{ block.settings.signature | image_url: width: 240 }}" 
+                    alt="signature"
+                    width=""
+                    height=""
+                >
+            </div>
+        {% endif %}
     </div>
 </div>
 
