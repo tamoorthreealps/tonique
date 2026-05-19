@@ -95,7 +95,9 @@
         },
         "product_benefits_list_kYc9gC": {
           "type": "product-benefits-list",
-          "settings": {}
+          "settings": {
+            "benefits_list": "<ul><li>Free shipping on orders over [$X]</li><li>Skip, pause, or cancel anytime</li></ul>"
+          }
         },
         "metafield_accordions_Njrdwt": {
           "type": "metafield_accordions",
