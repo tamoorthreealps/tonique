@@ -1,0 +1,70 @@
+<div class="component--product--testimonial--card">
+    <div class="component--product--testimonial--card__image">
+        <img src="https://placehold.co/300x300" alt="testimonial">
+    </div>
+
+    <div class="component--product--testimonial--card__content">
+        <p class="component--product--testimonial--card__text">
+            “Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac.”
+        </p>
+
+        <div class="component--product--testimonial--card__signature">
+            <img src="https://placehold.co/120x60" alt="signature">
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+.component--product--testimonial--card{
+    display:flex;
+    align-items:center;
+    background:#F5F1E8;
+}
+
+.component--product--testimonial--card__image{
+    width:32%;
+}
+
+.component--product--testimonial--card__image img{
+    width:100%;
+    display:block;
+}
+
+.component--product--testimonial--card__content{
+    width:68%;
+    padding:40px;
+    text-align:center;
+}
+
+.component--product--testimonial--card__text{
+    font-size:32px;
+    line-height:1.4;
+    color:#4A3B2A;
+    margin:0 0 24px;
+}
+
+.component--product--testimonial--card__signature img{
+    max-width:120px;
+}
+
+@media(max-width:767px){
+    .component--product--testimonial--card{
+        flex-direction:column;
+    }
+
+    .component--product--testimonial--card__image,
+    .component--product--testimonial--card__content{
+        width:100%;
+    }
+
+    .component--product--testimonial--card__content{
+        padding:24px;
+    }
+
+    .component--product--testimonial--card__text{
+        font-size:24px;
+    }
+}
+</style>
