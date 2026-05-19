@@ -372,21 +372,23 @@
                         {{- 'products.product.quantity.label' | t -}}
                       {%- endif -%}
                     </span>
-                    {% comment %} <label
-                      class="quantity__label form__label"
-                      for="Quantity-{{ section.id }}"
-                      aria-labelledby="quantity-label-{{ section.id }}"
-                    >
-                      <span aria-hidden="true">{{ 'products.product.quantity.label' | t }}</span>
-                      <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}" aria-hidden="true">
-                        {%- render 'loading-spinner' -%}
-                        <span
-                          >(
-                          {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
-                          )</span
-                        >
-                      </span>
-                    </label> {% endcomment %}
+                    {% comment %}
+                      <label
+                        class="quantity__label form__label"
+                        for="Quantity-{{ section.id }}"
+                        aria-labelledby="quantity-label-{{ section.id }}"
+                      >
+                        <span aria-hidden="true">{{ 'products.product.quantity.label' | t }}</span>
+                        <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}" aria-hidden="true">
+                          {%- render 'loading-spinner' -%}
+                          <span
+                            >(
+                            {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
+                            )</span
+                          >
+                        </span>
+                      </label>
+                    {% endcomment %}
                     <div class="price-per-item__container">
                       <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
                         <button class="quantity__button" name="minus" type="button">
@@ -394,7 +396,15 @@
                             {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                           </span>
                           <span class="svg-wrapper">
-                            {{- 'icon-minus.svg' | inline_asset_content -}}
+                            <svg
+                              width="12"
+                              height="2"
+                              viewBox="0 0 12 2"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M5.40088 4.43459e-05L0 0V1.4981H5.40088H6.90015H12V0H6.90015L5.40088 4.43459e-05Z" fill="#B4AFA7"/>
+                            </svg>
                           </span>
                         </button>
                         <input
@@ -418,7 +428,15 @@
                             {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                           </span>
                           <span class="svg-wrapper">
-                            {{- 'icon-plus.svg' | inline_asset_content -}}
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 12 12"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M5.40088 0V5.38847H0V6.88657H5.40088V12H6.90015V6.88657H12V5.38847H6.90015V0H5.40088Z" fill="#B4AFA7"/>
+                            </svg>
                           </span>
                         </button>
                       </quantity-input>
