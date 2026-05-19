@@ -35,7 +35,6 @@
 .pp-pack-cards__grid {
   display: flex;
   gap: 8px;
-  padding-top: 14px;
 }
 
 .pp-pack-card {
