@@ -12,6 +12,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "product_tags_8PJ3KG": {
+          "type": "product-tags",
+          "settings": {}
+        },
         "vendor": {
           "type": "text",
           "disabled": true,
@@ -113,6 +117,7 @@
         }
       },
       "block_order": [
+        "product_tags_8PJ3KG",
         "vendor",
         "text_YgTLkG",
         "title",
