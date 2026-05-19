@@ -1495,3 +1495,36 @@ a.product__text {
 
 
 /*----- waqar--css--code----- */
+.component--product--main--section .page-width {
+    max-width: 1512px;
+    padding: 0;
+}
+
+.component--product--main--section .product__media-wrapper, .component--product--main--section .product__info-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.component--product--main--section .product__info-wrapper{
+    padding: 24px 24px 36px !important;
+}
+
+.product-media-container.media-type-image {
+    border: 0 !important;
+}
+
+@media screen and (min-width: 991px) {
+.component--product--main--section .product.grid {
+    gap: 68px !important;
+}
+.component--product--main--section .product__media-wrapper {
+    max-width: 58.5% !important;
+    width: 58.5% !important;
+}
+.component--product--main--section .product__info-wrapper{
+    max-width: 33.1% !important;
+    width: 100% !important;
+    padding: 48px 0 32px !important;
+}
+
+}
