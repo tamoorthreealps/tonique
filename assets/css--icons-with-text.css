@@ -1,0 +1,100 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--icons-with-text.css
+   Desktop: 6 icons in a single row, evenly spaced
+   Mobile:  2-column grid, 3 rows
+───────────────────────────────────────────────────────────────── */
+
+.iwt-section {
+  background: #fbf9f3;
+  border-top: 1px solid #977b4f;
+  border-bottom: 1px solid #977b4f;
+}
+
+.iwt-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 48px 80px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ── Single item ────────────────────────────────── */
+.iwt-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  width: 200px;
+  text-align: center;
+}
+
+.iwt-item__icon {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iwt-item__icon img,
+.iwt-item__icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.iwt-item__label {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #433723;
+  margin: 0;
+  max-width: 132px;
+}
+
+/* ── Mobile ─────────────────────────────────────── */
+@media screen and (max-width: 749px) {
+  .iwt-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 16px;
+    padding: 40px 24px;
+    justify-items: center;
+  }
+
+  .iwt-item {
+    width: 100%;
+    max-width: 160px;
+  }
+
+  .iwt-item__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .iwt-item__label {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+/* ── Tablet ─────────────────────────────────────── */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .iwt-inner {
+    padding: 40px 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px 24px;
+  }
+
+  .iwt-item {
+    width: calc(33.33% - 24px);
+  }
+}

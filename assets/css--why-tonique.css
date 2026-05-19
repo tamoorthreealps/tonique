@@ -1,0 +1,359 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--why-tonique.css
+   3-col layout: heading | bottle + badges | reasons list
+   Mobile: stacked heading → bottle → carousel
+───────────────────────────────────────────────────────────────── */
+
+/* ── Section shell ──────────────────────────────── */
+.wt-section {
+  background: #fbf9f3;
+  padding: 80px 0 100px;
+  overflow: hidden;
+}
+
+/* ── 3-col desktop grid ─────────────────────────── */
+.wt-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1.4fr;
+  grid-template-areas: "heading visual reasons";
+  gap: 0 48px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 80px;
+  align-items: start;
+}
+
+/* ── Heading column ─────────────────────────────── */
+.wt-heading {
+  grid-area: heading;
+  padding-top: 16px;
+}
+
+.wt-heading__title {
+  font-family: 'Archivo', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 4.32px;
+  text-transform: uppercase;
+  color: #977b4f;
+  margin: 0 0 16px;
+}
+
+.wt-heading__sub {
+  font-family: 'Archivo', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #433723;
+  margin: 0;
+}
+
+/* ── Visual column (bottle + badges) ───────────── */
+.wt-visual {
+  grid-area: visual;
+  position: relative;
+}
+
+.wt-visual__image-wrap {
+  width: 100%;
+  line-height: 0;
+}
+
+.wt-visual__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Number badges ──────────────────────────────── */
+.wt-badge {
+  position: absolute;
+  top: var(--badge-top-d);
+  left: var(--badge-left-d);
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid #977b4f;
+  background: #fbf9f3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.25s, border-color 0.25s;
+  z-index: 2;
+}
+
+/* Inner decorative ring */
+.wt-badge::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid #977b4f;
+  background: transparent;
+  pointer-events: none;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.wt-badge__num {
+  font-family: 'Archivo', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: #977b4f;
+  position: relative;
+  z-index: 1;
+  transition: color 0.25s;
+}
+
+/* Active badge — filled dark */
+.wt-badge.is-active {
+  background: #977b4f;
+  border-color: #977b4f;
+}
+
+.wt-badge.is-active::before {
+  background: #7a6140;
+  border-color: #7a6140;
+}
+
+.wt-badge.is-active .wt-badge__num {
+  color: #fbf9f3;
+}
+
+/* ── Reasons list (desktop right column) ────────── */
+.wt-reasons {
+  grid-area: reasons;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+
+.wt-reason {
+  padding: 20px 0;
+  border-bottom: 1px solid #d6cfc5;
+  transition: all 0.2s;
+}
+
+.wt-reason:last-child {
+  border-bottom: 1px solid #d6cfc5;
+}
+
+.wt-reason__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Wavy line icon — only visible when active */
+.wt-reason__icon {
+  display: none;
+  flex-shrink: 0;
+  width: 24px;
+  height: 4px;
+  color: #977b4f;
+}
+
+.wt-reason__title {
+  font-family: 'Archivo', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.64px;
+  text-transform: uppercase;
+  color: #433723;
+  margin: 0;
+  transition: color 0.2s, font-size 0.2s;
+}
+
+.wt-reason__desc {
+  font-family: 'Archivo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #433723;
+  margin: 12px 0 0;
+  display: none;
+}
+
+/* Active reason */
+.wt-reason.is-active .wt-reason__icon {
+  display: block;
+}
+
+.wt-reason.is-active .wt-reason__title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  color: #977b4f;
+}
+
+.wt-reason.is-active .wt-reason__desc {
+  display: block;
+}
+
+/* ── Carousel (mobile only) ─────────────────────── */
+.wt-carousel {
+  display: none;
+}
+
+/* ── Mobile ─────────────────────────────────────── */
+@media screen and (max-width: 749px) {
+  .wt-section {
+    padding: 48px 0 56px;
+  }
+
+  .wt-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+    gap: 0;
+  }
+
+  /* Hide desktop reasons on mobile */
+  .wt-reasons {
+    display: none;
+  }
+
+  /* Heading — centered on mobile */
+  .wt-heading {
+    text-align: center;
+    padding-top: 0;
+    margin-bottom: 32px;
+  }
+
+  .wt-heading__title {
+    font-size: 28px;
+    line-height: 40px;
+    letter-spacing: 1.12px;
+    margin-bottom: 0;
+  }
+
+  .wt-heading__sub {
+    display: none;
+  }
+
+  /* Visual — full width, bottle centered */
+  .wt-visual {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  /* Mobile badge sizing */
+  .wt-badge {
+    width: 48px;
+    height: 48px;
+    top: var(--badge-top-m);
+    left: var(--badge-left-m);
+  }
+
+  .wt-badge::before {
+    inset: 8px;
+  }
+
+  .wt-badge__num {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.64px;
+  }
+
+  /* Carousel — visible on mobile */
+  .wt-carousel {
+    display: block;
+    padding: 28px 24px 0;
+    text-align: center;
+  }
+
+  .wt-slide {
+    display: none;
+    animation: wt-fade-in 0.25s ease;
+  }
+
+  .wt-slide.is-active {
+    display: block;
+  }
+
+  @keyframes wt-fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .wt-slide__title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #977b4f;
+    margin: 0 0 8px;
+  }
+
+  .wt-slide__desc {
+    font-family: 'Archivo', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #433723;
+    margin: 0;
+  }
+
+  /* Pagination + counter */
+  .wt-carousel__footer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .wt-pagination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .wt-pagination__seg {
+    height: 2px;
+    width: 64px;
+    background: #d6cfc5;
+    border-radius: 1px;
+    transition: background 0.25s;
+  }
+
+  .wt-pagination__seg.is-active {
+    background: #977b4f;
+  }
+
+  .wt-carousel__counter {
+    font-family: 'Archivo', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: #8e877b;
+  }
+}
+
+/* ── Mid breakpoint (tablet) ────────────────────── */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .wt-inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "heading heading"
+      "visual  reasons";
+    padding: 0 40px;
+    gap: 40px 40px;
+  }
+
+  .wt-heading {
+    padding-top: 0;
+  }
+}

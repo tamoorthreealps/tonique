@@ -1,0 +1,62 @@
+{{ 'css--icons-with-text.css' | asset_url | stylesheet_tag }}
+
+<div class="iwt-section" id="IconsWithText-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="iwt-inner">
+    {%- for block in section.blocks -%}
+      <div class="iwt-item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon != blank -%}
+          <div class="iwt-item__icon">
+            {{-
+              block.settings.icon
+              | image_url: width: 128
+              | image_tag: loading: 'lazy', alt: block.settings.label, width: 64, height: 64
+            -}}
+          </div>
+        {%- endif -%}
+        {%- if block.settings.label != blank -%}
+          <p class="iwt-item__label">{{ block.settings.label }}</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Icons with Text",
+  "class": "section-icons-with-text",
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "icon_item",
+      "name": "Icon item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (SVG or image)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Beauty + performance support"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icons with Text",
+      "blocks": [
+        { "type": "icon_item", "settings": { "label": "Beauty + performance support" } },
+        { "type": "icon_item", "settings": { "label": "Supports skin firmness & elasticity" } },
+        { "type": "icon_item", "settings": { "label": "Helps reduce the appearance of wrinkles" } },
+        { "type": "icon_item", "settings": { "label": "Supports lean muscle mass & recovery" } },
+        { "type": "icon_item", "settings": { "label": "Supports joint comfort & mobility" } },
+        { "type": "icon_item", "settings": { "label": "Contributes to healthy bone mass" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

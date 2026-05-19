@@ -1,0 +1,376 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--video-reviews.css
+   Desktop : heading + 4-up card row
+   Mobile  : 2-column grid
+   Each card: muted bg video + play-button-opens-popup + badge pill + user info
+───────────────────────────────────────────────────────────────── */
+
+/* ── Section shell ──────────────────────────────── */
+.vr-section {
+  background: #fbf9f3;
+  padding: 80px 0 64px;
+}
+
+.vr-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* ── Heading block ──────────────────────────────── */
+.vr-heading-block {
+  margin-bottom: 40px;
+}
+
+.vr-heading {
+  font-family: 'Archivo', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 4.32px;
+  text-transform: uppercase;
+  color: #977b4f;
+  margin: 0 0 12px;
+  white-space: nowrap;
+}
+
+.vr-subtext {
+  font-family: 'Archivo', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #433723;
+  margin: 0;
+}
+
+/* ── Cards row ──────────────────────────────────── */
+.vr-cards {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* ── Single card ────────────────────────────────── */
+.vr-card {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Video thumbnail wrapper */
+.vr-card__video-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 289 / 512;
+  background: #e8e5d8;
+  border: 1px solid #977b4f;
+  border-right: none;
+  cursor: pointer;
+}
+
+.vr-card:last-child .vr-card__video-wrap {
+  border-right: 1px solid #977b4f;
+}
+
+/* Background muted video fills the card */
+.vr-card__bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Poster image (fallback / before video loads) */
+.vr-card__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.vr-card__poster.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Badge pill (top-left) */
+.vr-card__badge {
+  position: absolute;
+  top: 16px;
+  left: 17px;
+  background: #ffffff;
+  border: 1px solid #977b4f;
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #977b4f;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Play button (centred) */
+.vr-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: rgba(151, 123, 79, 0.85);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
+}
+
+.vr-card__play:hover {
+  background: #977b4f;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.vr-card__play svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+  margin-left: 3px; /* optical centre for play triangle */
+}
+
+/* User info below card */
+.vr-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vr-card__handle {
+  font-family: 'Archivo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #977b4f;
+  margin: 0;
+}
+
+.vr-card__role {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  color: #433723;
+  margin: 0;
+}
+
+/* ── Disclaimer note ────────────────────────────── */
+.vr-note {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.vr-note__line {
+  width: 100%;
+  height: 1px;
+  background: #d6cfc5;
+}
+
+.vr-note__text {
+  font-family: 'Archivo', sans-serif;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.28px;
+  color: #433723;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Video popup modal ──────────────────────────── */
+.vr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.vr-modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.vr-modal__inner {
+  position: relative;
+  width: min(90vw, 540px);
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.vr-modal__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.vr-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.vr-modal__close:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.vr-modal__close svg {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+}
+
+/* ── Mobile ─────────────────────────────────────── */
+@media screen and (max-width: 749px) {
+  .vr-section {
+    padding: 48px 0 40px;
+  }
+
+  .vr-inner {
+    padding: 0 24px;
+  }
+
+  .vr-heading-block {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .vr-heading {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 1.92px;
+    white-space: normal;
+  }
+
+  .vr-subtext {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  /* 2-column grid on mobile */
+  .vr-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .vr-card {
+    gap: 12px;
+  }
+
+  .vr-card__video-wrap {
+    aspect-ratio: 172 / 304;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  /* All cards share borders sensibly in the grid */
+  .vr-card:nth-child(2) .vr-card__video-wrap {
+    border-right: 1px solid #977b4f;
+  }
+
+  .vr-card:nth-last-child(-n+2) .vr-card__video-wrap {
+    border-bottom: 1px solid #977b4f;
+  }
+
+  .vr-card__badge {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 12px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .vr-card__play {
+    width: 48px;
+    height: 48px;
+  }
+
+  .vr-card__play svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 2px;
+  }
+
+  .vr-card__handle {
+    font-size: 14px;
+  }
+
+  .vr-card__role {
+    font-size: 12px;
+    letter-spacing: 0.12px;
+  }
+
+  .vr-note {
+    margin-top: 32px;
+    gap: 16px;
+  }
+
+  .vr-note__text {
+    font-size: 13px;
+    letter-spacing: 0.26px;
+    text-align: left;
+  }
+
+  .vr-modal__inner {
+    width: min(95vw, 360px);
+  }
+}
+
+/* ── Tablet ─────────────────────────────────────── */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .vr-inner {
+    padding: 0 40px;
+  }
+
+  .vr-heading {
+    font-size: 28px;
+    line-height: 40px;
+    white-space: normal;
+  }
+}

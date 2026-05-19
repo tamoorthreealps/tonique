@@ -1,0 +1,66 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--text-scroller.css
+   Scrolling marquee band — brand-claim items
+───────────────────────────────────────────────────────────────── */
+
+.ts-section {
+  height: 88px;
+  border-bottom: 1px solid #977b4f;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #fbf9f3;
+}
+
+.ts-track-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+.ts-track {
+  display: flex;
+  align-items: center;
+  gap: 82px;
+  width: max-content;
+  animation: ts-scroll 28s linear infinite;
+}
+
+.ts-section:hover .ts-track {
+  animation-play-state: paused;
+}
+
+.ts-item {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 2.56px;
+  text-transform: uppercase;
+  color: #977b4f;
+  flex-shrink: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+@keyframes ts-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Mobile ─────────────────────────────────────── */
+@media screen and (max-width: 749px) {
+  .ts-section {
+    height: 64px;
+  }
+
+  .ts-track {
+    gap: 48px;
+    animation-duration: 18s;
+  }
+
+  .ts-item {
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 1.92px;
+  }
+}

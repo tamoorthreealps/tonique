@@ -1,0 +1,50 @@
+{{ 'css--text-scroller.css' | asset_url | stylesheet_tag }}
+
+<div class="ts-section" id="TextScroller-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="ts-track-wrap" aria-hidden="true">
+    <div class="ts-track" id="ts-track-{{ section.id }}">
+      {%- comment -%} First set {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <span class="ts-item" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- endfor -%}
+      {%- comment -%} Duplicate — seamless infinite loop {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <span class="ts-item">{{ block.settings.text }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text Scroller",
+  "class": "section-text-scroller",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Scroll item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "No artificial sweeteners"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Scroller",
+      "blocks": [
+        { "type": "item", "settings": { "text": "No sucralose" } },
+        { "type": "item", "settings": { "text": "No sodium benzoate" } },
+        { "type": "item", "settings": { "text": "No artificial sweeteners" } },
+        { "type": "item", "settings": { "text": "No sucralose" } },
+        { "type": "item", "settings": { "text": "No sodium benzoate" } },
+        { "type": "item", "settings": { "text": "No artificial sweeteners" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
