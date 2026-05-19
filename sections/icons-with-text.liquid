@@ -1,23 +1,25 @@
 {{ 'css--icons-with-text.css' | asset_url | stylesheet_tag }}
 
 <div class="iwt-section" id="IconsWithText-{{ section.id }}" {{ section.shopify_attributes }}>
-  <div class="iwt-inner">
-    {%- for block in section.blocks -%}
-      <div class="iwt-item" {{ block.shopify_attributes }}>
-        {%- if block.settings.icon != blank -%}
-          <div class="iwt-item__icon">
-            {{-
-              block.settings.icon
-              | image_url: width: 128
-              | image_tag: loading: 'lazy', alt: block.settings.label, width: 64, height: 64
-            -}}
-          </div>
-        {%- endif -%}
-        {%- if block.settings.label != blank -%}
-          <p class="iwt-item__label">{{ block.settings.label }}</p>
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
+  <div class="iwt-inner--container">
+    <div class="iwt-inner">
+      {%- for block in section.blocks -%}
+        <div class="iwt-item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="iwt-item__icon">
+              {{-
+                block.settings.icon
+                | image_url: width: 128
+                | image_tag: loading: 'lazy', alt: block.settings.label, width: 64, height: 64
+              -}}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.label != blank -%}
+            <p class="iwt-item__label">{{ block.settings.label }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
   </div>
 </div>
 
