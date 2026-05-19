@@ -347,13 +347,14 @@ font-size: 14px;
 
 /* ── Option card ── */
 .pp-sub-option {
-      border: 1px solid #D9D7D3;
+          border: 1px solid #D9D7D3;
     transition: border-color .2s ease;
     cursor: pointer;
+    padding: 20px 24px;
 }
 
 .pp-sub-option + .pp-sub-option {
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 .pp-sub-option.is-selected {
@@ -363,12 +364,11 @@ font-size: 14px;
 
 /* ── Header row ── */
 .pp-sub-option__header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  cursor: pointer;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    width: 100%;
 }
 
 /* Hide native radio */
@@ -422,13 +422,13 @@ content: "";
 }
 
 .pp-sub-option__title {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgb(var(--color-foreground));
-  line-height: 1.2;
+display: block;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.72px;
+    color: #433723;
 }
 
 .pp-sub-option--onetime .pp-sub-option__title {
