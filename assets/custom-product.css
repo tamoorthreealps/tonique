@@ -631,54 +631,7 @@ width: 100%;
    All overrides in ONE media query block.
    ================================================
    ───────────────────────────────────────────────── */
-.quantity--buy--buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-}
-.quantity--buy--buttons .price-per-item__container {
-    height: 100%;
-}
-.quantity--buy--buttons .product-form__input{
-    margin: 0;
-    width: 100%;
-    max-width: 120px;
-    min-width: 120px;
-    flex: auto;
-    margin-right: 12px;
-}
-.quantity--buy--buttons product-form.product-form {
-    margin: 0 !important;
-    width: 100%;
-}
-.quantity--buy--buttons .product-form__submit {
-background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
-    border: 0 !important;
-    box-shadow: unset !important;
-    --border-offset: unset;
-    margin: 0;
-    color: #F9F7F0;
-    font-size: 20px;
-    line-height: 24px;
-    font-family: 'Archivo';
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1.6px;
-    padding: 28px;
-    background-image: linear-gradient(90deg, rgb(168, 137, 88), rgb(185, 161, 121), rgb(168, 137, 88));
-    --border-opacity: auto;
-}
-.quantity--buy--buttons .product-form__submit:hover{
-  opacity:0.85;
-}
-.quantity--buy--buttons quantity-input.quantity {
-    width: 100%;
-    min-height: 100%;
-}
-.quantity--buy--buttons .product-form__buttons {
-    max-width: 100%;
-    width: 100%;
-}
+
 @media screen and (min-width: 768px) {
 
 
