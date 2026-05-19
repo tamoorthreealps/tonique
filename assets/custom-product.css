@@ -351,7 +351,7 @@ display: inline-flex;
 }
 
 .pp-sub-option + .pp-sub-option {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .pp-sub-option.is-selected {
@@ -1030,5 +1030,7 @@ font-size: 16px;
 .pp-sub-option {
     padding: 20px 24px;
 }
-
+.pp-sub-option + .pp-sub-option {
+  margin-top: 16px;
+}
 }
