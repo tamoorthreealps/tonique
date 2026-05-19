@@ -10,6 +10,9 @@
    ───────────────────────────────────────────────── */
 
 /* Force-hide the pack-size radio group regardless of inline style overrides */
+.pp-pack-cards *{
+  font-family: 'Archivo';
+}
 .pp-hidden-option {
   display: none !important;
 }
