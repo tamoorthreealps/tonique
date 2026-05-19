@@ -14,9 +14,17 @@
       "blocks": {
         "vendor": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.vendor }}",
             "text_style": "uppercase"
+          }
+        },
+        "text_YgTLkG": {
+          "type": "text",
+          "settings": {
+            "text": "R E A D Y- TO - D R I N K",
+            "text_style": "body"
           }
         },
         "title": {
@@ -91,6 +99,7 @@
       },
       "block_order": [
         "vendor",
+        "text_YgTLkG",
         "title",
         "short_description_wCjihb",
         "price",
