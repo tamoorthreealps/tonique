@@ -1,11 +1,4 @@
-/* ─────────────────────────────────────────────────────────────────
-   css--video-reviews.css
-   Desktop : heading + 4-up card row
-   Mobile  : 2-column grid
-   Each card: muted bg video + play-button-opens-popup + badge pill + user info
-───────────────────────────────────────────────────────────────── */
 
-/* ── Section shell ──────────────────────────────── */
 .vr-section {
   padding-bottom:120px;
 }
@@ -16,7 +9,6 @@
   padding: 0 80px;
 }
 
-/* ── Heading block ──────────────────────────────── */
 .vr-heading-block {
   margin-bottom: 40px;
 }
