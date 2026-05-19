@@ -347,7 +347,7 @@ display: inline-flex;
           border: 1px solid #D9D7D3;
     transition: border-color .2s ease;
     cursor: pointer;
-    padding: 20px 24px;
+    padding: 16px;
 }
 
 .pp-sub-option + .pp-sub-option {
@@ -1025,4 +1025,8 @@ font-size: 16px;
   height: 12px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12' fill='none'%3E%3Cpath d='M14.7713 0L4.95885 9.59668L1.22868 5.94855L0 7.15021L4.95885 12L16 1.20166L14.7713 0Z' fill='%23977B4F'/%3E%3C/svg%3E");
 }
+.pp-sub-option {
+    padding: 20px 24px;
+}
+
 }
