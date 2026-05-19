@@ -1048,7 +1048,7 @@ font-size: 16px;
 
 /*----- pdp--tags--css -----*/
 .product-tags--media {
-    display: inline-flex;
+    display: none;
     flex-direction: column;
     gap: 16px;
     position: absolute;
@@ -1071,5 +1071,7 @@ font-size: 16px;
     width: fit-content;
 }
 @media screen and (min-width: 991px) {
-
+  .product-tags--media {
+  display: inline-flex;
+  }
 }
