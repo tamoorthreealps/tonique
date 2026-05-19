@@ -264,36 +264,42 @@
         "icon_item_4EkDC9": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/Icon_Container.svg",
             "label": "Beauty + performance support"
           }
         },
         "icon_item_PzL6Er": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/Icon_Container_1.svg",
             "label": "Supports skin firmness & elasticity"
           }
         },
         "icon_item_H4Y9aB": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/Icon_Container_2.svg",
             "label": "Helps reduce the appearance of wrinkles"
           }
         },
         "icon_item_dLBPGL": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/Logo_Container.svg",
             "label": "Supports lean muscle mass & recovery"
           }
         },
         "icon_item_6p9qna": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/Icon_Container_3.svg",
             "label": "Supports joint comfort & mobility"
           }
         },
         "icon_item_yGwBRr": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/Image_Container.svg",
             "label": "Contributes to healthy bone mass"
           }
         }
