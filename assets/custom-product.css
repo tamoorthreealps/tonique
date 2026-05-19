@@ -129,10 +129,6 @@
   margin: 0 0 24px;
 }
 
-.pp-flavor-picker legend.form__label {
-  margin-bottom: 10px;
-}
-
 .pp-flavor-swatches {
   display: flex;
   flex-wrap: wrap;
@@ -156,14 +152,14 @@
 
 /* The pill itself */
 .pp-flavor-swatch__pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 14px 7px 7px;
-  border: 1px solid #EEEEEE;
-  border-radius: 100px;
-  background: transparent;
-  transition: border-color .2s ease, border-width .1s ease;
+display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5.5px 16px 5.5px 8px;
+    border: 1px solid #EEEEEE;
+    border-radius: 100px;
+    background: transparent;
+    transition: border-color .2s ease, border-width .1s ease;
 }
 
 /* 24px circle swatch */
@@ -860,19 +856,20 @@ p.component--pdp--short--description{
 }
 variant-selects {
     display: block;
-    border-top: 1px solid #ECEBE9;
-    padding: 24px 0 0;
-    margin-top: 24px;
+    border-top: 0;
+    padding: 28px 0 0;
+    margin-top: 0;
 }
 
 .pp-flavor-picker legend.form__label {
-    margin-bottom: 16px;
-    font-size: 14px;
-    line-height: 20px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    line-height: 16px;
     text-transform: uppercase;
     color: #433723;
     font-weight: 600;
-    letter-spacing: 0.56px;
+    letter-spacing: .52px;
+    padding: 0;
 }
 legend.form__label span {
     color: #8E877B;
@@ -926,5 +923,16 @@ p.component--pdp--short--description{
 a.component--product--nutrition_link{
     font-size: 16px;
     line-height: 24px;
+}
+variant-selects {
+    border-top: 1px solid #ECEBE9;
+    padding: 24px 0 0;
+    margin-top: 24px;
+}
+.pp-flavor-picker legend.form__label {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.56px;
 }
 }
