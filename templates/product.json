@@ -31,12 +31,12 @@
           "type": "title",
           "settings": {}
         },
-        "nutrition_facts_aaBCaM": {
-          "type": "nutrition-facts",
-          "settings": {}
-        },
         "short_description_wCjihb": {
           "type": "short-description",
+          "settings": {}
+        },
+        "nutrition_facts_aaBCaM": {
+          "type": "nutrition-facts",
           "settings": {}
         },
         "price": {
@@ -105,8 +105,8 @@
         "vendor",
         "text_YgTLkG",
         "title",
-        "nutrition_facts_aaBCaM",
         "short_description_wCjihb",
+        "nutrition_facts_aaBCaM",
         "price",
         "variant_picker",
         "pack_size_cards_EkfXQG",
