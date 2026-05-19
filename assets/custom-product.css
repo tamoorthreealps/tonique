@@ -822,7 +822,7 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
 }
 
 .component--product--main--section .product__info-wrapper{
-    padding: 24px 24px 36px !important;
+    padding: 16px 24px 36px !important;
 }
 
 .product-media-container.media-type-image {
@@ -830,30 +830,30 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
 }
 
 p.product__text{
-    color: #977B4F;
-    font-size: 16px;
-    line-height: 28px;
-    letter-spacing: 1.28px;
+    color: #977b4f;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.84px;
     text-transform: uppercase;
     font-weight: 400;
-    font-family: 'Archivo';
-    margin: 0 0 4px;
+    font-family: Archivo;
+    margin: 0 0 8px;
 }
 .product__title {
     margin: 0;
 }
 .product__title h1 {
-    color: #433723;
-    font-size: 40px;
-    line-height: 48px;
+color: #433723;
+    font-size: 36px;
+    line-height: 44px;
     margin: 0 0 8px;
     text-transform: uppercase;
-    letter-spacing: 9.60px;
+    letter-spacing: 1.44px;
 }
 p.component--pdp--short--description{
-    margin: 20px 0;
-    font-size: 16px;
-    line-height: 24px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 20px;
     letter-spacing: 0;
     color: #433723;
     font-weight: 400;
@@ -879,8 +879,8 @@ legend.form__label span {
     font-weight: 500;
 }
 a.component--product--nutrition_link{
-    font-size: 16px;
-    line-height: 24px;
+font-size: 14px;
+    line-height: 20px;
     color: #433723;
     font-weight: 400;
     letter-spacing: 0;
@@ -907,5 +907,24 @@ a.component--product--nutrition_link:hover{
     width: 100% !important;
     padding: 48px 0 32px !important;
 }
-
+p.product__text{
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 1.28px;
+    margin: 0 0 4px;
+}
+.product__title h1 {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: 9.60px;
+}
+p.component--pdp--short--description{
+    margin: 20px 0;
+    font-size: 16px;
+    line-height: 24px;
+}
+a.component--product--nutrition_link{
+    font-size: 16px;
+    line-height: 24px;
+}
 }
