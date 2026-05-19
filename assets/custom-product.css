@@ -778,6 +778,16 @@ legend.form__label span {
     color: #8E877B;
     font-weight: 500;
 }
+a.component--product--nutrition_link{
+    font-size: 16px;
+    line-height: 24px;
+    color: #433723;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-decoration: underline;
+    text-underline-offset: 1.5px;
+    text-decoration-thickness: 1px;
+}
 @media screen and (min-width: 991px) {
 .component--product--main--section .product.grid {
     gap: 68px !important;
