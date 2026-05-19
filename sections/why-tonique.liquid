@@ -1,177 +1,175 @@
 {{ 'css--why-tonique.css' | asset_url | stylesheet_tag }}
 
 <section class="wt-section" id="WhyTonique-{{ section.id }}" {{ section.shopify_attributes }}>
-<div class="wt-inner--container">
-  <div class="wt-inner">
-
-    {%- comment -%} ── Left: Heading ── {%- endcomment -%}
-    <div class="wt-heading">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="wt-heading__title">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      {%- if section.settings.subtext != blank -%}
-        <p class="wt-heading__sub">{{ section.settings.subtext }}</p>
-      {%- endif -%}
-    </div>
-
-    {%- comment -%} ── Centre: Bottle image + numbered badges ── {%- endcomment -%}
-    <div class="wt-visual">
-      {%- if section.settings.product_image != blank -%}
-        <div class="wt-visual__image-wrap">
-          {{-
-            section.settings.product_image
-            | image_url: width: 544
-            | image_tag:
-              loading: 'lazy',
-              alt: section.settings.heading,
-              class: 'wt-visual__image',
-              widths: '272, 544',
-              sizes: '(max-width: 749px) 212px, 35vw'
-          -}}
-        </div>
-      {%- endif -%}
-
-      {%- for block in section.blocks -%}
-        {%- assign badge_num = forloop.index -%}
-        <button
-          class="wt-badge{% if forloop.first %} is-active{% endif %}"
-          data-wt-badge="{{ badge_num }}"
-          data-wt-section="{{ section.id }}"
-          aria-label="Reason {{ badge_num }}"
-          type="button"
-          style="
-            --badge-top-d: {{ block.settings.badge_top_desktop }}%;
-            --badge-left-d: {{ block.settings.badge_left_desktop }}%;
-            --badge-top-m: {{ block.settings.badge_top_mobile }}%;
-            --badge-left-m: {{ block.settings.badge_left_mobile }}%;
-          "
-          {{ block.shopify_attributes }}
-        >
-          <span class="wt-badge__num" aria-hidden="true">{{ badge_num }}</span>
-        </button>
-      {%- endfor -%}
-    </div>
-
-    {%- comment -%} ── Right: Reasons list (desktop) ── {%- endcomment -%}
-    <div class="wt-reasons" id="wt-reasons-{{ section.id }}" role="list">
-      {%- for block in section.blocks -%}
-        {%- assign reason_num = forloop.index -%}
-        <div
-          class="wt-reason{% if forloop.first %} is-active{% endif %}"
-          data-wt-reason="{{ reason_num }}"
-          role="listitem"
-          {{ block.shopify_attributes }}
-        >
-          <div class="wt-reason__header">
-            <span class="wt-reason__icon" aria-hidden="true">
-              <svg width="24" height="4" viewBox="0 0 24 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 2 Q4 0.5 8 2 Q12 3.5 16 2 Q20 0.5 24 2" stroke="#977b4f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <h3 class="wt-reason__title">{{ block.settings.title }}</h3>
-          </div>
-          {%- if block.settings.description != blank -%}
-            <p class="wt-reason__desc">{{ block.settings.description }}</p>
-          {%- endif -%}
-        </div>
-      {%- endfor -%}
-    </div>
-
-  </div>
-
-  {%- comment -%} ── Mobile: Carousel ── {%- endcomment -%}
-  <div class="wt-carousel" id="wt-carousel-{{ section.id }}" aria-live="polite">
-    {%- for block in section.blocks -%}
-      {%- assign slide_num = forloop.index -%}
-      <div
-        class="wt-slide{% if forloop.first %} is-active{% endif %}"
-        data-wt-slide="{{ slide_num }}"
-        id="wt-slide-{{ section.id }}-{{ slide_num }}"
-        role="tabpanel"
-        aria-hidden="{% unless forloop.first %}true{% else %}false{% endunless %}"
-      >
-        <h3 class="wt-slide__title">{{ block.settings.title }}</h3>
-        {%- if block.settings.description != blank -%}
-          <p class="wt-slide__desc">{{ block.settings.description }}</p>
+  <div class="wt-inner--container">
+    <div class="wt-inner">
+      {%- comment -%} ── Left: Heading ── {%- endcomment -%}
+      <div class="wt-heading">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="wt-heading__title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}
+          <p class="wt-heading__sub">{{ section.settings.subtext }}</p>
         {%- endif -%}
       </div>
-    {%- endfor -%}
 
-    <div class="wt-carousel__footer">
-      <span class="wt-carousel__counter" id="wt-counter-{{ section.id }}">1 OF {{ section.blocks.size }}</span>
-      <div class="wt-pagination" id="wt-pagination-{{ section.id }}" role="tablist" aria-label="Slide navigation">
+      {%- comment -%} ── Centre: Bottle image + numbered badges ── {%- endcomment -%}
+      <div class="wt-visual">
+        {%- if section.settings.product_image != blank -%}
+          <div class="wt-visual__image-wrap">
+            {{-
+              section.settings.product_image
+              | image_url: width: 544
+              | image_tag:
+                loading: 'lazy',
+                alt: section.settings.heading,
+                class: 'wt-visual__image',
+                widths: '272, 544',
+                sizes: '(max-width: 749px) 212px, 35vw'
+            -}}
+          </div>
+        {%- endif -%}
+
         {%- for block in section.blocks -%}
-          <span
-            class="wt-pagination__seg{% if forloop.first %} is-active{% endif %}"
-            data-wt-seg="{{ forloop.index }}"
-            role="tab"
-            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-            aria-label="Slide {{ forloop.index }}"
-          ></span>
+          {%- assign badge_num = forloop.index -%}
+          <button
+            class="wt-badge{% if forloop.first %} is-active{% endif %}"
+            data-wt-badge="{{ badge_num }}"
+            data-wt-section="{{ section.id }}"
+            aria-label="Reason {{ badge_num }}"
+            type="button"
+            style="
+              --badge-top-d: {{ block.settings.badge_top_desktop }}%;
+              --badge-left-d: {{ block.settings.badge_left_desktop }}%;
+              --badge-top-m: {{ block.settings.badge_top_mobile }}%;
+              --badge-left-m: {{ block.settings.badge_left_mobile }}%;
+            "
+            {{ block.shopify_attributes }}
+          >
+            <span class="wt-badge__num" aria-hidden="true">{{ badge_num }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} ── Right: Reasons list (desktop) ── {%- endcomment -%}
+      <div class="wt-reasons" id="wt-reasons-{{ section.id }}" role="list">
+        {%- for block in section.blocks -%}
+          {%- assign reason_num = forloop.index -%}
+          <div
+            class="wt-reason{% if forloop.first %} is-active{% endif %}"
+            data-wt-reason="{{ reason_num }}"
+            role="listitem"
+            {{ block.shopify_attributes }}
+          >
+            <div class="wt-reason__header">
+              <span class="wt-reason__icon" aria-hidden="true">
+                <svg width="24" height="6" viewBox="0 0 24 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 2.71094C0.346152 2.46224 0.731786 2.26121 1.11794 2.09047C4.68726 0.549317 8.37054 1.74495 11.4971 3.57526C11.4971 3.57526 11.4971 3.57526 11.4971 3.57526C14.8694 5.66412 19.9078 6.35421 23.0826 3.65421C23.4237 3.37036 23.7462 3.05608 24 2.71094C23.6538 2.95963 23.2682 3.16066 22.8821 3.33141C19.3127 4.87256 15.6295 3.67693 12.5029 1.84662C12.5029 1.84662 12.5029 1.84662 12.5029 1.84662C9.13062 -0.242241 4.09224 -0.932333 0.917437 1.76767C0.576251 2.05151 0.253772 2.36579 0 2.71094Z" fill="#A88958"/>
+                </svg>
+              </span>
+              <h3 class="wt-reason__title">{{ block.settings.title }}</h3>
+            </div>
+            {%- if block.settings.description != blank -%}
+              <p class="wt-reason__desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
         {%- endfor -%}
       </div>
     </div>
+
+    {%- comment -%} ── Mobile: Carousel ── {%- endcomment -%}
+    <div class="wt-carousel" id="wt-carousel-{{ section.id }}" aria-live="polite">
+      {%- for block in section.blocks -%}
+        {%- assign slide_num = forloop.index -%}
+        <div
+          class="wt-slide{% if forloop.first %} is-active{% endif %}"
+          data-wt-slide="{{ slide_num }}"
+          id="wt-slide-{{ section.id }}-{{ slide_num }}"
+          role="tabpanel"
+          aria-hidden="{% unless forloop.first %}true{% else %}false{% endunless %}"
+        >
+          <h3 class="wt-slide__title">{{ block.settings.title }}</h3>
+          {%- if block.settings.description != blank -%}
+            <p class="wt-slide__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+      <div class="wt-carousel__footer">
+        <span class="wt-carousel__counter" id="wt-counter-{{ section.id }}">1 OF {{ section.blocks.size }}</span>
+        <div class="wt-pagination" id="wt-pagination-{{ section.id }}" role="tablist" aria-label="Slide navigation">
+          {%- for block in section.blocks -%}
+            <span
+              class="wt-pagination__seg{% if forloop.first %} is-active{% endif %}"
+              data-wt-seg="{{ forloop.index }}"
+              role="tab"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="Slide {{ forloop.index }}"
+            ></span>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </section>
 
 <script>
-(function () {
-  var sid   = '{{ section.id }}';
-  var total = {{ section.blocks.size }};
-  var active = 1;
+  (function () {
+    var sid   = '{{ section.id }}';
+    var total = {{ section.blocks.size }};
+    var active = 1;
 
-  function activate(num) {
-    if (num === active) return;
-    active = num;
+    function activate(num) {
+      if (num === active) return;
+      active = num;
 
-    // Badges
-    document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (b) {
-      var isActive = parseInt(b.dataset.wtBadge, 10) === num;
-      b.classList.toggle('is-active', isActive);
+      // Badges
+      document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (b) {
+        var isActive = parseInt(b.dataset.wtBadge, 10) === num;
+        b.classList.toggle('is-active', isActive);
+      });
+
+      // Desktop reasons
+      document.querySelectorAll('#wt-reasons-' + sid + ' .wt-reason').forEach(function (r) {
+        var isActive = parseInt(r.dataset.wtReason, 10) === num;
+        r.classList.toggle('is-active', isActive);
+      });
+
+      // Mobile slides
+      document.querySelectorAll('#wt-carousel-' + sid + ' .wt-slide').forEach(function (s) {
+        var isActive = parseInt(s.dataset.wtSlide, 10) === num;
+        s.classList.toggle('is-active', isActive);
+        s.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+
+      // Pagination segments
+      document.querySelectorAll('#wt-pagination-' + sid + ' .wt-pagination__seg').forEach(function (p) {
+        var isActive = parseInt(p.dataset.wtSeg, 10) === num;
+        p.classList.toggle('is-active', isActive);
+        p.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // Counter
+      var counter = document.getElementById('wt-counter-' + sid);
+      if (counter) counter.textContent = num + ' OF ' + total;
+    }
+
+    // Badge click
+    document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activate(parseInt(this.dataset.wtBadge, 10));
+      });
     });
 
-    // Desktop reasons
-    document.querySelectorAll('#wt-reasons-' + sid + ' .wt-reason').forEach(function (r) {
-      var isActive = parseInt(r.dataset.wtReason, 10) === num;
-      r.classList.toggle('is-active', isActive);
-    });
-
-    // Mobile slides
-    document.querySelectorAll('#wt-carousel-' + sid + ' .wt-slide').forEach(function (s) {
-      var isActive = parseInt(s.dataset.wtSlide, 10) === num;
-      s.classList.toggle('is-active', isActive);
-      s.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-    });
-
-    // Pagination segments
-    document.querySelectorAll('#wt-pagination-' + sid + ' .wt-pagination__seg').forEach(function (p) {
-      var isActive = parseInt(p.dataset.wtSeg, 10) === num;
-      p.classList.toggle('is-active', isActive);
-      p.setAttribute('aria-selected', isActive ? 'true' : 'false');
-    });
-
-    // Counter
-    var counter = document.getElementById('wt-counter-' + sid);
-    if (counter) counter.textContent = num + ' OF ' + total;
-  }
-
-  // Badge click
-  document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      activate(parseInt(this.dataset.wtBadge, 10));
-    });
-  });
-
-  // Pagination tap (mobile)
-  var pagination = document.getElementById('wt-pagination-' + sid);
-  if (pagination) {
-    pagination.addEventListener('click', function (e) {
-      var seg = e.target.closest('.wt-pagination__seg');
-      if (seg) activate(parseInt(seg.dataset.wtSeg, 10));
-    });
-  }
-})();
+    // Pagination tap (mobile)
+    var pagination = document.getElementById('wt-pagination-' + sid);
+    if (pagination) {
+      pagination.addEventListener('click', function (e) {
+        var seg = e.target.closest('.wt-pagination__seg');
+        if (seg) activate(parseInt(seg.dataset.wtSeg, 10));
+      });
+    }
+  })();
 </script>
 
 {% schema %}
