@@ -29,7 +29,6 @@
 /* ── Heading column ─────────────────────────────── */
 .wt-heading {
   grid-area: heading;
-  padding-top: 16px;
 }
 
 .wt-heading__title {
@@ -353,9 +352,5 @@
       "visual  reasons";
     padding: 0 40px;
     gap: 40px 40px;
-  }
-
-  .wt-heading {
-    padding-top: 0;
   }
 }
