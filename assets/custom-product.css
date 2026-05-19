@@ -788,6 +788,9 @@ a.component--product--nutrition_link{
     text-underline-offset: 1.5px;
     text-decoration-thickness: 1px;
 }
+a.component--product--nutrition_link:hover{
+    opacity:0.75;
+}
 @media screen and (min-width: 991px) {
 .component--product--main--section .product.grid {
     gap: 68px !important;
