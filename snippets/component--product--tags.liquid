@@ -1,0 +1,7 @@
+{% if product.tags.size > 0 %}
+  <div class="product-tags--media">
+    {% for tag in product.tags %}
+      <span class="product-tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
