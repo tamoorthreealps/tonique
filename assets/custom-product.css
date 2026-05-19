@@ -631,8 +631,21 @@ width: 100%;
    All overrides in ONE media query block.
    ================================================
    ───────────────────────────────────────────────── */
+.quantity--buy--buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.quantity--buy--buttons .price-per-item__container {
+    height: 100%;
+}
 .quantity--buy--buttons .product-form__input{
-      margin: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 120px;
+    min-width: 120px;
+    flex: auto;
+    margin-right: 12px;
 }
 .quantity--buy--buttons product-form.product-form {
     margin: 0 !important;
@@ -658,6 +671,11 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
   opacity:0.85;
 }
 .quantity--buy--buttons quantity-input.quantity {
+    width: 100%;
+    min-height: 100%;
+}
+.quantity--buy--buttons .product-form__buttons {
+    max-width: 100%;
     width: 100%;
 }
 @media screen and (min-width: 768px) {
