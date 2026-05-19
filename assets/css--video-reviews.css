@@ -265,7 +265,7 @@
 }
 
 /* ── Mobile ─────────────────────────────────────── */
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 767px) {
   .vr-section {
     padding-bottom:80px;
   }
