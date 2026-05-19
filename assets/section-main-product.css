@@ -1506,7 +1506,7 @@ a.product__text {
 }
 
 .component--product--main--section .product__info-wrapper{
-    padding: 24px 0 36px !important;
+    padding: 24px 24px 36px !important;
 }
 
 .product-media-container.media-type-image {
