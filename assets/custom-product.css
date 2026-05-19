@@ -430,6 +430,7 @@ content: "";
     text-transform: uppercase;
     letter-spacing: 0.56px;
     color: #433723;
+    white-space: nowrap;
 }
 
 .pp-sub-option--onetime .pp-sub-option__title {
@@ -971,6 +972,7 @@ width: 24px;
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 0.72px;
+    white-space: normal;
 }
 .pp-sub-option__pricing {
     gap: 4px 8px;
