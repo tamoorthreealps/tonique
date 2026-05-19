@@ -519,6 +519,89 @@
         "body_text": "Take anytime throughout the day — no shaker, no fridge, no prep. Just tear, drink, and go."
       }
     },
+    "beauty_protein_CQTixc": {
+      "type": "beauty-protein",
+      "blocks": {
+        "row_c3WLQD": {
+          "type": "row",
+          "settings": {
+            "row_label": "Complete protein",
+            "tonique_value": "15g complete",
+            "comp1_value": "7g",
+            "comp2_value": "20g",
+            "comp3_value": "10g"
+          }
+        },
+        "row_ptEhRY": {
+          "type": "row",
+          "settings": {
+            "row_label": "Beauty nutrients",
+            "tonique_value": "Biotin · Vit C · Folate",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        "row_nnw6Yp": {
+          "type": "row",
+          "settings": {
+            "row_label": "Added sugar",
+            "tonique_value": "0g",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        "row_BgEaYE": {
+          "type": "row",
+          "settings": {
+            "row_label": "Calories",
+            "tonique_value": "<50",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        "row_ptHV69": {
+          "type": "row",
+          "settings": {
+            "row_label": "All-natural",
+            "tonique_value": "check",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        "row_biq6Qe": {
+          "type": "row",
+          "settings": {
+            "row_label": "No mixing / fridge / goes anywhere",
+            "tonique_value": "check",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        }
+      },
+      "block_order": [
+        "row_c3WLQD",
+        "row_ptEhRY",
+        "row_nnw6Yp",
+        "row_BgEaYE",
+        "row_ptHV69",
+        "row_biq6Qe"
+      ],
+      "name": "Beauty Protein",
+      "settings": {
+        "heading": "NOT JUST A BEAUTY PRODUCT. NOT JUST A PROTEIN.",
+        "subtext": "See how Tonique stacks up against what's already in your routine.",
+        "tonique_label": "TONIQUE",
+        "comp1_name": "COLLAGEN POWDER",
+        "comp2_name": "PROTEIN BAR",
+        "comp3_name": "BONE BROTH",
+        "footnote": "*Per serving. Comparisons reflect average values of leading products in each category and are for educational purposes only."
+      }
+    },
     "product_faqs_P6bAPh": {
       "type": "product-faqs",
       "blocks": {
@@ -600,6 +683,7 @@
     "video_reviews_fG9rNh",
     "whats_inside_6Axbjb",
     "protein_intake_time_mERrHH",
+    "beauty_protein_CQTixc",
     "product_faqs_P6bAPh",
     "related-products"
   ]
