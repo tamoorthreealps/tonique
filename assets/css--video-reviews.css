@@ -297,7 +297,6 @@ position: absolute;
   .vr-card__video-wrap {
     aspect-ratio: 172 / 304;
     border-right: none;
-    border-bottom: none;
   }
 
   /* All cards share borders sensibly in the grid */
