@@ -107,7 +107,7 @@
           "type": "product-testimonial",
           "settings": {
             "image": "shopify://shop_images/Rectangle_2559.png",
-            "quote": "Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac.",
+            "quote": "“Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac.”",
             "signature": "shopify://shop_images/Vector.svg"
           }
         }
