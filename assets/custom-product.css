@@ -19,12 +19,13 @@
 }
 
 .pp-pack-cards__label {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0 0 12px;
-  color: rgb(var(--color-foreground));
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.56px;
+    margin: 0 0 16px;
+    color: #433723;
 }
 
 /* Extra top space so badges can overflow above cards */
@@ -88,25 +89,28 @@
 }
 
 .pp-pack-card__size {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: rgb(var(--color-foreground));
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #433723;
+    text-transform: uppercase;
+    letter-spacing: 0.56px;
 }
 
 .pp-pack-card__price {
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.2;
-  color: rgb(var(--color-foreground));
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #433723;
+    font-family: 'Archivo';
+    letter-spacing: 0;
 }
 
 .pp-pack-card__per-unit {
-  font-size: 10px;
-  line-height: 1.3;
-  color: rgba(var(--color-foreground), 0.55);
+    font-size: 13px;
+    line-height: 16px;
+    color: #8E877B;
+    letter-spacing: 0;
 }
 
 
@@ -118,7 +122,7 @@
 .pp-flavor-picker {
   border: none;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 0 0 24px;
 }
 
 .pp-flavor-picker legend.form__label {
@@ -614,20 +618,24 @@
   }
 
   .pp-pack-card__size {
-    font-size: 13px;
+            font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.74px;
   }
 
   .pp-pack-card__price {
-    font-size: 13px;
+    font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
   }
 
   .pp-pack-card__per-unit {
-    font-size: 11px;
+            font-size: 14px;
   }
 
   /* [2] Flavor Swatches */
   .pp-flavor-picker {
-    margin-bottom: 20px;
+    margin-bottom: 32px;
   }
 
   .pp-flavor-swatches {
