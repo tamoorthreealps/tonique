@@ -382,27 +382,33 @@ font-size: 14px;
 
 /* Custom radio dot */
 .pp-sub-option__radio-dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid rgba(var(--color-foreground), 0.3);
-  flex-shrink: 0;
-  position: relative;
-  transition: border-color 0.2s ease;
+width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #D9D7D3;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color .2s ease;
+    background: transparent;
 }
 
 .pp-sub-option__radio-dot::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  background: rgb(var(--color-foreground));
-  opacity: 0;
-  transition: opacity 0.2s ease;
+content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #FFFFFF;
+    opacity: 0;
+    transition: opacity .2s ease;
+    width: 10.5px;
+    height: 10.5px;
 }
 
 .pp-sub-option.is-selected .pp-sub-option__radio-dot {
-  border-color: rgb(var(--color-foreground));
+      border-color: #977B4F;
+    background: #977B4F;
 }
 
 .pp-sub-option.is-selected .pp-sub-option__radio-dot::after {
