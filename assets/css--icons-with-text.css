@@ -8,6 +8,12 @@
   overflow:hidden;
 }
 
+.iwt-inner--container {
+  max-width:1256px;
+  margin:0 aut0;
+  padding:0 30px;
+}
+
 .iwt-inner {
   display: flex;
   align-items: flex-start;
