@@ -489,9 +489,9 @@ display: block;
 }
 
 /* ── Body (subscribe expanded content) ── */
-/* .pp-sub-option__body {
+.pp-sub-option__body {
   padding: 0 0px 8px;
-} */
+}
 
 /* ── Savings banner ── */
 .pp-sub-savings-banner {
