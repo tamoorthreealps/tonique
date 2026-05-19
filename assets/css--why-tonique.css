@@ -91,7 +91,32 @@
   pointer-events: none;
   transition: background 0.25s, border-color 0.25s;
 }
+.wt-badge:before{
+    content:'';
+    position:absolute;
+    inset:-22px;
+    border-radius:50%;
+    background:rgba(151, 123, 79, 0.1);
+    z-index:-1;
+    animation:pulse-ring 1.8s infinite;
+}
 
+@keyframes pulse-ring{
+    0%{
+        transform:scale(.8);
+        opacity:1;
+    }
+
+    70%{
+        transform:scale(1.2);
+        opacity:.4;
+    }
+
+    100%{
+        transform:scale(1.4);
+        opacity:0;
+    }
+}
 .wt-badge__num {
     font-family: Archivo, sans-serif;
     font-size: 24px;
