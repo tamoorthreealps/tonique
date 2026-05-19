@@ -205,8 +205,8 @@
           "settings": {
             "title": "A complete protein.",
             "description": "Collagen alone isn't complete. Tonique blends it with whey isolate so you get all 9 essential amino acids in one pouch.",
-            "badge_top_desktop": 22,
-            "badge_left_desktop": 14,
+            "badge_top_desktop": 27,
+            "badge_left_desktop": 4,
             "badge_top_mobile": 28,
             "badge_left_mobile": 30
           }
@@ -217,7 +217,7 @@
             "title": "Five nutrients, built in.",
             "description": "Every pouch delivers collagen, whey protein, vitamin C, biotin, and hyaluronic acid — no stacking required.",
             "badge_top_desktop": 44,
-            "badge_left_desktop": 80,
+            "badge_left_desktop": 100,
             "badge_top_mobile": 46,
             "badge_left_mobile": 68
           }
@@ -227,8 +227,8 @@
           "settings": {
             "title": "A gram of fiber that does real work.",
             "description": "Inulin feeds your gut microbiome and helps keep you feeling satisfied without bloat.",
-            "badge_top_desktop": 66,
-            "badge_left_desktop": 14,
+            "badge_top_desktop": 64,
+            "badge_left_desktop": 0,
             "badge_top_mobile": 66,
             "badge_left_mobile": 30
           }
@@ -238,8 +238,8 @@
           "settings": {
             "title": "Monkfruit, not sucralose.",
             "description": "Sweetened naturally with monkfruit — no artificial sweeteners, no aftertaste, just clean flavor.",
-            "badge_top_desktop": 88,
-            "badge_left_desktop": 80,
+            "badge_top_desktop": 80,
+            "badge_left_desktop": 100,
             "badge_top_mobile": 84,
             "badge_left_mobile": 68
           }
