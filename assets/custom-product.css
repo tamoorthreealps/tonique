@@ -18,7 +18,7 @@
 }
 
 .pp-pack-cards {
-  margin: 0 0 16px;
+  margin: 0 0 32px;
 }
 
 .pp-pack-cards__label {
@@ -599,10 +599,6 @@
 
 @media screen and (min-width: 768px) {
 
-  /* [1] Pack Size Cards */
-  .pp-pack-cards {
-    margin-bottom: 20px;
-  }
 
   .pp-pack-cards__grid {
     gap: 22px;
