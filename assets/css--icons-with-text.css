@@ -8,6 +8,7 @@
   background: #fbf9f3;
   border-top: 1px solid #977b4f;
   border-bottom: 1px solid #977b4f;
+  overflow:hidden;
 }
 
 .iwt-inner {
