@@ -96,18 +96,18 @@
 
 @keyframes pulse-ring{
     0%{
-        transform:translate(-50%, -50%) scale(.75);
+        transform:translate(-50%, -50%) scale(1);
         opacity:1;
     }
 
     70%{
-        transform:translate(-50%, -50%) scale(1);
-        opacity:.5;
+        transform:translate(-50%, -50%) scale(1.25);
+        opacity:0;
     }
 
     100%{
-        transform:translate(-50%, -50%) scale(1);
-        opacity:1;
+        transform:translate(-50%, -50%) scale(1.25);
+        opacity:0;
     }
 }
 /* Active badge — filled dark */
@@ -117,7 +117,7 @@
 }
 
 .wt-badge.is-active::before {
-  animation:pulse-ring 1.8s infinite;
+  animation:pulse-ring 2s ease-out infinite;
 }
 
 .wt-badge.is-active .wt-badge__num {
