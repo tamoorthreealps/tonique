@@ -11,7 +11,7 @@
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
 <div class="quantity--selector--buy--buttons">
-  {% render 'quantity_selector-widget', block: block %}
+  {% render 'quantity_selector-widget' %}
   <div {{ block.shopify_attributes }}>
     {%- if product != blank -%}
       {%- liquid
