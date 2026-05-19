@@ -323,25 +323,25 @@
 
   /* Pagination + counter */
   .wt-carousel__footer {
-    margin-top: 20px;
+    margin-top: 32px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    gap: 8px;
   }
 
   .wt-pagination {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
   }
 
   .wt-pagination__seg {
     height: 2px;
-    width: 64px;
+    max-width: 59px;
+    width: 59px;
     background: #d6cfc5;
     border-radius: 1px;
-    transition: background 0.25s;
+    transition: background .25s;
   }
 
   .wt-pagination__seg.is-active {
@@ -356,5 +356,6 @@
     letter-spacing: 1.1px;
     text-transform: uppercase;
     color: #8e877b;
+    margin-top: 16px;
   }
 }
