@@ -11,7 +11,7 @@
 
 .product__accordion .accordion__content {
     padding: 0;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 .product__accordion .accordion__content ul {
@@ -128,5 +128,8 @@
 }
 .product__accordion .accordion__content li::before{
     font-size: 18px;
+}
+.product__accordion .accordion__content {
+    margin-bottom: 32px;
 }
 }
