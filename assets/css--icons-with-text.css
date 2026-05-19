@@ -71,11 +71,6 @@ display: grid;
     justify-items: center;
   }
 
-  .iwt-item {
-    width: 100%;
-    max-width: 160px;
-  }
-
   .iwt-item__icon {
     width: 48px;
     height: 48px;
