@@ -93,6 +93,10 @@
             "share_label": "Share"
           }
         },
+        "product_benefits_list_kYc9gC": {
+          "type": "product-benefits-list",
+          "settings": {}
+        },
         "metafield_accordions_Njrdwt": {
           "type": "metafield_accordions",
           "settings": {}
@@ -112,6 +116,7 @@
         "buy_buttons",
         "description",
         "share",
+        "product_benefits_list_kYc9gC",
         "metafield_accordions_Njrdwt"
       ],
       "settings": {
