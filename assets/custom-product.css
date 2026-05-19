@@ -1047,7 +1047,7 @@ font-size: 16px;
 
 
 /*----- pdp--tags--css -----*/
-.product-tags {
+.product-tags--media {
     display: inline-flex;
     flex-direction: column;
     gap: 16px;
@@ -1056,7 +1056,7 @@ font-size: 16px;
     right: 16px;
     align-items: flex-end;
 }
-.product-tags .product-tag {
+.product-tags--media .product-tag {
     border: 1px solid #977B4F;
     border-radius: 100px;
     background: #fff;
