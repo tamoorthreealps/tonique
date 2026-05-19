@@ -29,9 +29,13 @@ display: flex;
   border-top: 1px solid #433723;
   border-bottom: 1px solid #433723;
 }
+
 .summar__title__icon {
     width: 12px;
     height: 12px;
+}
+.accordion details[open] .summar__title__icon{
+  transform: rotate(45deg);
 }
 .accordion__title {
 margin: 0;
