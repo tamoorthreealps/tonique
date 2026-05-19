@@ -59,6 +59,10 @@
     background-color: #F7F3E4;
 }
 
+.pp-pack-card.is-selected .pp-pack-card__size {
+  font-weight:600;
+}
+
 .pp-pack-card.is-unavailable {
   opacity: 0.38;
   cursor: not-allowed;
