@@ -636,6 +636,9 @@ width: 100%;
     justify-content: space-between;
     align-items: stretch;
 }
+.buy--add--cart--btn {
+    width: 100%;
+}
 .quantity--buy--buttons .price-per-item__container {
     height: 100%;
 }
