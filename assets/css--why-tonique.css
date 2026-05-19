@@ -84,7 +84,7 @@
 .wt-badge:before{
     content:'';
     position:absolute;
-    inset:-15px;
+    inset:-22px;
     border-radius:50%;
     background:rgba(151, 123, 79, 0.1);
     z-index:-1;
