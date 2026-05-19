@@ -694,7 +694,7 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
     width: 12px;
     height: 12px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
 
 
   .pp-pack-cards__grid {
