@@ -16,9 +16,8 @@
 }
 
 .iwt-inner {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+display: grid;
+    grid-template-columns: repeat(6, 1fr);
 }
 
 /* ── Single item ────────────────────────────────── */
@@ -53,6 +52,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: #433723;
   margin: 0;
