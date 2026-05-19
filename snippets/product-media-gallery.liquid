@@ -336,8 +336,24 @@
       data-video-url="{{ product.metafields.custom.video_url | escape }}"
       aria-label="Play product video"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M8 5v14l11-7z"/>
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" fill="white" stroke="#977B4F"/>
+        <g filter="url(#filter0_d_1369_1351)">
+        <rect x="24" y="24" width="32" height="32" rx="16" fill="#977B4F"/>
+        <path d="M36.8262 32.8384C36.1596 32.4634 35.3359 32.9451 35.3359 33.7099V45.7188C35.3359 46.4836 36.1596 46.9653 36.8262 46.5904L47.5007 40.5866C48.1804 40.2043 48.1804 39.2257 47.5008 38.8434L36.8262 32.8384Z" fill="#F9F7F0"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_1369_1351" x="8" y="12" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="8"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0.658824 0 0 0 0 0.537255 0 0 0 0 0.345098 0 0 0 0.5 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1369_1351"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1369_1351" result="shape"/>
+        </filter>
+        </defs>
       </svg>
     </button>
   {%- endif -%}
