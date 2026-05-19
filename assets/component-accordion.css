@@ -11,6 +11,8 @@ display: flex;
 .accordion .summary__title {
   display: flex;
   flex: 1;
+  align-items: center;
+    gap: 12px;
 }
 
 .accordion .summary__title + .icon-caret {
@@ -27,7 +29,10 @@ display: flex;
   border-top: 1px solid #433723;
   border-bottom: 1px solid #433723;
 }
-
+.summar__title__icon {
+    width: 12px;
+    height: 12px;
+}
 .accordion__title {
 margin: 0;
     word-break: break-word;
