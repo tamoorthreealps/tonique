@@ -84,17 +84,3 @@ display: grid;
     line-height: 18px;
   }
 }
-
-/* ── Tablet ─────────────────────────────────────── */
-@media screen and (min-width: 750px) and (max-width: 989px) {
-  .iwt-inner {
-    padding: 40px 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px 24px;
-  }
-
-  .iwt-item {
-    width: calc(33.33% - 24px);
-  }
-}
