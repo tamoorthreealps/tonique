@@ -689,6 +689,10 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
     letter-spacing: 1.60px;
     opacity: 1;
 }
+.quantity__button .svg-wrapper{
+    width: 12px;
+    height: 12px;
+}
 @media screen and (min-width: 768px) {
 
 
