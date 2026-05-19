@@ -5,20 +5,13 @@
 ───────────────────────────────────────────────────────────────── */
 
 .iwt-section {
-  background: #fbf9f3;
-  border-top: 1px solid #977b4f;
-  border-bottom: 1px solid #977b4f;
   overflow:hidden;
 }
 
 .iwt-inner {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 48px 80px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 24px;
 }
 
 /* ── Single item ────────────────────────────────── */
