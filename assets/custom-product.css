@@ -461,6 +461,10 @@ display: block;
     justify-content: flex-end;
 }
 
+.pp-sub-option--onetime .pp-sub-option__pricing{
+  gap:8px;
+}
+
 .pp-sub-option__price-compare {
 display: block;
     font-size: 16px;
