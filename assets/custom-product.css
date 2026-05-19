@@ -180,10 +180,11 @@ display: inline-flex;
 }
 
 .pp-flavor-swatch__name {
-      font-size: 12px;
+      font-size: 13px;
+    line-height: 16px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: .06em;
+    letter-spacing: 0.54px;
     color: #433723;
 }
 
