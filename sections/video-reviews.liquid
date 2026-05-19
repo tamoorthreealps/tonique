@@ -2,7 +2,6 @@
 
 <div class="vr-section" id="VideoReviews-{{ section.id }}" {{ section.shopify_attributes }}>
   <div class="vr-inner">
-
     {%- comment -%} ── Heading ── {%- endcomment -%}
     <div class="vr-heading-block">
       {%- if section.settings.heading != blank -%}
@@ -22,7 +21,6 @@
         {%- endif -%}
 
         <div class="vr-card" {{ block.shopify_attributes }}>
-
           {%- comment -%} Video wrapper — click opens popup {%- endcomment -%}
           <div
             class="vr-card__video-wrap"
@@ -54,10 +52,7 @@
               {{-
                 block.settings.poster
                 | image_url: width: 578
-                | image_tag:
-                  loading: 'lazy',
-                  alt: block.settings.handle,
-                  class: 'vr-card__poster'
+                | image_tag: loading: 'lazy', alt: block.settings.handle, class: 'vr-card__poster'
               -}}
             {%- endif -%}
 
@@ -74,8 +69,8 @@
               data-vr-play="{{ forloop.index }}"
               data-vr-section="{{ section.id }}"
             >
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M8 5v14l11-7z"/>
+              <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.4903 0.12988C0.823694 -0.245122 0 0.236589 0 1.00143V28.4389C0 29.2037 0.823621 29.6854 1.49022 29.3105L25.8791 15.5931C26.5587 15.2108 26.5588 14.2323 25.8791 13.85L1.4903 0.12988Z" fill="#F4F1E3"/>
               </svg>
             </button>
 
@@ -101,7 +96,6 @@
               <p class="vr-card__role">{{ block.settings.role }}</p>
             {%- endif -%}
           </div>
-
         </div>
       {%- endfor -%}
     </div>
@@ -113,7 +107,6 @@
         <p class="vr-note__text">{{ section.settings.disclaimer }}</p>
       </div>
     {%- endif -%}
-
   </div>
 </div>
 
@@ -148,85 +141,87 @@
 </div>
 
 <script>
-(function () {
-  var sid   = '{{ section.id }}';
-  var modal = document.getElementById('vr-modal-' + sid);
-  var vid   = document.getElementById('vr-modal-video-' + sid);
+  (function () {
+    var sid = '{{ section.id }}';
+    var modal = document.getElementById('vr-modal-' + sid);
+    var vid = document.getElementById('vr-modal-video-' + sid);
 
-  if (!modal || !vid) return;
+    if (!modal || !vid) return;
 
-  function openModal(sources) {
-    // Clear previous sources
-    vid.innerHTML = '';
-    sources.forEach(function (s) {
-      var src = document.createElement('source');
-      src.src  = s.url;
-      src.type = s.type;
-      vid.appendChild(src);
-    });
-
-    vid.load();
-    modal.removeAttribute('hidden');
-    requestAnimationFrame(function () {
-      modal.classList.add('is-open');
-    });
-    document.body.style.overflow = 'hidden';
-    vid.play().catch(function () {});
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-    vid.pause();
-    vid.currentTime = 0;
-    setTimeout(function () {
-      modal.setAttribute('hidden', '');
+    function openModal(sources) {
+      // Clear previous sources
       vid.innerHTML = '';
-    }, 300);
-  }
+      sources.forEach(function (s) {
+        var src = document.createElement('source');
+        src.src = s.url;
+        src.type = s.type;
+        vid.appendChild(src);
+      });
 
-  // Play button click
-  document.querySelectorAll('.vr-card__play[data-vr-section="' + sid + '"]').forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var cardIdx  = this.dataset.vrPlay;
-      var wrap     = document.querySelector('.vr-card__video-wrap[data-vr-card="' + cardIdx + '"][data-vr-section="' + sid + '"]');
-      var srcEl    = wrap && wrap.querySelector('.vr-card__sources');
-      if (!srcEl) return;
-      try {
-        var sources = JSON.parse(srcEl.textContent);
-        openModal(sources);
-      } catch (err) {
-        console.error('[vr] source parse error', err);
-      }
+      vid.load();
+      modal.removeAttribute('hidden');
+      requestAnimationFrame(function () {
+        modal.classList.add('is-open');
+      });
+      document.body.style.overflow = 'hidden';
+      vid.play().catch(function () {});
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      vid.pause();
+      vid.currentTime = 0;
+      setTimeout(function () {
+        modal.setAttribute('hidden', '');
+        vid.innerHTML = '';
+      }, 300);
+    }
+
+    // Play button click
+    document.querySelectorAll('.vr-card__play[data-vr-section="' + sid + '"]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var cardIdx = this.dataset.vrPlay;
+        var wrap = document.querySelector(
+          '.vr-card__video-wrap[data-vr-card="' + cardIdx + '"][data-vr-section="' + sid + '"]'
+        );
+        var srcEl = wrap && wrap.querySelector('.vr-card__sources');
+        if (!srcEl) return;
+        try {
+          var sources = JSON.parse(srcEl.textContent);
+          openModal(sources);
+        } catch (err) {
+          console.error('[vr] source parse error', err);
+        }
+      });
     });
-  });
 
-  // Card wrapper click (accessibility — keyboard Enter/Space)
-  document.querySelectorAll('.vr-card__video-wrap[data-vr-section="' + sid + '"]').forEach(function (wrap) {
-    wrap.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        var playBtn = this.querySelector('.vr-card__play');
-        if (playBtn) playBtn.click();
-      }
+    // Card wrapper click (accessibility — keyboard Enter/Space)
+    document.querySelectorAll('.vr-card__video-wrap[data-vr-section="' + sid + '"]').forEach(function (wrap) {
+      wrap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          var playBtn = this.querySelector('.vr-card__play');
+          if (playBtn) playBtn.click();
+        }
+      });
     });
-  });
 
-  // Close button
-  var closeBtn = modal.querySelector('[data-vr-close]');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    // Close button
+    var closeBtn = modal.querySelector('[data-vr-close]');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-  // Click backdrop to close
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) closeModal();
-  });
+    // Click backdrop to close
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
 
-  // Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-  });
-})();
+    // Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  })();
 </script>
 
 {% schema %}
