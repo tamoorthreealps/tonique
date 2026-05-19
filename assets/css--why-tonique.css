@@ -92,9 +92,12 @@
     border-radius:50%;
     background:rgba(151, 123, 79, 0.1);
     z-index:-1;
-    animation:pulse-ring 1.8s infinite;
+    opacity:0;
 }
-
+.wt-badge.is-active:before{
+    animation:pulse-ring 1.8s infinite;
+    opacity:1;
+}
 @keyframes pulse-ring{
     0%{
         transform:translate(-50%, -50%) scale(.6);
