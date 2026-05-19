@@ -1513,7 +1513,7 @@ a.product__text {
     border: 0 !important;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 991px) {
 .component--product--main--section .product.grid {
     gap: 68px !important;
 }
