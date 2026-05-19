@@ -1,8 +1,11 @@
+.product__accordion__head{
+    margin-top: 48px;
+}
 .accordion summary {
-  display: flex;
-  position: relative;
-  line-height: 1;
-  padding: 1.5rem 0;
+display: flex;
+    position: relative;
+    line-height: 1;
+    padding: 20px 0;
 }
 
 .accordion .summary__title {
@@ -12,6 +15,7 @@
 
 .accordion .summary__title + .icon-caret {
   height: calc(var(--font-heading-scale) * 0.6rem);
+  display:none;
 }
 
 .accordion + .accordion {
@@ -20,18 +24,19 @@
 }
 
 .accordion {
-  margin-top: 2.5rem;
-  margin-bottom: 0;
-  border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  border-top: 1px solid #433723;
+  border-bottom: 1px solid #433723;
 }
 
 .accordion__title {
-  display: inline-block;
-  max-width: calc(100% - 6rem);
-  min-height: 1.6rem;
-  margin: 0;
-  word-break: break-word;
+margin: 0;
+    word-break: break-word;
+    color: #433723;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.28px;
 }
 
 .accordion .svg-wrapper {
