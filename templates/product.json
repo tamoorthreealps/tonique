@@ -31,6 +31,10 @@
           "type": "title",
           "settings": {}
         },
+        "nutrition_facts_aaBCaM": {
+          "type": "nutrition-facts",
+          "settings": {}
+        },
         "short_description_wCjihb": {
           "type": "short-description",
           "settings": {}
@@ -101,6 +105,7 @@
         "vendor",
         "text_YgTLkG",
         "title",
+        "nutrition_facts_aaBCaM",
         "short_description_wCjihb",
         "price",
         "variant_picker",
