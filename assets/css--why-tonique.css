@@ -244,9 +244,10 @@
 
   /* Heading — centered on mobile */
   .wt-heading {
-    text-align: center;
-    padding-top: 0;
-    margin-bottom: 32px;
+            text-align: center;
+        padding-top: 0;
+        max-width: 240px;
+        margin: 0 auto 20px;
   }
 
   .wt-heading__title {
@@ -279,9 +280,10 @@
 
   /* Carousel — visible on mobile */
   .wt-carousel {
-    display: block;
-    padding: 28px 24px 0;
-    text-align: center;
+        display: block;
+        text-align: center;
+        margin: 28px auto 0;
+        max-width: 272px;
   }
 
   .wt-slide {
@@ -306,7 +308,7 @@
     letter-spacing: 0.8px;
     text-transform: uppercase;
     color: #977b4f;
-    margin: 0 0 8px;
+    margin: 0 0 12px;
   }
 
   .wt-slide__desc {
@@ -315,6 +317,7 @@
     font-weight: 400;
     line-height: 20px;
     color: #433723;
+    letter-spacing: 0;
     margin: 0;
   }
 
