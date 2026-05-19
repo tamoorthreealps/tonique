@@ -1,0 +1,287 @@
+{{ 'css--whats-inside.css' | asset_url | stylesheet_tag }}
+
+<section class="wi-section" id="WhatsInside-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="wi-inner--container">
+
+    {%- comment -%} ── Mobile-only heading ── {%- endcomment -%}
+    <div class="wi-mobile-heading">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="wi-mobile-heading__title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <p class="wi-mobile-heading__sub">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── Desktop: 2-col split ── {%- endcomment -%}
+    <div class="wi-desktop-inner">
+
+      {%- comment -%} Left: heading + ingredient list ── {%- endcomment -%}
+      <div class="wi-left">
+        <div class="wi-heading">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="wi-heading__title">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subtext != blank -%}
+            <p class="wi-heading__sub">{{ section.settings.subtext }}</p>
+          {%- endif -%}
+        </div>
+
+        <div class="wi-list" id="wi-list-{{ section.id }}">
+          {%- for block in section.blocks -%}
+            <button
+              class="wi-row{% if forloop.first %} is-active{% endif %}"
+              data-wi-row="{{ forloop.index }}"
+              data-wi-section="{{ section.id }}"
+              type="button"
+              aria-label="{{ block.settings.ingredient_name }}"
+              {{ block.shopify_attributes }}
+            >
+              <span class="wi-row__dot" aria-hidden="true"></span>
+              <span class="wi-row__name">{{ block.settings.ingredient_name }}</span>
+              <span class="wi-row__amount">{{ block.settings.amount }}</span>
+            </button>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} Right: detail cards ── {%- endcomment -%}
+      <div class="wi-right">
+        <div class="wi-panel" id="wi-panel-{{ section.id }}">
+          {%- for block in section.blocks -%}
+            <div
+              class="wi-card{% if forloop.first %} is-active{% endif %}"
+              data-wi-card="{{ forloop.index }}"
+              aria-hidden="{% unless forloop.first %}true{% else %}false{% endunless %}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.image != blank -%}
+                <div class="wi-card__image-wrap">
+                  {{-
+                    block.settings.image
+                    | image_url: width: 640
+                    | image_tag:
+                      loading: 'lazy',
+                      alt: block.settings.ingredient_name,
+                      class: 'wi-card__image',
+                      widths: '320, 640',
+                      sizes: '(max-width: 767px) 156px, 320px'
+                  -}}
+                </div>
+              {%- endif -%}
+
+              <div class="wi-card__body">
+                {%- if block.settings.badge_label != blank -%}
+                  <span class="wi-card__badge">{{ block.settings.badge_label }}</span>
+                {%- endif -%}
+                <h3 class="wi-card__name">{{ block.settings.ingredient_name }}</h3>
+                {%- if block.settings.description != blank -%}
+                  <p class="wi-card__desc">{{ block.settings.description }}</p>
+                {%- endif -%}
+                <div class="wi-card__divider" aria-hidden="true"></div>
+                <div class="wi-card__amount-row">
+                  <span class="wi-card__amount">{{ block.settings.amount }}</span>
+                  <span class="wi-card__per">PER POUCH</span>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} ── Mobile: horizontal scroll cards ── {%- endcomment -%}
+    <div class="wi-mobile-scroll" id="wi-mobile-{{ section.id }}">
+      <div class="wi-scroll-track">
+        {%- for block in section.blocks -%}
+          <div class="wi-scroll-card" {{ block.shopify_attributes }}>
+            <div class="wi-scroll-card__top">
+              {%- if block.settings.image != blank -%}
+                {{-
+                  block.settings.image
+                  | image_url: width: 344
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: block.settings.ingredient_name,
+                    class: 'wi-scroll-card__image'
+                -}}
+              {%- endif -%}
+              {%- if block.settings.badge_label != blank -%}
+                <span class="wi-scroll-card__badge">{{ block.settings.badge_label }}</span>
+              {%- endif -%}
+            </div>
+            <div class="wi-scroll-card__body">
+              <p class="wi-scroll-card__name">{{ block.settings.ingredient_name }}</p>
+              <div class="wi-scroll-card__divider" aria-hidden="true"></div>
+              <div class="wi-scroll-card__amount-row">
+                <span class="wi-scroll-card__amount">{{ block.settings.amount }}</span>
+                <span class="wi-scroll-card__per">PER POUCH</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var sid = '{{ section.id }}';
+
+  function activate(num) {
+    document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (r) {
+      r.classList.toggle('is-active', parseInt(r.dataset.wiRow, 10) === num);
+    });
+    document.querySelectorAll('#wi-panel-' + sid + ' .wi-card').forEach(function (c) {
+      var isActive = parseInt(c.dataset.wiCard, 10) === num;
+      c.classList.toggle('is-active', isActive);
+      c.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    });
+  }
+
+  document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activate(parseInt(this.dataset.wiRow, 10));
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "What's Inside",
+  "class": "section-whats-inside",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT'S INSIDE"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Every ingredient, every amount — nothing hidden."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "ingredient_name",
+          "label": "Ingredient name",
+          "default": "Hydrolyzed Collagen Peptides"
+        },
+        {
+          "type": "text",
+          "id": "amount",
+          "label": "Amount",
+          "default": "8g"
+        },
+        {
+          "type": "text",
+          "id": "badge_label",
+          "label": "Badge label",
+          "default": "COLLAGEN"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Type I & III collagen peptides to support skin elasticity, joint comfort, and lean body composition."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ingredient image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What's Inside",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Hydrolyzed Collagen Peptides",
+            "amount": "8g",
+            "badge_label": "COLLAGEN",
+            "description": "Type I & III collagen peptides to support skin elasticity, joint comfort, and lean body composition."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Whey Protein Isolate",
+            "amount": "7g",
+            "badge_label": "PROTEIN",
+            "description": "Fast-absorbing whey isolate to complete the amino acid profile and support lean muscle recovery."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "KSM-66® Ashwagandha",
+            "amount": "600mg",
+            "badge_label": "ADAPTOGEN",
+            "description": "The most clinically studied ashwagandha extract — supports stress resilience and recovery."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Hyaluronic Acid",
+            "amount": "120mg",
+            "badge_label": "HYDRATION",
+            "description": "Helps skin retain moisture for a plumper, more hydrated appearance."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Vitamin C",
+            "amount": "90mg",
+            "badge_label": "VITAMIN",
+            "description": "Essential co-factor for collagen synthesis and a powerful antioxidant."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Monkfruit Extract",
+            "amount": "40mg",
+            "badge_label": "SWEETENER",
+            "description": "Natural zero-calorie sweetener — no sucralose, no aftertaste."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Biotin",
+            "amount": "300mcg",
+            "badge_label": "BIOTIN",
+            "description": "Supports healthy hair, skin, and nail growth from within."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Passionfruit",
+            "amount": "<1%",
+            "badge_label": "FLAVOR",
+            "description": "Natural passionfruit flavor — no artificial flavors, no added colors."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

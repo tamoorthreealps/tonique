@@ -1,0 +1,165 @@
+{{ 'css--protein-intake-time.css' | asset_url | stylesheet_tag }}
+
+<section class="pit-section" id="ProteinIntakeTime-{{ section.id }}" {{ section.shopify_attributes }}>
+  {%- comment -%} ── Decorative beige panel (right half, desktop) ── {%- endcomment -%}
+  <div class="pit-bg-panel" aria-hidden="true"></div>
+
+  <div class="pit-inner--container">
+    <div class="pit-inner">
+
+      {%- comment -%} ── Left: product image ── {%- endcomment -%}
+      {%- if section.settings.image != blank -%}
+        <div class="pit-image-col">
+          <div class="pit-image-wrap">
+            {{-
+              section.settings.image
+              | image_url: width: 800
+              | image_tag:
+                loading: 'lazy',
+                alt: section.settings.heading,
+                class: 'pit-image',
+                widths: '400, 800',
+                sizes: '(max-width: 767px) 100vw, 45vw'
+            -}}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} ── Right: content panel ── {%- endcomment -%}
+      <div class="pit-content">
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="pit-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- comment -%} Steps ── {%- endcomment -%}
+        <div class="pit-steps">
+          {%- assign step_blocks = section.blocks | where: 'type', 'step' -%}
+          {%- for block in step_blocks -%}
+            <div class="pit-step" {{ block.shopify_attributes }}>
+              <span class="pit-step__label">{{ block.settings.step_label }}</span>
+              <span class="pit-step__num">0{{ forloop.index }}</span>
+            </div>
+            {%- unless forloop.last -%}
+              <div class="pit-step__divider" aria-hidden="true"></div>
+            {%- endunless -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Body text ── {%- endcomment -%}
+        {%- if section.settings.body_text != blank -%}
+          <p class="pit-body">{{ section.settings.body_text }}</p>
+        {%- endif -%}
+
+        {%- comment -%} Bullet list ── {%- endcomment -%}
+        {%- assign bullet_blocks = section.blocks | where: 'type', 'bullet' -%}
+        {%- if bullet_blocks.size > 0 -%}
+          <ul class="pit-bullets">
+            {%- for block in bullet_blocks -%}
+              {%- if block.settings.bullet_text != blank -%}
+                <li class="pit-bullet" {{ block.shopify_attributes }}>
+                  <span class="pit-bullet__icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="8" cy="8" r="7.5" stroke="#977b4f"/>
+                      <path d="M5 8l2 2 4-4" stroke="#977b4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="pit-bullet__text">{{ block.settings.bullet_text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Protein Intake Time",
+  "class": "section-protein-intake-time",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left image (product / lifestyle)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TAKE IT ANYTIME"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Take anytime throughout the day — no shaker, no fridge, no prep. Just tear, drink, and go."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_label",
+          "label": "Step label",
+          "default": "Tear"
+        }
+      ]
+    },
+    {
+      "type": "bullet",
+      "name": "Bullet point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "bullet_text",
+          "label": "Bullet text",
+          "default": "No mixing required"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Protein Intake Time",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": { "step_label": "Tear" }
+        },
+        {
+          "type": "step",
+          "settings": { "step_label": "Drink" }
+        },
+        {
+          "type": "step",
+          "settings": { "step_label": "Go" }
+        },
+        {
+          "type": "bullet",
+          "settings": { "bullet_text": "No mixing required" }
+        },
+        {
+          "type": "bullet",
+          "settings": { "bullet_text": "No refrigeration needed" }
+        },
+        {
+          "type": "bullet",
+          "settings": { "bullet_text": "Fits in any bag or pocket" }
+        },
+        {
+          "type": "bullet",
+          "settings": { "bullet_text": "Ready in seconds, anywhere" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

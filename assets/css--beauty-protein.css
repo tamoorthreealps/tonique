@@ -1,0 +1,328 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--beauty-protein.css
+   Mobile  : row-labels + TONIQUE fixed, 1 competitor at a time
+             (JS switches active comp, pagination dots below)
+   Desktop : full comparison grid — all columns visible
+───────────────────────────────────────────────────────────────── */
+
+/* ── Section shell ──────────────────────────────── */
+.bp-section {
+  background: #fbf9f3;
+  padding: 48px 0 40px;
+}
+
+.bp-inner--container {
+  max-width: 1204px;
+  padding: 0 24px;
+  margin: 0 auto;
+}
+
+/* ── Heading block ──────────────────────────────── */
+.bp-heading-block {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.bp-heading {
+  font-family: 'Archivo', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 1.92px;
+  text-transform: uppercase;
+  color: #977b4f;
+  margin: 0 0 10px;
+}
+
+.bp-subtext {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #433723;
+  margin: 0;
+}
+
+/* ── Table wrapper ──────────────────────────────── */
+.bp-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Table ──────────────────────────────────────── */
+.bp-table {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ── Row ────────────────────────────────────────── */
+.bp-table__row {
+  display: grid;
+  /* Mobile: row-label (112px) + TONIQUE (116px) + 1 comp (116px) */
+  grid-template-columns: 112px 116px 116px;
+  border-bottom: 1px solid #d6cfc5;
+}
+
+.bp-table__row--header {
+  border-bottom: none;
+}
+
+/* ── Columns ────────────────────────────────────── */
+.bp-col {
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bp-col--label {
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+/* TONIQUE column highlight */
+.bp-col--tonique {
+  background: #fefefc;
+  border-left: 1.5px solid #977b4f;
+  border-right: 1.5px solid #977b4f;
+  box-shadow: 0 0 16px rgba(168, 137, 88, 0.15);
+}
+
+/* Competitor columns — only show active one on mobile */
+.bp-col--comp {
+  display: none;
+}
+
+.bp-col--comp.is-active-comp {
+  display: flex;
+}
+
+/* ── Column headers ─────────────────────────────── */
+.bp-col-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0 16px;
+  width: 100%;
+}
+
+.bp-col-header__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e8e5d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bp-col-header__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bp-col-header__icon--placeholder {
+  background: #e8e5d8;
+}
+
+.bp-col-header__name {
+  font-family: 'Archivo', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #433723;
+  text-align: center;
+}
+
+.bp-col-header__name--tonique {
+  color: #977b4f;
+}
+
+/* ── Row label ──────────────────────────────────── */
+.bp-row-label {
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #433723;
+}
+
+/* ── Cells ──────────────────────────────────────── */
+.bp-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+}
+
+.bp-cell__text {
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #433723;
+  text-align: center;
+}
+
+.bp-cell__text--tonique {
+  font-size: 13px;
+  font-weight: 500;
+  color: #977b4f;
+}
+
+.bp-cell__dash {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  color: #d6cfc5;
+}
+
+.bp-cell__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bp-cell__icon--check svg circle {
+  stroke: #977b4f;
+}
+
+.bp-cell__icon--cross svg circle {
+  stroke: #d6cfc5;
+}
+
+/* TONIQUE check icon */
+.bp-cell--tonique .bp-cell__icon--check svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ── Mobile competitor switcher ─────────────────── */
+.bp-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.bp-switcher__counter {
+  font-family: 'Archivo', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.88px;
+  text-transform: uppercase;
+  color: #433723;
+}
+
+.bp-switcher__dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bp-switcher__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d6cfc5;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.bp-switcher__dot.is-active {
+  background: #977b4f;
+  transform: scale(1.4);
+}
+
+/* ── Footnote ───────────────────────────────────── */
+.bp-footnote {
+  font-family: 'Archivo', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #8e877b;
+  text-align: center;
+  margin: 24px 0 0;
+}
+
+/* ── Desktop (min-width: 767px) ─────────────────── */
+@media screen and (min-width: 767px) {
+  .bp-section {
+    padding: 80px 0 64px;
+  }
+
+  .bp-heading-block {
+    margin-bottom: 48px;
+  }
+
+  .bp-heading {
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: 2.88px;
+    margin-bottom: 16px;
+  }
+
+  .bp-subtext {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  /* Full table on desktop */
+  .bp-table__row {
+    grid-template-columns: 224px 233px 233px 233px 233px;
+  }
+
+  /* Show ALL competitor columns */
+  .bp-col--comp {
+    display: flex;
+  }
+
+  .bp-col {
+    padding: 16px 12px;
+  }
+
+  .bp-col-header__icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .bp-col-header__name {
+    font-size: 12px;
+    letter-spacing: 0.96px;
+  }
+
+  .bp-row-label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bp-cell__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bp-cell__text--tonique {
+    font-size: 15px;
+  }
+
+  /* Hide mobile switcher on desktop */
+  .bp-switcher {
+    display: none;
+  }
+
+  .bp-footnote {
+    font-size: 13px;
+    margin-top: 32px;
+  }
+}

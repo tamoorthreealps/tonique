@@ -1,0 +1,196 @@
+{{ 'css--product-faqs.css' | asset_url | stylesheet_tag }}
+
+<section class="pf-section" id="ProductFAQs-{{ section.id }}" {{ section.shopify_attributes }}>
+  {%- comment -%} ── Decorative beige panel (right half, desktop) ── {%- endcomment -%}
+  <div class="pf-bg-panel" aria-hidden="true"></div>
+
+  <div class="pf-inner--container">
+    <div class="pf-inner">
+
+      {%- comment -%} ── Content column ── {%- endcomment -%}
+      <div class="pf-content">
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="pf-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- comment -%} ── Accordion ── {%- endcomment -%}
+        <div class="pf-accordion" id="pf-accordion-{{ section.id }}">
+          {%- for block in section.blocks -%}
+            <div
+              class="pf-item{% if forloop.first %} is-open{% endif %}"
+              data-pf-item="{{ forloop.index }}"
+              {{ block.shopify_attributes }}
+            >
+              <button
+                class="pf-item__trigger"
+                type="button"
+                aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="pf-answer-{{ section.id }}-{{ forloop.index }}"
+                data-pf-trigger="{{ forloop.index }}"
+              >
+                <span class="pf-item__question">{{ block.settings.question }}</span>
+                <span class="pf-item__icon" aria-hidden="true">
+                  <svg class="pf-icon-plus" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg class="pf-icon-close" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </button>
+              <div
+                class="pf-item__body"
+                id="pf-answer-{{ section.id }}-{{ forloop.index }}"
+                role="region"
+                aria-hidden="{% unless forloop.first %}true{% else %}false{% endunless %}"
+              >
+                <p class="pf-item__answer">{{ block.settings.answer }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} ── Footer link ── {%- endcomment -%}
+        {%- if section.settings.faqs_text != blank -%}
+          <div class="pf-footer">
+            {%- if section.settings.faqs_url != blank -%}
+              <a href="{{ section.settings.faqs_url }}" class="pf-footer__link">
+                {{ section.settings.faqs_text }}
+                <svg class="pf-footer__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            {%- else -%}
+              <span class="pf-footer__text">{{ section.settings.faqs_text }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var sid = '{{ section.id }}';
+  var accordion = document.getElementById('pf-accordion-' + sid);
+  if (!accordion) return;
+
+  accordion.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-pf-trigger]');
+    if (!trigger) return;
+
+    var idx  = trigger.dataset.pfTrigger;
+    var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
+    var body = document.getElementById('pf-answer-' + sid + '-' + idx);
+    if (!item || !body) return;
+
+    var isOpen = item.classList.contains('is-open');
+
+    // Close all
+    accordion.querySelectorAll('.pf-item').forEach(function (el) {
+      el.classList.remove('is-open');
+      el.querySelector('.pf-item__trigger').setAttribute('aria-expanded', 'false');
+      var b = el.querySelector('.pf-item__body');
+      if (b) b.setAttribute('aria-hidden', 'true');
+    });
+
+    // Open clicked (toggle)
+    if (!isOpen) {
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      body.setAttribute('aria-hidden', 'false');
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product FAQs",
+  "class": "section-product-faqs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "faqs_text",
+      "label": "Footer link text",
+      "default": "More questions? Visit our FAQs"
+    },
+    {
+      "type": "url",
+      "id": "faqs_url",
+      "label": "Footer link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is Tonique and how does it work?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Tonique is a single-serve liquid collagen pouch that combines collagen peptides, whey protein isolate, and key beauty nutrients. Just tear and drink — no mixing, no measuring, no mess."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product FAQs",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is Tonique and how does it work?",
+            "answer": "Tonique is a single-serve liquid collagen pouch that combines collagen peptides, whey protein isolate, and key beauty nutrients. Just tear and drink — no mixing, no measuring, no mess."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "When should I take Tonique?",
+            "answer": "Anytime, anywhere. Morning, post-workout, mid-afternoon — Tonique is ready when you are. No fridge required and no preparation needed."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Tonique gluten-free and dairy-free?",
+            "answer": "Tonique contains whey protein isolate which is derived from dairy. It is gluten-free. Please review the full ingredient list if you have specific dietary requirements."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How many pouches should I take per day?",
+            "answer": "We recommend one pouch per day as part of a balanced diet. Consistent daily use is where you see the best results for skin, hair, and recovery."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Does Tonique contain artificial sweeteners?",
+            "answer": "No. Tonique is sweetened naturally with monkfruit extract — no sucralose, no aspartame, no artificial flavors or colors."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
