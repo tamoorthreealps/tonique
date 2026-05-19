@@ -69,24 +69,6 @@
 }
 
 /* ── Number badges ──────────────────────────────── */
-.wt-badge {
-  position: absolute;
-  top: var(--badge-top-d);
-  left: var(--badge-left-d);
-  transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  border: 1px solid #977b4f;
-  background: #fbf9f3;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  transition: background 0.25s, border-color 0.25s;
-  z-index: 2;
-}
 
 /* Inner decorative ring */
 .wt-badge::before {
@@ -253,14 +235,6 @@
     width: 100%;
     max-width: 260px;
     margin: 0 auto;
-  }
-
-  /* Mobile badge sizing */
-  .wt-badge {
-    width: 48px;
-    height: 48px;
-    top: var(--badge-top-m);
-    left: var(--badge-left-m);
   }
 
   .wt-badge::before {
