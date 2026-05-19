@@ -22,19 +22,19 @@
 }
 
 .pp-pack-cards__label {
-    font-size: 14px;
-    line-height: 20px;
+font-size: 13px;
+    line-height: 16px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.56px;
-    margin: 0 0 16px;
+    letter-spacing: .56px;
+    margin: 0 0 24px;
     color: #433723;
 }
 
 /* Extra top space so badges can overflow above cards */
 .pp-pack-cards__grid {
   display: flex;
-  gap: 8px;
+  gap: 4px;
 }
 
 .pp-pack-card {
@@ -935,5 +935,11 @@ variant-selects {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.56px;
+}
+.pp-pack-cards__label {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.56px;
+    margin: 0 0 16px;
 }
 }
