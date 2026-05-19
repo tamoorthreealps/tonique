@@ -796,6 +796,9 @@
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
 
+              {%- when 'product-benefits-list' -%}
+                {% render 'component-product-benefits-list', block: block %}
+
               {%- when 'pack_size_cards' -%}
                 {%- comment -%} Find pack size option index {%- endcomment -%}
                 {%- assign pp_pack_option_index = null -%}
@@ -2413,6 +2416,11 @@
     {
       "type": "nutrition-facts",
       "name": "Nutrition Facts",
+      "limit": 1
+    },
+    {
+      "type": "product-benefits-list",
+      "name": "Benefits List",
       "limit": 1
     },
     {
