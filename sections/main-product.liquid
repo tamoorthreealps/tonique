@@ -230,23 +230,23 @@
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
-                  <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                    <details id="Details-{{ block.id }}-{{ section.id }}">
-                      <summary>
-                        <div class="summary__title">
-                          {% render 'icon-accordion', icon: block.settings.icon %}
-                          <h2 class="h4 accordion__title inline-richtext">
-                            {{ block.settings.heading | default: block.settings.page.title | escape }}
-                          </h2>
-                        </div>
-                        {{- 'icon-caret.svg' | inline_asset_content -}}
-                      </summary>
-                      <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                        {{ block.settings.content }}
-                        {{ block.settings.page.content }}
+                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                  <details id="Details-{{ block.id }}-{{ section.id }}">
+                    <summary>
+                      <div class="summary__title">
+                        {% render 'icon-accordion', icon: block.settings.icon %}
+                        <h2 class="h4 accordion__title inline-richtext">
+                          {{ block.settings.heading | default: block.settings.page.title | escape }}
+                        </h2>
                       </div>
-                    </details>
-                  </div>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                      {{ block.settings.content }}
+                      {{ block.settings.page.content }}
+                    </div>
+                  </details>
+                </div>
               {%- when 'popup' -%}
                 <modal-opener
                   class="product-popup-modal__opener quick-add-hidden"
@@ -877,33 +877,44 @@
                     {%- endif -%}
                   </div>
                 </div>
-             
+
               {%- when 'metafield_accordions' -%}
-                 <div class="product__accordion__head">
-                {%- assign pp_mf_keys = 'benefits,how_to_use,overview' | split: ',' -%}
-                {%- assign pp_mf_labels = 'Benefits,How to use it,OVERVIEW' | split: ',' -%}
-                {%- for pp_mf_key in pp_mf_keys -%}
-                  {%- assign pp_mf_content = product.metafields.custom[pp_mf_key] -%}
-                  {%- if pp_mf_content != blank -%}
-                    <div
-                      class="product__accordion accordion quick-add-hidden pp-mf-accordion"
-                      {{ block.shopify_attributes }}
-                    >
-                      <details id="Details-mf-{{ pp_mf_key }}-{{ section.id }}">
-                        <summary>
-                          <div class="summary__title">
-                            <h2 class="h4 accordion__title">{{ pp_mf_labels[forloop.index0] }}</h2>
+                <div class="product__accordion__head">
+                  {%- assign pp_mf_keys = 'benefits,how_to_use,overview' | split: ',' -%}
+                  {%- assign pp_mf_labels = 'Benefits,How to use it,OVERVIEW' | split: ',' -%}
+                  {%- for pp_mf_key in pp_mf_keys -%}
+                    {%- assign pp_mf_content = product.metafields.custom[pp_mf_key] -%}
+                    {%- if pp_mf_content != blank -%}
+                      <div
+                        class="product__accordion accordion quick-add-hidden pp-mf-accordion"
+                        {{ block.shopify_attributes }}
+                      >
+                        <details id="Details-mf-{{ pp_mf_key }}-{{ section.id }}">
+                          <summary>
+                            <div class="summary__title">
+                              <span class="summar__title__icon">
+                                <svg
+                                  width="12"
+                                  height="12"
+                                  viewBox="0 0 12 12"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M5.40088 0V5.38847H0V6.88657H5.40088V12H6.90015V6.88657H12V5.38847H6.90015V0H5.40088Z" fill="#977B4F"/>
+                                </svg>
+                              </span>
+                              <h2 class="h4 accordion__title">{{ pp_mf_labels[forloop.index0] }}</h2>
+                            </div>
+                            {{- 'icon-caret.svg' | inline_asset_content -}}
+                          </summary>
+                          <div class="accordion__content rte" id="Accordion-mf-{{ pp_mf_key }}-{{ section.id }}">
+                            {{ pp_mf_content | metafield_tag }}
                           </div>
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
-                        </summary>
-                        <div class="accordion__content rte" id="Accordion-mf-{{ pp_mf_key }}-{{ section.id }}">
-                          {{ pp_mf_content | metafield_tag }}
-                        </div>
-                      </details>
-                    </div>
-                  {%- endif -%}
-                {%- endfor -%}
-              </div>
+                        </details>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
               {%- when 'shipping_accordion' -%}
                 {%- if block.settings.heading != blank -%}
                   <div
