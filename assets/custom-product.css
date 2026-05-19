@@ -447,12 +447,14 @@ display: block;
 
 /* ── Pricing ── */
 .pp-sub-option__pricing {
-text-align: right;
+    text-align: right;
     flex-shrink: 0;
     margin-left: auto;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 4px 8px;
+    justify-content: flex-end;
 }
 
 .pp-sub-option__price-compare {
@@ -474,11 +476,12 @@ display: block;
 }
 
 .pp-sub-option__per-unit {
-display: block;
+    display: block;
     font-size: 16px;
     color: #433723;
     line-height: 20px;
     font-weight: 400;
+    width: 100%;
 }
 
 /* ── Body (subscribe expanded content) ── */
