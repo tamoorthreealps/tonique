@@ -1501,22 +1501,22 @@ a.product__text {
 }
 
 .component--product--main--section .product__media-wrapper, .component--product--main--section .product__info-wrapper {
-    max-width: 100%;
-    width: 100%;
+    max-width: 100% !important;
+    width: 100% !important;
 }
 
 @media screen and (min-width: 767px) {
 .component--product--main--section .product.grid {
-    gap: 68px;
+    gap: 68px !important;
 }
 .component--product--main--section .product__media-wrapper {
-    max-width: 58.5%;
-    width: 58.5%;
+    max-width: 58.5% !important;
+    width: 58.5% !important;
 }
 .component--product--main--section .product__info-wrapper{
-    max-width: 33.1%;
-    width: 100%;
-    padding: 0;
+    max-width: 33.1% !important;
+    width: 100% !important;
+    padding: 0 !important;
 }
 
 }
