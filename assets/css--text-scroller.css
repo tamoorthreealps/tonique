@@ -29,16 +29,17 @@ display: flex;
 }
 
 .ts-item {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 2.56px;
-  text-transform: uppercase;
-  color: #977b4f;
-  flex-shrink: 0;
-  white-space: nowrap;
-  user-select: none;
+    font-family: Archivo, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 1.92px;
+    text-transform: uppercase;
+    color: #977B4F;
+    flex-shrink: 0;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 @keyframes ts-scroll {
@@ -57,8 +58,8 @@ display: flex;
   }
 
   .ts-item {
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 1.92px;
+    font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 2.56px;
   }
 }
