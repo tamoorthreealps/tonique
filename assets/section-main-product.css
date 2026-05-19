@@ -1331,7 +1331,7 @@ a.product__text {
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 991px) {
   .product-media-container {
     max-width: 100%;
   }
@@ -1349,7 +1349,7 @@ a.product__text {
   .product-media-container.media-fit-cover,
   .product-media-container.media-fit-cover .product__modal-opener,
   .product-media-container.media-fit-cover .media {
-    height: 100%;
+    height: 958px;
   }
 
   .product-media-container.media-fit-cover .deferred-media__poster img {
