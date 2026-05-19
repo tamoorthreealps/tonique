@@ -1,0 +1,262 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--product-faqs.css
+   Mobile  : heading + accordion, beige bg top section
+   Desktop : beige decorative panel right half, content left/center
+───────────────────────────────────────────────────────────────── */
+
+/* ── Section shell ──────────────────────────────── */
+.pf-section {
+  background: #fbf9f3;
+  padding: 48px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Decorative beige bg panel (desktop right half) */
+.pf-bg-panel {
+  display: none;
+}
+
+.pf-inner--container {
+  max-width: 1204px;
+  padding: 0 24px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Inner layout (single col mobile) ───────────── */
+.pf-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Content column ─────────────────────────────── */
+.pf-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Heading ────────────────────────────────────── */
+.pf-heading {
+  font-family: 'Archivo', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 1.92px;
+  text-transform: uppercase;
+  color: #977b4f;
+  margin: 0;
+}
+
+/* ── Accordion ──────────────────────────────────── */
+.pf-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Item ───────────────────────────────────────── */
+.pf-item {
+  border-top: 1px solid #d6cfc5;
+}
+
+.pf-item:last-child {
+  border-bottom: 1px solid #d6cfc5;
+}
+
+/* ── Trigger button ─────────────────────────────── */
+.pf-item__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.pf-item__question {
+  font-family: 'Archivo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #433723;
+  flex: 1;
+  transition: color 0.2s;
+}
+
+.pf-item.is-open .pf-item__question {
+  color: #977b4f;
+  font-weight: 500;
+}
+
+/* ── Icon (+ / ×) ───────────────────────────────── */
+.pf-item__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #433723;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.pf-item.is-open .pf-item__icon {
+  color: #977b4f;
+}
+
+.pf-icon-plus,
+.pf-icon-close {
+  position: absolute;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.pf-icon-close {
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+
+.pf-item.is-open .pf-icon-plus {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+
+.pf-item.is-open .pf-icon-close {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* ── Answer body ────────────────────────────────── */
+.pf-item__body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.pf-item.is-open .pf-item__body {
+  max-height: 400px;
+}
+
+.pf-item__body[aria-hidden="true"] {
+  max-height: 0;
+  padding-bottom: 0;
+}
+
+.pf-item__body[aria-hidden="false"] {
+  max-height: 400px;
+  padding-bottom: 16px;
+}
+
+.pf-item__answer {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #433723;
+  margin: 0;
+  padding-bottom: 4px;
+}
+
+/* ── Footer link ────────────────────────────────── */
+.pf-footer {
+  margin-top: 8px;
+}
+
+.pf-footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #433723;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.pf-footer__link:hover {
+  color: #977b4f;
+}
+
+.pf-footer__link .pf-footer__arrow {
+  color: #977b4f;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.pf-footer__link:hover .pf-footer__arrow {
+  transform: translateX(3px);
+}
+
+.pf-footer__text {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #433723;
+}
+
+/* ── Desktop (min-width: 767px) ─────────────────── */
+@media screen and (min-width: 767px) {
+  .pf-section {
+    padding: 80px 0 100px;
+  }
+
+  /* Beige bg panel — right 56% */
+  .pf-bg-panel {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 56%;
+    height: 100%;
+    background: #e8e5d8;
+  }
+
+  /* Content occupies left ~52% */
+  .pf-content {
+    max-width: 496px;
+    gap: 32px;
+  }
+
+  .pf-heading {
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: 2.88px;
+  }
+
+  .pf-item__question {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .pf-item__trigger {
+    padding: 20px 0;
+  }
+
+  .pf-item__answer {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .pf-item__body[aria-hidden="false"] {
+    padding-bottom: 20px;
+  }
+
+  .pf-footer__link {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .pf-footer__text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

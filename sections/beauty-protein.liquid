@@ -1,0 +1,398 @@
+{{ 'css--beauty-protein.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign comp1 = section.settings.comp1_name
+  assign comp2 = section.settings.comp2_name
+  assign comp3 = section.settings.comp3_name
+  assign tonique_label = section.settings.tonique_label
+  assign total_comps = 3
+-%}
+
+<section class="bp-section" id="BeautyProtein-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="bp-inner--container">
+
+    {%- comment -%} ── Heading ── {%- endcomment -%}
+    <div class="bp-heading-block">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="bp-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <p class="bp-subtext">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── Comparison table ── {%- endcomment -%}
+    <div class="bp-table-wrap">
+      <div class="bp-table" id="bp-table-{{ section.id }}">
+
+        {%- comment -%} ── Header row ── {%- endcomment -%}
+        <div class="bp-table__row bp-table__row--header">
+          <div class="bp-col bp-col--label" aria-hidden="true"></div>
+
+          <div class="bp-col bp-col--tonique">
+            <div class="bp-col-header bp-col-header--tonique">
+              {%- if section.settings.tonique_icon != blank -%}
+                <div class="bp-col-header__icon">
+                  {{-
+                    section.settings.tonique_icon
+                    | image_url: width: 160
+                    | image_tag: loading: 'lazy', alt: tonique_label, width: 80, height: 80
+                  -}}
+                </div>
+              {%- else -%}
+                <div class="bp-col-header__icon bp-col-header__icon--placeholder" aria-hidden="true"></div>
+              {%- endif -%}
+              <span class="bp-col-header__name bp-col-header__name--tonique">{{ tonique_label }}</span>
+            </div>
+          </div>
+
+          {%- for i in (1..3) -%}
+            {%- assign comp_name = section.settings['comp' | append: i | append: '_name'] -%}
+            {%- assign comp_icon = section.settings['comp' | append: i | append: '_icon'] -%}
+            <div class="bp-col bp-col--comp" data-bp-comp="{{ i }}">
+              <div class="bp-col-header bp-col-header--comp">
+                {%- if comp_icon != blank -%}
+                  <div class="bp-col-header__icon">
+                    {{-
+                      comp_icon
+                      | image_url: width: 160
+                      | image_tag: loading: 'lazy', alt: comp_name, width: 80, height: 80
+                    -}}
+                  </div>
+                {%- else -%}
+                  <div class="bp-col-header__icon bp-col-header__icon--placeholder" aria-hidden="true"></div>
+                {%- endif -%}
+                <span class="bp-col-header__name">{{ comp_name }}</span>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} ── Data rows ── {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="bp-table__row" {{ block.shopify_attributes }}>
+
+            <div class="bp-col bp-col--label">
+              <span class="bp-row-label">{{ block.settings.row_label }}</span>
+            </div>
+
+            <div class="bp-col bp-col--tonique">
+              <div class="bp-cell bp-cell--tonique">
+                {%- assign tv = block.settings.tonique_value -%}
+                {%- if tv == 'check' -%}
+                  {%- render 'bp-cell-check', color: 'gold' -%}
+                {%- elsif tv == 'cross' -%}
+                  {%- render 'bp-cell-cross' -%}
+                {%- elsif tv != blank -%}
+                  <span class="bp-cell__text bp-cell__text--tonique">{{ tv }}</span>
+                {%- else -%}
+                  <span class="bp-cell__dash" aria-label="Not applicable">—</span>
+                {%- endif -%}
+              </div>
+            </div>
+
+            {%- for i in (1..3) -%}
+              {%- assign cv = block.settings['comp' | append: i | append: '_value'] -%}
+              <div class="bp-col bp-col--comp" data-bp-comp="{{ i }}">
+                <div class="bp-cell bp-cell--comp">
+                  {%- if cv == 'check' -%}
+                    <span class="bp-cell__icon bp-cell__icon--check" aria-label="Yes">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="10" cy="10" r="9.5" stroke="#977b4f"/>
+                        <path d="M6.5 10l2.5 2.5 4.5-4.5" stroke="#977b4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  {%- elsif cv == 'cross' -%}
+                    <span class="bp-cell__icon bp-cell__icon--cross" aria-label="No">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="10" cy="10" r="9.5" stroke="#d6cfc5"/>
+                        <path d="M7 7l6 6M13 7l-6 6" stroke="#8e877b" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  {%- elsif cv != blank -%}
+                    <span class="bp-cell__text">{{ cv }}</span>
+                  {%- else -%}
+                    <span class="bp-cell__dash" aria-label="Not applicable">—</span>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+
+          </div>
+        {%- endfor -%}
+
+      </div>
+    </div>
+
+    {%- comment -%} ── Mobile competitor switcher ── {%- endcomment -%}
+    <div class="bp-switcher" id="bp-switcher-{{ section.id }}">
+      <span class="bp-switcher__counter" id="bp-counter-{{ section.id }}">
+        {{ comp1 }} · 1 OF {{ total_comps }}
+      </span>
+      <div class="bp-switcher__dots" id="bp-dots-{{ section.id }}" role="tablist" aria-label="Switch competitor">
+        {%- for i in (1..3) -%}
+          <button
+            class="bp-switcher__dot{% if forloop.first %} is-active{% endif %}"
+            data-bp-dot="{{ i }}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-label="Show competitor {{ i }}"
+            type="button"
+          ></button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} ── Footnote ── {%- endcomment -%}
+    {%- if section.settings.footnote != blank -%}
+      <p class="bp-footnote">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var sid = '{{ section.id }}';
+  var compNames = [
+    {{ section.settings.comp1_name | json }},
+    {{ section.settings.comp2_name | json }},
+    {{ section.settings.comp3_name | json }}
+  ];
+  var total = compNames.length;
+  var active = 1;
+
+  function activateComp(num) {
+    if (num === active) return;
+    active = num;
+
+    // Show/hide competitor columns
+    document.querySelectorAll('#bp-table-' + sid + ' .bp-col--comp').forEach(function (col) {
+      var idx = parseInt(col.dataset.bpComp, 10);
+      col.classList.toggle('is-active-comp', idx === num);
+    });
+
+    // Dots
+    document.querySelectorAll('#bp-dots-' + sid + ' .bp-switcher__dot').forEach(function (d) {
+      var isA = parseInt(d.dataset.bpDot, 10) === num;
+      d.classList.toggle('is-active', isA);
+      d.setAttribute('aria-selected', isA ? 'true' : 'false');
+    });
+
+    // Counter
+    var counter = document.getElementById('bp-counter-' + sid);
+    if (counter) counter.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
+  }
+
+  // Init: show first competitor on mobile
+  document.querySelectorAll('#bp-table-' + sid + ' .bp-col--comp').forEach(function (col) {
+    var idx = parseInt(col.dataset.bpComp, 10);
+    col.classList.toggle('is-active-comp', idx === 1);
+  });
+
+  // Dot clicks
+  document.querySelectorAll('#bp-dots-' + sid + ' .bp-switcher__dot').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activateComp(parseInt(this.dataset.bpDot, 10));
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Beauty Protein",
+  "class": "section-beauty-protein",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "NOT JUST A BEAUTY PRODUCT. NOT JUST A PROTEIN."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "See how Tonique stacks up against what's already in your routine."
+    },
+    {
+      "type": "header",
+      "content": "Tonique column"
+    },
+    {
+      "type": "text",
+      "id": "tonique_label",
+      "label": "Tonique column label",
+      "default": "TONIQUE"
+    },
+    {
+      "type": "image_picker",
+      "id": "tonique_icon",
+      "label": "Tonique icon / product image"
+    },
+    {
+      "type": "header",
+      "content": "Competitor 1"
+    },
+    {
+      "type": "text",
+      "id": "comp1_name",
+      "label": "Competitor 1 name",
+      "default": "COLLAGEN POWDER"
+    },
+    {
+      "type": "image_picker",
+      "id": "comp1_icon",
+      "label": "Competitor 1 icon"
+    },
+    {
+      "type": "header",
+      "content": "Competitor 2"
+    },
+    {
+      "type": "text",
+      "id": "comp2_name",
+      "label": "Competitor 2 name",
+      "default": "PROTEIN BAR"
+    },
+    {
+      "type": "image_picker",
+      "id": "comp2_icon",
+      "label": "Competitor 2 icon"
+    },
+    {
+      "type": "header",
+      "content": "Competitor 3"
+    },
+    {
+      "type": "text",
+      "id": "comp3_name",
+      "label": "Competitor 3 name",
+      "default": "BONE BROTH"
+    },
+    {
+      "type": "image_picker",
+      "id": "comp3_icon",
+      "label": "Competitor 3 icon"
+    },
+    {
+      "type": "header",
+      "content": "Footer"
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "*Per serving. Comparisons reflect average values of leading products in each category and are for educational purposes only."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "row_label",
+          "label": "Row label",
+          "default": "Complete protein"
+        },
+        {
+          "type": "text",
+          "id": "tonique_value",
+          "label": "Tonique value",
+          "info": "Use 'check' for ✓ icon, 'cross' for ✗ icon, or enter any text.",
+          "default": "15g complete"
+        },
+        {
+          "type": "text",
+          "id": "comp1_value",
+          "label": "Competitor 1 value",
+          "info": "Use 'check' for ✓ icon, 'cross' for ✗ icon, or enter any text.",
+          "default": "7g"
+        },
+        {
+          "type": "text",
+          "id": "comp2_value",
+          "label": "Competitor 2 value",
+          "default": "20g"
+        },
+        {
+          "type": "text",
+          "id": "comp3_value",
+          "label": "Competitor 3 value",
+          "default": "10g"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Beauty Protein",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Complete protein",
+            "tonique_value": "15g complete",
+            "comp1_value": "7g",
+            "comp2_value": "20g",
+            "comp3_value": "10g"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Beauty nutrients",
+            "tonique_value": "Biotin · Vit C · Folate",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Added sugar",
+            "tonique_value": "0g",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Calories",
+            "tonique_value": "<50",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "All-natural",
+            "tonique_value": "check",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "No mixing / fridge / goes anywhere",
+            "tonique_value": "check",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
