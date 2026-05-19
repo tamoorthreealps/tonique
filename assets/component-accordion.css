@@ -29,11 +29,12 @@
     color: #433723;
     letter-spacing: 0;
     position: relative;
+    padding-left: 20px;
 }
 .product__accordion .accordion__content li::before{
     content:'•';
     position:absolute;
-    left:0;
+    left:7px;
     top:0;
 }
 
