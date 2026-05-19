@@ -7,8 +7,7 @@
 
 /* ── Section shell ──────────────────────────────── */
 .vr-section {
-  background: #fbf9f3;
-  padding: 80px 0 64px;
+  padding-bottom: 0 120px;
 }
 
 .vr-inner {
@@ -266,9 +265,9 @@
 }
 
 /* ── Mobile ─────────────────────────────────────── */
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 767px) {
   .vr-section {
-    padding: 48px 0 40px;
+    padding-bottom:80px;
   }
 
   .vr-inner {
