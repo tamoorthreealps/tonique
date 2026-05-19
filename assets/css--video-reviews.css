@@ -150,12 +150,13 @@ position: absolute;
 }
 
 .vr-card__handle {
-  font-family: 'Archivo', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #977b4f;
-  margin: 0;
+    font-family: Archivo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #977b4f;
+    margin: 0;
+    letter-spacing: 0;
 }
 
 .vr-card__role {
@@ -288,7 +289,7 @@ position: absolute;
   .vr-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
+    gap: 19px 0;
   }
 
   .vr-card {
@@ -329,6 +330,7 @@ position: absolute;
 
   .vr-card__handle {
     font-size: 14px;
+    line-height: 20px;
   }
 
   .vr-card__role {
