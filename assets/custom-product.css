@@ -329,12 +329,12 @@ display: inline-flex;
    ───────────────────────────────────────────────── */
 
 .pp-sub-widget {
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 .pp-sub-widget__label {
-font-size: 14px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 16px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .56px;
@@ -363,13 +363,13 @@ font-size: 14px;
 .pp-sub-option__header {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     cursor: pointer;
     width: 100%;
 }
 
 .pp-sub-option--subscribe .pp-sub-option__header {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 /* Hide native radio */
@@ -383,8 +383,8 @@ font-size: 14px;
 
 /* Custom radio dot */
 .pp-sub-option__radio-dot {
-width: 24px;
-    height: 24px;
+width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 1px solid #D9D7D3;
     flex-shrink: 0;
@@ -403,8 +403,8 @@ content: "";
     background: #FFFFFF;
     opacity: 0;
     transition: opacity .2s ease;
-    width: 10.5px;
-    height: 10.5px;
+    width: 9px;
+    height: 9px;
 }
 
 .pp-sub-option.is-selected .pp-sub-option__radio-dot {
@@ -423,12 +423,12 @@ content: "";
 }
 
 .pp-sub-option__title {
-display: block;
-    font-size: 18px;
-    line-height: 24px;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.72px;
+    letter-spacing: 0.56px;
     color: #433723;
 }
 
@@ -454,12 +454,12 @@ display: block;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 4px 8px;
+    gap: 4px;
     justify-content: flex-end;
 }
 
 .pp-sub-option--onetime .pp-sub-option__pricing{
-  gap:8px;
+  gap:3px;
 }
 
 .pp-sub-option__price-compare {
@@ -497,23 +497,23 @@ display: block;
 
 /* ── Savings banner ── */
 .pp-sub-savings-banner {
-display: flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    background: #EBFFDF;
+    background: #ebffdf;
     border: 1px solid #296900;
     border-radius: 4px;
-    padding: 8px 16px 8px 12px;
-    margin-bottom: 16px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
 }
 
 .pp-sub-savings-banner__text,
 .pp-sub-savings-banner__pct {
-font-size: 16px;
+font-size: 13px;
     font-weight: 500;
     color: #296900;
-    line-height: 24px;
+    line-height: 16px;
     letter-spacing: 0;
 }
 
@@ -524,20 +524,18 @@ list-style: none;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 .pp-sub-benefits li {
 display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 16px;
+    font-size: 13px;
     color: #433723;
-    line-height: 24px;
-}
-
-.pp-sub-benefits li + li {
-  margin-top: 4px;
+    line-height: 16px;
+    letter-spacing: 0;
+    margin: 0;
 }
 
 /* SVG checkmark inline */
@@ -555,17 +553,17 @@ display: flex;
 .pp-sub-delivery {
 border-top: 1px solid #D9D7D3;
     padding-top: 16px;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .pp-sub-delivery__label {
-    font-size: 14px;
-    line-height: 20px;
+font-size: 12px;
+    line-height: 16px;
     font-weight: 700;
     text-transform: uppercase;
     color: #433723;
-    margin: 0 0 12px;
-    letter-spacing: 0;
+    margin: 0 0 8px;
+    letter-spacing: 0.24px;
     display: block;
 }
 
@@ -579,9 +577,9 @@ width: 100%;
     -webkit-appearance: none;
     border: 1px solid #D9D7D3;
     border-radius: 4px;
-    padding: 11px 40px 11px 14px;
-    font-size: 16px;
-    font-family: 'Archivo';
+    padding: 8px 40px 8px 16px;
+    font-size: 14px;
+    font-family: Archivo;
     color: #433723;
     cursor: pointer;
     line-height: 24px;
@@ -941,5 +939,73 @@ variant-selects {
     line-height: 20px;
     letter-spacing: 0.56px;
     margin: 0 0 16px;
+}
+/* ─────────────────────────────────────────────────
+   [5] SUBSCRIPTION WIDGET
+   ───────────────────────────────────────────────── */
+
+.pp-sub-widget {
+  margin: 0 0 24px;
+}
+.pp-sub-widget__label {
+font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .56px;
+    margin: 0 0 16px;
+}
+.pp-sub-option--subscribe .pp-sub-option__header {
+    margin-bottom: 16px;
+}
+.pp-sub-option__header {
+    gap: 16px;
+}
+.pp-sub-option__radio-dot {
+width: 24px;
+    height: 24px;
+}
+.pp-sub-option__radio-dot::after {
+    width: 10.5px;
+    height: 10.5px;
+}
+.pp-sub-option__title {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.72px;
+}
+.pp-sub-option__pricing {
+    gap: 4px 8px;
+}
+.pp-sub-option--onetime .pp-sub-option__pricing{
+  gap:8px;
+}
+.pp-sub-savings-banner {
+    padding: 8px 16px 8px 12px;
+    margin-bottom: 16px;
+}
+.pp-sub-savings-banner__text,
+.pp-sub-savings-banner__pct {
+font-size: 16px;
+    line-height: 24px;
+}
+.pp-sub-benefits {
+    gap: 8px;
+}
+.pp-sub-benefits li {
+    font-size: 16px;
+    line-height: 24px;
+}
+.pp-sub-delivery {
+    margin-top: 20px;
+}
+.pp-sub-delivery__label {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 12px;
+    letter-spacing: 0;
+}
+.pp-sub-delivery__select {
+    padding: 11px 40px 11px 14px;
+    font-size: 16px;
+    line-height: 24px;
 }
 }
