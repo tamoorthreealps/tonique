@@ -1500,20 +1500,20 @@ a.product__text {
     padding: 0;
 }
 
-.product__media-wrapper, .product__info-wrapper {
+.component--product--main--section .product__media-wrapper, .component--product--main--section .product__info-wrapper {
     max-width: 100%;
     width: 100%;
 }
 
 @media screen and (min-width: 767px) {
-.product.grid {
+.component--product--main--section .product.grid {
     gap: 68px;
 }
-.product__media-wrapper {
+.component--product--main--section .product__media-wrapper {
     max-width: 58.5%;
     width: 58.5%;
 }
-.product__info-wrapper{
+.component--product--main--section .product__info-wrapper{
     max-width: 33.1%;
     width: 100%;
     padding: 0;
