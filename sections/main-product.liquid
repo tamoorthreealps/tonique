@@ -154,10 +154,10 @@
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
-                 {%- when 'subscription_widget' -%}
-                  {% render 'subscription-widget', block:block%}
-                  {%- when 'short-description' -%}
-                  <p class="component--pdp--short--description">{{ product.metafields.custom.short_description }}</p>
+              {%- when 'subscription_widget' -%}
+                {% render 'subscription-widget', block: block %}
+              {%- when 'short-description' -%}
+                <p class="component--pdp--short--description">{{ product.metafields.custom.short_description }}</p>
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -549,7 +549,9 @@
                                   value="{{ value | escape }}"
                                   form="{{ product_form_id }}"
                                   data-option-value-id="{{ value.id }}"
-                                  {% if value.selected %}checked{% endif %}
+                                  {% if value.selected %}
+                                    checked
+                                  {% endif %}
                                 >
                                 <span class="pp-flavor-swatch__pill">
                                   <span class="pp-flavor-swatch__dot">
@@ -775,7 +777,7 @@
 
               {%- when 'pack_size_cards' -%}
                 {%- comment -%} Find pack size option index {%- endcomment -%}
-                {%- assign pp_pack_option_index = nil -%}
+                {%- assign pp_pack_option_index = null -%}
                 {%- assign pp_pack_option_name = block.settings.option_name | default: 'Pack Size' -%}
                 {%- for opt in product.options -%}
                   {%- if opt == pp_pack_option_name -%}
@@ -787,7 +789,7 @@
                     <p class="pp-pack-cards__label">{{ block.settings.label }}</p>
                   {%- endif -%}
                   <div class="pp-pack-cards__grid">
-                    {%- if pp_pack_option_index != nil -%}
+                    {%- if pp_pack_option_index != null -%}
                       {%- assign pp_shown_vals = '' -%}
                       {%- for variant in product.variants -%}
                         {%- assign pp_opt_val = variant.options[pp_pack_option_index] -%}
@@ -807,7 +809,9 @@
                             data-option-position="{{ pp_pack_option_index | plus: 1 }}"
                             data-variant-id="{{ variant.id }}"
                             data-pack-size="{{ pp_pack_size }}"
-                            {% unless variant.available %}disabled{% endunless %}
+                            {% unless variant.available %}
+                              disabled
+                            {% endunless %}
                           >
                             {%- if pp_badge != blank -%}
                               <span class="pp-pack-card__badge">{{ pp_badge | escape }}</span>
@@ -833,7 +837,9 @@
                           data-option-value="{{ variant.title | escape }}"
                           data-variant-id="{{ variant.id }}"
                           data-pack-size="{{ pp_pack_size }}"
-                          {% unless variant.available %}disabled{% endunless %}
+                          {% unless variant.available %}
+                            disabled
+                          {% endunless %}
                         >
                           {%- if pp_badge != blank -%}
                             <span class="pp-pack-card__badge">{{ pp_badge | escape }}</span>
@@ -892,7 +898,6 @@
                     </details>
                   </div>
                 {%- endif -%}
-
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -953,8 +958,13 @@
             {%- if pp_is_direct_video -%}
               <video id="pp-video-el" src="" playsinline controls></video>
             {%- else -%}
-              <iframe id="pp-video-iframe" src="" frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <iframe
+                id="pp-video-iframe"
+                src=""
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             {%- endif -%}
           </div>
         </div>
