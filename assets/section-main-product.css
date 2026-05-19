@@ -1498,7 +1498,6 @@ a.product__text {
 .component--product--main--section .page-width {
     max-width: 1512px;
     padding: 0;
-    overflow:hidden;
 }
 
 .component--product--main--section .product__media-wrapper, .component--product--main--section .product__info-wrapper {
