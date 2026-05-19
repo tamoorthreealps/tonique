@@ -780,7 +780,7 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
   .product--thumbnail .thumbnail-list {
     display: flex !important;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     grid-template-columns: none !important;
   }
 
