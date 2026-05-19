@@ -329,4 +329,16 @@
       </button>
     </slider-component>
   {%- endif -%}
+  {%- if product.metafields.custom.video_url != blank -%}
+    <button
+      class="pp-video-btn"
+      type="button"
+      data-video-url="{{ product.metafields.custom.video_url | escape }}"
+      aria-label="Play product video"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+  {%- endif -%}
 </media-gallery>
