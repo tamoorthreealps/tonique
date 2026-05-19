@@ -37,7 +37,7 @@
        display: flex;
     align-items: stretch;
     background: #F5F1E8;
-    margin: 36px 0 0;
+    margin: 40px 0 0;
 }
 
 .component--product--testimonial--card__image {
@@ -71,23 +71,9 @@ font-size: 16px;
     max-width:90px;
 }
 
-@media(max-width:767px){
-    .component--product--testimonial--card{
-        flex-direction:column;
-    }
-
-    .component--product--testimonial--card__image{
-        width:100%;
-        min-width:100%;
-        flex:0 0 220px;
-    }
-
-    .component--product--testimonial--card__content{
-        padding:24px;
-    }
-
-    .component--product--testimonial--card__text{
-        font-size:24px;
-    }
+@media(min-width:767px){
+.component--product--testimonial--card{
+    margin: 36px 0 0;
+}
 }
 </style>
