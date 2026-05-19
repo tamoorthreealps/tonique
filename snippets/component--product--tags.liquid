@@ -1,7 +1,39 @@
 {% if product.tags.size > 0 %}
-  <div class="product-tags--media">
+  <div class="product-content--info--tags">
     {% for tag in product.tags %}
       <span class="product-tag">{{ tag }}</span>
     {% endfor %}
   </div>
 {% endif %}
+
+
+<style>
+.product-content--info--tags {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    top: 28px;
+    right: 16px;
+    align-items: flex-end;
+}
+.product-content--info--tags .product-tag {
+    border: 1px solid #977B4F;
+    border-radius: 100px;
+    background: #fff;
+    color: #977B4F;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-family: 'Archivo';
+    text-align: center;
+    padding: 4px 12px;
+    width: fit-content;
+}
+@media screen and (min-width: 991px) {
+.product-content--info--tags {
+  display: none;
+  }
+}
+</style>
