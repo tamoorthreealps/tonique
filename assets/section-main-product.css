@@ -288,9 +288,9 @@ a.product__text {
 }
 
 @media screen and (min-width: 750px) {
-  .product__info-container {
+  /* .product__info-container {
     max-width: 60rem;
-  }
+  } */
 
   .product__info-container .price--on-sale .price-item--regular {
     font-size: 1.6rem;
