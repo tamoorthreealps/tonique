@@ -355,15 +355,3 @@
     color: #8e877b;
   }
 }
-
-/* ── Mid breakpoint (tablet) ────────────────────── */
-@media screen and (min-width: 750px) and (max-width: 989px) {
-  .wt-inner {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "heading heading"
-      "visual  reasons";
-    padding: 0 40px;
-    gap: 40px 40px;
-  }
-}
