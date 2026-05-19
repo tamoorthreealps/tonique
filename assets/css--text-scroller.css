@@ -4,12 +4,11 @@
 ───────────────────────────────────────────────────────────────── */
 
 .ts-section {
-  height: 88px;
-  border-bottom: 1px solid #977b4f;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background: #fbf9f3;
+    border-bottom: 1px solid #977B4F;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
 }
 
 .ts-track-wrap {
@@ -18,11 +17,11 @@
 }
 
 .ts-track {
-  display: flex;
-  align-items: center;
-  gap: 82px;
-  width: max-content;
-  animation: ts-scroll 28s linear infinite;
+display: flex;
+    align-items: center;
+    gap: 48px;
+    width: max-content;
+    animation: ts-scroll 40s linear infinite;
 }
 
 .ts-section:hover .ts-track {
@@ -50,12 +49,11 @@
 /* ── Mobile ─────────────────────────────────────── */
 @media screen and (min-width: 767px) {
   .ts-section {
-    height: 64px;
+    padding: 32px 0;
   }
 
   .ts-track {
-    gap: 48px;
-    animation-duration: 18s;
+            gap: 82px;
   }
 
   .ts-item {
