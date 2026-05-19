@@ -32,10 +32,11 @@
     padding-left: 20px;
 }
 .product__accordion .accordion__content li::before{
-    content:'•';
-    position:absolute;
-    left:7px;
-    top:0;
+    content: "\2022";
+    position: absolute;
+    left: 7px;
+    top: 1px;
+    font-size: 18px;
 }
 
 .product__accordion .accordion__content p {
