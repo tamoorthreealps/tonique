@@ -365,6 +365,213 @@
         "disclaimer": "*Testimonials featured in videos or other promotional materials may include individuals who have received compensation, free product, or other incentives."
       }
     },
+    "whats_inside_6Axbjb": {
+      "type": "whats-inside",
+      "blocks": {
+        "ingredient_nP3TKk": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Hydrolyzed Collagen Peptides",
+            "amount": "8g",
+            "badge_label": "COLLAGEN",
+            "description": "Type I & III collagen peptides to support skin elasticity, joint comfort, and lean body composition."
+          }
+        },
+        "ingredient_XMEjj6": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Whey Protein Isolate",
+            "amount": "7g",
+            "badge_label": "PROTEIN",
+            "description": "Fast-absorbing whey isolate to complete the amino acid profile and support lean muscle recovery."
+          }
+        },
+        "ingredient_P7CVpa": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "KSM-66® Ashwagandha",
+            "amount": "600mg",
+            "badge_label": "ADAPTOGEN",
+            "description": "The most clinically studied ashwagandha extract — supports stress resilience and recovery."
+          }
+        },
+        "ingredient_ydxCzi": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Hyaluronic Acid",
+            "amount": "120mg",
+            "badge_label": "HYDRATION",
+            "description": "Helps skin retain moisture for a plumper, more hydrated appearance."
+          }
+        },
+        "ingredient_tePydL": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Vitamin C",
+            "amount": "90mg",
+            "badge_label": "VITAMIN",
+            "description": "Essential co-factor for collagen synthesis and a powerful antioxidant."
+          }
+        },
+        "ingredient_dbP3hc": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Monkfruit Extract",
+            "amount": "40mg",
+            "badge_label": "SWEETENER",
+            "description": "Natural zero-calorie sweetener — no sucralose, no aftertaste."
+          }
+        },
+        "ingredient_Cq3KAG": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Biotin",
+            "amount": "300mcg",
+            "badge_label": "BIOTIN",
+            "description": "Supports healthy hair, skin, and nail growth from within."
+          }
+        },
+        "ingredient_p98gQK": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Passionfruit",
+            "amount": "<1%",
+            "badge_label": "FLAVOR",
+            "description": "Natural passionfruit flavor — no artificial flavors, no added colors."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_nP3TKk",
+        "ingredient_XMEjj6",
+        "ingredient_P7CVpa",
+        "ingredient_ydxCzi",
+        "ingredient_tePydL",
+        "ingredient_dbP3hc",
+        "ingredient_Cq3KAG",
+        "ingredient_p98gQK"
+      ],
+      "name": "What's Inside",
+      "settings": {
+        "heading": "WHAT'S INSIDE",
+        "subtext": "Every ingredient, every amount — nothing hidden."
+      }
+    },
+    "protein_intake_time_mERrHH": {
+      "type": "protein-intake-time",
+      "blocks": {
+        "step_rR9GD3": {
+          "type": "step",
+          "settings": {
+            "step_label": "Tear"
+          }
+        },
+        "step_FctnTD": {
+          "type": "step",
+          "settings": {
+            "step_label": "Drink"
+          }
+        },
+        "step_ehiJeK": {
+          "type": "step",
+          "settings": {
+            "step_label": "Go"
+          }
+        },
+        "bullet_azhnhy": {
+          "type": "bullet",
+          "settings": {
+            "bullet_text": "No mixing required"
+          }
+        },
+        "bullet_QGVX3q": {
+          "type": "bullet",
+          "settings": {
+            "bullet_text": "No refrigeration needed"
+          }
+        },
+        "bullet_injtQE": {
+          "type": "bullet",
+          "settings": {
+            "bullet_text": "Fits in any bag or pocket"
+          }
+        },
+        "bullet_eNVBJD": {
+          "type": "bullet",
+          "settings": {
+            "bullet_text": "Ready in seconds, anywhere"
+          }
+        }
+      },
+      "block_order": [
+        "step_rR9GD3",
+        "step_FctnTD",
+        "step_ehiJeK",
+        "bullet_azhnhy",
+        "bullet_QGVX3q",
+        "bullet_injtQE",
+        "bullet_eNVBJD"
+      ],
+      "name": "Protein Intake Time",
+      "settings": {
+        "image": "shopify://shop_images/Rectangle_36.png",
+        "heading": "TAKE IT ANYTIME",
+        "body_text": "Take anytime throughout the day — no shaker, no fridge, no prep. Just tear, drink, and go."
+      }
+    },
+    "product_faqs_P6bAPh": {
+      "type": "product-faqs",
+      "blocks": {
+        "faq_9h3Yfq": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Tonique and how does it work?",
+            "answer": "Tonique is a single-serve liquid collagen pouch that combines collagen peptides, whey protein isolate, and key beauty nutrients. Just tear and drink — no mixing, no measuring, no mess."
+          }
+        },
+        "faq_NtJa97": {
+          "type": "faq",
+          "settings": {
+            "question": "When should I take Tonique?",
+            "answer": "Anytime, anywhere. Morning, post-workout, mid-afternoon — Tonique is ready when you are. No fridge required and no preparation needed."
+          }
+        },
+        "faq_6yrdAp": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Tonique gluten-free and dairy-free?",
+            "answer": "Tonique contains whey protein isolate which is derived from dairy. It is gluten-free. Please review the full ingredient list if you have specific dietary requirements."
+          }
+        },
+        "faq_tpRzGG": {
+          "type": "faq",
+          "settings": {
+            "question": "How many pouches should I take per day?",
+            "answer": "We recommend one pouch per day as part of a balanced diet. Consistent daily use is where you see the best results for skin, hair, and recovery."
+          }
+        },
+        "faq_pjcybr": {
+          "type": "faq",
+          "settings": {
+            "question": "Does Tonique contain artificial sweeteners?",
+            "answer": "No. Tonique is sweetened naturally with monkfruit extract — no sucralose, no aspartame, no artificial flavors or colors."
+          }
+        }
+      },
+      "block_order": [
+        "faq_9h3Yfq",
+        "faq_NtJa97",
+        "faq_6yrdAp",
+        "faq_tpRzGG",
+        "faq_pjcybr"
+      ],
+      "name": "Product FAQs",
+      "settings": {
+        "heading": "FREQUENTLY ASKED QUESTIONS",
+        "faqs_text": "More questions? Visit our FAQs",
+        "faqs_url": ""
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -391,6 +598,9 @@
     "why_tonique_QYHPbC",
     "icons_with_text_YTmHdg",
     "video_reviews_fG9rNh",
+    "whats_inside_6Axbjb",
+    "protein_intake_time_mERrHH",
+    "product_faqs_P6bAPh",
     "related-products"
   ]
 }
