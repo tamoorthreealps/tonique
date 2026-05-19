@@ -22,6 +22,20 @@
     gap: 9px;
     margin-bottom: 11px;
 }
+.product__accordion .accordion__content li {
+    list-style: none;
+    font-size: 16px;
+    line-height: 24px;
+    color: #433723;
+    letter-spacing: 0;
+    position: relative;
+}
+.product__accordion .accordion__content li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    top:0;
+}
 
 .product__accordion .accordion__content p {
         font-size: 16px;
