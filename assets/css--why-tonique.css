@@ -74,6 +74,10 @@
   top: var(--badge-top-d);
   left: var(--badge-left-d);
   transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 50%;
 }
 
 /* Inner decorative ring */
