@@ -143,6 +143,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #977b4f;
+    cursor: pointer;
 }
 
 
