@@ -157,6 +157,7 @@
 .wt-reason__icon {
   display: none;
   flex-shrink: 0;
+  width: 24px;
   color: #977b4f;
 }
 
