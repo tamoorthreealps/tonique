@@ -447,32 +447,38 @@ display: block;
 
 /* ── Pricing ── */
 .pp-sub-option__pricing {
-  text-align: right;
-  flex-shrink: 0;
-  margin-left: auto;
+text-align: right;
+    flex-shrink: 0;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px 8px;
 }
 
 .pp-sub-option__price-compare {
-  display: block;
-  font-size: 11px;
-  color: rgba(var(--color-foreground), 0.45);
-  text-decoration: line-through;
-  line-height: 1.4;
+display: block;
+    font-size: 16px;
+    color: #8E877B;
+    text-decoration: line-through;
+    line-height: 24px;
+    letter-spacing: 0;
 }
 
 .pp-sub-option__price {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: rgb(var(--color-foreground));
-  line-height: 1.3;
+display: block;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #433723;
+    letter-spacing: 0;
 }
 
 .pp-sub-option__per-unit {
-  display: block;
-  font-size: 10px;
-  color: rgba(var(--color-foreground), 0.55);
-  line-height: 1.4;
+display: block;
+    font-size: 16px;
+    color: #433723;
+    line-height: 20px;
+    font-weight: 400;
 }
 
 /* ── Body (subscribe expanded content) ── */
