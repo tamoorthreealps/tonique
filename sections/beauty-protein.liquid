@@ -1,159 +1,135 @@
 {{ 'css--beauty-protein.css' | asset_url | stylesheet_tag }}
 
-{%- liquid
-  assign comp1 = section.settings.comp1_name
-  assign comp2 = section.settings.comp2_name
-  assign comp3 = section.settings.comp3_name
-  assign tonique_label = section.settings.tonique_label
-  assign total_comps = 3
--%}
-
 <section class="bp-section" id="BeautyProtein-{{ section.id }}" {{ section.shopify_attributes }}>
   <div class="bp-inner--container">
 
     {%- comment -%} ── Heading ── {%- endcomment -%}
-    <div class="bp-heading-block">
+    <div class="bp-intro">
       {%- if section.settings.heading != blank -%}
-        <h2 class="bp-heading">{{ section.settings.heading }}</h2>
+        <h2 class="bp-intro__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
       {%- if section.settings.subtext != blank -%}
-        <p class="bp-subtext">{{ section.settings.subtext }}</p>
+        <p class="bp-intro__sub">{{ section.settings.subtext }}</p>
       {%- endif -%}
     </div>
 
-    {%- comment -%} ── Comparison table ── {%- endcomment -%}
-    <div class="bp-table-wrap">
-      <div class="bp-table" id="bp-table-{{ section.id }}">
+    {%- comment -%} ── Table ── {%- endcomment -%}
+    <div class="bp-table" id="bp-table-{{ section.id }}">
 
-        {%- comment -%} ── Header row ── {%- endcomment -%}
-        <div class="bp-table__row bp-table__row--header">
-          <div class="bp-col bp-col--label" aria-hidden="true"></div>
+      {%- comment -%} Header row ── {%- endcomment -%}
+      <div class="bp-row bp-row--header">
 
-          <div class="bp-col bp-col--tonique">
-            <div class="bp-col-header bp-col-header--tonique">
-              {%- if section.settings.tonique_icon != blank -%}
-                <div class="bp-col-header__icon">
-                  {{-
-                    section.settings.tonique_icon
-                    | image_url: width: 160
-                    | image_tag: loading: 'lazy', alt: tonique_label, width: 80, height: 80
-                  -}}
-                </div>
-              {%- else -%}
-                <div class="bp-col-header__icon bp-col-header__icon--placeholder" aria-hidden="true"></div>
-              {%- endif -%}
-              <span class="bp-col-header__name bp-col-header__name--tonique">{{ tonique_label }}</span>
-            </div>
-          </div>
+        {%- comment -%} Empty label cell ── {%- endcomment -%}
+        <div class="bp-cell bp-cell--label bp-cell--blank"></div>
 
-          {%- for i in (1..3) -%}
-            {%- assign comp_name_key = 'comp' | append: i | append: '_name' -%}
-            {%- assign comp_icon_key = 'comp' | append: i | append: '_icon' -%}
-            {%- assign comp_name = section.settings[comp_name_key] -%}
-            {%- assign comp_icon = section.settings[comp_icon_key] -%}
-            <div class="bp-col bp-col--comp" data-bp-comp="{{ i }}">
-              <div class="bp-col-header bp-col-header--comp">
-                {%- if comp_icon != blank -%}
-                  <div class="bp-col-header__icon">
-                    {{-
-                      comp_icon
-                      | image_url: width: 160
-                      | image_tag: loading: 'lazy', alt: comp_name, width: 80, height: 80
-                    -}}
-                  </div>
-                {%- else -%}
-                  <div class="bp-col-header__icon bp-col-header__icon--placeholder" aria-hidden="true"></div>
-                {%- endif -%}
-                <span class="bp-col-header__name">{{ comp_name }}</span>
+        {%- comment -%} TONIQUE header ── {%- endcomment -%}
+        <div class="bp-cell bp-cell--tonique bp-cell--header">
+          <div class="bp-col-hd">
+            {%- if section.settings.tonique_icon != blank -%}
+              <div class="bp-col-hd__circle bp-col-hd__circle--tonique">
+                {{-
+                  section.settings.tonique_icon
+                  | image_url: width: 160
+                  | image_tag: loading: 'lazy', alt: section.settings.tonique_label, class: 'bp-col-hd__img'
+                -}}
               </div>
-            </div>
-          {%- endfor -%}
+            {%- else -%}
+              <div class="bp-col-hd__circle bp-col-hd__circle--tonique bp-col-hd__circle--empty" aria-hidden="true"></div>
+            {%- endif -%}
+            <span class="bp-col-hd__name bp-col-hd__name--tonique">{{ section.settings.tonique_label }}</span>
+          </div>
         </div>
 
-        {%- comment -%} ── Data rows ── {%- endcomment -%}
-        {%- for block in section.blocks -%}
-          <div class="bp-table__row" {{ block.shopify_attributes }}>
-
-            <div class="bp-col bp-col--label">
-              <span class="bp-row-label">{{ block.settings.row_label }}</span>
-            </div>
-
-            <div class="bp-col bp-col--tonique">
-              <div class="bp-cell bp-cell--tonique">
-                {%- assign tv = block.settings.tonique_value -%}
-                {%- if tv == 'check' -%}
-                  <span class="bp-cell__icon bp-cell__icon--check" aria-label="Yes">
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <circle cx="11" cy="11" r="10.5" stroke="#977b4f"/>
-                      <path d="M7 11l2.5 2.5 5.5-5.5" stroke="#977b4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                {%- elsif tv == 'cross' -%}
-                  <span class="bp-cell__icon bp-cell__icon--cross" aria-label="No">
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <circle cx="11" cy="11" r="10.5" stroke="#d6cfc5"/>
-                      <path d="M7.5 7.5l7 7M14.5 7.5l-7 7" stroke="#8e877b" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                {%- elsif tv != blank -%}
-                  <span class="bp-cell__text bp-cell__text--tonique">{{ tv }}</span>
-                {%- else -%}
-                  <span class="bp-cell__dash" aria-label="Not applicable">—</span>
+        {%- comment -%} Competitor headers ── {%- endcomment -%}
+        {%- for i in (1..3) -%}
+          {%- assign cn_key = 'comp' | append: i | append: '_name' -%}
+          {%- assign ci_key = 'comp' | append: i | append: '_icon' -%}
+          {%- assign cn = section.settings[cn_key] -%}
+          {%- assign ci = section.settings[ci_key] -%}
+          <div class="bp-cell bp-cell--comp bp-cell--header" data-bp-comp="{{ i }}">
+            <div class="bp-col-hd">
+              <div class="bp-col-hd__circle">
+                {%- if ci != blank -%}
+                  {{-
+                    ci
+                    | image_url: width: 160
+                    | image_tag: loading: 'lazy', alt: cn, class: 'bp-col-hd__img'
+                  -}}
                 {%- endif -%}
               </div>
+              <span class="bp-col-hd__name">{{ cn }}</span>
             </div>
-
-            {%- for i in (1..3) -%}
-              {%- assign comp_val_key = 'comp' | append: i | append: '_value' -%}
-              {%- assign cv = block.settings[comp_val_key] -%}
-              <div class="bp-col bp-col--comp" data-bp-comp="{{ i }}">
-                <div class="bp-cell bp-cell--comp">
-                  {%- if cv == 'check' -%}
-                    <span class="bp-cell__icon bp-cell__icon--check" aria-label="Yes">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <circle cx="10" cy="10" r="9.5" stroke="#977b4f"/>
-                        <path d="M6.5 10l2.5 2.5 4.5-4.5" stroke="#977b4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </span>
-                  {%- elsif cv == 'cross' -%}
-                    <span class="bp-cell__icon bp-cell__icon--cross" aria-label="No">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <circle cx="10" cy="10" r="9.5" stroke="#d6cfc5"/>
-                        <path d="M7 7l6 6M13 7l-6 6" stroke="#8e877b" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
-                    </span>
-                  {%- elsif cv != blank -%}
-                    <span class="bp-cell__text">{{ cv }}</span>
-                  {%- else -%}
-                    <span class="bp-cell__dash" aria-label="Not applicable">—</span>
-                  {%- endif -%}
-                </div>
-              </div>
-            {%- endfor -%}
-
           </div>
         {%- endfor -%}
-
       </div>
+
+      {%- comment -%} Data rows ── {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <div class="bp-row" {{ block.shopify_attributes }}>
+
+          <div class="bp-cell bp-cell--label">
+            <span class="bp-label">{{ block.settings.row_label }}</span>
+          </div>
+
+          {%- comment -%} Tonique cell ── {%- endcomment -%}
+          <div class="bp-cell bp-cell--tonique">
+            {%- assign tv = block.settings.tonique_value -%}
+            {%- if tv == 'check' -%}
+              <span class="bp-tilde bp-tilde--gold" aria-label="Yes">
+                <svg width="56" height="14" viewBox="0 0 24 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M0 2.71094C0.346152 2.46224 0.731786 2.26121 1.11794 2.09047C4.68726 0.549317 8.37054 1.74495 11.4971 3.57526C11.4971 3.57526 11.4971 3.57526 11.4971 3.57526C14.8694 5.66412 19.9078 6.35421 23.0826 3.65421C23.4237 3.37036 23.7462 3.05608 24 2.71094C23.6538 2.95963 23.2682 3.16066 22.8821 3.33141C19.3127 4.87256 15.6295 3.67693 12.5029 1.84662C12.5029 1.84662 12.5029 1.84662 12.5029 1.84662C9.13062 -0.242241 4.09224 -0.932333 0.917437 1.76767C0.576251 2.05151 0.253772 2.36579 0 2.71094Z" fill="#a88958"/>
+                </svg>
+              </span>
+            {%- elsif tv != blank -%}
+              <span class="bp-value bp-value--tonique">{{ tv }}</span>
+            {%- else -%}
+              <span class="bp-dash" aria-hidden="true">—</span>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Competitor cells ── {%- endcomment -%}
+          {%- for i in (1..3) -%}
+            {%- assign cv_key = 'comp' | append: i | append: '_value' -%}
+            {%- assign cv = block.settings[cv_key] -%}
+            <div class="bp-cell bp-cell--comp" data-bp-comp="{{ i }}">
+              {%- if cv == 'cross' -%}
+                <span class="bp-tilde bp-tilde--grey" aria-label="No">
+                  <svg width="56" height="14" viewBox="0 0 24 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M0 2.71094C0.346152 2.46224 0.731786 2.26121 1.11794 2.09047C4.68726 0.549317 8.37054 1.74495 11.4971 3.57526C11.4971 3.57526 11.4971 3.57526 11.4971 3.57526C14.8694 5.66412 19.9078 6.35421 23.0826 3.65421C23.4237 3.37036 23.7462 3.05608 24 2.71094C23.6538 2.95963 23.2682 3.16066 22.8821 3.33141C19.3127 4.87256 15.6295 3.67693 12.5029 1.84662C12.5029 1.84662 12.5029 1.84662 12.5029 1.84662C9.13062 -0.242241 4.09224 -0.932333 0.917437 1.76767C0.576251 2.05151 0.253772 2.36579 0 2.71094Z" fill="#d8d1bf"/>
+                  </svg>
+                </span>
+              {%- elsif cv != blank -%}
+                <span class="bp-value">{{ cv }}</span>
+              {%- else -%}
+                <span class="bp-dash" aria-hidden="true">—</span>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+
+        </div>
+      {%- endfor -%}
     </div>
 
-    {%- comment -%} ── Mobile competitor switcher ── {%- endcomment -%}
+    {%- comment -%} ── Mobile switcher ── {%- endcomment -%}
     <div class="bp-switcher" id="bp-switcher-{{ section.id }}">
-      <span class="bp-switcher__counter" id="bp-counter-{{ section.id }}">
-        {{ comp1 }} · 1 OF {{ total_comps }}
-      </span>
-      <div class="bp-switcher__dots" id="bp-dots-{{ section.id }}" role="tablist" aria-label="Switch competitor">
+      <div class="bp-switcher__segs" id="bp-segs-{{ section.id }}" role="tablist" aria-label="Switch competitor">
         {%- for i in (1..3) -%}
+          {%- assign cn_key = 'comp' | append: i | append: '_name' -%}
           <button
-            class="bp-switcher__dot{% if forloop.first %} is-active{% endif %}"
-            data-bp-dot="{{ i }}"
+            class="bp-switcher__seg{% if forloop.first %} is-active{% endif %}"
+            data-bp-seg="{{ i }}"
+            data-bp-name="{{ section.settings[cn_key] }}"
             role="tab"
             aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-            aria-label="Show competitor {{ i }}"
+            aria-label="Show {{ section.settings[cn_key] }}"
             type="button"
           ></button>
         {%- endfor -%}
       </div>
+      <p class="bp-switcher__label" id="bp-label-{{ section.id }}">
+        {%- assign first_cn_key = 'comp1_name' -%}
+        {{ section.settings[first_cn_key] }} · 1 OF 3
+      </p>
     </div>
 
     {%- comment -%} ── Footnote ── {%- endcomment -%}
@@ -179,34 +155,32 @@
     if (num === active) return;
     active = num;
 
-    // Show/hide competitor columns
-    document.querySelectorAll('#bp-table-' + sid + ' .bp-col--comp').forEach(function (col) {
-      var idx = parseInt(col.dataset.bpComp, 10);
-      col.classList.toggle('is-active-comp', idx === num);
+    // Toggle all [data-bp-comp] cells (includes header + data rows)
+    document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
+      el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === num);
     });
 
-    // Dots
-    document.querySelectorAll('#bp-dots-' + sid + ' .bp-switcher__dot').forEach(function (d) {
-      var isA = parseInt(d.dataset.bpDot, 10) === num;
-      d.classList.toggle('is-active', isA);
-      d.setAttribute('aria-selected', isA ? 'true' : 'false');
+    // Segment tabs
+    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
+      var isA = parseInt(s.dataset.bpSeg, 10) === num;
+      s.classList.toggle('is-active', isA);
+      s.setAttribute('aria-selected', isA ? 'true' : 'false');
     });
 
-    // Counter
-    var counter = document.getElementById('bp-counter-' + sid);
-    if (counter) counter.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
+    // Counter label
+    var lbl = document.getElementById('bp-label-' + sid);
+    if (lbl) lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
   }
 
-  // Init: show first competitor on mobile
-  document.querySelectorAll('#bp-table-' + sid + ' .bp-col--comp').forEach(function (col) {
-    var idx = parseInt(col.dataset.bpComp, 10);
-    col.classList.toggle('is-active-comp', idx === 1);
+  // Init — mark first competitor active
+  document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
+    el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === 1);
   });
 
-  // Dot clicks
-  document.querySelectorAll('#bp-dots-' + sid + ' .bp-switcher__dot').forEach(function (btn) {
+  // Segment clicks
+  document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      activateComp(parseInt(this.dataset.bpDot, 10));
+      activateComp(parseInt(this.dataset.bpSeg, 10));
     });
   });
 })();
@@ -221,13 +195,13 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "NOT JUST A BEAUTY PRODUCT. NOT JUST A PROTEIN."
+      "default": "BEAUTY + PROTEIN. THE ONLY ONE THAT DELIVERS BOTH."
     },
     {
       "type": "textarea",
       "id": "subtext",
       "label": "Subtext",
-      "default": "See how Tonique stacks up against what's already in your routine."
+      "default": "Most products solve one, not the other. Tonique was built for both."
     },
     {
       "type": "header",
@@ -297,7 +271,7 @@
       "type": "textarea",
       "id": "footnote",
       "label": "Footnote",
-      "default": "*Per serving. Comparisons reflect average values of leading products in each category and are for educational purposes only."
+      "default": "*Per serving. Comparisons reflect average values across top-selling products in each category, sourced from published ingredient panels and supplement facts."
     }
   ],
   "blocks": [
@@ -315,14 +289,14 @@
           "type": "text",
           "id": "tonique_value",
           "label": "Tonique value",
-          "info": "Use 'check' for ✓ icon, 'cross' for ✗ icon, or enter any text.",
+          "info": "Enter text (e.g. '15g complete') or 'check' to show the gold wave icon.",
           "default": "15g complete"
         },
         {
           "type": "text",
           "id": "comp1_value",
           "label": "Competitor 1 value",
-          "info": "Use 'check' for ✓ icon, 'cross' for ✗ icon, or enter any text.",
+          "info": "Enter text or 'cross' to show the grey wave icon.",
           "default": "7g"
         },
         {
@@ -369,9 +343,9 @@
           "settings": {
             "row_label": "Added sugar",
             "tonique_value": "0g",
-            "comp1_value": "cross",
-            "comp2_value": "cross",
-            "comp3_value": "cross"
+            "comp1_value": "3g",
+            "comp2_value": "8g",
+            "comp3_value": "0g"
           }
         },
         {
@@ -379,9 +353,9 @@
           "settings": {
             "row_label": "Calories",
             "tonique_value": "<50",
-            "comp1_value": "cross",
-            "comp2_value": "cross",
-            "comp3_value": "cross"
+            "comp1_value": "60",
+            "comp2_value": "180",
+            "comp3_value": "50"
           }
         },
         {
