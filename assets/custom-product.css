@@ -654,6 +654,9 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
     background-image: linear-gradient(90deg, rgb(168, 137, 88), rgb(185, 161, 121), rgb(168, 137, 88));
     --border-opacity: auto;
 }
+.product-form__submit:hover{
+  opacity:0.85;
+}
 @media screen and (min-width: 768px) {
 
 
