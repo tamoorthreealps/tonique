@@ -360,16 +360,3 @@
     width: min(95vw, 360px);
   }
 }
-
-/* ── Tablet ─────────────────────────────────────── */
-@media screen and (min-width: 750px) and (max-width: 989px) {
-  .vr-inner {
-    padding: 0 40px;
-  }
-
-  .vr-heading {
-    font-size: 28px;
-    line-height: 40px;
-    white-space: normal;
-  }
-}
