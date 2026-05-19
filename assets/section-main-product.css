@@ -1509,7 +1509,7 @@ a.product__text {
     padding: 24px 0 36px !important;
 }
 
-.product-media-container.media-type-image.media-fit-cover.global-media-settings.gradient.constrain-height {
+.product-media-container.media-type-image {
     border: 0 !important;
 }
 
