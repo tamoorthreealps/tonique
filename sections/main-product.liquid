@@ -149,7 +149,7 @@
               {%- when 'nutrition-facts' -%}
                 {% render 'component--product--nutrition-facts', block: block %}
                 {%- when 'product-tags' -%}
-                 {% render 'component--product--tags' %}
+                 {% render 'component--product--tags', block: block %}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -2421,6 +2421,11 @@
     {
       "type": "nutrition-facts",
       "name": "Nutrition Facts",
+      "limit": 1
+    },
+    {
+      "type": "product-tags",
+      "name": "Product Tags",
       "limit": 1
     },
     {
