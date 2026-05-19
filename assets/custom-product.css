@@ -215,22 +215,19 @@ display: inline-flex;
 }
 
 .pp-video-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 2;
-  padding: 0;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s ease, box-shadow .2s ease;
+    z-index: 2;
+    padding: 0;
+    background: transparent;
 }
 
 .pp-video-btn:hover {
@@ -239,10 +236,9 @@ display: inline-flex;
 }
 
 .pp-video-btn svg {
-  width: 22px;
-  height: 22px;
-  display: block;
-  margin-left: 2px;
+    width: 64px;
+    height: 64px;
+    display: block;
 }
 
 
@@ -754,17 +750,15 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
 
   /* [3] Video Button — top-left */
   .pp-video-btn {
-    top: 24px;
-    left: 24px;
-    bottom: auto;
-    right: auto;
-    width: 60px;
-    height: 60px;
+        top: 20px;
+        left: 20px;
+        bottom: auto;
+        right: auto;
   }
 
   .pp-video-btn svg {
-    width: 26px;
-    height: 26px;
+            width: 80px;
+        height: 80px;
   }
 
   /* [6] Gallery — thumbnail overlay layout (desktop only) */
