@@ -47,8 +47,10 @@
           </div>
 
           {%- for i in (1..3) -%}
-            {%- assign comp_name = section.settings['comp' | append: i | append: '_name'] -%}
-            {%- assign comp_icon = section.settings['comp' | append: i | append: '_icon'] -%}
+            {%- assign comp_name_key = 'comp' | append: i | append: '_name' -%}
+            {%- assign comp_icon_key = 'comp' | append: i | append: '_icon' -%}
+            {%- assign comp_name = section.settings[comp_name_key] -%}
+            {%- assign comp_icon = section.settings[comp_icon_key] -%}
             <div class="bp-col bp-col--comp" data-bp-comp="{{ i }}">
               <div class="bp-col-header bp-col-header--comp">
                 {%- if comp_icon != blank -%}
@@ -102,7 +104,8 @@
             </div>
 
             {%- for i in (1..3) -%}
-              {%- assign cv = block.settings['comp' | append: i | append: '_value'] -%}
+              {%- assign comp_val_key = 'comp' | append: i | append: '_value' -%}
+              {%- assign cv = block.settings[comp_val_key] -%}
               <div class="bp-col bp-col--comp" data-bp-comp="{{ i }}">
                 <div class="bp-cell bp-cell--comp">
                   {%- if cv == 'check' -%}
