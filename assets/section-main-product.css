@@ -1509,8 +1509,8 @@ a.product__text {
     padding: 24px 0 36px !important;
 }
 
-.product-media-containert {
-    border: 0;
+.component--product--main--section .product-media-containert {
+    border: 0 !important;
 }
 
 @media screen and (min-width: 767px) {
