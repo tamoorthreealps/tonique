@@ -111,6 +111,22 @@
         opacity:0;
     }
 }
+/* Active badge — filled dark */
+.wt-badge.is-active {
+  background: #977b4f;
+  border-color: #977b4f;
+}
+
+.wt-badge.is-active::before {
+  background: #7a6140;
+  border-color: #7a6140;
+  animation:pulse-ring 1.8s infinite;
+}
+
+.wt-badge.is-active .wt-badge__num {
+  color: #fbf9f3;
+  background: #977B4F;
+}
 .wt-badge__num {
     font-family: Archivo, sans-serif;
     font-size: 24px;
@@ -132,22 +148,7 @@
     border: 1px solid #977b4f;
 }
 
-/* Active badge — filled dark */
-.wt-badge.is-active {
-  background: #977b4f;
-  border-color: #977b4f;
-}
 
-.wt-badge.is-active::before {
-  background: #7a6140;
-  border-color: #7a6140;
-  animation:pulse-ring 1.8s infinite;
-}
-
-.wt-badge.is-active .wt-badge__num {
-  color: #fbf9f3;
-  background: #977B4F;
-}
 
 /* ── Reasons list (desktop right column) ────────── */
 .wt-reasons {
