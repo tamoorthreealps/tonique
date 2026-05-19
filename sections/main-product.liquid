@@ -877,8 +877,9 @@
                     {%- endif -%}
                   </div>
                 </div>
-              <div class="product__accordion__head">
+             
               {%- when 'metafield_accordions' -%}
+                 <div class="product__accordion__head">
                 {%- assign pp_mf_keys = 'benefits,how_to_use,overview' | split: ',' -%}
                 {%- assign pp_mf_labels = 'Benefits,How to use it,OVERVIEW' | split: ',' -%}
                 {%- for pp_mf_key in pp_mf_keys -%}
