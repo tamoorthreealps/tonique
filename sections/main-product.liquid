@@ -353,7 +353,6 @@
                   </variant-selects>
                 {%- endunless -%}
               {%- when 'buy_buttons' -%}
-                <div class="quantity--buy--buttons">
                   <div
                     id="Quantity-Form-{{ section.id }}"
                     class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
@@ -605,7 +604,6 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
-                </div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
