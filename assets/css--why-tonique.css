@@ -117,8 +117,6 @@
 }
 
 .wt-badge.is-active::before {
-  background: #7a6140;
-  border-color: #7a6140;
   animation:pulse-ring 1.8s infinite;
 }
 
