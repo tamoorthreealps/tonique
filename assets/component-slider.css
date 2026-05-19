@@ -43,6 +43,7 @@ slider-component.slider-component-full-width {
     -webkit-overflow-scrolling: touch;
     margin-bottom: 0;
     scrollbar-width: auto;
+    scrollbar-color:#433723;
   }
 
   /* Fix to show some space at the end of our sliders in all browsers */
