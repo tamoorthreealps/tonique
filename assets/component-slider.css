@@ -57,7 +57,6 @@ slider-component.slider-component-full-width {
     padding-bottom: max(var(--focus-outline-padding), var(--shadow-padding-bottom));
     padding:0;
     margin:0 !important;
-    width: 100%;
   }
 
   .slider.slider--mobile.contains-card--standard .slider__slide:not(.collection-list__item--no-media) {
