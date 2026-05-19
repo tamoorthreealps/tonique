@@ -133,7 +133,8 @@
   grid-area: reasons;
   display: flex;
   flex-direction: column;
-  padding-top: 16px;
+  height: 100%;
+    justify-content: end;
 }
 
 .wt-reason {
