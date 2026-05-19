@@ -102,6 +102,12 @@
         "metafield_accordions_Njrdwt": {
           "type": "metafield_accordions",
           "settings": {}
+        },
+        "product_testimonial_j8pxR4": {
+          "type": "product-testimonial",
+          "settings": {
+            "benefits_list": ""
+          }
         }
       },
       "block_order": [
@@ -119,7 +125,8 @@
         "description",
         "share",
         "product_benefits_list_kYc9gC",
-        "metafield_accordions_Njrdwt"
+        "metafield_accordions_Njrdwt",
+        "product_testimonial_j8pxR4"
       ],
       "settings": {
         "enable_sticky_info": true,
