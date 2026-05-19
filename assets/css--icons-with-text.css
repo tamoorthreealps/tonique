@@ -64,8 +64,7 @@ display: grid;
   .iwt-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px 16px;
-    padding: 40px 24px;
+    gap: 32px 13px;
     justify-items: center;
   }
 
