@@ -44,21 +44,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
   flex: 1;
   min-width: 0;
-  padding: 10px 6px;
-  border: 1.5px solid rgba(var(--color-foreground), 0.2);
-  border-radius: 6px;
+  padding: 16px 16px 20px;
+  border: 1px solid #EEEEEE;
   background: transparent;
   cursor: pointer;
   text-align: center;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color .2s ease, background-color .2s ease;
 }
 
 .pp-pack-card.is-selected {
-  border-color: rgb(var(--color-foreground));
-  background-color: rgba(var(--color-foreground), 0.04);
+  border-color: #977B4F;
+    background-color: #F7F3E4;
 }
 
 .pp-pack-card.is-unavailable {
@@ -604,14 +602,11 @@
   }
 
   .pp-pack-cards__grid {
-    gap: 10px;
-    padding-top: 16px;
+    gap: 22px;
   }
 
   .pp-pack-card {
-    padding: 14px 10px;
-    border-radius: 8px;
-    gap: 3px;
+    padding: 16px 26px 16px 20px;
   }
 
   .pp-pack-card__badge {
