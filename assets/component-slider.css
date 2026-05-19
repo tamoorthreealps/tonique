@@ -42,8 +42,8 @@ slider-component.slider-component-full-width {
     scroll-padding-left: 1.5rem;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 0;
-    scrollbar-width: auto;
-    scrollbar-color:#433723 #433723;
+    scrollbar-width: thin !important;
+        scrollbar-color: #433723 #433723 !important;
   }
 
   /* Fix to show some space at the end of our sliders in all browsers */
