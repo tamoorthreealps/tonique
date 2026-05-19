@@ -477,8 +477,7 @@ display: block;
 
 /* ── Body (subscribe expanded content) ── */
 .pp-sub-option__body {
-  padding: 0 16px 14px;
-  border-top: 1px solid rgba(var(--color-foreground), 0.08);
+  padding: 0 0px 8px;
 }
 
 /* ── Savings banner ── */
