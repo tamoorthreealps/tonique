@@ -947,7 +947,7 @@ a.product__text {
   }
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 991px) {
   .product__media-item {
     display: flex;
     align-items: center;
