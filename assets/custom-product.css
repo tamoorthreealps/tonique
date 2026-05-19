@@ -490,6 +490,7 @@ display: block;
     line-height: 20px;
     font-weight: 400;
     width: 100%;
+    letter-spacing: 0;
 }
 
 /* ── Body (subscribe expanded content) ── */
