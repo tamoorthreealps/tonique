@@ -247,7 +247,112 @@
                     </div>
                   </details>
                 </div>
-              {%- when 'quantity_selector' -%}
+              {%- when 'popup' -%}
+                <modal-opener
+                  class="product-popup-modal__opener quick-add-hidden"
+                  data-modal="#PopupModal-{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <button
+                    id="ProductPopup-{{ block.id }}"
+                    class="product-popup-modal__button link"
+                    type="button"
+                    aria-haspopup="dialog"
+                  >
+                    {{ block.settings.text | default: block.settings.page.title | escape }}
+                  </button>
+                </modal-opener>
+              {%- when 'share' -%}
+                {% liquid
+                  assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
+                  render 'share-button', block: block, share_link: share_url
+                %}
+
+              {%- when 'variant_picker' -%}
+                {%- unless product.has_only_default_variant -%}
+                  {%- comment -%}
+                    Find which option name is handled by pack_size_cards block so we can skip it.
+                    We locate the pack_size_cards block settings directly from section.blocks.
+                  {%- endcomment -%}
+                  {%- assign pp_pack_block = section.blocks | where: 'type', 'pack_size_cards' | first -%}
+                  {%- assign pp_hidden_opt = pp_pack_block.settings.option_name | default: 'Pack Size' -%}
+
+                  <variant-selects
+                    id="variant-selects-{{ section.id }}"
+                    data-section="{{ section.id }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- for option in product.options_with_values -%}
+                      {%- if option.name == pp_hidden_opt -%}
+                        {%- comment -%}
+                          Pack size option: render Dawn's standard button picker via the
+                          product-variant-options snippet so every input has the correct
+                          data-option-value-id, data-product-url and id that variant-selects
+                          and product-info.js depend on. The fieldset is hidden via CSS
+                          (.pp-hidden-option) — our custom pack cards drive this option visually.
+                        {%- endcomment -%}
+                        <fieldset class="js product-form__input product-form__input--pill pp-hidden-option">
+                          <legend class="form__label">{{ option.name }}</legend>
+                          {%- render 'product-variant-options',
+                            product: product,
+                            option: option,
+                            block: block,
+                            picker_type: 'button'
+                          -%}
+                        </fieldset>
+                      {%- else -%}
+                        {%- comment -%}
+                          All other options (e.g. Flavor): custom pill-swatch picker.
+                          Image filename: {handleized-value}.png in Shopify Files.
+                        {%- endcomment -%}
+                        <fieldset
+                          class="js product-form__input pp-flavor-picker"
+                          data-option-name="{{ option.name | handleize }}"
+                        >
+                          <legend class="form__label">
+                            {{ option.name }}:
+                            <span data-selected-value>{{- option.selected_value -}}</span>
+                          </legend>
+                          <div class="pp-flavor-swatches">
+                            {%- for value in option.values -%}
+                              {%- assign pp_flavor_handle = value | handleize -%}
+                              {%- assign pp_flavor_img = pp_flavor_handle | append: '.png' | file_url -%}
+                              <label class="pp-flavor-swatch">
+                                <input
+                                  type="radio"
+                                  name="{{ option.name }}-{{ option.position }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  data-option-value-id="{{ value.id }}"
+                                  {% if value.selected %}
+                                    checked
+                                  {% endif %}
+                                >
+                                <span class="pp-flavor-swatch__pill">
+                                  <span class="pp-flavor-swatch__dot">
+                                    <img
+                                      src="{{ pp_flavor_img }}"
+                                      alt="{{ value | escape }}"
+                                      width="24"
+                                      height="24"
+                                      loading="lazy"
+                                    >
+                                  </span>
+                                  <span class="pp-flavor-swatch__name">{{ value | escape }}</span>
+                                </span>
+                              </label>
+                            {%- endfor -%}
+                          </div>
+                        </fieldset>
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    <script type="application/json" data-selected-variant>
+                      {{ product.selected_or_first_available_variant | json }}
+                    </script>
+                  </variant-selects>
+                {%- endunless -%}
+              {%- when 'buy_buttons' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
@@ -474,112 +579,6 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
-              {%- when 'popup' -%}
-                <modal-opener
-                  class="product-popup-modal__opener quick-add-hidden"
-                  data-modal="#PopupModal-{{ block.id }}"
-                  {{ block.shopify_attributes }}
-                >
-                  <button
-                    id="ProductPopup-{{ block.id }}"
-                    class="product-popup-modal__button link"
-                    type="button"
-                    aria-haspopup="dialog"
-                  >
-                    {{ block.settings.text | default: block.settings.page.title | escape }}
-                  </button>
-                </modal-opener>
-              {%- when 'share' -%}
-                {% liquid
-                  assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
-                  render 'share-button', block: block, share_link: share_url
-                %}
-
-              {%- when 'variant_picker' -%}
-                {%- unless product.has_only_default_variant -%}
-                  {%- comment -%}
-                    Find which option name is handled by pack_size_cards block so we can skip it.
-                    We locate the pack_size_cards block settings directly from section.blocks.
-                  {%- endcomment -%}
-                  {%- assign pp_pack_block = section.blocks | where: 'type', 'pack_size_cards' | first -%}
-                  {%- assign pp_hidden_opt = pp_pack_block.settings.option_name | default: 'Pack Size' -%}
-
-                  <variant-selects
-                    id="variant-selects-{{ section.id }}"
-                    data-section="{{ section.id }}"
-                    {{ block.shopify_attributes }}
-                  >
-                    {%- for option in product.options_with_values -%}
-                      {%- if option.name == pp_hidden_opt -%}
-                        {%- comment -%}
-                          Pack size option: render Dawn's standard button picker via the
-                          product-variant-options snippet so every input has the correct
-                          data-option-value-id, data-product-url and id that variant-selects
-                          and product-info.js depend on. The fieldset is hidden via CSS
-                          (.pp-hidden-option) — our custom pack cards drive this option visually.
-                        {%- endcomment -%}
-                        <fieldset class="js product-form__input product-form__input--pill pp-hidden-option">
-                          <legend class="form__label">{{ option.name }}</legend>
-                          {%- render 'product-variant-options',
-                            product: product,
-                            option: option,
-                            block: block,
-                            picker_type: 'button'
-                          -%}
-                        </fieldset>
-                      {%- else -%}
-                        {%- comment -%}
-                          All other options (e.g. Flavor): custom pill-swatch picker.
-                          Image filename: {handleized-value}.png in Shopify Files.
-                        {%- endcomment -%}
-                        <fieldset
-                          class="js product-form__input pp-flavor-picker"
-                          data-option-name="{{ option.name | handleize }}"
-                        >
-                          <legend class="form__label">
-                            {{ option.name }}:
-                            <span data-selected-value>{{- option.selected_value -}}</span>
-                          </legend>
-                          <div class="pp-flavor-swatches">
-                            {%- for value in option.values -%}
-                              {%- assign pp_flavor_handle = value | handleize -%}
-                              {%- assign pp_flavor_img = pp_flavor_handle | append: '.png' | file_url -%}
-                              <label class="pp-flavor-swatch">
-                                <input
-                                  type="radio"
-                                  name="{{ option.name }}-{{ option.position }}"
-                                  value="{{ value | escape }}"
-                                  form="{{ product_form_id }}"
-                                  data-option-value-id="{{ value.id }}"
-                                  {% if value.selected %}
-                                    checked
-                                  {% endif %}
-                                >
-                                <span class="pp-flavor-swatch__pill">
-                                  <span class="pp-flavor-swatch__dot">
-                                    <img
-                                      src="{{ pp_flavor_img }}"
-                                      alt="{{ value | escape }}"
-                                      width="24"
-                                      height="24"
-                                      loading="lazy"
-                                    >
-                                  </span>
-                                  <span class="pp-flavor-swatch__name">{{ value | escape }}</span>
-                                </span>
-                              </label>
-                            {%- endfor -%}
-                          </div>
-                        </fieldset>
-                      {%- endif -%}
-                    {%- endfor -%}
-
-                    <script type="application/json" data-selected-variant>
-                      {{ product.selected_or_first_available_variant | json }}
-                    </script>
-                  </variant-selects>
-                {%- endunless -%}
-              {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
                   product: product,
@@ -1161,11 +1160,6 @@
           "default": true
         }
       ]
-    },
-    {
-      "type": "quantity_selector",
-      "name": "t:sections.main-product.blocks.quantity_selector.name",
-      "limit": 1
     },
     {
       "type": "variant_picker",
