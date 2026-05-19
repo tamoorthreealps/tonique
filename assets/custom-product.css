@@ -347,10 +347,9 @@ font-size: 14px;
 
 /* ── Option card ── */
 .pp-sub-option {
-  border: 1.5px solid rgba(var(--color-foreground), 0.2);
-  border-radius: 8px;
-  transition: border-color 0.2s ease;
-  cursor: pointer;
+      border: 1px solid #D9D7D3;
+    transition: border-color .2s ease;
+    cursor: pointer;
 }
 
 .pp-sub-option + .pp-sub-option {
@@ -358,7 +357,8 @@ font-size: 14px;
 }
 
 .pp-sub-option.is-selected {
-  border-color: rgb(var(--color-foreground));
+      border-color: #977B4F;
+    background: #F7F3E4;
 }
 
 /* ── Header row ── */
