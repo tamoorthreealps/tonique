@@ -1,0 +1,316 @@
+{{ 'css--why-tonique.css' | asset_url | stylesheet_tag }}
+
+<section class="wt-section" id="WhyTonique-{{ section.id }}" {{ section.shopify_attributes }}>
+
+  <div class="wt-inner">
+
+    {%- comment -%} ── Left: Heading ── {%- endcomment -%}
+    <div class="wt-heading">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="wt-heading__title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <p class="wt-heading__sub">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── Centre: Bottle image + numbered badges ── {%- endcomment -%}
+    <div class="wt-visual">
+      {%- if section.settings.product_image != blank -%}
+        <div class="wt-visual__image-wrap">
+          {{-
+            section.settings.product_image
+            | image_url: width: 544
+            | image_tag:
+              loading: 'lazy',
+              alt: section.settings.heading,
+              class: 'wt-visual__image',
+              widths: '272, 544',
+              sizes: '(max-width: 749px) 212px, 35vw'
+          -}}
+        </div>
+      {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        {%- assign badge_num = forloop.index -%}
+        <button
+          class="wt-badge{% if forloop.first %} is-active{% endif %}"
+          data-wt-badge="{{ badge_num }}"
+          data-wt-section="{{ section.id }}"
+          aria-label="Reason {{ badge_num }}"
+          type="button"
+          style="
+            --badge-top-d: {{ block.settings.badge_top_desktop }}%;
+            --badge-left-d: {{ block.settings.badge_left_desktop }}%;
+            --badge-top-m: {{ block.settings.badge_top_mobile }}%;
+            --badge-left-m: {{ block.settings.badge_left_mobile }}%;
+          "
+          {{ block.shopify_attributes }}
+        >
+          <span class="wt-badge__num" aria-hidden="true">{{ badge_num }}</span>
+        </button>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} ── Right: Reasons list (desktop) ── {%- endcomment -%}
+    <div class="wt-reasons" id="wt-reasons-{{ section.id }}" role="list">
+      {%- for block in section.blocks -%}
+        {%- assign reason_num = forloop.index -%}
+        <div
+          class="wt-reason{% if forloop.first %} is-active{% endif %}"
+          data-wt-reason="{{ reason_num }}"
+          role="listitem"
+          {{ block.shopify_attributes }}
+        >
+          <div class="wt-reason__header">
+            <span class="wt-reason__icon" aria-hidden="true">
+              <svg width="24" height="4" viewBox="0 0 24 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 2 Q4 0.5 8 2 Q12 3.5 16 2 Q20 0.5 24 2" stroke="#977b4f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h3 class="wt-reason__title">{{ block.settings.title }}</h3>
+          </div>
+          {%- if block.settings.description != blank -%}
+            <p class="wt-reason__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+
+  {%- comment -%} ── Mobile: Carousel ── {%- endcomment -%}
+  <div class="wt-carousel" id="wt-carousel-{{ section.id }}" aria-live="polite">
+    {%- for block in section.blocks -%}
+      {%- assign slide_num = forloop.index -%}
+      <div
+        class="wt-slide{% if forloop.first %} is-active{% endif %}"
+        data-wt-slide="{{ slide_num }}"
+        id="wt-slide-{{ section.id }}-{{ slide_num }}"
+        role="tabpanel"
+        aria-hidden="{% unless forloop.first %}true{% else %}false{% endunless %}"
+      >
+        <h3 class="wt-slide__title">{{ block.settings.title }}</h3>
+        {%- if block.settings.description != blank -%}
+          <p class="wt-slide__desc">{{ block.settings.description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+
+    <div class="wt-carousel__footer">
+      <span class="wt-carousel__counter" id="wt-counter-{{ section.id }}">1 OF {{ section.blocks.size }}</span>
+      <div class="wt-pagination" id="wt-pagination-{{ section.id }}" role="tablist" aria-label="Slide navigation">
+        {%- for block in section.blocks -%}
+          <span
+            class="wt-pagination__seg{% if forloop.first %} is-active{% endif %}"
+            data-wt-seg="{{ forloop.index }}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-label="Slide {{ forloop.index }}"
+          ></span>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function () {
+  var sid   = '{{ section.id }}';
+  var total = {{ section.blocks.size }};
+  var active = 1;
+
+  function activate(num) {
+    if (num === active) return;
+    active = num;
+
+    // Badges
+    document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (b) {
+      var isActive = parseInt(b.dataset.wtBadge, 10) === num;
+      b.classList.toggle('is-active', isActive);
+    });
+
+    // Desktop reasons
+    document.querySelectorAll('#wt-reasons-' + sid + ' .wt-reason').forEach(function (r) {
+      var isActive = parseInt(r.dataset.wtReason, 10) === num;
+      r.classList.toggle('is-active', isActive);
+    });
+
+    // Mobile slides
+    document.querySelectorAll('#wt-carousel-' + sid + ' .wt-slide').forEach(function (s) {
+      var isActive = parseInt(s.dataset.wtSlide, 10) === num;
+      s.classList.toggle('is-active', isActive);
+      s.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    });
+
+    // Pagination segments
+    document.querySelectorAll('#wt-pagination-' + sid + ' .wt-pagination__seg').forEach(function (p) {
+      var isActive = parseInt(p.dataset.wtSeg, 10) === num;
+      p.classList.toggle('is-active', isActive);
+      p.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    // Counter
+    var counter = document.getElementById('wt-counter-' + sid);
+    if (counter) counter.textContent = num + ' OF ' + total;
+  }
+
+  // Badge click
+  document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activate(parseInt(this.dataset.wtBadge, 10));
+    });
+  });
+
+  // Pagination tap (mobile)
+  var pagination = document.getElementById('wt-pagination-' + sid);
+  if (pagination) {
+    pagination.addEventListener('click', function (e) {
+      var seg = e.target.closest('.wt-pagination__seg');
+      if (seg) activate(parseInt(seg.dataset.wtSeg, 10));
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Why Tonique",
+  "class": "section-why-tonique",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "4 reasons WHY TONIQUE"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Semper vel lacus cras nam. Tempor egestas ipsum consequat libero at sed aenean aenean. Quam sociis id quam."
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image (bottle)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "A complete protein."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Collagen alone isn't complete. Tonique blends it with whey isolate so you get all 9 essential amino acids in one pouch."
+        },
+        {
+          "type": "header",
+          "content": "Badge position — Desktop"
+        },
+        {
+          "type": "range",
+          "id": "badge_top_desktop",
+          "label": "Top (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 22
+        },
+        {
+          "type": "range",
+          "id": "badge_left_desktop",
+          "label": "Left (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 18
+        },
+        {
+          "type": "header",
+          "content": "Badge position — Mobile"
+        },
+        {
+          "type": "range",
+          "id": "badge_top_mobile",
+          "label": "Top (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "badge_left_mobile",
+          "label": "Left (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 20
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Tonique",
+      "blocks": [
+        {
+          "type": "reason",
+          "settings": {
+            "title": "A complete protein.",
+            "description": "Collagen alone isn't complete. Tonique blends it with whey isolate so you get all 9 essential amino acids in one pouch.",
+            "badge_top_desktop": 22,
+            "badge_left_desktop": 14,
+            "badge_top_mobile": 28,
+            "badge_left_mobile": 30
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Five nutrients, built in.",
+            "description": "Every pouch delivers collagen, whey protein, vitamin C, biotin, and hyaluronic acid — no stacking required.",
+            "badge_top_desktop": 44,
+            "badge_left_desktop": 80,
+            "badge_top_mobile": 46,
+            "badge_left_mobile": 68
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "A gram of fiber that does real work.",
+            "description": "Inulin feeds your gut microbiome and helps keep you feeling satisfied without bloat.",
+            "badge_top_desktop": 66,
+            "badge_left_desktop": 14,
+            "badge_top_mobile": 66,
+            "badge_left_mobile": 30
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Monkfruit, not sucralose.",
+            "description": "Sweetened naturally with monkfruit — no artificial sweeteners, no aftertaste, just clean flavor.",
+            "badge_top_desktop": 88,
+            "badge_left_desktop": 80,
+            "badge_top_mobile": 84,
+            "badge_left_mobile": 68
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
