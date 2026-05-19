@@ -372,7 +372,7 @@
                         {{- 'products.product.quantity.label' | t -}}
                       {%- endif -%}
                     </span>
-                    <label
+                    {% comment %} <label
                       class="quantity__label form__label"
                       for="Quantity-{{ section.id }}"
                       aria-labelledby="quantity-label-{{ section.id }}"
@@ -386,7 +386,7 @@
                           )</span
                         >
                       </span>
-                    </label>
+                    </label> {% endcomment %}
                     <div class="price-per-item__container">
                       <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
                         <button class="quantity__button" name="minus" type="button">
