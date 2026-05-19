@@ -649,6 +649,7 @@ width: 100%;
 }
 .quantity--buy--buttons product-form.product-form {
     margin: 0 !important;
+    width: 100%;
 }
 .quantity--buy--buttons .product-form__submit {
 background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
