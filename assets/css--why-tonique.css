@@ -11,6 +11,12 @@
   overflow: hidden;
 }
 
+.wt-inner--container{
+  max-width:1204px;
+  padding:0 24px;
+  margin:0 auto;
+}
+
 /* ── 3-col desktop grid ─────────────────────────── */
 .wt-inner {
   display: grid;
