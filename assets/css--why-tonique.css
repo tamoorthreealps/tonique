@@ -81,16 +81,6 @@
 }
 
 /* Inner decorative ring */
-.wt-badge::before {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  border-radius: 50%;
-  border: 1px solid #977b4f;
-  background: transparent;
-  pointer-events: none;
-  transition: background 0.25s, border-color 0.25s;
-}
 .wt-badge:before{
     content:'';
     position:absolute;
