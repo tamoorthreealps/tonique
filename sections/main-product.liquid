@@ -884,6 +884,7 @@
                 {%- for pp_mf_key in pp_mf_keys -%}
                   {%- assign pp_mf_content = product.metafields.custom[pp_mf_key] -%}
                   {%- if pp_mf_content != blank -%}
+                    <div class="product__accordion__head">
                     <div
                       class="product__accordion accordion quick-add-hidden pp-mf-accordion"
                       {{ block.shopify_attributes }}
@@ -900,6 +901,7 @@
                         </div>
                       </details>
                     </div>
+                  </div>
                   {%- endif -%}
                 {%- endfor -%}
 
