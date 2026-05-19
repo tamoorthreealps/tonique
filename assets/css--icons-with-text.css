@@ -79,5 +79,6 @@ display: grid;
   .iwt-item__label {
     font-size: 12px;
     line-height: 18px;
+    padding:0 10px;
   }
 }
