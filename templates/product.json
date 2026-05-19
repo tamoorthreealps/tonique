@@ -23,6 +23,10 @@
           "type": "title",
           "settings": {}
         },
+        "short_description_wCjihb": {
+          "type": "short-description",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -88,6 +92,7 @@
       "block_order": [
         "vendor",
         "title",
+        "short_description_wCjihb",
         "price",
         "variant_picker",
         "pack_size_cards_EkfXQG",
