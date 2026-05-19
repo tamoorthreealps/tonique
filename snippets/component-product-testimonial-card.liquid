@@ -35,21 +35,25 @@
 <style>
 .component--product--testimonial--card{
     display:flex;
-    align-items:center;
+    align-items:stretch;
     background:#F5F1E8;
 }
 
 .component--product--testimonial--card__image{
-    width:32%;
+    width:160px;
+    min-width:160px;
+    flex:0 0 160px;
 }
 
 .component--product--testimonial--card__image img{
     width:100%;
+    height:100%;
+    object-fit:cover;
     display:block;
 }
 
 .component--product--testimonial--card__content{
-    width:68%;
+    flex:1;
     padding:40px;
     text-align:center;
 }
@@ -70,9 +74,10 @@
         flex-direction:column;
     }
 
-    .component--product--testimonial--card__image,
-    .component--product--testimonial--card__content{
+    .component--product--testimonial--card__image{
         width:100%;
+        min-width:100%;
+        flex:0 0 220px;
     }
 
     .component--product--testimonial--card__content{
