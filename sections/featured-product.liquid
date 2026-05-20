@@ -775,13 +775,13 @@
                     </div>
                   {%- endif -%}
                 {%- when 'subscription_widget' -%}
-                  {% render 'subscription-widget', block: block %}
+                  {% render 'subscription-widget', block: block, product: product, product_form_id: product_form_id %}
                 {%- when 'short-description' -%}
                   <p class="component--pdp--short--description">{{ product.metafields.custom.short_description }}</p>
                 {%- when 'nutrition-facts' -%}
                   {% render 'component--product--nutrition-facts', block: block %}
                 {%- when 'product-tags' -%}
-                  {% render 'component--product--tags', block: block %}
+                  {% render 'component--product--tags', block: block, product: product %}
                 {%- when 'pack_size_cards' -%}
                   {%- comment -%} Find pack size option index {%- endcomment -%}
                   {%- assign pp_pack_option_index = null -%}
