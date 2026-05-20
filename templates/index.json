@@ -48,6 +48,90 @@
         "show_text_below": false
       }
     },
+    "featured_product_yi3prj": {
+      "type": "featured-product",
+      "blocks": {
+        "text_DQMwHm": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_aQmhdP": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_Wx6jNT": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_QAhEc8": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "pack_size_cards_wGdfgg": {
+          "type": "pack_size_cards",
+          "settings": {
+            "label": "Pack Size",
+            "option_name": "Pack Size"
+          }
+        },
+        "subscription_widget_fLWYxn": {
+          "type": "subscription_widget",
+          "settings": {
+            "label": "SELECT YOUR CADENCE:",
+            "subscribe_label": "SUBSCRIBE & SAVE",
+            "onetime_label": "ONE-TIME",
+            "benefit_1": "Skip, pause, or cancel anytime",
+            "benefit_2": "Free shipping",
+            "benefit_3": "",
+            "delivery_label": "DELIVERY EVERY"
+          }
+        },
+        "quantity_selector_VE6gRj": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_hqVM7e": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "text_DQMwHm",
+        "title_aQmhdP",
+        "price_Wx6jNT",
+        "variant_picker_QAhEc8",
+        "pack_size_cards_wGdfgg",
+        "subscription_widget_fLWYxn",
+        "quantity_selector_VE6gRj",
+        "buy_buttons_hqVM7e"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "protein-tonic",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "new_featured_product_BmJW7E": {
       "type": "new-featured-product",
       "blocks": {
@@ -58,20 +142,6 @@
         "price_ECDdVU": {
           "type": "price",
           "settings": {}
-        },
-        "variant_picker_K8GPP4": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "pack_size_cards_4HeCWf": {
-          "type": "pack_size_cards",
-          "settings": {
-            "label": "Pack Size",
-            "option_name": "Pack Size"
-          }
         },
         "subscription_widget_zPb3fw": {
           "type": "subscription_widget",
@@ -85,22 +155,37 @@
             "delivery_label": "DELIVERY EVERY"
           }
         },
+        "pack_size_cards_4HeCWf": {
+          "type": "pack_size_cards",
+          "settings": {
+            "label": "Pack Size",
+            "option_name": "Pack Size"
+          }
+        },
+        "variant_picker_K8GPP4": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
         "buy_buttons_abQC3m": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
           }
         }
       },
       "block_order": [
         "title_rQ4J3y",
         "price_ECDdVU",
-        "variant_picker_K8GPP4",
-        "pack_size_cards_4HeCWf",
         "subscription_widget_zPb3fw",
+        "pack_size_cards_4HeCWf",
+        "variant_picker_K8GPP4",
         "buy_buttons_abQC3m"
       ],
+      "disabled": true,
       "name": "Featured Product",
       "settings": {
         "product": "protein-tonic",
@@ -123,6 +208,7 @@
   },
   "order": [
     "image_banner",
+    "featured_product_yi3prj",
     "new_featured_product_BmJW7E"
   ]
 }
