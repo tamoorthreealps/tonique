@@ -8,11 +8,11 @@
 
   function formatMoney(cents) {
     var fmt = (window.Shopify && window.Shopify.money_format) || '${{amount}}';
-    var amount = (cents / 100).toFixed(2);
+    var amount = (Number(cents || 0) / 100).toFixed(2);
 
     return fmt
       .replace(/\{\{\s*amount\s*\}\}/g, amount)
-      .replace(/\{\{\s*amount_no_decimals\s*\}\}/g, Math.round(cents / 100))
+      .replace(/\{\{\s*amount_no_decimals\s*\}\}/g, Math.round(Number(cents || 0) / 100))
       .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/g, amount.replace('.', ','));
   }
 
@@ -37,7 +37,7 @@
           }
         });
 
-        cards.forEach(function (c) {
+        document.querySelectorAll('.pp-pack-card').forEach(function (c) {
           c.classList.remove('is-selected');
         });
 
@@ -67,9 +67,7 @@
   function updateCardsForVariant(variant) {
     if (!variant) return;
 
-    var cards = document.querySelectorAll('.pp-pack-card');
-
-    cards.forEach(function (card) {
+    document.querySelectorAll('.pp-pack-card').forEach(function (card) {
       var optVal = card.dataset.optionValue;
 
       if (variant.options && variant.options.indexOf(optVal) !== -1) {
@@ -95,22 +93,31 @@
 
   function initSubscriptionWidget() {
     bindSubscriptionGlobalHandlers();
+    bindSubscriptionMutationObserver();
 
     document.querySelectorAll('.pp-sub-widget').forEach(function (widget) {
-      var sectionId = widget.dataset.sectionId;
-      if (!sectionId) return;
-
-      var currentVariantId = getCurrentVariantId(sectionId);
-
-      if (currentVariantId) {
-        updateSubscriptionWidgetForVariant(sectionId, currentVariantId, true);
-      } else {
-        var checked = widget.querySelector('.pp-sub-type-radio:checked');
-        setPurchaseType(widget, checked ? checked.value : 'subscribe');
-      }
-
-      bindSubscriptionSubmitHandler(sectionId);
+      initSingleSubscriptionWidget(widget);
     });
+  }
+
+  function initSingleSubscriptionWidget(widget) {
+    if (!widget) return;
+
+    var sectionId = widget.dataset.sectionId;
+    if (!sectionId) return;
+
+    bindSubscriptionSubmitHandler(sectionId);
+
+    var currentVariantId = getCurrentVariantId(sectionId);
+
+    if (currentVariantId) {
+      updateSubscriptionWidgetForVariant(sectionId, currentVariantId, true);
+    } else {
+      var checked = widget.querySelector('.pp-sub-type-radio:checked');
+      setPurchaseType(widget, checked ? checked.value : 'subscribe');
+    }
+
+    forceSyncWidgetToForm(widget);
   }
 
   function bindSubscriptionGlobalHandlers() {
@@ -123,6 +130,7 @@
 
         if (widget) {
           setPurchaseType(widget, e.target.value);
+          forceSyncWidgetToForm(widget);
         }
 
         return;
@@ -133,7 +141,7 @@
 
         if (widgetForSelect) {
           updateSubscriptionPriceForSelectedPlan(widgetForSelect);
-          syncSellingPlanInput(widgetForSelect);
+          forceSyncWidgetToForm(widgetForSelect);
         }
 
         return;
@@ -146,7 +154,7 @@
         var sectionId = getSectionIdFromForm(form);
 
         if (sectionId) {
-          updateSubscriptionWidgetForVariant(sectionId, e.target.value, false);
+          scheduleSubscriptionSync(sectionId, e.target.value);
         }
       }
     });
@@ -166,38 +174,126 @@
 
     document.addEventListener('variant:changed', function (e) {
       var variant = e.detail && e.detail.variant;
+      var sectionId = e.detail && e.detail.sectionId;
+
       if (!variant) return;
 
-      syncMatchingWidgetsForVariant(variant.id);
+      if (sectionId) {
+        scheduleSubscriptionSync(sectionId, variant.id);
+      } else {
+        scheduleAllSubscriptionSync(variant.id);
+      }
     });
 
     if (window.subscribe && window.PUB_SUB_EVENTS) {
       window.subscribe(window.PUB_SUB_EVENTS.variantChange, function (pubSubData) {
         var data = pubSubData && pubSubData.data;
         var variant = data && data.variant;
+        var sectionId = data && data.sectionId;
 
         if (!variant) return;
 
-        if (data && data.sectionId) {
-          updateSubscriptionWidgetForVariant(data.sectionId, variant.id, false);
-          return;
+        if (sectionId) {
+          scheduleSubscriptionSync(sectionId, variant.id);
+        } else {
+          scheduleAllSubscriptionSync(variant.id);
         }
-
-        syncMatchingWidgetsForVariant(variant.id);
       });
     }
   }
 
-  function syncMatchingWidgetsForVariant(variantId) {
-    document.querySelectorAll('.pp-sub-widget').forEach(function (widget) {
-      var sectionId = widget.dataset.sectionId;
-      if (!sectionId) return;
+  function bindSubscriptionMutationObserver() {
+    if (window.__ppSubMutationObserverBound) return;
+    window.__ppSubMutationObserverBound = true;
 
-      var currentVariantId = getCurrentVariantId(sectionId);
+    var timer = null;
 
-      if (String(currentVariantId) === String(variantId)) {
-        updateSubscriptionWidgetForVariant(sectionId, variantId, false);
-      }
+    var observer = new MutationObserver(function (mutations) {
+      var shouldSync = false;
+
+      mutations.forEach(function (mutation) {
+        if (shouldSync) return;
+
+        mutation.addedNodes.forEach(function (node) {
+          if (shouldSync || node.nodeType !== 1) return;
+
+          if (
+            node.matches &&
+            (
+              node.matches('.pp-sub-widget') ||
+              node.matches('form[action*="/cart/add"]') ||
+              node.matches('input[name="selling_plan"]') ||
+              node.matches('input[name="id"]')
+            )
+          ) {
+            shouldSync = true;
+            return;
+          }
+
+          if (
+            node.querySelector &&
+            (
+              node.querySelector('.pp-sub-widget') ||
+              node.querySelector('form[action*="/cart/add"]') ||
+              node.querySelector('input[name="selling_plan"]') ||
+              node.querySelector('input[name="id"]')
+            )
+          ) {
+            shouldSync = true;
+          }
+        });
+      });
+
+      if (!shouldSync) return;
+
+      clearTimeout(timer);
+
+      timer = setTimeout(function () {
+        document.querySelectorAll('.pp-sub-widget').forEach(function (widget) {
+          initSingleSubscriptionWidget(widget);
+        });
+      }, 50);
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  function scheduleSubscriptionSync(sectionId, variantId) {
+    [0, 50, 150, 300].forEach(function (delay) {
+      setTimeout(function () {
+        var currentVariantId = getCurrentVariantId(sectionId) || variantId;
+        var finalVariantId = variantId || currentVariantId;
+
+        if (!finalVariantId) return;
+
+        updateSubscriptionWidgetForVariant(sectionId, finalVariantId, false);
+
+        var widget = getSubscriptionWidget(sectionId);
+        if (widget) {
+          forceSyncWidgetToForm(widget);
+        }
+      }, delay);
+    });
+  }
+
+  function scheduleAllSubscriptionSync(variantId) {
+    [0, 50, 150, 300].forEach(function (delay) {
+      setTimeout(function () {
+        document.querySelectorAll('.pp-sub-widget').forEach(function (widget) {
+          var sectionId = widget.dataset.sectionId;
+          if (!sectionId) return;
+
+          var currentVariantId = getCurrentVariantId(sectionId);
+
+          if (!variantId || String(currentVariantId) === String(variantId)) {
+            updateSubscriptionWidgetForVariant(sectionId, currentVariantId || variantId, false);
+            forceSyncWidgetToForm(widget);
+          }
+        });
+      }, delay);
     });
   }
 
@@ -260,7 +356,7 @@
     }
 
     var formBySectionInput = document.querySelector(
-      'form[action*="/cart/add"] input[name="section-id"][value="' + sectionId + '"]'
+      'form[action*="/cart/add"] input[name="section-id"][value="' + cssEscape(sectionId) + '"]'
     );
 
     if (formBySectionInput) {
@@ -320,18 +416,27 @@
     syncSellingPlanInput(widget);
   }
 
+  function getSelectedPlanId(widget) {
+    if (!widget) return '';
+
+    var checkedRadio = widget.querySelector('.pp-sub-type-radio:checked');
+    var select = widget.querySelector('.pp-sub-delivery__select');
+    var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
+
+    if (!isSubscription || !select || !select.value || String(select.value) === '0') {
+      return '';
+    }
+
+    return String(select.value);
+  }
+
   function syncSellingPlanInput(widget) {
     if (!widget) return;
 
     var sectionId = widget.dataset.sectionId;
-    var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
-    var checkedRadio = widget.querySelector('.pp-sub-type-radio:checked');
-    var select = widget.querySelector('.pp-sub-delivery__select');
-
-    var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
-    var planId = isSubscription && select && select.value && select.value !== '0' ? select.value : '';
-
+    var planId = getSelectedPlanId(widget);
     var form = getProductFormForSection(sectionId);
+    var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
 
     if (ppInput) {
       ppInput.value = planId;
@@ -350,6 +455,64 @@
     if (customInput) {
       customInput.value = planId;
       customInput.disabled = !planId;
+    }
+  }
+
+  function forceSyncWidgetToForm(widget) {
+    if (!widget) return;
+
+    var sectionId = widget.dataset.sectionId;
+    var form = getProductFormForSection(sectionId);
+    var select = widget.querySelector('.pp-sub-delivery__select');
+    var subscribeRadio = widget.querySelector('.pp-sub-type-radio[value="subscribe"]');
+    var checkedRadio = widget.querySelector('.pp-sub-type-radio:checked');
+
+    if (widget.style.display === 'none') {
+      clearSellingPlanInput(sectionId);
+      return;
+    }
+
+    if (select && select.options.length && (!select.value || String(select.value) === '0')) {
+      select.selectedIndex = 0;
+    }
+
+    if (subscribeRadio && (!checkedRadio || checkedRadio.value !== 'onetime')) {
+      setPurchaseType(widget, 'subscribe');
+    }
+
+    var planId = getSelectedPlanId(widget);
+
+    if (!planId && select && select.options.length) {
+      planId = String(select.options[select.selectedIndex >= 0 ? select.selectedIndex : 0].value || '');
+
+      if (planId && planId !== '0') {
+        select.value = planId;
+
+        if (subscribeRadio) {
+          setPurchaseType(widget, 'subscribe');
+        }
+      }
+    }
+
+    var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
+
+    if (ppInput) {
+      ppInput.value = planId && planId !== '0' ? planId : '';
+      ppInput.disabled = !(planId && planId !== '0');
+    }
+
+    if (form) {
+      form.querySelectorAll('input[name="selling_plan"]').forEach(function (input) {
+        input.value = planId && planId !== '0' ? planId : '';
+        input.disabled = !(planId && planId !== '0');
+      });
+    }
+
+    var customInput = document.getElementById('selling-plan-input');
+
+    if (customInput) {
+      customInput.value = planId && planId !== '0' ? planId : '';
+      customInput.disabled = !(planId && planId !== '0');
     }
   }
 
@@ -379,8 +542,8 @@
       select.appendChild(option);
     });
 
-    if (!select.value && select.options.length) {
-      select.options[0].selected = true;
+    if ((!select.value || String(select.value) === '0') && select.options.length) {
+      select.selectedIndex = 0;
     }
   }
 
@@ -398,10 +561,7 @@
         selectedAllocation = allocation;
       }
 
-      if (
-        selectedPlanId &&
-        String(allocation.selling_plan_id) === selectedPlanId
-      ) {
+      if (selectedPlanId && String(allocation.selling_plan_id) === selectedPlanId) {
         selectedAllocation = allocation;
       }
     });
@@ -416,12 +576,17 @@
     var variantId = getCurrentVariantId(sectionId);
     var variantData = getVariantData(sectionId, variantId);
 
-    if (!variantData) return;
+    if (!variantData) {
+      forceSyncWidgetToForm(widget);
+      return;
+    }
 
     var allocation = getSelectedAllocation(widget, variantData);
-    if (!allocation) return;
 
-    updateSubscriptionPrices(widget, variantData, allocation);
+    if (allocation) {
+      updateSubscriptionPrices(widget, variantData, allocation);
+    }
+
     syncSellingPlanInput(widget);
   }
 
@@ -454,11 +619,10 @@
     var widget = getSubscriptionWidget(sectionId);
     var variantData = getVariantData(sectionId, variantId);
 
-    if (!variantData) {
-      if (widget) {
-        widget.style.display = 'none';
-      }
+    if (!widget) return;
 
+    if (!variantData) {
+      widget.style.display = 'none';
       clearSellingPlanInput(sectionId);
       return;
     }
@@ -469,9 +633,7 @@
 
     var hasSubscription = allocations.length > 0;
 
-    if (widget) {
-      widget.style.display = hasSubscription ? '' : 'none';
-    }
+    widget.style.display = hasSubscription ? '' : 'none';
 
     if (!hasSubscription) {
       clearSellingPlanInput(sectionId);
@@ -491,13 +653,13 @@
     var checkedRadio = widget.querySelector('.pp-sub-type-radio:checked');
     var currentPurchaseType = checkedRadio ? checkedRadio.value : null;
 
-    if (isInitialLoad || !currentPurchaseType) {
+    if (isInitialLoad || !currentPurchaseType || currentPurchaseType !== 'onetime') {
       setPurchaseType(widget, 'subscribe');
     } else {
       setPurchaseType(widget, currentPurchaseType);
     }
 
-    syncSellingPlanInput(widget);
+    forceSyncWidgetToForm(widget);
   }
 
   function updateSubscriptionPrices(widget, variantData, allocation) {
@@ -559,40 +721,34 @@
   function bindSubscriptionSubmitHandler(sectionId) {
     var productForm = getProductFormForSection(sectionId);
 
-    if (!productForm || productForm.dataset.ppSubSubmitBound === 'true') return;
+    if (!productForm) return;
 
     productForm.dataset.ppSubSubmitBound = 'true';
+
+    if (productForm.__ppSubSubmitHandlerAttached) return;
+    productForm.__ppSubSubmitHandlerAttached = true;
 
     productForm.addEventListener(
       'submit',
       function () {
         var widget = getSubscriptionWidget(sectionId);
-        var checkedRadio = widget && widget.querySelector('.pp-sub-type-radio:checked');
-        var select = widget && widget.querySelector('.pp-sub-delivery__select');
-        var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
-        var planId = isSubscription && select && select.value && select.value !== '0' ? select.value : '';
 
-        var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
-
-        if (ppInput) {
-          ppInput.value = planId;
-          ppInput.disabled = !planId;
-        }
-
-        productForm.querySelectorAll('input[name="selling_plan"]').forEach(function (input) {
-          input.value = planId;
-          input.disabled = !planId;
-        });
-
-        var customInput = document.getElementById('selling-plan-input');
-
-        if (customInput) {
-          customInput.value = planId;
-          customInput.disabled = !planId;
+        if (widget) {
+          forceSyncWidgetToForm(widget);
+        } else {
+          clearSellingPlanInput(sectionId);
         }
       },
       true
     );
+  }
+
+  function cssEscape(value) {
+    if (window.CSS && window.CSS.escape) {
+      return window.CSS.escape(value);
+    }
+
+    return String(value).replace(/"/g, '\\"');
   }
 
   // ─── Video Popup ──────────────────────────────────────────────────────────
