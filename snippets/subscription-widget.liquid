@@ -37,7 +37,7 @@
     if pp_variant.selling_plan_allocations.size > 0
       assign pp_variant_has_sub = true
       assign pp_alloc = pp_variant.selling_plan_allocations | first
-      assign pp_sp_first_id = pp_alloc.selling_plan_id
+      assign pp_sp_first_id = pp_alloc.selling_plan.id
       assign pp_sub_price = pp_alloc.price
       assign pp_sub_compare = pp_alloc.compare_at_price | default: pp_variant.price
 
@@ -60,7 +60,7 @@
             "allocations": [
               {%- for a in v.selling_plan_allocations -%}
                 {
-                  "selling_plan_id": {{ a.selling_plan_id | default: 0 }},
+                  "selling_plan_id": {{ a.selling_plan.id | default: 0 }},
                   "name": {{ a.selling_plan.name | default: '' | json }},
                   "price": {{ a.price | default: 0 }},
                   "compare_at_price": {{ a.compare_at_price | default: v.price | default: 0 }}
@@ -78,7 +78,7 @@
     name="selling_plan"
     id="pp-selling-plan-{{ section.id }}"
     form="{{ product_form_id }}"
-    {% if pp_variant_has_sub %}
+    {% if pp_variant_has_sub and pp_sp_first_id != blank %}
       value="{{ pp_sp_first_id }}"
     {% else %}
       value=""
@@ -168,7 +168,7 @@
               >
                 {%- for alloc in pp_variant.selling_plan_allocations -%}
                   <option
-                    value="{{ alloc.id }}"
+                    value="{{ alloc.selling_plan.id }}"
                     {% if forloop.first %}selected{% endif %}
                   >
                     {{ alloc.selling_plan.name }}
