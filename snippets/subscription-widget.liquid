@@ -168,7 +168,7 @@
               >
                 {%- for alloc in pp_variant.selling_plan_allocations -%}
                   <option
-                    value="{{ alloc.selling_plan.id }}"
+                    value="{{ alloc.id }}"
                     {% if forloop.first %}selected{% endif %}
                   >
                     {{ alloc.selling_plan.name }}
