@@ -9,13 +9,30 @@
 {% endcomment %}
 
 <div id="Subscription-{{ section.id }}">
-  <style>.recharge-subscription-widget { display: none !important; }</style>
+  <style>
+    .recharge-subscription-widget {
+      display: none !important;
+    }
+  </style>
 
   {%- liquid
     assign pp_variant = product.selected_or_first_available_variant
     assign pp_pack_sz = pp_variant.metafields.custom.pack_size | default: 1
+
+    assign product_has_any_sub = false
+
+    for v in product.variants
+      if v.selling_plan_allocations.size > 0
+        assign product_has_any_sub = true
+      endif
+    endfor
+
     assign pp_variant_has_sub = false
-    assign pp_alloc = nil
+    assign pp_sp_first_id = ''
+    assign pp_sub_price = pp_variant.price
+    assign pp_sub_compare = pp_variant.price
+    assign pp_savings = 0
+    assign pp_savings_pct = 0
 
     if pp_variant.selling_plan_allocations.size > 0
       assign pp_variant_has_sub = true
@@ -25,10 +42,9 @@
       assign pp_sub_compare = pp_alloc.compare_at_price | default: pp_variant.price
 
       assign pp_savings = pp_sub_compare | minus: pp_sub_price
+
       if pp_sub_compare > 0
         assign pp_savings_pct = pp_savings | times: 100 | divided_by: pp_sub_compare | round
-      else
-        assign pp_savings_pct = 0
       endif
     endif
   -%}
@@ -62,23 +78,36 @@
     name="selling_plan"
     id="pp-selling-plan-{{ section.id }}"
     form="{{ product_form_id }}"
-    {% if pp_variant_has_sub %}value="{{ pp_sp_first_id }}"{% else %}disabled{% endif %}
+    {% if pp_variant_has_sub %}
+      value="{{ pp_sp_first_id }}"
+    {% else %}
+      value=""
+      disabled
+    {% endif %}
   >
 
-  {%- if pp_variant_has_sub -%}
+  {%- if product_has_any_sub -%}
     <div
       class="pp-sub-widget"
       id="pp-sub-widget-{{ section.id }}"
       data-section-id="{{ section.id }}"
+      {% unless pp_variant_has_sub %}style="display:none"{% endunless %}
       {{ block.shopify_attributes }}
     >
       {%- if block.settings.label != blank -%}
         <p class="pp-sub-widget__label">{{ block.settings.label }}</p>
       {%- endif -%}
 
-      <div class="pp-sub-option pp-sub-option--subscribe is-selected">
+      <div class="pp-sub-option pp-sub-option--subscribe {% if pp_variant_has_sub %}is-selected{% endif %}">
         <label class="pp-sub-option__header">
-          <input class="pp-sub-type-radio" type="radio" name="pp-purchase-type-{{ section.id }}" value="subscribe" checked>
+          <input
+            class="pp-sub-type-radio"
+            type="radio"
+            name="pp-purchase-type-{{ section.id }}"
+            value="subscribe"
+            {% if pp_variant_has_sub %}checked{% endif %}
+          >
+
           <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
 
           <div class="pp-sub-option__title-wrap">
@@ -86,10 +115,17 @@
           </div>
 
           <div class="pp-sub-option__pricing">
-            {%- if pp_sub_compare > pp_sub_price -%}
-              <s class="pp-sub-option__price-compare">{{ pp_sub_compare | money }}</s>
-            {%- endif -%}
-            <span class="pp-sub-option__price pp-sub-subscribe-price">{{ pp_sub_price | money }}</span>
+            <s
+              class="pp-sub-option__price-compare"
+              {% unless pp_sub_compare > pp_sub_price %}style="display:none"{% endunless %}
+            >
+              {{ pp_sub_compare | money }}
+            </s>
+
+            <span class="pp-sub-option__price pp-sub-subscribe-price">
+              {{ pp_sub_price | money }}
+            </span>
+
             <span class="pp-sub-option__per-unit pp-sub-subscribe-per-unit">
               {{ pp_sub_price | divided_by: pp_pack_sz | money }}/pouch
             </span>
@@ -97,23 +133,39 @@
         </label>
 
         <div class="pp-sub-option__body">
-          <div class="pp-sub-savings-banner" {% if pp_savings <= 0 %}style="display:none"{% endif %}>
+          <div
+            class="pp-sub-savings-banner"
+            {% if pp_savings <= 0 %}style="display:none"{% endif %}
+          >
             <span class="pp-sub-savings-banner__text">
               Save {{ pp_savings_pct }}% ({{ pp_savings | money }} off)
             </span>
           </div>
 
           <ul class="pp-sub-benefits">
-            {%- if block.settings.benefit_1 != blank -%}<li>{{ block.settings.benefit_1 }}</li>{%- endif -%}
-            {%- if block.settings.benefit_2 != blank -%}<li>{{ block.settings.benefit_2 }}</li>{%- endif -%}
-            {%- if block.settings.benefit_3 != blank -%}<li>{{ block.settings.benefit_3 }}</li>{%- endif -%}
+            {%- if block.settings.benefit_1 != blank -%}
+              <li>{{ block.settings.benefit_1 }}</li>
+            {%- endif -%}
+
+            {%- if block.settings.benefit_2 != blank -%}
+              <li>{{ block.settings.benefit_2 }}</li>
+            {%- endif -%}
+
+            {%- if block.settings.benefit_3 != blank -%}
+              <li>{{ block.settings.benefit_3 }}</li>
+            {%- endif -%}
           </ul>
 
           <div class="pp-sub-delivery">
-            <span class="pp-sub-delivery__label">{{ block.settings.delivery_label }}</span>
+            <span class="pp-sub-delivery__label">
+              {{ block.settings.delivery_label }}
+            </span>
 
             <div class="pp-sub-delivery__select-wrap">
-              <select class="pp-sub-delivery__select" aria-label="{{ block.settings.delivery_label | escape }}">
+              <select
+                class="pp-sub-delivery__select"
+                aria-label="{{ block.settings.delivery_label | escape }}"
+              >
                 {%- for alloc in pp_variant.selling_plan_allocations -%}
                   <option
                     value="{{ alloc.selling_plan_id }}"
@@ -134,14 +186,27 @@
         </div>
       </div>
 
-      <div class="pp-sub-option pp-sub-option--onetime">
+      <div class="pp-sub-option pp-sub-option--onetime {% unless pp_variant_has_sub %}is-selected{% endunless %}">
         <label class="pp-sub-option__header">
-          <input class="pp-sub-type-radio" type="radio" name="pp-purchase-type-{{ section.id }}" value="onetime">
+          <input
+            class="pp-sub-type-radio"
+            type="radio"
+            name="pp-purchase-type-{{ section.id }}"
+            value="onetime"
+            {% unless pp_variant_has_sub %}checked{% endunless %}
+          >
+
           <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
-          <span class="pp-sub-option__title">{{ block.settings.onetime_label }}</span>
+
+          <span class="pp-sub-option__title">
+            {{ block.settings.onetime_label }}
+          </span>
 
           <div class="pp-sub-option__pricing">
-            <span class="pp-sub-option__price pp-sub-onetime-price">{{ pp_variant.price | money }}</span>
+            <span class="pp-sub-option__price pp-sub-onetime-price">
+              {{ pp_variant.price | money }}
+            </span>
+
             <span class="pp-sub-option__per-unit pp-sub-onetime-per-unit">
               {{ pp_variant.price | divided_by: pp_pack_sz | money }}/pouch
             </span>
