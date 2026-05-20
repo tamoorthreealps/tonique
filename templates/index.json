@@ -47,80 +47,9 @@
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
-    },
-    "featured_product_hXkDcr": {
-      "type": "featured-product",
-      "blocks": {
-        "text_RqKQLf": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title_xcMXJF": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "price_9pXm6b": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_NaiBbr": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector_rcYkMc": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_NXQJby": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "share_TEeWwb": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        }
-      },
-      "block_order": [
-        "text_RqKQLf",
-        "title_xcMXJF",
-        "price_9pXm6b",
-        "variant_picker_NaiBbr",
-        "quantity_selector_rcYkMc",
-        "buy_buttons_NXQJby",
-        "share_TEeWwb"
-      ],
-      "name": "t:sections.featured-product.presets.name",
-      "settings": {
-        "product": "",
-        "color_scheme": "",
-        "secondary_background": false,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
-    "image_banner",
-    "featured_product_hXkDcr"
+    "image_banner"
   ]
 }
