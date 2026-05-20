@@ -64,8 +64,17 @@
             "heading_size": "h1"
           }
         },
+        "short_description_FXnWL4": {
+          "type": "short-description",
+          "settings": {}
+        },
+        "nutrition_facts_9XmwKx": {
+          "type": "nutrition-facts",
+          "settings": {}
+        },
         "price_Wx6jNT": {
           "type": "price",
+          "disabled": true,
           "settings": {}
         },
         "variant_picker_QAhEc8": {
@@ -108,17 +117,25 @@
         "product_benefits_list_en7w9a": {
           "type": "product-benefits-list",
           "settings": {
-            "benefits_list": ""
+            "benefits_list": "<ul><li>Free shipping on orders over [$X]</li><li>Skip, pause, or cancel anytime</li></ul>"
           }
         },
         "metafield_accordions_VaggLt": {
           "type": "metafield_accordions",
           "settings": {}
+        },
+        "product_testimonial_xmdc49": {
+          "type": "product-testimonial",
+          "settings": {
+            "quote": "Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac."
+          }
         }
       },
       "block_order": [
         "text_DQMwHm",
         "title_aQmhdP",
+        "short_description_FXnWL4",
+        "nutrition_facts_9XmwKx",
         "price_Wx6jNT",
         "variant_picker_QAhEc8",
         "pack_size_cards_wGdfgg",
@@ -126,7 +143,8 @@
         "quantity_selector_VE6gRj",
         "buy_buttons_hqVM7e",
         "product_benefits_list_en7w9a",
-        "metafield_accordions_VaggLt"
+        "metafield_accordions_VaggLt",
+        "product_testimonial_xmdc49"
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
