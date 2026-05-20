@@ -222,15 +222,25 @@
     var checkedRadio = widget.querySelector('.pp-sub-type-radio:checked');
     var select = widget.querySelector('.pp-sub-delivery__select');
     var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
+    var planId = (isSubscription && select && select.value) ? select.value : '';
 
-    if (!input) return;
+    // Sync the subscription-widget's own scoped input (linked to the product form)
+    if (input) {
+      if (planId) {
+        input.disabled = false;
+        input.value = planId;
+      } else {
+        input.disabled = true;
+        input.value = '';
+      }
+    }
 
-    if (isSubscription && select && select.value) {
-      input.disabled = false;
-      input.value = select.value;
-    } else {
-      input.disabled = true;
-      input.value = '';
+    // Also sync any standalone selling-plan input the merchant added manually
+    // (e.g. <input type="hidden" name="selling_plan" id="selling-plan-input">)
+    var customInput = document.getElementById('selling-plan-input');
+    if (customInput) {
+      customInput.value = planId;
+      customInput.disabled = !planId;
     }
   }
 
@@ -293,12 +303,25 @@
     syncSellingPlanInput(widget);
   }
 
+  function clearAllSellingPlanInputs(sectionId) {
+    var input = document.getElementById('pp-selling-plan-' + sectionId);
+    if (input) { input.disabled = true; input.value = ''; }
+
+    var customInput = document.getElementById('selling-plan-input');
+    if (customInput) { customInput.value = ''; customInput.disabled = true; }
+  }
+
   function updateSubscriptionWidgetForVariant(sectionId, variantId) {
     var widget = getSubscriptionWidget(sectionId);
-    var input = document.getElementById('pp-selling-plan-' + sectionId);
     var variantData = getVariantData(sectionId, variantId);
 
-    if (!variantData) return;
+    // If JSON failed to parse, still clear the selling_plan so a stale
+    // plan ID from the previous variant is not accidentally submitted.
+    if (!variantData) {
+      if (widget) widget.style.display = 'none';
+      clearAllSellingPlanInputs(sectionId);
+      return;
+    }
 
     var allocations = variantData.allocations || [];
     var hasSubscription = allocations.length > 0;
@@ -306,10 +329,7 @@
     if (widget) widget.style.display = hasSubscription ? '' : 'none';
 
     if (!hasSubscription) {
-      if (input) {
-        input.disabled = true;
-        input.value = '';
-      }
+      clearAllSellingPlanInputs(sectionId);
       return;
     }
 
