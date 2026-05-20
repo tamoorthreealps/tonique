@@ -39,15 +39,15 @@
         {%- for v in product.variants -%}
           {%- assign v_pack = v.metafields.custom.pack_size | default: 1 -%}
           "{{ v.id }}": {
-            "price": {{ v.price }},
-            "pack_size": {{ v_pack }},
+            "price": {{ v.price | default: 0 }},
+            "pack_size": {{ v_pack | default: 1 }},
             "allocations": [
               {%- for a in v.selling_plan_allocations -%}
                 {
-                  "selling_plan_id": {{ a.selling_plan_id }},
-                  "name": {{ a.selling_plan.name | json }},
-                  "price": {{ a.price }},
-                  "compare_at_price": {{ a.compare_at_price | default: v.price }}
+                  "selling_plan_id": {{ a.selling_plan_id | default: 0 }},
+                  "name": {{ a.selling_plan.name | default: '' | json }},
+                  "price": {{ a.price | default: 0 }},
+                  "compare_at_price": {{ a.compare_at_price | default: v.price | default: 0 }}
                 }{%- unless forloop.last -%},{%- endunless -%}
               {%- endfor -%}
             ]
