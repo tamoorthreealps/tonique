@@ -215,6 +215,12 @@
       }
     }
 
+    var sectionInput = form.querySelector('input[name="section-id"]');
+
+    if (sectionInput && sectionInput.value) {
+      return sectionInput.value;
+    }
+
     var match = formId.match(/^product-form-(.+)$/);
     return match ? match[1] : null;
   }
@@ -235,26 +241,44 @@
     }
   }
 
-  function getCurrentVariantId(sectionId) {
-    var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
-    var formId = sellingPlanInput && sellingPlanInput.getAttribute('form');
+  function getProductFormForSection(sectionId) {
+    var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
+    var formId = ppInput && ppInput.getAttribute('form');
 
     if (formId) {
-      var form = document.getElementById(formId);
+      var formByAttr = document.getElementById(formId);
 
-      if (form) {
-        var formVariantInput = form.querySelector('input[name="id"], select[name="id"]');
-
-        if (formVariantInput) {
-          return formVariantInput.value;
-        }
+      if (formByAttr) {
+        return formByAttr;
       }
     }
 
-    var fallbackInput = document.querySelector('#product-form-' + sectionId + ' input[name="id"], #product-form-' + sectionId + ' select[name="id"]');
+    var fallbackForm = document.getElementById('product-form-' + sectionId);
 
-    if (fallbackInput) {
-      return fallbackInput.value;
+    if (fallbackForm) {
+      return fallbackForm;
+    }
+
+    var formBySectionInput = document.querySelector(
+      'form[action*="/cart/add"] input[name="section-id"][value="' + sectionId + '"]'
+    );
+
+    if (formBySectionInput) {
+      return formBySectionInput.closest('form');
+    }
+
+    return null;
+  }
+
+  function getCurrentVariantId(sectionId) {
+    var form = getProductFormForSection(sectionId);
+
+    if (form) {
+      var formVariantInput = form.querySelector('input[name="id"], select[name="id"]');
+
+      if (formVariantInput) {
+        return formVariantInput.value;
+      }
     }
 
     return null;
@@ -300,21 +324,32 @@
     if (!widget) return;
 
     var sectionId = widget.dataset.sectionId;
-    var input = document.getElementById('pp-selling-plan-' + sectionId);
+    var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
     var checkedRadio = widget.querySelector('.pp-sub-type-radio:checked');
     var select = widget.querySelector('.pp-sub-delivery__select');
 
     var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
     var planId = isSubscription && select && select.value ? select.value : '';
 
-    if (input) {
-      input.value = planId;
+    var form = getProductFormForSection(sectionId);
 
-      if (planId) {
-        input.disabled = false;
-      } else {
-        input.disabled = true;
-      }
+    if (ppInput) {
+      ppInput.value = planId;
+      ppInput.disabled = !planId;
+    }
+
+    if (form) {
+      form.querySelectorAll('input[name="selling_plan"]').forEach(function (input) {
+        input.value = planId;
+        input.disabled = !planId;
+      });
+    }
+
+    var customInput = document.getElementById('selling-plan-input');
+
+    if (customInput) {
+      customInput.value = planId;
+      customInput.disabled = !planId;
     }
   }
 
@@ -380,11 +415,27 @@
   }
 
   function clearSellingPlanInput(sectionId) {
-    var input = document.getElementById('pp-selling-plan-' + sectionId);
+    var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
 
-    if (input) {
-      input.disabled = true;
-      input.value = '';
+    if (ppInput) {
+      ppInput.disabled = true;
+      ppInput.value = '';
+    }
+
+    var form = getProductFormForSection(sectionId);
+
+    if (form) {
+      form.querySelectorAll('input[name="selling_plan"]').forEach(function (input) {
+        input.disabled = true;
+        input.value = '';
+      });
+    }
+
+    var customInput = document.getElementById('selling-plan-input');
+
+    if (customInput) {
+      customInput.disabled = true;
+      customInput.value = '';
     }
   }
 
@@ -488,31 +539,42 @@
   }
 
   function bindSubscriptionSubmitHandler(sectionId) {
-    var sellingPlanInput = document.getElementById('pp-selling-plan-' + sectionId);
-    var formId = sellingPlanInput && sellingPlanInput.getAttribute('form');
-    var productForm = formId ? document.getElementById(formId) : document.getElementById('product-form-' + sectionId);
+    var productForm = getProductFormForSection(sectionId);
 
     if (!productForm || productForm.dataset.ppSubSubmitBound === 'true') return;
 
     productForm.dataset.ppSubSubmitBound = 'true';
 
-    productForm.addEventListener('submit', function () {
-      var widget = getSubscriptionWidget(sectionId);
-      var checkedRadio = widget && widget.querySelector('.pp-sub-type-radio:checked');
-      var select = widget && widget.querySelector('.pp-sub-delivery__select');
-      var ourInput = document.getElementById('pp-selling-plan-' + sectionId);
-      var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
+    productForm.addEventListener(
+      'submit',
+      function () {
+        var widget = getSubscriptionWidget(sectionId);
+        var checkedRadio = widget && widget.querySelector('.pp-sub-type-radio:checked');
+        var select = widget && widget.querySelector('.pp-sub-delivery__select');
+        var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
+        var planId = isSubscription && select && select.value ? select.value : '';
 
-      if (!ourInput) return;
+        var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
 
-      if (isSubscription && select && select.value) {
-        ourInput.disabled = false;
-        ourInput.value = select.value;
-      } else {
-        ourInput.disabled = true;
-        ourInput.value = '';
-      }
-    }, true);
+        if (ppInput) {
+          ppInput.value = planId;
+          ppInput.disabled = !planId;
+        }
+
+        productForm.querySelectorAll('input[name="selling_plan"]').forEach(function (input) {
+          input.value = planId;
+          input.disabled = !planId;
+        });
+
+        var customInput = document.getElementById('selling-plan-input');
+
+        if (customInput) {
+          customInput.value = planId;
+          customInput.disabled = !planId;
+        }
+      },
+      true
+    );
   }
 
   // ─── Video Popup ──────────────────────────────────────────────────────────
@@ -536,8 +598,6 @@
       }
 
       modal.removeAttribute('hidden');
-      document.body.style.overflow = '';
-
       document.body.style.overflow = 'hidden';
 
       if (closeBtn) {
