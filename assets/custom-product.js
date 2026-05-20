@@ -329,7 +329,7 @@
     var select = widget.querySelector('.pp-sub-delivery__select');
 
     var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
-    var planId = isSubscription && select && select.value ? select.value : '';
+    var planId = isSubscription && select && select.value && select.value !== '0' ? select.value : '';
 
     var form = getProductFormForSection(sectionId);
 
@@ -361,12 +361,18 @@
     select.innerHTML = '';
 
     allocations.forEach(function (allocation, index) {
+      var sellingPlanId = allocation.selling_plan_id;
+
+      if (!sellingPlanId || String(sellingPlanId) === '0') {
+        return;
+      }
+
       var option = document.createElement('option');
 
-      option.value = String(allocation.selling_plan_id);
+      option.value = String(sellingPlanId);
       option.textContent = allocation.name || allocation.selling_plan_name || 'Subscription plan ' + (index + 1);
 
-      if (String(allocation.selling_plan_id) === String(previousValue)) {
+      if (String(sellingPlanId) === String(previousValue)) {
         option.selected = true;
       }
 
@@ -385,15 +391,20 @@
 
     var select = widget.querySelector('.pp-sub-delivery__select');
     var selectedPlanId = select ? String(select.value) : null;
-    var selectedAllocation = variantData.allocations[0];
+    var selectedAllocation = null;
 
-    if (selectedPlanId) {
-      variantData.allocations.forEach(function (allocation) {
-        if (String(allocation.selling_plan_id) === selectedPlanId) {
-          selectedAllocation = allocation;
-        }
-      });
-    }
+    variantData.allocations.forEach(function (allocation) {
+      if (!selectedAllocation && allocation.selling_plan_id && String(allocation.selling_plan_id) !== '0') {
+        selectedAllocation = allocation;
+      }
+
+      if (
+        selectedPlanId &&
+        String(allocation.selling_plan_id) === selectedPlanId
+      ) {
+        selectedAllocation = allocation;
+      }
+    });
 
     return selectedAllocation;
   }
@@ -452,7 +463,10 @@
       return;
     }
 
-    var allocations = variantData.allocations || [];
+    var allocations = (variantData.allocations || []).filter(function (allocation) {
+      return allocation.selling_plan_id && String(allocation.selling_plan_id) !== '0';
+    });
+
     var hasSubscription = allocations.length > 0;
 
     if (widget) {
@@ -466,7 +480,11 @@
 
     rebuildPlanDropdown(widget, allocations);
 
-    var allocation = getSelectedAllocation(widget, variantData) || allocations[0];
+    var allocation = getSelectedAllocation(widget, {
+      price: variantData.price,
+      pack_size: variantData.pack_size,
+      allocations: allocations
+    }) || allocations[0];
 
     updateSubscriptionPrices(widget, variantData, allocation);
 
@@ -552,7 +570,7 @@
         var checkedRadio = widget && widget.querySelector('.pp-sub-type-radio:checked');
         var select = widget && widget.querySelector('.pp-sub-delivery__select');
         var isSubscription = checkedRadio && checkedRadio.value === 'subscribe';
-        var planId = isSubscription && select && select.value ? select.value : '';
+        var planId = isSubscription && select && select.value && select.value !== '0' ? select.value : '';
 
         var ppInput = document.getElementById('pp-selling-plan-' + sectionId);
 
