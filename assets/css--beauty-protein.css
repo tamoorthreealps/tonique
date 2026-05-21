@@ -435,3 +435,25 @@
 		width: 32.56% !important;
 	}
 }
+
+@media screen and (max-width: 766px) {
+
+  .bp-row {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bp-cell--comp {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 116px;
+    min-width: 116px;
+    flex-shrink: 0;
+    border-right: 1px solid #d9d7d3;
+    transition: transform .45s ease;
+    background: #fff;
+  }
+
+}
