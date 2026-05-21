@@ -93,32 +93,45 @@
     </div>
 
     {%- comment -%} ── Mobile: horizontal scroll cards ── {%- endcomment -%}
-    <div class="wi-mobile-scroll" id="wi-mobile-{{ section.id }}">
-      <div class="wi-scroll-track">
-        {%- for block in section.blocks -%}
-          <div class="wi-scroll-card" {{ block.shopify_attributes }}>
-            <div class="wi-scroll-card__top">
-              {%- if block.settings.image != blank -%}
-                {{-
-                  block.settings.image
-                  | image_url: width: 344
-                  | image_tag: loading: 'lazy', alt: block.settings.ingredient_name, class: 'wi-scroll-card__image'
-                -}}
-              {%- endif -%}
-              {%- if block.settings.badge_label != blank -%}
-                <span class="wi-scroll-card__badge">{{ block.settings.badge_label }}</span>
-              {%- endif -%}
-            </div>
-            <div class="wi-scroll-card__body">
-              <p class="wi-scroll-card__name">{{ block.settings.ingredient_name }}</p>
-              <div class="wi-scroll-card__divider" aria-hidden="true"></div>
-              <div class="wi-scroll-card__amount-row">
-                <span class="wi-scroll-card__amount">{{ block.settings.amount }}</span>
-                <span class="wi-scroll-card__per">PER POUCH</span>
+    <div class="wi-mobile-scroll splide" id="wi-mobile-{{ section.id }}">
+      <div class="splide__track">
+        <div class="splide__list">
+          {%- for block in section.blocks -%}
+            <div class="wi-scroll-card splide__slide" {{ block.shopify_attributes }}>
+              <div class="wi-scroll-card__top">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 344
+                    | image_tag: loading: 'lazy', alt: block.settings.ingredient_name, class: 'wi-scroll-card__image'
+                  }}
+                {%- endif -%}
+
+                {%- if block.settings.badge_label != blank -%}
+                  <span class="wi-scroll-card__badge">
+                    {{ block.settings.badge_label }}
+                  </span>
+                {%- endif -%}
+              </div>
+
+              <div class="wi-scroll-card__body">
+                <p class="wi-scroll-card__name">
+                  {{ block.settings.ingredient_name }}
+                </p>
+
+                <div class="wi-scroll-card__divider"></div>
+
+                <div class="wi-scroll-card__amount-row">
+                  <span class="wi-scroll-card__amount">
+                    {{ block.settings.amount }}
+                  </span>
+
+                  <span class="wi-scroll-card__per"> PER POUCH </span>
+                </div>
               </div>
             </div>
-          </div>
-        {%- endfor -%}
+          {%- endfor -%}
+        </div>
       </div>
     </div>
   </div>
