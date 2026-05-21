@@ -24,7 +24,6 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  max-width: 796px;
   margin: 0 auto 32px;
 }
 
@@ -275,7 +274,6 @@ font-family: Archivo, sans-serif;
   }
 
   .bp-intro {
-    max-width: 796px;
         margin: 0 auto 40px;
   }
 
