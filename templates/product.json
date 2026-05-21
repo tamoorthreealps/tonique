@@ -379,7 +379,8 @@
             "ingredient_name": "Hydrolyzed Collagen Peptides",
             "amount": "8g",
             "badge_label": "COLLAGEN",
-            "description": "Type I & III collagen peptides to support skin elasticity, joint comfort, and lean body composition."
+            "description": "Type I & III collagen peptides to support skin elasticity, joint comfort, and lean body composition.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         },
         "ingredient_XMEjj6": {
@@ -388,7 +389,8 @@
             "ingredient_name": "Whey Protein Isolate",
             "amount": "7g",
             "badge_label": "PROTEIN",
-            "description": "Fast-absorbing whey isolate to complete the amino acid profile and support lean muscle recovery."
+            "description": "Fast-absorbing whey isolate to complete the amino acid profile and support lean muscle recovery.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         },
         "ingredient_P7CVpa": {
@@ -397,7 +399,8 @@
             "ingredient_name": "KSM-66® Ashwagandha",
             "amount": "600mg",
             "badge_label": "ADAPTOGEN",
-            "description": "The most clinically studied ashwagandha extract — supports stress resilience and recovery."
+            "description": "The most clinically studied ashwagandha extract — supports stress resilience and recovery.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         },
         "ingredient_ydxCzi": {
@@ -406,7 +409,8 @@
             "ingredient_name": "Hyaluronic Acid",
             "amount": "120mg",
             "badge_label": "HYDRATION",
-            "description": "Helps skin retain moisture for a plumper, more hydrated appearance."
+            "description": "Helps skin retain moisture for a plumper, more hydrated appearance.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         },
         "ingredient_tePydL": {
@@ -415,7 +419,8 @@
             "ingredient_name": "Vitamin C",
             "amount": "90mg",
             "badge_label": "VITAMIN",
-            "description": "Essential co-factor for collagen synthesis and a powerful antioxidant."
+            "description": "Essential co-factor for collagen synthesis and a powerful antioxidant.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         },
         "ingredient_dbP3hc": {
@@ -424,7 +429,8 @@
             "ingredient_name": "Monkfruit Extract",
             "amount": "40mg",
             "badge_label": "SWEETENER",
-            "description": "Natural zero-calorie sweetener — no sucralose, no aftertaste."
+            "description": "Natural zero-calorie sweetener — no sucralose, no aftertaste.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         },
         "ingredient_Cq3KAG": {
@@ -433,7 +439,8 @@
             "ingredient_name": "Biotin",
             "amount": "300mcg",
             "badge_label": "BIOTIN",
-            "description": "Supports healthy hair, skin, and nail growth from within."
+            "description": "Supports healthy hair, skin, and nail growth from within.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         },
         "ingredient_p98gQK": {
@@ -442,7 +449,8 @@
             "ingredient_name": "Passionfruit",
             "amount": "<1%",
             "badge_label": "FLAVOR",
-            "description": "Natural passionfruit flavor — no artificial flavors, no added colors."
+            "description": "Natural passionfruit flavor — no artificial flavors, no added colors.",
+            "image": "shopify://shop_images/Product_image.png"
           }
         }
       },
