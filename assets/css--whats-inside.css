@@ -208,7 +208,7 @@
     flex-direction: column;
   }
 
-  .wi-row {
+  .wi-list-hold {
     display: flex;
     align-items: center;
     gap: 12px;
