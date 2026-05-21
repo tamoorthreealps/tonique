@@ -494,25 +494,19 @@
         "bullet_azhnhy": {
           "type": "bullet",
           "settings": {
-            "bullet_text": "No mixing required"
+            "bullet_text": "After Workouts"
           }
         },
         "bullet_QGVX3q": {
           "type": "bullet",
           "settings": {
-            "bullet_text": "No refrigeration needed"
+            "bullet_text": "Between Meals"
           }
         },
-        "bullet_injtQE": {
+        "bullet_UeHhFi": {
           "type": "bullet",
           "settings": {
-            "bullet_text": "Fits in any bag or pocket"
-          }
-        },
-        "bullet_eNVBJD": {
-          "type": "bullet",
-          "settings": {
-            "bullet_text": "Ready in seconds, anywhere"
+            "bullet_text": "On the Go"
           }
         }
       },
@@ -522,13 +516,11 @@
         "step_ehiJeK",
         "bullet_azhnhy",
         "bullet_QGVX3q",
-        "bullet_injtQE",
-        "bullet_eNVBJD"
+        "bullet_UeHhFi"
       ],
       "name": "Protein Intake Time",
       "settings": {
         "image": "shopify://shop_images/Rectangle_36.png",
-        "heading": "",
         "body_text": "Take anytime you need a clean protein boost:"
       }
     },
