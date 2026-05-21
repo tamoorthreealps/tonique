@@ -69,6 +69,10 @@ font-family: Archivo, sans-serif;
 }
 
 /* ── Cells (mobile sizes) ───────────────────────── */
+.bp-row .bp-cell:first-child{
+  border-bottom:1px solid #D9D7D3;
+}
+
 .bp-cell {
   display: flex;
   align-items: center;
