@@ -46,11 +46,15 @@
 
 /* ── Content ────────────────────────────────────── */
 .pit-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  height: 100%;
+display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    height: 100%;
+    padding: 80px 24px 80px;
+    max-width: 609px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 /* ── Heading ────────────────────────────────────── */
