@@ -51,7 +51,7 @@ display: flex;
     justify-content: space-between;
     gap: 32px;
     height: 100%;
-    padding: 80px 24px 80px;
+    padding: 40px 24px 56px;
     max-width: 609px;
     margin: 0 auto;
     width: 100%;
@@ -183,7 +183,6 @@ display: flex;
   }
 .pit-content {
     padding: 80px 24px 80px;
-    border:0;
 }
   .pit-heading {
     font-size: 36px;
