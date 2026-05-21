@@ -78,6 +78,7 @@ border: 1px solid #977b4f;
     display: flex;
     flex-direction: column;
     padding: 8px;
+    overflow: hidden;
 }
 
 .wi-scroll-card:last-child {
