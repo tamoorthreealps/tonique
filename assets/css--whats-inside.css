@@ -187,6 +187,9 @@ p.wi-card__desc__mobile {
     background: #fefefc;
     margin: 0;
     padding: 8px;
+    transform: translateY(100%);
+    transition: transform .4s ease;
+    z-index: 5;
 }
 .wi-mobile-scroll .splide__pagination {
     position: static;
