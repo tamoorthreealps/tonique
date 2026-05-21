@@ -81,6 +81,10 @@ font-family: Archivo, sans-serif;
   border-bottom: 1px solid #433723;
 }
 
+.pf-item.is-open{
+  border-color:#A88958;
+}
+
 /* ── Trigger button ─────────────────────────────── */
 .pf-item__trigger {
     width: 100%;
