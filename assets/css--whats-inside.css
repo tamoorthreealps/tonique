@@ -331,19 +331,20 @@ height: 224px;
   }
 
   .wi-card__badge {
-    display: inline-block;
-    background: #ffffff;
-    border: 1px solid #977b4f;
-    border-radius: 100px;
-    padding: 4px 14px;
-    font-family: 'Archivo', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    letter-spacing: 0.96px;
-    text-transform: uppercase;
-    color: #977b4f;
-    align-self: flex-start;
+        background: #FFFFFF;
+        border: 1px solid #A88958;
+        border-radius: 100px;
+        padding: 4px 12px;
+        font-family: Archivo, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: #A88958;
+        position: absolute;
+        top: 8px;
+        left: 8px;
   }
 
   .wi-card__name {
