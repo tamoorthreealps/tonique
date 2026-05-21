@@ -428,16 +428,14 @@ font-size: 14px;
 
   .bp-row {
     position: relative;
-    justify-content: flex-start;
   }
 
   .bp-cell--comp {
     display: flex;
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 116px;
+    flex-shrink: 0;
     transition: transform .45s ease;
+    border-right: 1px solid #d9d7d3;
   }
 
 }
