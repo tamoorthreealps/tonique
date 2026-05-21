@@ -169,7 +169,28 @@ font-family: Archivo, sans-serif;
     color: #433723;
     white-space: nowrap;
 }
-
+.wi-mobile-scroll .splide__pagination {
+    position: static;
+    padding: 0;
+    margin: 36px 0 0;
+    gap: 0;
+    width: 100%;
+}
+.wi-mobile-scroll .splide__pagination li {
+    flex: 1;
+}
+.wi-mobile-scroll .splide__pagination__page {
+    margin: 0;
+    background: #D8D1BF;
+    border-radius: inherit;
+    opacity: 1;
+    width: 100%;
+    height: 2px;
+}
+.wi-mobile-scroll .splide__pagination__page.is-active {
+    background: #433723;
+    transform: scale(1.4);
+}
 /* ── Desktop (min-width: 767px) ─────────────────── */
 @media screen and (min-width: 767px) {
 .wi-section{
