@@ -176,6 +176,18 @@ font-family: Archivo, sans-serif;
     color: #433723;
     white-space: nowrap;
 }
+p.wi-card__desc__mobile {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: #fefefc;
+    margin: 0;
+    padding: 8px;
+}
 .wi-mobile-scroll .splide__pagination {
     position: static;
     padding: 0;
