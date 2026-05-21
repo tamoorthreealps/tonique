@@ -61,7 +61,9 @@ font-family: Archivo, sans-serif;
     margin: 0;
     margin-bottom: 24px;
 }
-
+.desktop--pf--heading {
+    display:none;
+  }
 /* ── Accordion ──────────────────────────────────── */
 .pf-accordion {
   display: flex;
@@ -266,6 +268,10 @@ font-size: 36px;
         letter-spacing: 2.88px;
         margin-bottom: 40px;
   }
+  .desktop--pf--heading {
+    display:block;
+  }
+  .mobile--pf--heading{display:none;}
 
   .pf-item__question {
    font-size: 20px;
