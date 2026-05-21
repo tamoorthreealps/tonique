@@ -51,6 +51,11 @@
 /* ── Mobile: horizontal scroll strip ───────────── */
 .wi-mobile-scroll {
   display: block;
+  padding: 0 24px;
+}
+
+.wi-mobile-scroll .splide__track{
+  overflow: visible;
 }
 
 .wi-scroll-track {
