@@ -122,21 +122,11 @@ font-family: Archivo, sans-serif;
 
 /* Competitor circles */
 .bp-col-hd__circle {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #f5efdd;
-  border: 1px solid #d8d1bf;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-
-.bp-col-hd__circle--tonique {
-  background: #f5efdd;
-  border-color: #e5c694;
 }
 
 .bp-col-hd__circle--empty {
@@ -318,11 +308,6 @@ font-family: Archivo, sans-serif;
     align-items: center;
     padding-top: 24px;
     padding-bottom: 24px;
-  }
-
-  .bp-col-hd__circle {
-    width: 80px;
-    height: 80px;
   }
 
   .bp-col-hd__name {
