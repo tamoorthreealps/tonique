@@ -2,7 +2,6 @@
 
 <section class="bp-section" id="BeautyProtein-{{ section.id }}" {{ section.shopify_attributes }}>
   <div class="bp-inner--container">
-
     {%- comment -%} ── Heading ── {%- endcomment -%}
     <div class="bp-intro">
       {%- if section.settings.heading != blank -%}
@@ -15,10 +14,8 @@
 
     {%- comment -%} ── Table ── {%- endcomment -%}
     <div class="bp-table" id="bp-table-{{ section.id }}">
-
       {%- comment -%} Header row ── {%- endcomment -%}
       <div class="bp-row bp-row--header">
-
         {%- comment -%} Empty label cell ── {%- endcomment -%}
         <div class="bp-cell bp-cell--label bp-cell--blank"></div>
 
@@ -34,7 +31,10 @@
                 -}}
               </div>
             {%- else -%}
-              <div class="bp-col-hd__circle bp-col-hd__circle--tonique bp-col-hd__circle--empty" aria-hidden="true"></div>
+              <div
+                class="bp-col-hd__circle bp-col-hd__circle--tonique bp-col-hd__circle--empty"
+                aria-hidden="true"
+              ></div>
             {%- endif -%}
             <span class="bp-col-hd__name bp-col-hd__name--tonique">{{ section.settings.tonique_label }}</span>
           </div>
@@ -50,11 +50,7 @@
             <div class="bp-col-hd">
               <div class="bp-col-hd__circle">
                 {%- if ci != blank -%}
-                  {{-
-                    ci
-                    | image_url: width: 160
-                    | image_tag: loading: 'lazy', alt: cn, class: 'bp-col-hd__img'
-                  -}}
+                  {{- ci | image_url: width: 160 | image_tag: loading: 'lazy', alt: cn, class: 'bp-col-hd__img' -}}
                 {%- endif -%}
               </div>
               <span class="bp-col-hd__name">{{ cn }}</span>
@@ -66,7 +62,6 @@
       {%- comment -%} Data rows ── {%- endcomment -%}
       {%- for block in section.blocks -%}
         <div class="bp-row" {{ block.shopify_attributes }}>
-
           <div class="bp-cell bp-cell--label">
             <span class="bp-label">{{ block.settings.row_label }}</span>
           </div>
@@ -76,8 +71,8 @@
             {%- assign tv = block.settings.tonique_value -%}
             {%- if tv == 'check' -%}
               <span class="bp-tilde bp-tilde--gold" aria-label="Yes">
-                <svg width="56" height="14" viewBox="0 0 24 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M0 2.71094C0.346152 2.46224 0.731786 2.26121 1.11794 2.09047C4.68726 0.549317 8.37054 1.74495 11.4971 3.57526C11.4971 3.57526 11.4971 3.57526 11.4971 3.57526C14.8694 5.66412 19.9078 6.35421 23.0826 3.65421C23.4237 3.37036 23.7462 3.05608 24 2.71094C23.6538 2.95963 23.2682 3.16066 22.8821 3.33141C19.3127 4.87256 15.6295 3.67693 12.5029 1.84662C12.5029 1.84662 12.5029 1.84662 12.5029 1.84662C9.13062 -0.242241 4.09224 -0.932333 0.917437 1.76767C0.576251 2.05151 0.253772 2.36579 0 2.71094Z" fill="#a88958"/>
+                <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 5.75C0.594116 5.30252 1.23976 4.94351 1.89485 4.6312C7.98763 1.7851 13.6226 4.3471 18.5687 7.79974C18.5687 7.79974 18.5687 7.79974 18.5687 7.79974C23.9971 12.0596 33.9034 13.4299 38.6798 7.62529C39.1985 7.04034 39.6581 6.41609 40 5.75C39.4059 6.19748 38.7602 6.55649 38.1052 6.8688C32.0124 9.7149 26.3774 7.1529 21.4313 3.70026C21.4313 3.70026 21.4313 3.70026 21.4313 3.70026C16.0029 -0.559606 6.09657 -1.92987 1.32019 3.87471C0.801502 4.45966 0.341909 5.08391 0 5.75Z" fill="#A88958"/>
                 </svg>
               </span>
             {%- elsif tv != blank -%}
@@ -94,8 +89,8 @@
             <div class="bp-cell bp-cell--comp" data-bp-comp="{{ i }}">
               {%- if cv == 'cross' -%}
                 <span class="bp-tilde bp-tilde--grey" aria-label="No">
-                  <svg width="56" height="14" viewBox="0 0 24 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M0 2.71094C0.346152 2.46224 0.731786 2.26121 1.11794 2.09047C4.68726 0.549317 8.37054 1.74495 11.4971 3.57526C11.4971 3.57526 11.4971 3.57526 11.4971 3.57526C14.8694 5.66412 19.9078 6.35421 23.0826 3.65421C23.4237 3.37036 23.7462 3.05608 24 2.71094C23.6538 2.95963 23.2682 3.16066 22.8821 3.33141C19.3127 4.87256 15.6295 3.67693 12.5029 1.84662C12.5029 1.84662 12.5029 1.84662 12.5029 1.84662C9.13062 -0.242241 4.09224 -0.932333 0.917437 1.76767C0.576251 2.05151 0.253772 2.36579 0 2.71094Z" fill="#d8d1bf"/>
+                  <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 5.75C0.594116 5.30252 1.23976 4.94351 1.89485 4.6312C7.98763 1.7851 13.6226 4.3471 18.5687 7.79974C18.5687 7.79974 18.5687 7.79974 18.5687 7.79974C23.9971 12.0596 33.9034 13.4299 38.6798 7.62529C39.1985 7.04034 39.6581 6.41609 40 5.75C39.4059 6.19748 38.7602 6.55649 38.1052 6.8688C32.0124 9.7149 26.3774 7.1529 21.4313 3.70026C21.4313 3.70026 21.4313 3.70026 21.4313 3.70026C16.0029 -0.559607 6.09658 -1.92987 1.32019 3.87471C0.801502 4.45966 0.341909 5.08391 0 5.75Z" fill="#433723" fill-opacity="0.15"/>
                   </svg>
                 </span>
               {%- elsif cv != blank -%}
@@ -105,7 +100,6 @@
               {%- endif -%}
             </div>
           {%- endfor -%}
-
         </div>
       {%- endfor -%}
     </div>
@@ -136,54 +130,53 @@
     {%- if section.settings.footnote != blank -%}
       <p class="bp-footnote">{{ section.settings.footnote }}</p>
     {%- endif -%}
-
   </div>
 </section>
 
 <script>
-(function () {
-  var sid = '{{ section.id }}';
-  var compNames = [
-    {{ section.settings.comp1_name | json }},
-    {{ section.settings.comp2_name | json }},
-    {{ section.settings.comp3_name | json }}
-  ];
-  var total = compNames.length;
-  var active = 1;
+  (function () {
+    var sid = '{{ section.id }}';
+    var compNames = [
+      {{ section.settings.comp1_name | json }},
+      {{ section.settings.comp2_name | json }},
+      {{ section.settings.comp3_name | json }}
+    ];
+    var total = compNames.length;
+    var active = 1;
 
-  function activateComp(num) {
-    if (num === active) return;
-    active = num;
+    function activateComp(num) {
+      if (num === active) return;
+      active = num;
 
-    // Toggle all [data-bp-comp] cells (includes header + data rows)
+      // Toggle all [data-bp-comp] cells (includes header + data rows)
+      document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
+        el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === num);
+      });
+
+      // Segment tabs
+      document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
+        var isA = parseInt(s.dataset.bpSeg, 10) === num;
+        s.classList.toggle('is-active', isA);
+        s.setAttribute('aria-selected', isA ? 'true' : 'false');
+      });
+
+      // Counter label
+      var lbl = document.getElementById('bp-label-' + sid);
+      if (lbl) lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
+    }
+
+    // Init — mark first competitor active
     document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-      el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === num);
+      el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === 1);
     });
 
-    // Segment tabs
-    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
-      var isA = parseInt(s.dataset.bpSeg, 10) === num;
-      s.classList.toggle('is-active', isA);
-      s.setAttribute('aria-selected', isA ? 'true' : 'false');
+    // Segment clicks
+    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activateComp(parseInt(this.dataset.bpSeg, 10));
+      });
     });
-
-    // Counter label
-    var lbl = document.getElementById('bp-label-' + sid);
-    if (lbl) lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
-  }
-
-  // Init — mark first competitor active
-  document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-    el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === 1);
-  });
-
-  // Segment clicks
-  document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      activateComp(parseInt(this.dataset.bpSeg, 10));
-    });
-  });
-})();
+  })();
 </script>
 
 {% schema %}
