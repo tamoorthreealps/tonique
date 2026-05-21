@@ -25,11 +25,6 @@
 /* ── Decorative beige bg panel (desktop right half) */
 .pf-bg-panel {
   display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 56%;
-  height: 100%;
   background: #e8e5d8; /* fallback when no image */
   overflow: hidden;
 }
