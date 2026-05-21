@@ -419,7 +419,7 @@ font-size: 14px;
 }
 
 
-@media screen and (max-width: 766px) {
+/* @media screen and (max-width: 766px) {
 
   .bp-cell--comp {
     display: flex !important;
@@ -441,4 +441,4 @@ font-size: 14px;
     display: flex;
   }
 
-}
+} */
