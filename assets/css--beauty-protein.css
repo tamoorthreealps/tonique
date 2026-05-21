@@ -109,6 +109,7 @@ font-family: Archivo, sans-serif;
   padding-bottom: 16px;
   padding-top: 8px;
   min-height: 80px;
+  border-top:1px solid #d9d7d3;
 }
 
 .bp-col-hd {
