@@ -53,6 +53,7 @@
 /* ── Table ──────────────────────────────────────── */
 .bp-table {
 	width: 100%;
+  border-right:1px solid #d9d7d3;
 }
 
 /* ── Row ────────────────────────────────────────── */
@@ -334,6 +335,10 @@
 	}
 
 	/* Desktop cell sizes */
+  .bp-table {
+    border:0;
+  }
+  
 	.bp-col-hd__circle {
 		display: flex;
 	}
@@ -426,6 +431,7 @@
 	}
 }
 
+
 @media screen and (max-width: 767px) {
 	.bp-cell {
 		width: 33.722% !important
@@ -436,10 +442,6 @@
             background: #ffffff;
         z-index: 1;
 	}
-}
-
-@media screen and (max-width: 767px) {
-
   .bp-row {
     position: relative;
     overflow: hidden;
