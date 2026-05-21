@@ -6,7 +6,6 @@
 
   <div class="pit-inner--container">
     <div class="pit-inner">
-
       {%- comment -%} ── Left: product image ── {%- endcomment -%}
       {%- if section.settings.image != blank -%}
         <div class="pit-image-col">
@@ -40,32 +39,32 @@
             {%- endunless -%}
           {%- endfor -%}
         </div>
+        <div class="pit--body--bullets">
+          {%- comment -%} Body text ── {%- endcomment -%}
+          {%- if section.settings.body_text != blank -%}
+            <p class="pit-body">{{ section.settings.body_text }}</p>
+          {%- endif -%}
 
-        {%- comment -%} Body text ── {%- endcomment -%}
-        {%- if section.settings.body_text != blank -%}
-          <p class="pit-body">{{ section.settings.body_text }}</p>
-        {%- endif -%}
-
-        {%- comment -%} Bullet list ── {%- endcomment -%}
-        {%- assign bullet_blocks = section.blocks | where: 'type', 'bullet' -%}
-        {%- if bullet_blocks.size > 0 -%}
-          <ul class="pit-bullets">
-            {%- for block in bullet_blocks -%}
-              {%- if block.settings.bullet_text != blank -%}
-                <li class="pit-bullet" {{ block.shopify_attributes }}>
-                  <span class="pit-bullet__icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="8" cy="8" r="7.5" stroke="#977b4f"/>
-                      <path d="M5 8l2 2 4-4" stroke="#977b4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                  <span class="pit-bullet__text">{{ block.settings.bullet_text }}</span>
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-
+          {%- comment -%} Bullet list ── {%- endcomment -%}
+          {%- assign bullet_blocks = section.blocks | where: 'type', 'bullet' -%}
+          {%- if bullet_blocks.size > 0 -%}
+            <ul class="pit-bullets">
+              {%- for block in bullet_blocks -%}
+                {%- if block.settings.bullet_text != blank -%}
+                  <li class="pit-bullet" {{ block.shopify_attributes }}>
+                    <span class="pit-bullet__icon" aria-hidden="true">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="8" cy="8" r="7.5" stroke="#977b4f"/>
+                        <path d="M5 8l2 2 4-4" stroke="#977b4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <span class="pit-bullet__text">{{ block.settings.bullet_text }}</span>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
       </div>
     </div>
   </div>
