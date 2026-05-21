@@ -35,11 +35,9 @@
               aria-label="{{ block.settings.ingredient_name }}"
               {{ block.shopify_attributes }}
             >
-              <div class="wi-list-hold">
-                <span class="wi-row__dot" aria-hidden="true"></span>
-                <span class="wi-row__name">{{ block.settings.ingredient_name }}</span>
-                <span class="wi-row__amount">{{ block.settings.amount }}</span>
-              </div>
+              <span class="wi-row__dot" aria-hidden="true"></span>
+              <span class="wi-row__name">{{ block.settings.ingredient_name }}</span>
+              <span class="wi-row__amount">{{ block.settings.amount }}</span>
             </button>
           {%- endfor -%}
         </div>
@@ -68,8 +66,8 @@
                       sizes: '(max-width: 767px) 156px, 320px'
                   -}}
                   {%- if block.settings.badge_label != blank -%}
-                    <span class="wi-card__badge">{{ block.settings.badge_label }}</span>
-                  {%- endif -%}
+                  <span class="wi-card__badge">{{ block.settings.badge_label }}</span>
+                {%- endif -%}
                 </div>
               {%- endif -%}
 
