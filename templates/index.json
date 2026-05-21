@@ -9,43 +9,249 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "why_tonique_rCmNeV": {
+      "type": "why-tonique",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "reason_C8gChK": {
+          "type": "reason",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "title": "A complete protein.",
+            "description": "Collagen alone isn't complete. Tonique blends it with whey isolate so you get all 9 essential amino acids in one pouch.",
+            "badge_top_desktop": 22,
+            "badge_left_desktop": 14,
+            "badge_top_mobile": 28,
+            "badge_left_mobile": 30
           }
         },
-        "button": {
-          "type": "buttons",
+        "reason_JqRNLN": {
+          "type": "reason",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "title": "Five nutrients, built in.",
+            "description": "Every pouch delivers collagen, whey protein, vitamin C, biotin, and hyaluronic acid — no stacking required.",
+            "badge_top_desktop": 44,
+            "badge_left_desktop": 80,
+            "badge_top_mobile": 46,
+            "badge_left_mobile": 68
+          }
+        },
+        "reason_6CXzAD": {
+          "type": "reason",
+          "settings": {
+            "title": "A gram of fiber that does real work.",
+            "description": "Inulin feeds your gut microbiome and helps keep you feeling satisfied without bloat.",
+            "badge_top_desktop": 66,
+            "badge_left_desktop": 14,
+            "badge_top_mobile": 66,
+            "badge_left_mobile": 30
+          }
+        },
+        "reason_NNUqVt": {
+          "type": "reason",
+          "settings": {
+            "title": "Monkfruit, not sucralose.",
+            "description": "Sweetened naturally with monkfruit — no artificial sweeteners, no aftertaste, just clean flavor.",
+            "badge_top_desktop": 88,
+            "badge_left_desktop": 80,
+            "badge_top_mobile": 84,
+            "badge_left_mobile": 68
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "reason_C8gChK",
+        "reason_JqRNLN",
+        "reason_6CXzAD",
+        "reason_NNUqVt"
       ],
+      "name": "Why Tonique",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "heading": "4 reasons WHY TONIQUE",
+        "subtext": "Semper vel lacus cras nam. Tempor egestas ipsum consequat libero at sed aenean aenean. Quam sociis id quam."
+      }
+    },
+    "beauty_protein_BfRnyC": {
+      "type": "beauty-protein",
+      "blocks": {
+        "row_HfdqUL": {
+          "type": "row",
+          "settings": {
+            "row_label": "Complete protein",
+            "tonique_value": "15g complete",
+            "comp1_value": "7g",
+            "comp2_value": "20g",
+            "comp3_value": "10g"
+          }
+        },
+        "row_TreLcg": {
+          "type": "row",
+          "settings": {
+            "row_label": "Beauty nutrients",
+            "tonique_value": "Biotin · Vit C · Folate",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        "row_QUwn7J": {
+          "type": "row",
+          "settings": {
+            "row_label": "Added sugar",
+            "tonique_value": "0g",
+            "comp1_value": "3g",
+            "comp2_value": "8g",
+            "comp3_value": "0g"
+          }
+        },
+        "row_BNHYKY": {
+          "type": "row",
+          "settings": {
+            "row_label": "Calories",
+            "tonique_value": "<50",
+            "comp1_value": "60",
+            "comp2_value": "180",
+            "comp3_value": "50"
+          }
+        },
+        "row_khiyJW": {
+          "type": "row",
+          "settings": {
+            "row_label": "All-natural",
+            "tonique_value": "check",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        },
+        "row_iyjaax": {
+          "type": "row",
+          "settings": {
+            "row_label": "No mixing / fridge / goes anywhere",
+            "tonique_value": "check",
+            "comp1_value": "cross",
+            "comp2_value": "cross",
+            "comp3_value": "cross"
+          }
+        }
+      },
+      "block_order": [
+        "row_HfdqUL",
+        "row_TreLcg",
+        "row_QUwn7J",
+        "row_BNHYKY",
+        "row_khiyJW",
+        "row_iyjaax"
+      ],
+      "name": "Beauty Protein",
+      "settings": {
+        "heading": "BEAUTY + PROTEIN. THE ONLY ONE THAT DELIVERS BOTH.",
+        "subtext": "Most products solve one, not the other. Tonique was built for both.",
+        "tonique_label": "TONIQUE",
+        "comp1_name": "COLLAGEN POWDER",
+        "comp2_name": "PROTEIN BAR",
+        "comp3_name": "BONE BROTH",
+        "footnote": "*Per serving. Comparisons reflect average values across top-selling products in each category, sourced from published ingredient panels and supplement facts."
+      }
+    },
+    "video_reviews_Qr8qwf": {
+      "type": "video-reviews",
+      "blocks": {
+        "video_card_w894f7": {
+          "type": "video_card",
+          "settings": {
+            "badge_label": "CLEAN LABEL",
+            "handle": "@mayarstudio",
+            "role": "Pilates instructor"
+          }
+        },
+        "video_card_XpJJ76": {
+          "type": "video_card",
+          "settings": {
+            "badge_label": "DAILY USE",
+            "handle": "@mayarstudio",
+            "role": "Strength coach"
+          }
+        },
+        "video_card_CqmjhT": {
+          "type": "video_card",
+          "settings": {
+            "badge_label": "TASTE",
+            "handle": "Jess T.",
+            "role": "Wellness creator"
+          }
+        },
+        "video_card_WWUJjg": {
+          "type": "video_card",
+          "settings": {
+            "badge_label": "FOR YOU",
+            "handle": "@mayarstudio",
+            "role": "Working mom"
+          }
+        }
+      },
+      "block_order": [
+        "video_card_w894f7",
+        "video_card_XpJJ76",
+        "video_card_CqmjhT",
+        "video_card_WWUJjg"
+      ],
+      "name": "Video Reviews",
+      "settings": {
+        "heading": "See why they keep one in their bag",
+        "subtext": "From Pilates instructors to busy moms, see how Tonique fits into the moments that matter.",
+        "disclaimer": "*Testimonials featured in videos or other promotional materials may include individuals who have received compensation, free product, or other incentives."
+      }
+    },
+    "product_faqs_rq8D4U": {
+      "type": "product-faqs",
+      "blocks": {
+        "faq_CRE4EU": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Tonique and how does it work?",
+            "answer": "Tonique is a single-serve liquid collagen pouch that combines collagen peptides, whey protein isolate, and key beauty nutrients. Just tear and drink — no mixing, no measuring, no mess."
+          }
+        },
+        "faq_9KmcMx": {
+          "type": "faq",
+          "settings": {
+            "question": "When should I take Tonique?",
+            "answer": "Anytime, anywhere. Morning, post-workout, mid-afternoon — Tonique is ready when you are. No fridge required and no preparation needed."
+          }
+        },
+        "faq_mHXKGg": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Tonique gluten-free and dairy-free?",
+            "answer": "Tonique contains whey protein isolate which is derived from dairy. It is gluten-free. Please review the full ingredient list if you have specific dietary requirements."
+          }
+        },
+        "faq_iBTE3E": {
+          "type": "faq",
+          "settings": {
+            "question": "How many pouches should I take per day?",
+            "answer": "We recommend one pouch per day as part of a balanced diet. Consistent daily use is where you see the best results for skin, hair, and recovery."
+          }
+        },
+        "faq_JGFrpX": {
+          "type": "faq",
+          "settings": {
+            "question": "Does Tonique contain artificial sweeteners?",
+            "answer": "No. Tonique is sweetened naturally with monkfruit extract — no sucralose, no aspartame, no artificial flavors or colors."
+          }
+        }
+      },
+      "block_order": [
+        "faq_CRE4EU",
+        "faq_9KmcMx",
+        "faq_mHXKGg",
+        "faq_iBTE3E",
+        "faq_JGFrpX"
+      ],
+      "name": "Product FAQs",
+      "settings": {
+        "heading": "FREQUENTLY ASKED QUESTIONS",
+        "faqs_text": "More questions? Visit our FAQs",
+        "faqs_url": ""
       }
     },
     "featured_product_yi3prj": {
@@ -164,7 +370,10 @@
     }
   },
   "order": [
-    "image_banner",
+    "why_tonique_rCmNeV",
+    "beauty_protein_BfRnyC",
+    "video_reviews_Qr8qwf",
+    "product_faqs_rq8D4U",
     "featured_product_yi3prj"
   ]
 }
