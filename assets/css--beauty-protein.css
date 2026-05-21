@@ -105,7 +105,7 @@ font-family: Archivo, sans-serif;
   inset: 0;
   box-shadow: 0 4px 50px rgba(168, 137, 88, 0.25);
   pointer-events: none;
-  height: calc(var(--table-height) - 1px);
+  height: calc(var(--table-height) - 2px);
   width:100%;
 }
 /* Competitor cells: hidden on mobile, shown only when active */
