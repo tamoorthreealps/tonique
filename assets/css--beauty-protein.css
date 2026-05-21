@@ -63,6 +63,10 @@ font-family: Archivo, sans-serif;
   border-bottom:1px solid #d9d7d3;
 }
 
+.bp-row:last-child .bp-cell.bp-cell--tonique{
+  border-bottom-color: #a88958;
+}
+
 .bp-row--header {
   border-bottom: none;
 }
@@ -123,6 +127,7 @@ font-family: Archivo, sans-serif;
 
 .bp-cell.bp-cell--tonique.bp-cell--header {
     border-top-color: #A88958;
+    border-bottom: 0;
 }
 
 .bp-col-hd {
@@ -314,7 +319,6 @@ font-family: Archivo, sans-serif;
     padding: 18px 10px;
     border-left: 1px solid #a88958;
     border-right: 1px solid #a88958;
-    border-bottom: 0 !important;
   }
 
   /* All competitor columns visible */
