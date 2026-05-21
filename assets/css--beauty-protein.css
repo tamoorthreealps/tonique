@@ -127,8 +127,8 @@ font-family: Archivo, sans-serif;
 
 /* ── Column headers ─────────────────────────────── */
 .bp-cell--header {
-  align-items: flex-end;
-  padding-bottom: 16px;
+  align-items: center;
+  padding-bottom: 8px;
   padding-top: 8px;
   min-height: 64px;
   border-top:1px solid #d9d7d3;
