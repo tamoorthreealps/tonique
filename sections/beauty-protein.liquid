@@ -36,7 +36,17 @@
                 aria-hidden="true"
               ></div>
             {%- endif -%}
-            <span class="bp-col-hd__name bp-col-hd__name--tonique">{{ section.settings.tonique_label }}</span>
+            {%- if section.settings.tonique_table_logo != blank -%}
+              <div class="bp-col-hd__circle bp-col-hd__circle--tonique">
+                {{-
+                  section.settings.tonique_table_logo
+                  | image_url: width: 132
+                  | image_tag: loading: 'lazy', alt: section.settings.tonique_label, class: 'bp-col-hd__img'
+                -}}
+              </div>
+            {%- else -%}
+              <span class="bp-col-hd__name bp-col-hd__name--tonique">{{ section.settings.tonique_label }}</span>
+            {%- endif -%}
           </div>
         </div>
 
