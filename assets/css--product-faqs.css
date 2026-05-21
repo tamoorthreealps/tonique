@@ -48,7 +48,7 @@ max-width: 1512px;
 .pf-content {
     display: flex;
     flex-direction: column;
-    max-width: 497px;
+    max-width: 496px;
     padding: 0 24px 112px;
     margin-left: auto;
 }
@@ -245,10 +245,6 @@ font-family: Archivo, sans-serif;
   }
 
   /* Content occupies left ~52% */
-  .pf-content {
-    max-width: 496px;
-    gap: 32px;
-  }
 
   .pf-heading {
 font-size: 36px;
