@@ -2,7 +2,6 @@
 
 <section class="wi-section" id="WhatsInside-{{ section.id }}" {{ section.shopify_attributes }}>
   <div class="wi-inner--container">
-
     {%- comment -%} ── Mobile-only heading ── {%- endcomment -%}
     <div class="wi-mobile-heading">
       {%- if section.settings.heading != blank -%}
@@ -15,7 +14,6 @@
 
     {%- comment -%} ── Desktop: 2-col split ── {%- endcomment -%}
     <div class="wi-desktop-inner">
-
       {%- comment -%} Left: heading + ingredient list ── {%- endcomment -%}
       <div class="wi-left">
         <div class="wi-heading">
@@ -100,10 +98,7 @@
                 {{-
                   block.settings.image
                   | image_url: width: 344
-                  | image_tag:
-                    loading: 'lazy',
-                    alt: block.settings.ingredient_name,
-                    class: 'wi-scroll-card__image'
+                  | image_tag: loading: 'lazy', alt: block.settings.ingredient_name, class: 'wi-scroll-card__image'
                 -}}
               {%- endif -%}
               {%- if block.settings.badge_label != blank -%}
@@ -122,31 +117,30 @@
         {%- endfor -%}
       </div>
     </div>
-
   </div>
 </section>
 
 <script>
-(function () {
-  var sid = '{{ section.id }}';
+  (function () {
+    var sid = '{{ section.id }}';
 
-  function activate(num) {
-    document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (r) {
-      r.classList.toggle('is-active', parseInt(r.dataset.wiRow, 10) === num);
-    });
-    document.querySelectorAll('#wi-panel-' + sid + ' .wi-card').forEach(function (c) {
-      var isActive = parseInt(c.dataset.wiCard, 10) === num;
-      c.classList.toggle('is-active', isActive);
-      c.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-    });
-  }
+    function activate(num) {
+      document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (r) {
+        r.classList.toggle('is-active', parseInt(r.dataset.wiRow, 10) === num);
+      });
+      document.querySelectorAll('#wi-panel-' + sid + ' .wi-card').forEach(function (c) {
+        var isActive = parseInt(c.dataset.wiCard, 10) === num;
+        c.classList.toggle('is-active', isActive);
+        c.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+    }
 
-  document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      activate(parseInt(this.dataset.wiRow, 10));
+    document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activate(parseInt(this.dataset.wiRow, 10));
+      });
     });
-  });
-})();
+  })();
 </script>
 
 {% schema %}
