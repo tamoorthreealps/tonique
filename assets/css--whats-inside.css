@@ -230,7 +230,7 @@
     opacity: 0.75;
   }
 
-  .wi-row.is-active {
+  .wi-list-hold.is-active {
     opacity: 1;
     background: rgba(245, 239, 221, 1);
     padding-left: 15px;
