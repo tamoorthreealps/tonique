@@ -59,6 +59,7 @@ font-family: Archivo, sans-serif;
 
 .bp-row {
   display: flex;
+  justify-content: center;
 }
 
 .bp-row:last-child .bp-cell{
