@@ -5,12 +5,6 @@
 ───────────────────────────────────────────────────────────────── */
 
 /* ── Section shell ──────────────────────────────── */
-.pf-section {
-  background: #fbf9f3;
-  padding: 48px 0 56px;
-  position: relative;
-  overflow: hidden;
-}
 
 /* ── Mobile image (top of section, hidden on desktop) */
 .pf-image-mobile {
@@ -41,36 +35,40 @@
 }
 
 .pf-inner--container {
-  max-width: 1204px;
-  padding: 0 24px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+max-width: 1512px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 /* ── Inner layout (single col mobile) ───────────── */
 .pf-inner {
-  display: flex;
-  flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 58px;
 }
 
 /* ── Content column ─────────────────────────────── */
 .pf-content {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+    display: flex;
+    flex-direction: column;
+    max-width: 497px;
+    padding: 0 24px 112px;
+    margin-left: auto;
 }
 
 /* ── Heading ────────────────────────────────────── */
 .pf-heading {
-  font-family: 'Archivo', sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 32px;
-  letter-spacing: 1.92px;
-  text-transform: uppercase;
-  color: #977b4f;
-  margin: 0;
+font-family: Archivo, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 1.92px;
+    text-transform: uppercase;
+    color: #977B4F;
+    margin: 0;
+    margin-bottom: 24px;
 }
 
 /* ── Accordion ──────────────────────────────────── */
@@ -81,40 +79,41 @@
 
 /* ── Item ───────────────────────────────────────── */
 .pf-item {
-  border-top: 1px solid #d6cfc5;
+  border-top: 1px solid #433723;
 }
 
 .pf-item:last-child {
-  border-bottom: 1px solid #d6cfc5;
+  border-bottom: 1px solid #433723;
 }
 
 /* ── Trigger button ─────────────────────────────── */
 .pf-item__trigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
 }
 
 .pf-item__question {
-  font-family: 'Archivo', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  color: #433723;
-  flex: 1;
-  transition: color 0.2s;
+    font-family: Archivo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #433723;
+    flex: 1;
+    transition: color .2s;
+    letter-spacing: 0;
 }
 
 .pf-item.is-open .pf-item__question {
   color: #977b4f;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* ── Icon (+ / ×) ───────────────────────────────── */
@@ -188,7 +187,7 @@
 
 /* ── Footer link ────────────────────────────────── */
 .pf-footer {
-  margin-top: 8px;
+  margin-top: 48px;
 }
 
 .pf-footer__link {
@@ -218,19 +217,18 @@
   transform: translateX(3px);
 }
 
-.pf-footer__text {
-  font-family: 'Archivo', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: #433723;
+.pf-footer__text, .pf-footer__link {
+    font-family: Archivo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #433723;
+    text-transform: uppercase;
+    letter-spacing: 0.48px;
 }
 
 /* ── Desktop (min-width: 767px) ─────────────────── */
 @media screen and (min-width: 767px) {
-  .pf-section {
-    padding: 80px 0 100px;
-  }
 
   /* Hide mobile image on desktop */
   .pf-image-mobile {
@@ -258,18 +256,19 @@
   }
 
   .pf-heading {
-    font-size: 36px;
-    line-height: 48px;
-    letter-spacing: 2.88px;
+font-size: 36px;
+        line-height: 48px;
+        letter-spacing: 2.88px;
+        margin-bottom: 40px;
   }
 
   .pf-item__question {
-    font-size: 20px;
-    line-height: 28px;
+   font-size: 20px;
+        line-height: 28px;
   }
 
   .pf-item__trigger {
-    padding: 20px 0;
+            padding: 16px 0 24px;
   }
 
   .pf-item__answer {
@@ -278,16 +277,18 @@
   }
 
   .pf-item__body[aria-hidden="false"] {
-    padding-bottom: 20px;
+    padding-bottom: 24px;
   }
 
   .pf-footer__link {
-    font-size: 16px;
-    line-height: 24px;
+            font-size: 14px;
+        line-height: 28px;
+        letter-spacing: 0.56px;
   }
 
   .pf-footer__text {
-    font-size: 16px;
-    line-height: 24px;
+            font-size: 14px;
+        line-height: 28px;
+        letter-spacing: 0.56px;
   }
 }
