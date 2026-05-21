@@ -191,6 +191,9 @@ p.wi-card__desc__mobile {
     transition: transform .4s ease;
     z-index: 5;
 }
+.p-wi-card__desc__mobile.is-open{
+  transform: translateY(0);
+}
 .wi-mobile-scroll .splide__pagination {
     position: static;
     padding: 0;
