@@ -418,6 +418,6 @@ font-size: 14px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 .bp-cell{    width: 33.33% !important;}
 }
