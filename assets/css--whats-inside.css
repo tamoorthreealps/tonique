@@ -5,6 +5,9 @@
 ───────────────────────────────────────────────────────────────── */
 
 /* ── Section shell ──────────────────────────────── */
+.wi-section{
+  padding-bottom:80xp;
+}
 .wi-inner--container {
   max-width: 1512px;
   padding: 0;
@@ -158,7 +161,9 @@
 
 /* ── Desktop (min-width: 767px) ─────────────────── */
 @media screen and (min-width: 767px) {
-
+.wi-section{
+  padding-bottom:0;
+}
   .wi-mobile-heading {
     display: none;
   }
