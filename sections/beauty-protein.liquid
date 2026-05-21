@@ -75,7 +75,13 @@
       {%- for block in section.blocks -%}
         <div class="bp-row" {{ block.shopify_attributes }}>
           <div class="bp-cell bp-cell--label">
-            <span class="bp-label">{{ block.settings.row_label }}</span>
+            <span class="bp-label">
+              {% if block.settings.row_label_mobile != blank %}
+                {{ block.settings.row_label_mobile }}
+              {% else %}
+                {{ block.settings.row_label }}
+              {% endif %}
+            </span>
           </div>
 
           {%- comment -%} Tonique cell ── {%- endcomment -%}
@@ -316,6 +322,11 @@ window.addEventListener('resize', updateToniqueHeight);
           "id": "row_label",
           "label": "Row label",
           "default": "Complete protein"
+        },
+        {
+          "type": "text",
+          "id": "row_label_mobile",
+          "label": "Row label Mobile (Optional)",
         },
         {
           "type": "text",
