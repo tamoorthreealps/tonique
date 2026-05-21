@@ -162,49 +162,69 @@
 </section>
 
 <script>
-  (function () {
-    var sid = '{{ section.id }}';
-    var compNames = [
-      {{ section.settings.comp1_name | json }},
-      {{ section.settings.comp2_name | json }},
-      {{ section.settings.comp3_name | json }}
-    ];
-    var total = compNames.length;
-    var active = 1;
+(function () {
 
-    function activateComp(num) {
-      if (num === active) return;
-      active = num;
+  var sid = '{{ section.id }}';
 
-      // Toggle all [data-bp-comp] cells (includes header + data rows)
-      document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-        el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === num);
+  var compNames = [
+    {{ section.settings.comp1_name | json }},
+    {{ section.settings.comp2_name | json }},
+    {{ section.settings.comp3_name | json }}
+  ];
+
+  var total = compNames.length;
+  var active = 1;
+
+  function activateComp(num) {
+
+    active = num;
+
+    document.querySelectorAll('#bp-table-' + sid + ' .bp-row').forEach(function(row){
+
+      var comps = row.querySelectorAll('.bp-cell--comp');
+
+      comps.forEach(function(el){
+
+        var compNum = parseInt(el.dataset.bpComp, 10);
+
+        var move = (compNum - active) * 116;
+
+        el.style.transform = 'translateX(' + move + 'px)';
       });
 
-      // Segment tabs
-      document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
-        var isA = parseInt(s.dataset.bpSeg, 10) === num;
-        s.classList.toggle('is-active', isA);
-        s.setAttribute('aria-selected', isA ? 'true' : 'false');
-      });
+    });
 
-      // Counter label
-      var lbl = document.getElementById('bp-label-' + sid);
-      if (lbl) lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
+    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function(btn){
+
+      var isActive = parseInt(btn.dataset.bpSeg, 10) === num;
+
+      btn.classList.toggle('is-active', isActive);
+
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+
+    });
+
+    var lbl = document.getElementById('bp-label-' + sid);
+
+    if (lbl) {
+      lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
     }
 
-    // Init — mark first competitor active
-    document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-      el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === 1);
+  }
+
+  document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function(btn){
+
+    btn.addEventListener('click', function(){
+
+      activateComp(parseInt(this.dataset.bpSeg, 10));
+
     });
 
-    // Segment clicks
-    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        activateComp(parseInt(this.dataset.bpSeg, 10));
-      });
-    });
-  })();
+  });
+
+  activateComp(1);
+
+})();
 
 
 {% comment %} calculate--table--highlight--col {% endcomment %}
