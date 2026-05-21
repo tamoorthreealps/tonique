@@ -133,6 +133,7 @@ display: flex;
   align-items: flex-start;
   position:relative;
   list-style:none;
+  align-items:center;
 }
 
 .pit-bullet::before {
