@@ -210,7 +210,19 @@
   });
 
   activateComp(1);
+let autoSlide = 1;
 
+setInterval(function(){
+
+  autoSlide++;
+
+  if(autoSlide > 3){
+    autoSlide = 1;
+  }
+
+  activateComp(autoSlide);
+
+}, 2000);
 })();
 
 if (window.innerWidth <= 767) {
