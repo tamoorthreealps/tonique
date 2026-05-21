@@ -75,9 +75,6 @@ font-family: Archivo, sans-serif;
 .bp-row .bp-cell:first-child{
   border-bottom:1px solid #D9D7D3;
 }
-.bp-row:last-child .bp-cell:first-child{
-  border-bottom: 0;
-}
 .bp-cell {
   display: flex;
   align-items: center;
