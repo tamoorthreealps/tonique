@@ -428,6 +428,7 @@ font-size: 14px;
 
   .bp-row {
     position: relative;
+    justify-content: flex-start;
   }
 
   .bp-cell--comp {
