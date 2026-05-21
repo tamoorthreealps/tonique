@@ -47,10 +47,8 @@ max-width: 1512px;
 .pf-content {
     display: flex;
     flex-direction: column;
-    max-width: 496px;
-    padding: 0 24px 112px;
-    margin-left: auto;
-    margin-right: 58px;
+    max-width: 100%;
+    padding: 0 24px;
 }
 
 /* ── Heading ────────────────────────────────────── */
@@ -255,7 +253,12 @@ a.pf-footer__link{
   }
 
   /* Content occupies left ~52% */
-
+.pf-content {
+    max-width: 496px;
+    padding: 0 24px 112px;
+    margin-left: auto;
+    margin-right: 58px;
+}
   .pf-heading {
 font-size: 36px;
         line-height: 48px;
