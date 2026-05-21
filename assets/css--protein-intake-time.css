@@ -35,6 +35,7 @@
 
 .pit-image-wrap {
   overflow: hidden;
+  height: 100%;
 }
 
 .pit-image {
@@ -177,7 +178,7 @@ display: flex;
   }
 
   .pit-image {
-    object-fit: contain;
+    object-fit: cover;
         width: 100%;
         height: 100%;
   }
