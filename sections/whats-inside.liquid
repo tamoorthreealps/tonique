@@ -112,6 +112,14 @@
                     {{ block.settings.badge_label }}
                   </span>
                 {%- endif -%}
+                <span class="wi--scroll--info--opener">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="27" height="27" rx="13.5" fill="white"/>
+                    <rect x="0.5" y="0.5" width="27" height="27" rx="13.5" stroke="#977B4F"/>
+                    <rect x="8" y="13.25" width="12" height="1.5" fill="#977B4F"/>
+                    <rect x="13.25" y="8" width="1.5" height="12" fill="#977B4F"/>
+                  </svg>
+                </span>
               </div>
 
               <div class="wi-scroll-card__body">
@@ -173,7 +181,7 @@
       dragMinThreshold: { mouse: 4, touch: 6 },
       easing: 'ease-in-out',
       omitEnd: true,
-      trimSpace: true
+      trimSpace: true,
     });
 
     splide.mount();
