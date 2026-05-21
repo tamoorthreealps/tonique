@@ -190,7 +190,7 @@ font-family: Archivo, sans-serif;
 }
 .wi-mobile-scroll .splide__pagination__page.is-active {
     background: #433723;
-    transform: scale(1.4);
+    transform: none;
 }
 /* ── Desktop (min-width: 767px) ─────────────────── */
 @media screen and (min-width: 767px) {
