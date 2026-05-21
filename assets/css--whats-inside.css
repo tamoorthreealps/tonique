@@ -213,6 +213,7 @@
     margin: 0;
     padding: 0;
     background: transparent;
+    border-top:1px solid #A88958;
   }
 
   .wi-list-hold {
