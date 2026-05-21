@@ -139,6 +139,7 @@ display: flex;
   content: "•";
   color: #433723;
   margin:0 8px;
+  line-height:0;
 }
 
 .pit-bullet__icon {
