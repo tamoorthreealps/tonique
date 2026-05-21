@@ -82,7 +82,7 @@ font-family: Archivo, sans-serif;
   border-bottom: 1px solid #433723;
 }
 
-.pf-item.is-open{
+.pf-item.is-open, .pf-item.is-open + .pf-item{
   border-color:#A88958;
 }
 
