@@ -162,49 +162,77 @@
 </section>
 
 <script>
-  (function () {
-    var sid = '{{ section.id }}';
-    var compNames = [
-      {{ section.settings.comp1_name | json }},
-      {{ section.settings.comp2_name | json }},
-      {{ section.settings.comp3_name | json }}
-    ];
-    var total = compNames.length;
-    var active = 1;
+  document.addEventListener('DOMContentLoaded', function () {
 
-    function activateComp(num) {
-      if (num === active) return;
-      active = num;
+  const sliders = [];
 
-      // Toggle all [data-bp-comp] cells (includes header + data rows)
-      document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-        el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === num);
+  document.querySelectorAll('.bp-row').forEach(function(row){
+
+    const compCells = row.querySelectorAll('.bp-cell--comp');
+
+    if(compCells.length){
+
+      const wrapper = document.createElement('div');
+
+      wrapper.className = 'bp-mobile-slider splide';
+
+      wrapper.innerHTML = `
+        <div class="splide__track">
+          <div class="splide__list"></div>
+        </div>
+      `;
+
+      const list = wrapper.querySelector('.splide__list');
+
+      compCells.forEach(function(cell){
+
+        cell.classList.add('splide__slide');
+
+        list.appendChild(cell);
+
       });
 
-      // Segment tabs
-      document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
-        var isA = parseInt(s.dataset.bpSeg, 10) === num;
-        s.classList.toggle('is-active', isA);
-        s.setAttribute('aria-selected', isA ? 'true' : 'false');
+      row.appendChild(wrapper);
+
+      const splide = new Splide(wrapper, {
+        perPage: 1,
+        arrows: false,
+        pagination: false,
+        drag: false,
+        speed: 500,
       });
 
-      // Counter label
-      var lbl = document.getElementById('bp-label-' + sid);
-      if (lbl) lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
+      splide.mount();
+
+      sliders.push(splide);
+
     }
 
-    // Init — mark first competitor active
-    document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-      el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === 1);
+  });
+
+  document.querySelectorAll('.bp-switcher__seg').forEach(function(btn, index){
+
+    btn.addEventListener('click', function(){
+
+      sliders.forEach(function(slider){
+
+        slider.go(index);
+
+      });
+
+      document.querySelectorAll('.bp-switcher__seg').forEach(function(b){
+
+        b.classList.remove('is-active');
+
+      });
+
+      btn.classList.add('is-active');
+
     });
 
-    // Segment clicks
-    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        activateComp(parseInt(this.dataset.bpSeg, 10));
-      });
-    });
-  })();
+  });
+
+});
 
 
 {% comment %} calculate--table--highlight--col {% endcomment %}
