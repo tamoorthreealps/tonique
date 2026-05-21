@@ -121,6 +121,10 @@ font-family: Archivo, sans-serif;
   border-top:1px solid #d9d7d3;
 }
 
+.bp-cell.bp-cell--tonique.bp-cell--header {
+    border-top-color: #A88958;
+}
+
 .bp-col-hd {
   display: flex;
   flex-direction: column;
