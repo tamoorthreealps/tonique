@@ -77,19 +77,9 @@
         {%- if section.settings.faqs_text != blank -%}
           <div class="pf-footer">
             {%- if section.settings.faqs_url != blank -%}
+              <span class="pf-footer__text">{{ section.settings.faqs_text_before }}</span>
               <a href="{{ section.settings.faqs_url }}" class="pf-footer__link">
                 {{ section.settings.faqs_text }}
-                <svg
-                  class="pf-footer__arrow"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
               </a>
             {%- else -%}
               <span class="pf-footer__text">{{ section.settings.faqs_text }}</span>
@@ -169,9 +159,14 @@
     },
     {
       "type": "text",
+      "id": "faqs_text_before",
+      "label": "Footer text"
+    },
+    {
+      "type": "text",
       "id": "faqs_text",
       "label": "Footer link text",
-      "default": "More questions? Visit our FAQs"
+      "default": "Visit our FAQs"
     },
     {
       "type": "url",
