@@ -162,49 +162,47 @@
 </section>
 
 <script>
-  (function () {
-    var sid = '{{ section.id }}';
-    var compNames = [
-      {{ section.settings.comp1_name | json }},
-      {{ section.settings.comp2_name | json }},
-      {{ section.settings.comp3_name | json }}
-    ];
-    var total = compNames.length;
-    var active = 1;
+(function () {
 
-    function activateComp(num) {
-      if (num === active) return;
-      active = num;
+  var sid = '{{ section.id }}';
 
-      // Toggle all [data-bp-comp] cells (includes header + data rows)
-      document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-        el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === num);
-      });
+  function activateComp(num) {
 
-      // Segment tabs
-      document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
-        var isA = parseInt(s.dataset.bpSeg, 10) === num;
-        s.classList.toggle('is-active', isA);
-        s.setAttribute('aria-selected', isA ? 'true' : 'false');
-      });
+    document.querySelectorAll('#bp-table-' + sid + ' .bp-cell--comp').forEach(function(el){
 
-      // Counter label
-      var lbl = document.getElementById('bp-label-' + sid);
-      if (lbl) lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
-    }
+      var compNum = parseInt(el.dataset.bpComp, 10);
 
-    // Init — mark first competitor active
-    document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
-      el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === 1);
+      if(compNum === num){
+        el.classList.add('is-active-comp');
+      } else {
+        el.classList.remove('is-active-comp');
+      }
+
     });
 
-    // Segment clicks
-    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        activateComp(parseInt(this.dataset.bpSeg, 10));
-      });
+    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function(btn){
+
+      var isActive = parseInt(btn.dataset.bpSeg, 10) === num;
+
+      btn.classList.toggle('is-active', isActive);
+
     });
-  })();
+
+  }
+
+  document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function(btn){
+
+    btn.addEventListener('click', function(){
+
+      activateComp(parseInt(this.dataset.bpSeg, 10));
+
+    });
+
+  });
+
+  activateComp(1);
+
+})();
 
 
 {% comment %} calculate--table--highlight--col {% endcomment %}
