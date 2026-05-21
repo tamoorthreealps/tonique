@@ -117,7 +117,8 @@
       "name": "Why Tonique",
       "settings": {
         "heading": "4 reasons WHY TONIQUE",
-        "subtext": "Semper vel lacus cras nam. Tempor egestas ipsum consequat libero at sed aenean aenean. Quam sociis id quam."
+        "subtext": "Semper vel lacus cras nam. Tempor egestas ipsum consequat libero at sed aenean aenean. Quam sociis id quam.",
+        "product_image": "shopify://shop_images/bottle.svg"
       }
     },
     "beauty_protein_BfRnyC": {
