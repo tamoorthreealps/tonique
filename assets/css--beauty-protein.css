@@ -139,6 +139,10 @@ font-family: Archivo, sans-serif;
   width: 80px;
 }
 
+.bp-cell.bp-cell--tonique.bp-cell--header .bp-col-hd__circle{
+  width: 64px;
+}
+
 .bp-col-hd__circle--empty {
   background: #f5efdd;
 }
