@@ -95,8 +95,17 @@ font-family: Archivo, sans-serif;
   background: #fefefc;
   border-left: 1px solid #977b4f;
   border-right: 1px solid #977b4f;
+    position: relative;
+  z-index: 2;
 }
 
+.bp-cell--tonique::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 4px 50px rgba(168, 137, 88, 0.25);
+  pointer-events: none;
+}
 /* Competitor cells: hidden on mobile, shown only when active */
 .bp-cell--comp {
   display: none;
