@@ -46,6 +46,7 @@ font-family: Archivo, sans-serif;
     color: #433723;
     margin: 0;
     letter-spacing: 0;
+        max-width: 282px;
 }
 
 /* ── Table ──────────────────────────────────────── */
@@ -314,6 +315,7 @@ font-family: Archivo, sans-serif;
   .bp-intro__sub {
         font-size: 18px;
         line-height: 28px;
+            max-width: 100%;
   }
 .bp-col-tonique_logo {
     width: 132px;
