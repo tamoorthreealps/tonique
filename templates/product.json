@@ -598,7 +598,7 @@
       ],
       "name": "Beauty Protein",
       "settings": {
-        "heading": "Beauty + Protein.<br>The only one that delivers both.",
+        "heading": "Beauty + Protein.The only one that delivers both.",
         "subtext": "Most products solve one, not the other. Tonique was built for both.",
         "tonique_label": "TONIQUE",
         "tonique_icon": "shopify://shop_images/Vector_2.png",
@@ -608,7 +608,7 @@
         "comp2_icon": "shopify://shop_images/Subscription_Icon_7b97f900-85cb-48ba-82a8-cd7362cfc399.png",
         "comp3_name": "BONE BROTH",
         "comp3_icon": "shopify://shop_images/Subscription_Icon_7b97f900-85cb-48ba-82a8-cd7362cfc399.png",
-        "footnote": "*Per serving. Comparisons reflect average values of leading products in each category and are for educational purposes only."
+        "footnote": "*Per serving. Comparisons reflect average values across top-selling products in each category, sourced from published ingredient panels and supplement facts"
       }
     },
     "product_faqs_P6bAPh": {
