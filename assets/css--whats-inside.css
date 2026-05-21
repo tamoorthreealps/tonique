@@ -72,11 +72,12 @@
 }
 
 .wi-scroll-card {
-  border: 1px solid #977b4f;
-  border-right: none;
-  background: #f4f1e3;
-  display: flex;
-  flex-direction: column;
+border: 1px solid #977b4f;
+    border-right: none;
+    background: #FEFEFC;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
 }
 
 .wi-scroll-card:last-child {
@@ -98,39 +99,40 @@
 }
 
 .wi-scroll-card__badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: #ffffff;
-  border: 1px solid #977b4f;
-  border-radius: 100px;
-  padding: 3px 10px;
-  font-family: 'Archivo', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 14px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #977b4f;
-  white-space: nowrap;
-  pointer-events: none;
+position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #FFFFFF;
+    border: 1px solid #977B4F;
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-family: Archivo, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #977B4F;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
 .wi-scroll-card__body {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
+    padding: 12px 8px 12px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
 }
 
 .wi-scroll-card__name {
-  font-family: 'Archivo', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 18px;
-  color: #433723;
-  margin: 0;
+    font-family: Archivo, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #A88958;
+    margin: 0;
+    letter-spacing: 0.56px;
 }
 
 .wi-scroll-card__divider {
@@ -140,27 +142,31 @@
 }
 
 .wi-scroll-card__amount-row {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #EEE7DE;
+    padding-top: 12px;
+    margin-top: 8px;
 }
 
 .wi-scroll-card__amount {
-  font-family: 'Archivo', sans-serif;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 28px;
-  color: #a88958;
+    font-family: Archivo, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #A88958;
+    letter-spacing: 0;
 }
 
 .wi-scroll-card__per {
-  font-family: 'Archivo', sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 14px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #8e877b;
+font-family: Archivo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #433723;
 }
 
 /* ── Desktop (min-width: 767px) ─────────────────── */
