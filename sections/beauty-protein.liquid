@@ -195,6 +195,23 @@
       });
     });
   })();
+
+
+{% comment %} calculate--table--highlight--col {% endcomment %}
+ function updateToniqueHeight() {
+  const table = document.querySelector('.bp-table');
+  const tonique = document.querySelector('.bp-row:first-child .bp-cell--tonique');
+
+  if (!table || !tonique) return;
+
+  const tableHeight = table.offsetHeight;
+
+  tonique.style.setProperty('--table-height', `${tableHeight}px`);
+}
+
+updateToniqueHeight();
+
+window.addEventListener('resize', updateToniqueHeight);
 </script>
 
 {% schema %}
