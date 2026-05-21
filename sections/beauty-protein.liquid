@@ -191,6 +191,13 @@
 var move = (compNum - (active + 1)) * width;
 
         el.style.transform = 'translateX(' + move + 'px)';
+
+if(compNum === active){
+  el.style.opacity = '1';
+}
+else{
+  el.style.opacity = '0';
+}
       });
 
     });
