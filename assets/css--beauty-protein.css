@@ -423,17 +423,17 @@ font-size: 14px;
     overflow: hidden;
   }
 
-  .bp-row {
-    overflow: hidden;
-  }
-
   .bp-cell--comp {
     display: flex;
     width: 116px;
-    min-width: 116px;
     flex-shrink: 0;
     transition: transform .45s ease;
     border-right: 1px solid #d9d7d3;
+    margin-left: -116px;
+  }
+
+  .bp-cell--comp:first-of-type {
+    margin-left: 0;
   }
 
 }
