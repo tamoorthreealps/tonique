@@ -178,6 +178,7 @@ font-family: Archivo, sans-serif;
 }
 .wi-mobile-scroll .splide__pagination li {
     flex: 1;
+    line-height: 0;
 }
 .wi-mobile-scroll .splide__pagination__page {
     margin: 0;
