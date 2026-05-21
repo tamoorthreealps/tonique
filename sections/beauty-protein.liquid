@@ -213,37 +213,41 @@
 
 })();
 
-function equalizeRows() {
+if (window.innerWidth <= 766) {
 
-  document.querySelectorAll('.bp-row').forEach(function(row){
+  function equalizeRows() {
 
-    let maxHeight = 0;
+    document.querySelectorAll('.bp-row').forEach(function(row){
 
-    const cells = row.querySelectorAll('.bp-cell');
+      let maxHeight = 0;
 
-    cells.forEach(function(cell){
+      const cells = row.querySelectorAll('.bp-cell');
 
-      cell.style.height = 'auto';
+      cells.forEach(function(cell){
 
-      if(cell.offsetHeight > maxHeight){
-        maxHeight = cell.offsetHeight;
-      }
+        cell.style.height = 'auto';
+
+        if(cell.offsetHeight > maxHeight){
+          maxHeight = cell.offsetHeight;
+        }
+
+      });
+
+      cells.forEach(function(cell){
+
+        cell.style.height = maxHeight + 'px';
+
+      });
 
     });
 
-    cells.forEach(function(cell){
+  }
 
-      cell.style.height = maxHeight + 'px';
+  equalizeRows();
 
-    });
-
-  });
+  window.addEventListener('resize', equalizeRows);
 
 }
-
-equalizeRows();
-
-window.addEventListener('resize', equalizeRows);
 {% comment %} calculate--table--highlight--col {% endcomment %}
  function updateToniqueHeight() {
   const table = document.querySelector('.bp-table');
