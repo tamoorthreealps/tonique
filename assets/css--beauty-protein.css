@@ -27,7 +27,7 @@
   margin: 0 auto 32px;
 }
 
-.bp-intro__heading {
+.bp-intro__heading h2 {
     font-family: Archivo, sans-serif;
     font-size: 24px;
     font-weight: 400;
@@ -293,7 +293,7 @@ font-family: Archivo, sans-serif;
         margin: 0 auto 40px;
   }
 
-  .bp-intro__heading {
+  .bp-intro__heading h2 {
         font-size: 36px;
         line-height: 48px;
         letter-spacing: 4.32px;
