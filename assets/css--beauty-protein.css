@@ -101,6 +101,7 @@ font-family: Archivo, sans-serif;
 /* Blank cell in header (label col) */
 .bp-cell--blank {
   min-height: 0;
+  display: inline !important;
 }
 
 /* ── Column headers ─────────────────────────────── */
