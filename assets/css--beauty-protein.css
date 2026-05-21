@@ -423,6 +423,22 @@ font-size: 14px;
 
   .bp-cell--comp {
     display: flex !important;
+    width: 116px !important;
+    min-width: 116px !important;
+    flex-shrink: 0;
+  }
+
+  .bp-mobile-slider {
+    width: 116px;
+    overflow: hidden;
+  }
+
+  .bp-mobile-slider .splide__track {
+    overflow: hidden;
+  }
+
+  .bp-mobile-slider .splide__list {
+    display: flex;
   }
 
 }

@@ -162,77 +162,49 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  (function () {
+    var sid = '{{ section.id }}';
+    var compNames = [
+      {{ section.settings.comp1_name | json }},
+      {{ section.settings.comp2_name | json }},
+      {{ section.settings.comp3_name | json }}
+    ];
+    var total = compNames.length;
+    var active = 1;
 
-  const sliders = [];
+    function activateComp(num) {
+      if (num === active) return;
+      active = num;
 
-  document.querySelectorAll('.bp-row').forEach(function(row){
-
-    const compCells = row.querySelectorAll('.bp-cell--comp');
-
-    if(compCells.length){
-
-      const wrapper = document.createElement('div');
-
-      wrapper.className = 'bp-mobile-slider splide';
-
-      wrapper.innerHTML = `
-        <div class="splide__track">
-          <div class="splide__list"></div>
-        </div>
-      `;
-
-      const list = wrapper.querySelector('.splide__list');
-
-      compCells.forEach(function(cell){
-
-        cell.classList.add('splide__slide');
-
-        list.appendChild(cell);
-
+      // Toggle all [data-bp-comp] cells (includes header + data rows)
+      document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
+        el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === num);
       });
 
-      row.appendChild(wrapper);
-
-      const splide = new Splide(wrapper, {
-        perPage: 1,
-        arrows: false,
-        pagination: false,
-        drag: false,
-        speed: 500,
+      // Segment tabs
+      document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
+        var isA = parseInt(s.dataset.bpSeg, 10) === num;
+        s.classList.toggle('is-active', isA);
+        s.setAttribute('aria-selected', isA ? 'true' : 'false');
       });
 
-      splide.mount();
-
-      sliders.push(splide);
-
+      // Counter label
+      var lbl = document.getElementById('bp-label-' + sid);
+      if (lbl) lbl.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
     }
 
-  });
-
-  document.querySelectorAll('.bp-switcher__seg').forEach(function(btn, index){
-
-    btn.addEventListener('click', function(){
-
-      sliders.forEach(function(slider){
-
-        slider.go(index);
-
-      });
-
-      document.querySelectorAll('.bp-switcher__seg').forEach(function(b){
-
-        b.classList.remove('is-active');
-
-      });
-
-      btn.classList.add('is-active');
-
+    // Init — mark first competitor active
+    document.querySelectorAll('#bp-table-' + sid + ' [data-bp-comp]').forEach(function (el) {
+      el.classList.toggle('is-active-comp', parseInt(el.dataset.bpComp, 10) === 1);
     });
 
-  });
-
-});
+    // Segment clicks
+    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activateComp(parseInt(this.dataset.bpSeg, 10));
+      });
+    });
+  })();
 
 
 {% comment %} calculate--table--highlight--col {% endcomment %}
