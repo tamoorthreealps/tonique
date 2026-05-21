@@ -106,7 +106,7 @@ font-family: Archivo, sans-serif;
   inset: 0;
   box-shadow: 0 4px 50px rgba(168, 137, 88, 0.25);
   pointer-events: none;
-  height: calc(var(--table-height) + 22px);
+  height: calc(var(--table-height) - 1px);
   width:100%;
 }
 /* Competitor cells: hidden on mobile, shown only when active */
@@ -336,6 +336,10 @@ font-family: Archivo, sans-serif;
     border-left: 1px solid #a88958;
     border-right: 1px solid #a88958;
   }
+
+  .bp-cell.bp-cell--tonique.bp-cell--header::after{
+  height: calc(var(--table-height) + 22px);
+}
 
   /* All competitor columns visible */
   .bp-cell--comp {
