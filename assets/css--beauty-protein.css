@@ -417,25 +417,3 @@ font-size: 14px;
         color: #433723;
   }
 }
-
-
-
-@media screen and (max-width: 766px) {
-
-  .bp-table {
-    overflow: hidden;
-  }
-
-  .bp-row {
-    position: relative;
-  }
-
-  .bp-cell--comp {
-    display: flex;
-    width: 116px;
-    flex-shrink: 0;
-    transition: transform .45s ease;
-    border-right: 1px solid #d9d7d3;
-  }
-
-}
