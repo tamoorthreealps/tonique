@@ -433,6 +433,8 @@
 
 	.bp-row .bp-cell:first-child {
 		width: 32.56% !important;
+            background: #ffffff;
+        z-index: 1;
 	}
 }
 
