@@ -25,16 +25,17 @@
   letter-spacing: 1.92px;
   text-transform: uppercase;
   color: #977b4f;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 .wi-mobile-heading__sub {
-  font-family: 'Archivo', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: #433723;
-  margin: 0;
+    font-family: Archivo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #433723;
+    margin: 0;
+    letter-spacing: 0;
 }
 
 /* ── Desktop 2-col (hidden on mobile) ───────────── */
