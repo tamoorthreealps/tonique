@@ -127,6 +127,7 @@ font-family: Archivo, sans-serif;
 
 .bp-cell--comp.is-active-comp {
   display: flex;
+  border-right: 1px solid #d9d7d3;
 }
 
 /* Blank cell in header (label col) */
