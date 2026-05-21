@@ -99,7 +99,7 @@ font-family: Archivo, sans-serif;
   z-index: 2;
 }
 
-.bp-cell--tonique::after{
+.bp-cell.bp-cell--tonique.bp-cell--header::after{
   content: '';
   position: absolute;
   inset: 0;
