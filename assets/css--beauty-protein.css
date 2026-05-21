@@ -92,6 +92,14 @@ font-family: Archivo, sans-serif;
   padding-left: 0;
 }
 
+.bp-label--mobile{
+  display:block;
+}
+
+    .bp-label--desktop{
+    display:none;
+  }
+
 .bp-cell--tonique {
   width: 116px;
   background: #fefefc;
@@ -329,6 +337,14 @@ font-family: Archivo, sans-serif;
     width: 224px;
     padding: 18px 10px 18px 0;
     min-height: 64px;
+  }
+
+    .bp-label--desktop{
+    display:block;
+  }
+
+  .bp-label--mobile{
+    display:none;
   }
 
   .bp-cell--tonique {

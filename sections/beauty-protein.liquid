@@ -75,7 +75,11 @@
       {%- for block in section.blocks -%}
         <div class="bp-row" {{ block.shopify_attributes }}>
           <div class="bp-cell bp-cell--label">
-            <span class="bp-label">
+            <span class="bp-label bp-label--desktop">
+              {{ block.settings.row_label }}
+            </span>
+
+            <span class="bp-label bp-label--mobile">
               {% if block.settings.row_label_mobile != blank %}
                 {{ block.settings.row_label_mobile }}
               {% else %}
@@ -326,7 +330,7 @@ window.addEventListener('resize', updateToniqueHeight);
         {
           "type": "text",
           "id": "row_label_mobile",
-          "label": "Row label Mobile (Optional)",
+          "label": "Row label Mobile (Optional)"
         },
         {
           "type": "text",
