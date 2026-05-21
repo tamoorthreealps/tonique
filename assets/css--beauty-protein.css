@@ -132,10 +132,11 @@ font-family: Archivo, sans-serif;
 /* Competitor circles */
 .bp-col-hd__circle {
   overflow: hidden;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  width: 80px;
 }
 
 .bp-col-hd__circle--empty {
@@ -291,6 +292,9 @@ font-family: Archivo, sans-serif;
   }
 
   /* Desktop cell sizes */
+  .bp-col-hd__circle {
+  display: flex;
+}
   .bp-cell--label {
     width: 224px;
     padding: 18px 10px 18px 0;
