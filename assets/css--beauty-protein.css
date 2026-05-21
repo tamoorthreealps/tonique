@@ -149,6 +149,10 @@ font-family: Archivo, sans-serif;
   width: 64px;
 }
 
+.bp-col-tonique_logo {
+    width: 80px;
+}
+
 .bp-col-hd__circle--empty {
   background: #f5efdd;
 }
@@ -300,7 +304,9 @@ font-family: Archivo, sans-serif;
         font-size: 18px;
         line-height: 28px;
   }
-
+.bp-col-tonique_logo {
+    width: 132px;
+}
   /* Desktop cell sizes */
   .bp-col-hd__circle {
   display: flex;
