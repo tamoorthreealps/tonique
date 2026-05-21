@@ -7,6 +7,7 @@
 /* ── Section shell ──────────────────────────────── */
 
 /* ── Mobile image (top of section, hidden on desktop) */
+.pf-section{padding-bottom:96px;}
 .pf-image-mobile {
   width: 100%;
   height: 280px;
@@ -229,7 +230,7 @@ a.pf-footer__link{
 
 /* ── Desktop (min-width: 767px) ─────────────────── */
 @media screen and (min-width: 767px) {
-
+  .pf-section{padding-bottom:120px;}
   /* Hide mobile image on desktop */
   .pf-image-mobile {
     display: none;
