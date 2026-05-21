@@ -120,7 +120,6 @@
                     <rect x="13.25" y="8" width="1.5" height="12" fill="#977B4F"/>
                   </svg>
                 </span>
-                
               </div>
 
               <div class="wi-scroll-card__body">
@@ -139,8 +138,18 @@
                 </div>
               </div>
               {%- if block.settings.description != blank -%}
-                  <p class="wi-card__desc__mobile">{{ block.settings.description }}</p>
-                {%- endif -%}
+                <p class="wi-card__desc__mobile">
+                  {{ block.settings.description }}
+                  <span class="wi--scroll--info--closer">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0.5" y="0.5" width="27" height="27" rx="13.5" fill="white"/>
+                      <rect x="0.5" y="0.5" width="27" height="27" rx="13.5" stroke="#977B4F"/>
+                      <rect x="8" y="13.25" width="12" height="1.5" fill="#977B4F"/>
+                      <rect x="13.25" y="8" width="1.5" height="12" fill="#977B4F"/>
+                    </svg>
+                  </span>
+                </p>
+              {%- endif -%}
             </div>
           {%- endfor -%}
         </div>
@@ -150,51 +159,56 @@
 </section>
 
 <script>
-  (function () {
-    var sid = '{{ section.id }}';
+    (function () {
+      var sid = '{{ section.id }}';
 
-    function activate(num) {
-      document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (r) {
-        r.classList.toggle('is-active', parseInt(r.dataset.wiRow, 10) === num);
-      });
-      document.querySelectorAll('#wi-panel-' + sid + ' .wi-card').forEach(function (c) {
-        var isActive = parseInt(c.dataset.wiCard, 10) === num;
-        c.classList.toggle('is-active', isActive);
-        c.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-      });
-    }
+      function activate(num) {
+        document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (r) {
+          r.classList.toggle('is-active', parseInt(r.dataset.wiRow, 10) === num);
+        });
+        document.querySelectorAll('#wi-panel-' + sid + ' .wi-card').forEach(function (c) {
+          var isActive = parseInt(c.dataset.wiCard, 10) === num;
+          c.classList.toggle('is-active', isActive);
+          c.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+      }
 
-    document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        activate(parseInt(this.dataset.wiRow, 10));
+      document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activate(parseInt(this.dataset.wiRow, 10));
+        });
       });
+    })();
+
+    document.addEventListener('DOMContentLoaded', function () {
+      let splide = new Splide('#wi-mobile-{{ section.id }}', {
+        type: 'slide',
+        perPage: 2,
+        perMove: 1,
+        pagination: true,
+        arrows: false,
+        gap: '0px',
+        focus: '0',
+        flickPower: 80,
+        flickMaxPages: 1,
+        dragMinThreshold: { mouse: 4, touch: 6 },
+        easing: 'ease-in-out',
+        omitEnd: true,
+        trimSpace: true,
+      });
+
+      splide.mount();
     });
-  })();
 
-  document.addEventListener('DOMContentLoaded', function () {
-    let splide = new Splide('#wi-mobile-{{ section.id }}', {
-      type: 'slide',
-      perPage: 2,
-      perMove: 1,
-      pagination: true,
-      arrows: false,
-      gap: '0px',
-      focus: '0',
-      flickPower: 80,
-      flickMaxPages: 1,
-      dragMinThreshold: { mouse: 4, touch: 6 },
-      easing: 'ease-in-out',
-      omitEnd: true,
-      trimSpace: true,
+    {% comment %} slide--up--the--info {% endcomment %}
+     document.querySelectorAll('.wi--scroll--info--opener').forEach((btn) => {
+    btn.addEventListener('click', function () {
+      this.closest('.wi-scroll-card').classList.toggle('is-open');
     });
-
-    splide.mount();
   });
-
-  {% comment %} slide--up--the--info {% endcomment %}
-   document.querySelectorAll('.wi--scroll--info--opener').forEach((btn) => {
+  document.querySelectorAll('.wi--scroll--info--closer').forEach((btn) => {
   btn.addEventListener('click', function () {
-    this.closest('.wi-scroll-card').classList.toggle('is-open');
+    this.closest('.wi-scroll-card').classList.remove('is-open');
   });
 });
 </script>
