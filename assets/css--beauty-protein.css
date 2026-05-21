@@ -85,7 +85,6 @@ font-family: Archivo, sans-serif;
   flex-shrink: 0;
   padding: 12px 8px;
   min-height: 48px;
-  width: 33.33% !important;
 }
 
 .bp-cell--label {
@@ -417,4 +416,8 @@ font-size: 14px;
         letter-spacing: .28px;
         color: #433723;
   }
+}
+
+@media screen and (max-width: 768px) {
+.bp-cell{    width: 33.33% !important;}
 }
