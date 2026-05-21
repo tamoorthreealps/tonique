@@ -1,28 +1,22 @@
 {{ 'css--product-faqs.css' | asset_url | stylesheet_tag }}
 
 <section class="pf-section" id="ProductFAQs-{{ section.id }}" {{ section.shopify_attributes }}>
-
   {%- comment -%} ── Image: top on mobile ── {%- endcomment -%}
   {%- if section.settings.image != blank -%}
     <div class="pf-image-mobile" aria-hidden="true">
       {{
         section.settings.image
         | image_url: width: 900
-        | image_tag:
-          loading: 'lazy',
-          widths: '375, 600, 750, 900',
-          sizes: '100vw',
-          alt: section.settings.image.alt | escape
+        | image_tag: loading: 'lazy', widths: '375, 600, 750, 900', sizes: '100vw', alt: section.settings.image.alt
+        | escape
       }}
     </div>
   {%- endif -%}
 
   <div class="pf-inner--container">
     <div class="pf-inner">
-
       {%- comment -%} ── Content column ── {%- endcomment -%}
       <div class="pf-content">
-
         {%- if section.settings.heading != blank -%}
           <h2 class="pf-heading">{{ section.settings.heading }}</h2>
         {%- endif -%}
@@ -44,11 +38,26 @@
               >
                 <span class="pf-item__question">{{ block.settings.question }}</span>
                 <span class="pf-item__icon" aria-hidden="true">
-                  <svg class="pf-icon-plus" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <svg
+                    class="pf-icon-plus"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M5.40088 0V5.38847H0V6.88657H5.40088V12H6.90015V6.88657H12V5.38847H6.90015V0H5.40088Z" fill="#433723"/>
                   </svg>
-                  <svg class="pf-icon-close" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+
+                  <svg
+                    class="pf-icon-close"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M5.40088 5.3877L0 5.38847V6.88657H5.40088H6.90015H12V5.38847H6.90015L5.40088 5.3877Z" fill="#977B4F"/>
                   </svg>
                 </span>
               </button>
@@ -70,7 +79,15 @@
             {%- if section.settings.faqs_url != blank -%}
               <a href="{{ section.settings.faqs_url }}" class="pf-footer__link">
                 {{ section.settings.faqs_text }}
-                <svg class="pf-footer__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <svg
+                  class="pf-footer__arrow"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
@@ -79,59 +96,58 @@
             {%- endif -%}
           </div>
         {%- endif -%}
-
       </div>
-        <div class="pf-bg-panel" aria-hidden="true">
-    {%- if section.settings.image != blank -%}
-      {{
-        section.settings.image
-        | image_url: width: 1600
-        | image_tag:
-          loading: 'lazy',
-          widths: '756, 900, 1100, 1400, 1600',
-          sizes: '56vw',
-          class: 'pf-bg-panel__img',
-          alt: ''
-      }}
-    {%- endif -%}
-  </div>
+      <div class="pf-bg-panel" aria-hidden="true">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1600
+            | image_tag:
+              loading: 'lazy',
+              widths: '756, 900, 1100, 1400, 1600',
+              sizes: '56vw',
+              class: 'pf-bg-panel__img',
+              alt: ''
+          }}
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>
 
 <script>
-(function () {
-  var sid = '{{ section.id }}';
-  var accordion = document.getElementById('pf-accordion-' + sid);
-  if (!accordion) return;
+  (function () {
+    var sid = '{{ section.id }}';
+    var accordion = document.getElementById('pf-accordion-' + sid);
+    if (!accordion) return;
 
-  accordion.addEventListener('click', function (e) {
-    var trigger = e.target.closest('[data-pf-trigger]');
-    if (!trigger) return;
+    accordion.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-pf-trigger]');
+      if (!trigger) return;
 
-    var idx  = trigger.dataset.pfTrigger;
-    var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
-    var body = document.getElementById('pf-answer-' + sid + '-' + idx);
-    if (!item || !body) return;
+      var idx = trigger.dataset.pfTrigger;
+      var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
+      var body = document.getElementById('pf-answer-' + sid + '-' + idx);
+      if (!item || !body) return;
 
-    var isOpen = item.classList.contains('is-open');
+      var isOpen = item.classList.contains('is-open');
 
-    // Close all
-    accordion.querySelectorAll('.pf-item').forEach(function (el) {
-      el.classList.remove('is-open');
-      el.querySelector('.pf-item__trigger').setAttribute('aria-expanded', 'false');
-      var b = el.querySelector('.pf-item__body');
-      if (b) b.setAttribute('aria-hidden', 'true');
+      // Close all
+      accordion.querySelectorAll('.pf-item').forEach(function (el) {
+        el.classList.remove('is-open');
+        el.querySelector('.pf-item__trigger').setAttribute('aria-expanded', 'false');
+        var b = el.querySelector('.pf-item__body');
+        if (b) b.setAttribute('aria-hidden', 'true');
+      });
+
+      // Open clicked (toggle)
+      if (!isOpen) {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        body.setAttribute('aria-hidden', 'false');
+      }
     });
-
-    // Open clicked (toggle)
-    if (!isOpen) {
-      item.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-      body.setAttribute('aria-hidden', 'false');
-    }
-  });
-})();
+  })();
 </script>
 
 {% schema %}
