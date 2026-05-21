@@ -60,6 +60,10 @@ font-family: Archivo, sans-serif;
   display: flex;
 }
 
+.bp-row:last-child{
+  border-bottom:1px solid #d9d7d3;
+}
+
 .bp-row--header {
   border-bottom: none;
 }
