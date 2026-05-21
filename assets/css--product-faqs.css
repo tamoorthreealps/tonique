@@ -38,10 +38,7 @@ max-width: 1512px;
 }
 
 /* ── Inner layout (single col mobile) ───────────── */
-.pf-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
+
 
 /* ── Content column ─────────────────────────────── */
 .pf-content {
@@ -251,7 +248,10 @@ a.pf-footer__link{
     object-position: center;
     display: block;
   }
-
+.pf-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
   /* Content occupies left ~52% */
 .pf-content {
     max-width: 496px;
