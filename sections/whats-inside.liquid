@@ -53,7 +53,7 @@
               aria-hidden="{% unless forloop.first %}true{% else %}false{% endunless %}"
               {{ block.shopify_attributes }}
             >
-              {%- if block.settings.image != blank -%}
+              {%- if block.settings.image != blank or block.settings.badge_label != blank -%}
                 <div class="wi-card__image-wrap">
                   {{-
                     block.settings.image
@@ -65,13 +65,13 @@
                       widths: '320, 640',
                       sizes: '(max-width: 767px) 156px, 320px'
                   -}}
+                  {%- if block.settings.badge_label != blank -%}
+                  <span class="wi-card__badge">{{ block.settings.badge_label }}</span>
+                {%- endif -%}
                 </div>
               {%- endif -%}
 
               <div class="wi-card__body">
-                {%- if block.settings.badge_label != blank -%}
-                  <span class="wi-card__badge">{{ block.settings.badge_label }}</span>
-                {%- endif -%}
                 <h3 class="wi-card__name">{{ block.settings.ingredient_name }}</h3>
                 {%- if block.settings.description != blank -%}
                   <p class="wi-card__desc">{{ block.settings.description }}</p>
