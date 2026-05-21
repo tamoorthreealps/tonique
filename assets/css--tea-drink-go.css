@@ -1,0 +1,134 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--tea-drink-go.css
+   Tea Drink Go — full-bleed image or video section
+   with overlay text "TEAR / DRINK / GO"
+   Mobile-first; desktop overrides at 767px+
+───────────────────────────────────────────────────────────────── */
+
+/* ── Section shell ──────────────────────────────── */
+.tdg-section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Background media wrapper ───────────────────── */
+.tdg-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Background image */
+.tdg-bg__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Background video */
+.tdg-bg__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Overlay tint (optional darkening) */
+.tdg-bg__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+/* ── Content overlay ────────────────────────────── */
+.tdg-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 64px 24px;
+}
+
+.tdg-content__inner {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Heading words (TEAR / DRINK / GO) ──────────── */
+.tdg-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tdg-heading__word {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.167;
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  color: #a88958;
+  margin: 0;
+}
+
+/* ── Desktop ─────────────────────────────────────── */
+@media screen and (min-width: 767px) {
+  .tdg-section {
+    min-height: 800px;
+  }
+
+  .tdg-content {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    min-height: 800px;
+  }
+
+  .tdg-content__inner {
+    padding: 0 calc(8.33% + 52px);
+  }
+
+  .tdg-heading {
+    gap: 32px;
+  }
+
+  .tdg-heading__word {
+    font-size: 48px;
+    line-height: 1.167;
+    letter-spacing: 3.84px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tdg-content__inner {
+    padding: 0 calc(8.33% + 52px);
+  }
+}
+
+/* ── Placeholder (no image/video set) ───────────── */
+.tdg-placeholder {
+  position: absolute;
+  inset: 0;
+  background: #e8e5d8;
+  z-index: 0;
+}
+
+.tdg-placeholder svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

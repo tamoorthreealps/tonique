@@ -1,0 +1,153 @@
+{{ 'css--tea-drink-go.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_video = false
+  assign has_image = false
+
+  if section.settings.video != blank
+    assign has_video = true
+  endif
+
+  if section.settings.background_image != blank
+    assign has_image = true
+  endif
+-%}
+
+<section class="tdg-section" id="TeaDrinkGo-{{ section.id }}">
+
+  {%- comment -%} ── Background (video takes precedence over image) ── {%- endcomment -%}
+  <div class="tdg-bg">
+    {%- if has_video -%}
+      {%- comment -%}
+        Shopify-hosted video (type: "video" in schema).
+        Autoplay, muted, loop — fills the section as a background.
+      {%- endcomment -%}
+      <video
+        class="tdg-bg__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        {%- if section.settings.background_image != blank -%}
+          poster="{{ section.settings.background_image | image_url: width: 1920 }}"
+        {%- elsif section.settings.video.preview_image != blank -%}
+          poster="{{ section.settings.video.preview_image | image_url: width: 1920 }}"
+        {%- endif -%}
+      >
+        {%- for source in section.settings.video.sources -%}
+          <source
+            src="{{ source.url }}"
+            type="{{ source.mime_type }}"
+          >
+        {%- endfor -%}
+      </video>
+
+    {%- elsif has_image -%}
+      {{
+        section.settings.background_image
+        | image_url: width: 3840
+        | image_tag:
+          class: 'tdg-bg__img',
+          loading: 'lazy',
+          widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+          sizes: '100vw',
+          alt: section.settings.background_image.alt | escape
+      }}
+
+    {%- else -%}
+      <div class="tdg-placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.overlay_opacity > 0 -%}
+      <div
+        class="tdg-bg__overlay"
+        style="background: rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 | round: 2 }});"
+      ></div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ── Overlay text content ── {%- endcomment -%}
+  <div class="tdg-content">
+    <div class="tdg-content__inner">
+      <ul class="tdg-heading" aria-label="{{ section.settings.word_1 }} {{ section.settings.word_2 }} {{ section.settings.word_3 }}">
+        {%- if section.settings.word_1 != blank -%}
+          <li class="tdg-heading__word">{{ section.settings.word_1 }}</li>
+        {%- endif -%}
+        {%- if section.settings.word_2 != blank -%}
+          <li class="tdg-heading__word">{{ section.settings.word_2 }}</li>
+        {%- endif -%}
+        {%- if section.settings.word_3 != blank -%}
+          <li class="tdg-heading__word">{{ section.settings.word_3 }}</li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Tea Drink Go",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading words"
+    },
+    {
+      "type": "text",
+      "id": "word_1",
+      "label": "First word",
+      "default": "Tear"
+    },
+    {
+      "type": "text",
+      "id": "word_2",
+      "label": "Second word",
+      "default": "Drink"
+    },
+    {
+      "type": "text",
+      "id": "word_3",
+      "label": "Third word",
+      "default": "Go"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video (MP4)",
+      "info": "Upload an MP4 to Shopify Files. Takes priority over the image if both are set."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "info": "Used as the background if no video is set, and also as the video poster frame."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay darkness",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 0,
+      "info": "Darken the background slightly to improve text legibility."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tea Drink Go"
+    }
+  ]
+}
+{% endschema %}
