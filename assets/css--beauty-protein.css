@@ -14,7 +14,7 @@
 }
 
 .bp-inner--container {
-  max-width: 1204px;
+  max-max-width: 1204px;
   padding: 0 24px;
   margin: 0 auto;
 }
@@ -46,13 +46,13 @@ font-family: Archivo, sans-serif;
     color: #433723;
     margin: 0 auto;
     letter-spacing: 0;
-        max-width: 282px;
+        max-max-width: 282px;
 }
 
 
 /* ── Table ──────────────────────────────────────── */
 .bp-table {
-  width: 100%;
+  max-width: 100%;
 }
 
 /* ── Row ────────────────────────────────────────── */
@@ -88,7 +88,7 @@ font-family: Archivo, sans-serif;
 }
 
 .bp-cell--label {
-  width: 112px;
+  max-width: 112px;
   justify-content: flex-start;
   padding-left: 0;
   padding-right:16px;
@@ -103,7 +103,7 @@ font-family: Archivo, sans-serif;
   }
 
 .bp-cell--tonique {
-  width: 116px;
+  max-width: 116px;
   background: #fefefc;
   border-left: 1px solid #977b4f;
   border-right: 1px solid #977b4f;
@@ -118,12 +118,12 @@ font-family: Archivo, sans-serif;
   box-shadow: 0px 4px 24px 0px #A889581A;
   pointer-events: none;
   height: calc(var(--table-height) - 1px);
-  width:100%;
+  max-width:100%;
 }
 /* Competitor cells: hidden on mobile, shown only when active */
 .bp-cell--comp {
   display: none;
-  width: 116px;
+  max-width: 116px;
 }
 
 .bp-cell--comp.is-active-comp {
@@ -156,7 +156,7 @@ font-family: Archivo, sans-serif;
   flex-direction: column;
   align-items: center;
   gap: 28px;
-  width: 100%;
+  max-width: 100%;
 }
 
 /* Competitor circles */
@@ -166,15 +166,15 @@ font-family: Archivo, sans-serif;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 80px;
+  max-width: 80px;
 }
 
 .bp-cell.bp-cell--tonique.bp-cell--header .bp-col-hd__circle{
-  width: 64px;
+  max-width: 64px;
 }
 
 .bp-col-tonique_logo {
-    width: 80px;
+    max-width: 80px;
 }
 
 .bp-col-hd__circle--empty {
@@ -182,7 +182,7 @@ font-family: Archivo, sans-serif;
 }
 
 .bp-col-hd__img {
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
@@ -245,7 +245,7 @@ font-family: Archivo, sans-serif;
 }
 
 .bp-tilde svg {
-  width: 40px;
+  max-width: 40px;
   height: 10px;
 }
 
@@ -265,7 +265,7 @@ font-family: Archivo, sans-serif;
 }
 
 .bp-switcher__seg {
-    width: 24px;
+    max-width: 24px;
     height: 2px;
     background: #D9D7D3;
     border: none;
@@ -303,8 +303,8 @@ font-family: Archivo, sans-serif;
     margin: 28px 0 0;
 }
 
-/* ── Desktop (min-width: 767px) ─────────────────── */
-@media screen and (min-width: 767px) {
+/* ── Desktop (min-max-width: 767px) ─────────────────── */
+@media screen and (min-max-width: 767px) {
   .bp-section {
     padding:120px 0;
     border-top: 0;
@@ -324,17 +324,17 @@ font-family: Archivo, sans-serif;
   .bp-intro__sub {
         font-size: 18px;
         line-height: 28px;
-            max-width: 100%;
+            max-max-width: 100%;
   }
 .bp-col-tonique_logo {
-    width: 132px;
+    max-width: 132px;
 }
   /* Desktop cell sizes */
   .bp-col-hd__circle {
   display: flex;
 }
   .bp-cell--label {
-    width: 224px;
+    max-width: 224px;
     padding: 18px 10px 18px 0;
     min-height: 64px;
   }
@@ -348,7 +348,7 @@ font-family: Archivo, sans-serif;
   }
 
   .bp-cell--tonique {
-    width: 233px;
+    max-width: 233px;
     padding: 18px 10px;
     border-left: 1px solid #a88958;
     border-right: 1px solid #a88958;
@@ -362,7 +362,7 @@ font-family: Archivo, sans-serif;
   /* All competitor columns visible */
   .bp-cell--comp {
     display: flex;
-    width: 233px;
+    max-width: 233px;
     padding: 18px 10px;
     border-right: 1px solid #d9d7d3;
   }
@@ -400,7 +400,7 @@ font-size: 14px;
   }
 
   .bp-tilde svg {
-    width: 56px;
+    max-width: 56px;
     height: 14px;
   }
 
