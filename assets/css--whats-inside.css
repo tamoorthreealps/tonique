@@ -230,7 +230,7 @@
     margin: 4px 0;
   }
 
-  .wi-row:last-child .wi-list-hold {
+  .wi-row:last-child {
     border-bottom: 1px solid #A88958;
   }
 
