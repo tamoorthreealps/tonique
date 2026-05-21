@@ -656,6 +656,7 @@
       "name": "Product FAQs",
       "settings": {
         "heading": "FREQUENTLY ASKED QUESTIONS",
+        "heading_mobile": "",
         "image": "shopify://shop_images/IMG.png",
         "faqs_text_before": "More questions?",
         "faqs_text": "Visit our FAQs",
