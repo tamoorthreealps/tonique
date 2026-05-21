@@ -598,7 +598,7 @@
       ],
       "name": "Beauty Protein",
       "settings": {
-        "heading": "Beauty + Protein.The only one that delivers both.",
+        "heading": "<h2>Beauty + Protein.<br/>The only one that delivers both.</h2>",
         "subtext": "Most products solve one, not the other. Tonique was built for both.",
         "tonique_label": "TONIQUE",
         "tonique_icon": "shopify://shop_images/Vector_2.png",
