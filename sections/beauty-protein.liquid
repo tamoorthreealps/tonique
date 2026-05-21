@@ -213,7 +213,37 @@
 
 })();
 
+function equalizeRows() {
 
+  document.querySelectorAll('.bp-row').forEach(function(row){
+
+    let maxHeight = 0;
+
+    const cells = row.querySelectorAll('.bp-cell');
+
+    cells.forEach(function(cell){
+
+      cell.style.height = 'auto';
+
+      if(cell.offsetHeight > maxHeight){
+        maxHeight = cell.offsetHeight;
+      }
+
+    });
+
+    cells.forEach(function(cell){
+
+      cell.style.height = maxHeight + 'px';
+
+    });
+
+  });
+
+}
+
+equalizeRows();
+
+window.addEventListener('resize', equalizeRows);
 {% comment %} calculate--table--highlight--col {% endcomment %}
  function updateToniqueHeight() {
   const table = document.querySelector('.bp-table');
