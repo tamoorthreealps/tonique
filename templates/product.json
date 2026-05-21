@@ -531,6 +531,7 @@
           "type": "row",
           "settings": {
             "row_label": "Complete protein",
+            "row_label_mobile": "",
             "tonique_value": "15g complete",
             "comp1_value": "7g",
             "comp2_value": "20g",
@@ -541,6 +542,7 @@
           "type": "row",
           "settings": {
             "row_label": "Beauty nutrients",
+            "row_label_mobile": "",
             "tonique_value": "Biotin · Vit C · Folate",
             "comp1_value": "cross",
             "comp2_value": "cross",
@@ -551,6 +553,7 @@
           "type": "row",
           "settings": {
             "row_label": "Added sugar",
+            "row_label_mobile": "",
             "tonique_value": "0g",
             "comp1_value": "3g",
             "comp2_value": "8g",
@@ -561,6 +564,7 @@
           "type": "row",
           "settings": {
             "row_label": "Calories",
+            "row_label_mobile": "",
             "tonique_value": "<50",
             "comp1_value": "60",
             "comp2_value": "180",
@@ -571,6 +575,7 @@
           "type": "row",
           "settings": {
             "row_label": "All-natural",
+            "row_label_mobile": "",
             "tonique_value": "check",
             "comp1_value": "cross",
             "comp2_value": "cross",
@@ -581,6 +586,7 @@
           "type": "row",
           "settings": {
             "row_label": "No mixing/fridge/goes anywhere",
+            "row_label_mobile": "No mixing, goes anywhere",
             "tonique_value": "check",
             "comp1_value": "cross",
             "comp2_value": "cross",
