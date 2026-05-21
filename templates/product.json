@@ -552,9 +552,9 @@
           "settings": {
             "row_label": "Added sugar",
             "tonique_value": "0g",
-            "comp1_value": "cross",
-            "comp2_value": "cross",
-            "comp3_value": "cross"
+            "comp1_value": "3g",
+            "comp2_value": "8g",
+            "comp3_value": "0g"
           }
         },
         "row_BgEaYE": {
@@ -562,9 +562,9 @@
           "settings": {
             "row_label": "Calories",
             "tonique_value": "<50",
-            "comp1_value": "cross",
-            "comp2_value": "cross",
-            "comp3_value": "cross"
+            "comp1_value": "60",
+            "comp2_value": "180",
+            "comp3_value": "50"
           }
         },
         "row_ptHV69": {
@@ -574,17 +574,17 @@
             "tonique_value": "check",
             "comp1_value": "cross",
             "comp2_value": "cross",
-            "comp3_value": "cross"
+            "comp3_value": "check"
           }
         },
         "row_biq6Qe": {
           "type": "row",
           "settings": {
-            "row_label": "No mixing / fridge / goes anywhere",
+            "row_label": "No mixing/fridge/goes anywhere",
             "tonique_value": "check",
             "comp1_value": "cross",
             "comp2_value": "cross",
-            "comp3_value": "cross"
+            "comp3_value": "check"
           }
         }
       },
