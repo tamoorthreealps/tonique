@@ -163,7 +163,9 @@
 
 <script>
 (function () {
+
   var sid = '{{ section.id }}';
+
   var compNames = [
     {{ section.settings.comp1_name | json }},
     {{ section.settings.comp2_name | json }},
@@ -171,47 +173,54 @@
   ];
 
   var total = compNames.length;
-  var active = 1;
+  var active = 0;
 
-  function updateSlides() {
+  function updateSlider() {
 
-    document.querySelectorAll('#bp-table-' + sid + ' .bp-cell--comp').forEach(function (el) {
+    document.querySelectorAll('#bp-table-' + sid + ' .bp-row').forEach(function(row){
 
-      var compNum = parseInt(el.dataset.bpComp, 10);
+      var comps = row.querySelectorAll('.bp-cell--comp');
 
-      var offset = (compNum - active) * 120;
+      comps.forEach(function(el, index){
 
-      el.style.transform = 'translateX(' + offset + 'px)';
+        var move = (index - active) * 116;
+
+        el.style.transform = 'translateX(' + move + 'px)';
+      });
+
     });
 
-    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (s) {
+    document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function(btn, index){
 
-      var isA = parseInt(s.dataset.bpSeg, 10) === active;
+      var isActive = index === active;
 
-      s.classList.toggle('is-active', isA);
+      btn.classList.toggle('is-active', isActive);
 
-      s.setAttribute('aria-selected', isA ? 'true' : 'false');
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+
     });
 
     var lbl = document.getElementById('bp-label-' + sid);
 
-    if (lbl) {
-      lbl.textContent = compNames[active - 1] + ' · ' + active + ' OF ' + total;
+    if(lbl){
+      lbl.textContent = compNames[active] + ' · ' + (active + 1) + ' OF ' + total;
     }
+
   }
 
-  document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function (btn) {
+  document.querySelectorAll('#bp-segs-' + sid + ' .bp-switcher__seg').forEach(function(btn, index){
 
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function(){
 
-      active = parseInt(this.dataset.bpSeg, 10);
+      active = index;
 
-      updateSlides();
+      updateSlider();
+
     });
 
   });
 
-  updateSlides();
+  updateSlider();
 
 })();
 
