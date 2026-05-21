@@ -128,9 +128,6 @@ font-family: Archivo, sans-serif;
 
 .bp-cell--comp.is-active-comp {
   display: flex;
-    opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
   border-right: 1px solid #d9d7d3;
 }
 
@@ -364,11 +361,7 @@ font-family: Archivo, sans-serif;
 
   /* All competitor columns visible */
   .bp-cell--comp {
-      opacity: 0;
-  transform: translateX(30px);
-  transition: all .35s ease;
-  position: absolute;
-  pointer-events: none;
+    display: flex;
     width: 233px;
     padding: 18px 10px;
     border-right: 1px solid #d9d7d3;
