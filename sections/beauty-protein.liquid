@@ -276,43 +276,19 @@
 
   }, 3000);
 
-window.addEventListener('resize', function(){
+  window.addEventListener('resize', function(){
 
-  if(window.innerWidth <= 767){
+    if(window.innerWidth <= 767){
 
-    equalizeRows();
+      equalizeRows();
 
-    activateComp(active);
+      activateComp(active);
 
-  } else {
+    }
 
-    resetDesktop();
-
-  }
-
-});
+  });
 
 })();
-function resetDesktop() {
-
-  if(window.innerWidth > 767){
-
-    document.querySelectorAll('.bp-cell--comp').forEach(function(el){
-
-      el.style.transform = '';
-      el.style.height = '';
-
-    });
-
-    document.querySelectorAll('.bp-cell').forEach(function(el){
-
-      el.style.height = '';
-
-    });
-
-  }
-
-}
 {% comment %} calculate--table--highlight--col {% endcomment %}
  function updateToniqueHeight() {
   const table = document.querySelector('.bp-table');
