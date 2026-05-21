@@ -169,11 +169,12 @@ font-family: Archivo, sans-serif;
 
 /* ── Row labels ─────────────────────────────────── */
 .bp-label {
-  font-family: 'Archivo', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  color: #433723;
+font-family: Archivo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #433723;
+    letter-spacing: 0;
 }
 
 /* ── Cell values ────────────────────────────────── */
