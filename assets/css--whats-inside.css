@@ -220,13 +220,14 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 0;
+    padding: 8px 0;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
     width: 100%;
     transition: opacity .2s;
+    margin: 4px 0;
   }
 
   .wi-row:last-child .wi-list-hold {
