@@ -417,26 +417,3 @@ font-size: 14px;
         color: #433723;
   }
 }
-
-
-
-@media screen and (max-width: 766px) {
-
-  .bp-row {
-    overflow: hidden;
-    position: relative;
-  }
-
-  .bp-cell--comp {
-    display: flex;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 116px;
-    min-width: 116px;
-    flex-shrink: 0;
-    border-right: 1px solid #d9d7d3;
-    transition: transform .45s ease;
-  }
-
-}
