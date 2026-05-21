@@ -117,6 +117,13 @@ position: absolute;
     pointer-events: none;
 }
 
+span.wi--scroll--info--opener {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+}
+
 .wi-scroll-card__body {
     padding: 12px 8px 12px;
     display: flex;
