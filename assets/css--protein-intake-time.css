@@ -73,7 +73,7 @@ display: flex;
 .pit-steps {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
 }
 
 .pit-step {
@@ -183,6 +183,9 @@ display: flex;
   }
 .pit-content {
     padding: 80px 24px 80px;
+}
+.pit-steps {
+  gap: 32px;
 }
   .pit-heading {
     font-size: 36px;
