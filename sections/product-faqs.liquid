@@ -17,22 +17,6 @@
     </div>
   {%- endif -%}
 
-  {%- comment -%} ── Right panel (desktop): beige bg + optional image ── {%- endcomment -%}
-  <div class="pf-bg-panel" aria-hidden="true">
-    {%- if section.settings.image != blank -%}
-      {{
-        section.settings.image
-        | image_url: width: 1600
-        | image_tag:
-          loading: 'lazy',
-          widths: '756, 900, 1100, 1400, 1600',
-          sizes: '56vw',
-          class: 'pf-bg-panel__img',
-          alt: ''
-      }}
-    {%- endif -%}
-  </div>
-
   <div class="pf-inner--container">
     <div class="pf-inner">
 
@@ -97,6 +81,20 @@
         {%- endif -%}
 
       </div>
+        <div class="pf-bg-panel" aria-hidden="true">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          loading: 'lazy',
+          widths: '756, 900, 1100, 1400, 1600',
+          sizes: '56vw',
+          class: 'pf-bg-panel__img',
+          alt: ''
+      }}
+    {%- endif -%}
+  </div>
     </div>
   </div>
 </section>
