@@ -226,6 +226,12 @@ font-family: Archivo, sans-serif;
     letter-spacing: 0.48px;
 }
 
+a.pf-footer__link{
+    color: #977B4F;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
 /* ── Desktop (min-width: 767px) ─────────────────── */
 @media screen and (min-width: 767px) {
 
