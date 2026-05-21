@@ -162,12 +162,57 @@
 </section>
 
 <script>
-  (function () {
+(function () {
 
   if (window.innerWidth > 767) return;
 
   var sid = '{{ section.id }}';
   var active = 1;
+  var total = 3;
+
+  const compNames = [
+    {{ section.settings.comp1_name | json }},
+    {{ section.settings.comp2_name | json }},
+    {{ section.settings.comp3_name | json }}
+  ];
+
+  function equalizeRows() {
+
+    document.querySelectorAll('#bp-table-' + sid + ' .bp-row').forEach(function(row){
+
+      let maxHeight = 0;
+
+      const cells = row.querySelectorAll('.bp-cell');
+
+      cells.forEach(function(cell){
+
+        cell.style.height = 'auto';
+
+        if(cell.offsetHeight > maxHeight){
+          maxHeight = cell.offsetHeight;
+        }
+
+      });
+
+      cells.forEach(function(cell){
+
+        cell.style.height = maxHeight + 'px';
+
+      });
+
+    });
+
+  }
+
+  function updateLabel(num){
+
+    const label = document.getElementById('bp-label-' + sid);
+
+    if(label){
+      label.textContent = compNames[num - 1] + ' · ' + num + ' OF ' + total;
+    }
+
+  }
 
   function activateComp(num) {
 
@@ -195,7 +240,11 @@
 
       btn.classList.toggle('is-active', isActive);
 
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+
     });
+
+    updateLabel(num);
 
   }
 
@@ -210,56 +259,36 @@
   });
 
   activateComp(1);
-let autoSlide = 1;
-
-setInterval(function(){
-
-  autoSlide++;
-
-  if(autoSlide > 3){
-    autoSlide = 1;
-  }
-
-  activateComp(autoSlide);
-
-}, 3000);
-})();
-
-if (window.innerWidth <= 767) {
-
-  function equalizeRows() {
-
-    document.querySelectorAll('.bp-row').forEach(function(row){
-
-      let maxHeight = 0;
-
-      const cells = row.querySelectorAll('.bp-cell');
-
-      cells.forEach(function(cell){
-
-        cell.style.height = 'auto';
-
-        if(cell.offsetHeight > maxHeight){
-          maxHeight = cell.offsetHeight;
-        }
-
-      });
-
-      cells.forEach(function(cell){
-
-        cell.style.height = maxHeight + 'px';
-
-      });
-
-    });
-
-  }
 
   equalizeRows();
 
-  window.addEventListener('resize', equalizeRows);
+  let autoSlide = 1;
 
-}
+  setInterval(function(){
+
+    autoSlide++;
+
+    if(autoSlide > total){
+      autoSlide = 1;
+    }
+
+    activateComp(autoSlide);
+
+  }, 3000);
+
+  window.addEventListener('resize', function(){
+
+    if(window.innerWidth <= 767){
+
+      equalizeRows();
+
+      activateComp(active);
+
+    }
+
+  });
+
+})();
 {% comment %} calculate--table--highlight--col {% endcomment %}
  function updateToniqueHeight() {
   const table = document.querySelector('.bp-table');
