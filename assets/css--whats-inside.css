@@ -229,7 +229,7 @@
     transition: opacity .2s;
   }
 
-  .wi-row:last-child {
+  .wi-row .wi-list-hold:last-child {
     border-bottom: 1px solid #A88958;
   }
 
