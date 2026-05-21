@@ -15,33 +15,35 @@
     {%- comment -%} ── Desktop: 2-col split ── {%- endcomment -%}
     <div class="wi-desktop-inner">
       {%- comment -%} Left: heading + ingredient list ── {%- endcomment -%}
-      <div class="wi-left">
-        <div class="wi-heading">
-          {%- if section.settings.heading != blank -%}
-            <h2 class="wi-heading__title">{{ section.settings.heading }}</h2>
-          {%- endif -%}
-          {%- if section.settings.subtext != blank -%}
-            <p class="wi-heading__sub">{{ section.settings.subtext }}</p>
-          {%- endif -%}
-        </div>
+      <div class="wi-left__top">
+        <div class="wi-left">
+          <div class="wi-heading">
+            {%- if section.settings.heading != blank -%}
+              <h2 class="wi-heading__title">{{ section.settings.heading }}</h2>
+            {%- endif -%}
+            {%- if section.settings.subtext != blank -%}
+              <p class="wi-heading__sub">{{ section.settings.subtext }}</p>
+            {%- endif -%}
+          </div>
 
-        <div class="wi-list" id="wi-list-{{ section.id }}">
-          {%- for block in section.blocks -%}
-            <button
-              class="wi-row{% if forloop.first %} is-active{% endif %}"
-              data-wi-row="{{ forloop.index }}"
-              data-wi-section="{{ section.id }}"
-              type="button"
-              aria-label="{{ block.settings.ingredient_name }}"
-              {{ block.shopify_attributes }}
-            >
-              <div class="wi-list-hold">
-                <span class="wi-row__dot" aria-hidden="true"></span>
-                <span class="wi-row__name">{{ block.settings.ingredient_name }}</span>
-                <span class="wi-row__amount">{{ block.settings.amount }}</span>
-              </div>
-            </button>
-          {%- endfor -%}
+          <div class="wi-list" id="wi-list-{{ section.id }}">
+            {%- for block in section.blocks -%}
+              <button
+                class="wi-row{% if forloop.first %} is-active{% endif %}"
+                data-wi-row="{{ forloop.index }}"
+                data-wi-section="{{ section.id }}"
+                type="button"
+                aria-label="{{ block.settings.ingredient_name }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="wi-list-hold">
+                  <span class="wi-row__dot" aria-hidden="true"></span>
+                  <span class="wi-row__name">{{ block.settings.ingredient_name }}</span>
+                  <span class="wi-row__amount">{{ block.settings.amount }}</span>
+                </div>
+              </button>
+            {%- endfor -%}
+          </div>
         </div>
       </div>
 
