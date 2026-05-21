@@ -218,7 +218,7 @@ font-family: Archivo, sans-serif;
 .bp-value {
     font-family: Archivo, sans-serif;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 20px;
     color: #433723;
     text-align: center;
@@ -391,6 +391,7 @@ font-size: 14px;
   .bp-label, .bp-value {
     font-size: 18px;
     line-height: 28px;
+    font-weight:400;
   }
 
   .bp-value--tonique {
