@@ -133,6 +133,7 @@ position: absolute;
     color: #A88958;
     margin: 0;
     letter-spacing: 0.56px;
+    white-space: nowrap;
 }
 
 .wi-scroll-card__divider {
