@@ -9,6 +9,54 @@
  */
 {
   "sections": {
+    "hero_banner_bCyNXR": {
+      "type": "hero-banner",
+      "blocks": {
+        "stat_badge_hkfzF4": {
+          "type": "stat_badge",
+          "settings": {
+            "value": "15g",
+            "label": "PROTEIN"
+          }
+        },
+        "stat_badge_WPKxik": {
+          "type": "stat_badge",
+          "settings": {
+            "value": "0g",
+            "label": "Sugar"
+          }
+        },
+        "stat_badge_9RWJaT": {
+          "type": "stat_badge",
+          "settings": {
+            "value": "1oz",
+            "label": "POUCH"
+          }
+        },
+        "stat_badge_X7KCaw": {
+          "type": "stat_badge",
+          "settings": {
+            "value": "70",
+            "label": "Calories"
+          }
+        }
+      },
+      "block_order": [
+        "stat_badge_hkfzF4",
+        "stat_badge_WPKxik",
+        "stat_badge_9RWJaT",
+        "stat_badge_X7KCaw"
+      ],
+      "name": "Hero Banner",
+      "settings": {
+        "heading": "Beauty + Proteinin one clean pouch",
+        "subtext": "15g of complete protein. All natural. Zero sugar. Collagen + whey. Beauty nutrients. Adaptogens. One pouch. Done.",
+        "cta_label": "SHOP NOW",
+        "cta_link": "",
+        "product_image": "shopify://shop_images/bottle.svg",
+        "decorative_image": "shopify://shop_images/waves-tonique.svg"
+      }
+    },
     "text_scroller_qpPdAt": {
       "type": "text-scroller",
       "blocks": {
@@ -59,6 +107,17 @@
       ],
       "name": "Text Scroller",
       "settings": {}
+    },
+    "tea_drink_go_bYVgLf": {
+      "type": "tea-drink-go",
+      "name": "Tea Drink Go",
+      "settings": {
+        "word_1": "Tear",
+        "word_2": "Drink",
+        "word_3": "Go",
+        "background_image": "shopify://shop_images/bg-tea.svg",
+        "overlay_opacity": 0
+      }
     },
     "why_tonique_rCmNeV": {
       "type": "why-tonique",
@@ -422,7 +481,9 @@
     }
   },
   "order": [
+    "hero_banner_bCyNXR",
     "text_scroller_qpPdAt",
+    "tea_drink_go_bYVgLf",
     "why_tonique_rCmNeV",
     "beauty_protein_BfRnyC",
     "video_reviews_Qr8qwf",
