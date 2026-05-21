@@ -168,6 +168,7 @@ font-family: Archivo, sans-serif;
     letter-spacing: 0;
     text-transform: uppercase;
     color: #433723;
+    white-space: nowrap;
 }
 
 /* ── Desktop (min-width: 767px) ─────────────────── */
