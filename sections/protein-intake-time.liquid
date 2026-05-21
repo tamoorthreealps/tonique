@@ -27,11 +27,6 @@
 
       {%- comment -%} ── Right: content panel ── {%- endcomment -%}
       <div class="pit-content">
-
-        {%- if section.settings.heading != blank -%}
-          <h2 class="pit-heading">{{ section.settings.heading }}</h2>
-        {%- endif -%}
-
         {%- comment -%} Steps ── {%- endcomment -%}
         <div class="pit-steps">
           {%- assign step_blocks = section.blocks | where: 'type', 'step' -%}
@@ -85,12 +80,6 @@
       "type": "image_picker",
       "id": "image",
       "label": "Left image (product / lifestyle)"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "TAKE IT ANYTIME"
     },
     {
       "type": "textarea",
