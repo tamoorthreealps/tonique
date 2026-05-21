@@ -424,10 +424,14 @@ font-size: 14px;
 
   .bp-row {
     overflow: hidden;
+    position: relative;
   }
 
   .bp-cell--comp {
     display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
     width: 116px;
     min-width: 116px;
     flex-shrink: 0;
