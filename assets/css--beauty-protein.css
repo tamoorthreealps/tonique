@@ -429,6 +429,7 @@ font-size: 14px;
   width: 116px;
   flex-shrink: 0;
   margin-left: -116px;
+  opacity: 0;
   transform: translateX(40px);
   transition: all .35s ease;
   pointer-events: none;
@@ -436,6 +437,7 @@ font-size: 14px;
 
 .bp-cell--comp.is-active-comp {
   margin-left: 0;
+  opacity: 1;
   transform: translateX(0);
   pointer-events: auto;
   border-right: 1px solid #d9d7d3;
