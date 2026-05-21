@@ -9,6 +9,57 @@
  */
 {
   "sections": {
+    "text_scroller_qpPdAt": {
+      "type": "text-scroller",
+      "blocks": {
+        "item_jdTgbG": {
+          "type": "item",
+          "settings": {
+            "text": "No sucralose"
+          }
+        },
+        "item_dqgVJ4": {
+          "type": "item",
+          "settings": {
+            "text": "No sodium benzoate"
+          }
+        },
+        "item_iMV4Fw": {
+          "type": "item",
+          "settings": {
+            "text": "No artificial sweeteners"
+          }
+        },
+        "item_YNqUY9": {
+          "type": "item",
+          "settings": {
+            "text": "No sucralose"
+          }
+        },
+        "item_74DriX": {
+          "type": "item",
+          "settings": {
+            "text": "No sodium benzoate"
+          }
+        },
+        "item_3iaraN": {
+          "type": "item",
+          "settings": {
+            "text": "No artificial sweeteners"
+          }
+        }
+      },
+      "block_order": [
+        "item_jdTgbG",
+        "item_dqgVJ4",
+        "item_iMV4Fw",
+        "item_YNqUY9",
+        "item_74DriX",
+        "item_3iaraN"
+      ],
+      "name": "Text Scroller",
+      "settings": {}
+    },
     "why_tonique_rCmNeV": {
       "type": "why-tonique",
       "blocks": {
@@ -370,6 +421,7 @@
     }
   },
   "order": [
+    "text_scroller_qpPdAt",
     "why_tonique_rCmNeV",
     "beauty_protein_BfRnyC",
     "video_reviews_Qr8qwf",
