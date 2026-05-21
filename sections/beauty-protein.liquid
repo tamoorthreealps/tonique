@@ -187,7 +187,8 @@
 
         var compNum = parseInt(el.dataset.bpComp, 10);
 
-        var move = (compNum - active) * 10;
+        var width = el.offsetWidth;
+var move = (compNum - (active + 1)) * width;
 
         el.style.transform = 'translateX(' + move + 'px)';
       });
