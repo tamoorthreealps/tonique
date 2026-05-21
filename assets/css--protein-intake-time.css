@@ -49,7 +49,8 @@
 .pit-content {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
+  flex: 1;
 }
 
 /* ── Heading ────────────────────────────────────── */
@@ -157,24 +158,15 @@
   }
 
   .pit-inner {
-    flex-direction: row;
-    align-items: center;
-    gap: 0;
-    min-height: 480px;
+flex-direction: row;
+        align-items: center;
+        gap: 0;
   }
 
   .pit-image {
     object-fit: contain;
         width: 100%;
         height: 100%;
-  }
-
-  /* Right content col — 52% */
-  .pit-content {
-    width: 52%;
-    flex-shrink: 0;
-    padding-left: 60px;
-    gap: 32px;
   }
 
   .pit-heading {
