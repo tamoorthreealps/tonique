@@ -159,22 +159,25 @@
     });
   })();
 
+  document.addEventListener('DOMContentLoaded', function () {
+    let splide = new Splide('#wi-mobile-{{ section.id }}', {
+      type: 'slide',
+      perPage: 1.57,
+      perMove: 1,
+      pagination: true,
+      arrows: false,
+      gap: '0px',
+      focus: '0',
+      flickPower: 80,
+      flickMaxPages: 1,
+      dragMinThreshold: { mouse: 4, touch: 6 },
+      easing: 'ease-in-out',
+      omitEnd: true,
+      trimSpace: true
+    });
 
-document.addEventListener('DOMContentLoaded', function () {
-  new Splide('#wi-mobile-{{ section.id }}', {
-    type: 'loop',
-    perPage: 1.2,
-    gap: '16px',
-    pagination: false,
-    arrows: false,
-    drag: true,
-    breakpoints: {
-      768: {
-        perPage: 1.1
-      }
-    }
-  }).mount();
-});
+    splide.mount();
+  });
 </script>
 
 {% schema %}
