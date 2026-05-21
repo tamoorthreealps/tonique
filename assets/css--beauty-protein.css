@@ -441,6 +441,7 @@
   .bp-row {
     position: relative;
     overflow: hidden;
+            justify-content: flex-start;
   }
 
   .bp-cell--comp {
@@ -448,12 +449,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 116px;
-    min-width: 116px;
     flex-shrink: 0;
-    border-right: 1px solid #d9d7d3;
     transition: transform .45s ease;
-    background: #fff;
   }
 
 }
