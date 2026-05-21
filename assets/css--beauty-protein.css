@@ -151,15 +151,15 @@ font-family: Archivo, sans-serif;
 }
 
 .bp-col-hd__name {
-  font-family: 'Archivo', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 14px;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-  color: #8e877b;
-  text-align: center;
-  word-break: break-word;
+font-family: Archivo, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: #8E877B;
+    text-align: center;
+    word-break: break-word;
 }
 
 .bp-col-hd__name--tonique {
@@ -178,12 +178,13 @@ font-family: Archivo, sans-serif;
 
 /* ── Cell values ────────────────────────────────── */
 .bp-value {
-  font-family: 'Archivo', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  color: #433723;
-  text-align: center;
+    font-family: Archivo, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #433723;
+    text-align: center;
+    letter-spacing: 0;
 }
 
 .bp-value--tonique {
@@ -321,8 +322,10 @@ font-family: Archivo, sans-serif;
   }
 
   .bp-col-hd__name {
-    font-size: 12px;
-    letter-spacing: 0.56px;
+font-size: 14px;
+        line-height: 20px;
+        letter-spacing: .56px;
+        color: #433723;
   }
 
   .bp-col-hd__name--tonique {
@@ -330,12 +333,7 @@ font-family: Archivo, sans-serif;
     color: #977b4f;
   }
 
-  .bp-label {
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .bp-value {
+  .bp-label, .bp-value {
     font-size: 18px;
     line-height: 28px;
   }
