@@ -114,7 +114,7 @@ font-family: Archivo, sans-serif;
   content: '';
   position: absolute;
   inset: 0;
-  box-shadow: 0 4px 50px rgba(168, 137, 88, 0.25);
+  box-shadow: 0px 4px 24px 0px #A889581A;
   pointer-events: none;
   height: calc(var(--table-height) - 1px);
   width:100%;
@@ -356,6 +356,7 @@ font-family: Archivo, sans-serif;
 
   .bp-cell.bp-cell--tonique.bp-cell--header::after{
   height: calc(var(--table-height) + 22px);
+  box-shadow: 0 4px 50px rgba(168, 137, 88, 0.25);
 }
 
   /* All competitor columns visible */
