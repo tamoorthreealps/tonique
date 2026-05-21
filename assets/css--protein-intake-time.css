@@ -127,14 +127,14 @@
 .pit-bullet {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
   position:relative;
+  list-style:none;
 }
 
 .pit-bullet::before {
   content: "•";
   color: #433723;
-  margin-right: 8px;
+  margin:0 8px;
 }
 
 .pit-bullet__icon {
