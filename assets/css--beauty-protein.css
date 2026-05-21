@@ -90,6 +90,7 @@ font-family: Archivo, sans-serif;
   width: 112px;
   justify-content: flex-start;
   padding-left: 0;
+  padding-right:16px;
 }
 
 .bp-label--mobile{
