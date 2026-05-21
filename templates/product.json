@@ -618,36 +618,43 @@
         "faq_9h3Yfq": {
           "type": "faq",
           "settings": {
-            "question": "What is Tonique and how does it work?",
-            "answer": "Tonique is a single-serve liquid collagen pouch that combines collagen peptides, whey protein isolate, and key beauty nutrients. Just tear and drink — no mixing, no measuring, no mess."
+            "question": "How often should I drink it?",
+            "answer": "Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints."
           }
         },
         "faq_NtJa97": {
           "type": "faq",
           "settings": {
-            "question": "When should I take Tonique?",
+            "question": "What makes the protein complete?",
             "answer": "Anytime, anywhere. Morning, post-workout, mid-afternoon — Tonique is ready when you are. No fridge required and no preparation needed."
           }
         },
         "faq_6yrdAp": {
           "type": "faq",
           "settings": {
-            "question": "Is Tonique gluten-free and dairy-free?",
+            "question": "Is the collagen sustainably sourced?",
             "answer": "Tonique contains whey protein isolate which is derived from dairy. It is gluten-free. Please review the full ingredient list if you have specific dietary requirements."
           }
         },
         "faq_tpRzGG": {
           "type": "faq",
           "settings": {
-            "question": "How many pouches should I take per day?",
+            "question": "How does the subscription work?",
             "answer": "We recommend one pouch per day as part of a balanced diet. Consistent daily use is where you see the best results for skin, hair, and recovery."
           }
         },
         "faq_pjcybr": {
           "type": "faq",
           "settings": {
-            "question": "Does Tonique contain artificial sweeteners?",
+            "question": "When will my order arrive?",
             "answer": "No. Tonique is sweetened naturally with monkfruit extract — no sucralose, no aspartame, no artificial flavors or colors."
+          }
+        },
+        "faq_jEA4yD": {
+          "type": "faq",
+          "settings": {
+            "question": "What if I don't love it?",
+            "answer": "Tonique is a single-serve liquid collagen pouch that combines collagen peptides, whey protein isolate, and key beauty nutrients. Just tear and drink — no mixing, no measuring, no mess."
           }
         }
       },
@@ -656,7 +663,8 @@
         "faq_NtJa97",
         "faq_6yrdAp",
         "faq_tpRzGG",
-        "faq_pjcybr"
+        "faq_pjcybr",
+        "faq_jEA4yD"
       ],
       "name": "Product FAQs",
       "settings": {
