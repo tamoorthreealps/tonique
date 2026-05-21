@@ -419,5 +419,8 @@ font-size: 14px;
 }
 
 @media screen and (max-width: 767px) {
-.bp-cell{    width: 33.33% !important;}
+.bp-cell{    width: 33.722% !important}
+.bp-row .bp-cell:first-child {
+    width: 32.56% !important;
+}
 }
