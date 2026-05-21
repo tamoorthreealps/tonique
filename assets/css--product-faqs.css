@@ -41,7 +41,6 @@ max-width: 1512px;
 .pf-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 58px;
 }
 
 /* ── Content column ─────────────────────────────── */
