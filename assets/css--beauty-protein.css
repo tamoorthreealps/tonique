@@ -59,7 +59,7 @@ font-family: Archivo, sans-serif;
   display: flex;
 }
 
-.bp-row:last-child{
+.bp-row:last-child .bp-cell{
   border-bottom:1px solid #d9d7d3;
 }
 
