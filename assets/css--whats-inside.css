@@ -198,11 +198,7 @@ font-family: Archivo, sans-serif;
 .wi-section{
   padding-bottom:0;
 }
-  .wi-mobile-heading {
-    display: none;
-  }
-
-  .wi-mobile-scroll {
+  .wi-mobile-heading, .wi-mobile-scroll, .wi--scroll--info--opener {
     display: none;
   }
 
