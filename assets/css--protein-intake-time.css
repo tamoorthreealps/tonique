@@ -31,7 +31,6 @@
 /* ── Image column (mobile: full width) ─────────── */
 .pit-image-col {
   width: 100%;
-  flex:1;
 }
 
 .pit-image-wrap {
@@ -49,8 +48,9 @@
 .pit-content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 32px;
-  flex: 1;
+  height: 100%;
 }
 
 /* ── Heading ────────────────────────────────────── */
@@ -69,14 +69,13 @@
 .pit-steps {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 32px;
 }
 
 .pit-step {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
 }
 
 .pit-step__label {
@@ -158,9 +157,9 @@
   }
 
   .pit-inner {
-flex-direction: row;
-        align-items: center;
-        gap: 0;
+    gap: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .pit-image {
@@ -173,10 +172,6 @@ flex-direction: row;
     font-size: 36px;
     line-height: 48px;
     letter-spacing: 2.88px;
-  }
-
-  .pit-step {
-    padding: 16px 0;
   }
 
   .pit-step__label {
