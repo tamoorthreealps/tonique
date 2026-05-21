@@ -165,18 +165,24 @@
 (function () {
 
   var sid = '{{ section.id }}';
+  var active = 1;
 
   function activateComp(num) {
 
-    document.querySelectorAll('#bp-table-' + sid + ' .bp-cell--comp').forEach(function(el){
+    active = num;
 
-      var compNum = parseInt(el.dataset.bpComp, 10);
+    document.querySelectorAll('#bp-table-' + sid + ' .bp-row').forEach(function(row){
 
-      if(compNum === num){
-        el.classList.add('is-active-comp');
-      } else {
-        el.classList.remove('is-active-comp');
-      }
+      var comps = row.querySelectorAll('.bp-cell--comp');
+
+      comps.forEach(function(el){
+
+        var compNum = parseInt(el.dataset.bpComp, 10);
+
+        var move = (compNum - active) * 116;
+
+        el.style.transform = 'translateX(' + move + 'px)';
+      });
 
     });
 
