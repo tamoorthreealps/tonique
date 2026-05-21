@@ -350,7 +350,9 @@ font-family: Archivo, sans-serif;
     padding-bottom: 24px;
     border-bottom:1px solid #d9d7d3;
   }
-
+.bp-cell.bp-cell--tonique.bp-cell--header {
+    margin-top: -24px;
+}
   .bp-col-hd__name {
 font-size: 14px;
         line-height: 20px;
