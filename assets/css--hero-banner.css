@@ -1,0 +1,270 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--hero-banner.css
+   Hero Banner — first section after header on homepage
+   Mobile-first; desktop overrides at 767px+
+───────────────────────────────────────────────────────────────── */
+
+/* ── Section shell ──────────────────────────────── */
+.hb-section {
+  background: #fefefc;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Inner layout ───────────────────────────────── */
+.hb-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Decorative vector (top-right, desktop only) ── */
+.hb-vector {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  max-width: 700px;
+  pointer-events: none;
+  z-index: 0;
+  line-height: 0;
+}
+
+.hb-vector img {
+  width: 100%;
+  height: auto;
+  transform: scaleY(-1);
+}
+
+/* ── Media column (product image + badges) ──────── */
+.hb-media {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 40px 24px 0;
+  min-height: 300px;
+  order: 1;
+}
+
+.hb-media__img-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: 240px;
+  width: 100%;
+}
+
+.hb-media__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+/* Placeholder SVG fallback */
+.hb-media__img-wrap .placeholder-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+
+/* ── Content column (heading + subtext + CTA) ───── */
+.hb-content {
+  order: 2;
+  padding: 32px 24px 48px;
+  z-index: 2;
+  position: relative;
+}
+
+.hb-content__heading {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.17;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+  color: #977b4f;
+  margin: 0 0 20px;
+  white-space: pre-line;
+}
+
+.hb-content__subtext {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #433723;
+  margin: 0 0 32px;
+}
+
+.hb-content__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: linear-gradient(to right, #a88958, #b9a179, #a88958);
+  color: #f9f6ec;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-width: 160px;
+  transition: opacity 0.2s ease;
+}
+
+.hb-content__cta:hover {
+  opacity: 0.88;
+  color: #f9f6ec;
+  text-decoration: none;
+}
+
+/* ── Stat badges (floating around product image) ── */
+.hb-badges {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hb-badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  color: #a88958;
+  line-height: 1.2;
+  gap: 4px;
+}
+
+.hb-badge--circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(254, 254, 252, 0.92);
+  border: 1.5px solid #e5c694;
+  box-shadow: 0 2px 20px 0 rgba(168, 137, 88, 0.15);
+}
+
+.hb-badge__value {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.hb-badge__label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* Badge positioning (mobile — relative to hb-media) */
+.hb-badge--1 { top: 8%; left: -8%; }
+.hb-badge--2 { bottom: 28%; left: -6%; }
+.hb-badge--3 { bottom: 8%; right: -6%; }
+.hb-badge--4 { top: 22%; right: -4%; }
+
+/* Hide badges on very small screens */
+@media screen and (max-width: 400px) {
+  .hb-badges { display: none; }
+}
+
+/* ── Desktop ─────────────────────────────────────── */
+@media screen and (min-width: 767px) {
+  .hb-inner {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 760px;
+    max-width: 1512px;
+    margin: 0 auto;
+  }
+
+  .hb-vector {
+    display: block;
+  }
+
+  /* Content: left ~40% */
+  .hb-content {
+    order: 1;
+    width: 42%;
+    flex-shrink: 0;
+    padding: 80px 48px 80px calc(8.33% + 16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hb-content__heading {
+    font-size: 48px;
+    letter-spacing: 1.92px;
+    margin-bottom: 24px;
+  }
+
+  .hb-content__subtext {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .hb-content__cta {
+    padding: 16px 0;
+    width: 180px;
+    min-width: 0;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+  }
+
+  /* Media: right ~58% */
+  .hb-media {
+    order: 2;
+    flex: 1;
+    padding: 60px 0 0;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 760px;
+  }
+
+  .hb-media__img-wrap {
+    max-width: 278px;
+    margin-bottom: 0;
+  }
+
+  /* Badge sizing for desktop */
+  .hb-badge--circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hb-badge--1 { width: 152px; height: 152px; top: 10%; left: -48px; }
+  .hb-badge--2 { width: 126px; height: 126px; bottom: 24%; left: -40px; }
+  .hb-badge--3 { width: 96px;  height: 96px;  bottom: 12%; right: 32px; }
+  .hb-badge--4 { width: auto;  height: auto;  border-radius: 0; background: transparent; border: none; box-shadow: none; top: 30%; right: 20px; gap: 8px; }
+
+  .hb-badge--1 .hb-badge__value { font-size: 40px; }
+  .hb-badge--1 .hb-badge__label { font-size: 20px; letter-spacing: 0; }
+  .hb-badge--2 .hb-badge__value { font-size: 40px; }
+  .hb-badge--2 .hb-badge__label { font-size: 18px; }
+  .hb-badge--3 .hb-badge__value { font-size: 32px; }
+  .hb-badge--3 .hb-badge__label { font-size: 12px; }
+  .hb-badge--4 .hb-badge__value { font-size: 40px; }
+  .hb-badge--4 .hb-badge__label { font-size: 18px; }
+}
+
+@media screen and (min-width: 1200px) {
+  .hb-content {
+    padding-left: calc(8.33% + 52px);
+  }
+}
