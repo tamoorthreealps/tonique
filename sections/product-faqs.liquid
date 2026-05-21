@@ -18,7 +18,12 @@
       {%- comment -%} ── Content column ── {%- endcomment -%}
       <div class="pf-content">
         {%- if section.settings.heading != blank -%}
-          <h2 class="pf-heading">{{ section.settings.heading }}</h2>
+          <h2 class="pf-heading desktop--pf--heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.heading_mobile != blank -%}
+          <h2 class="pf-heading mobile--pf--heading">{{ section.settings.heading_mobile }}</h2>
+        {% else %}
+          <h2 class="pf-heading mobile--pf--heading">{{ section.settings.heading }}</h2>
         {%- endif -%}
 
         {%- comment -%} ── Accordion ── {%- endcomment -%}
@@ -150,6 +155,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "heading_mobile",
+      "label": "Mobile Heading",
+      "default": "FAQs"
     },
     {
       "type": "image_picker",
