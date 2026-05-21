@@ -191,6 +191,9 @@ p.wi-card__desc__mobile {
     transform: translateY(100%);
     transition: transform .4s ease;
     z-index: 5;
+        font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
 }
 .wi-scroll-card.is-open p.wi-card__desc__mobile{
   transform: translateY(0);
