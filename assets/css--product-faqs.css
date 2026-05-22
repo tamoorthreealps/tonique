@@ -240,16 +240,24 @@ a.pf-footer__link{
 
   /* Beige bg panel — right 56% */
   .pf-bg-panel {
-    display: block;
+    height:100%;
+    padding-top:100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
   }
 
   /* Image inside desktop panel — covers the full panel */
   .pf-bg-panel__img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
+    -o-object-position: center;
     object-position: center;
-    display: block;
   }
 .pf-inner {
     display: grid;
