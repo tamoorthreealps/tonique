@@ -384,7 +384,32 @@
     background: #d6cfc5;
     border-radius: 1px;
     transition: background .25s;
+    position: relative;
   }
+
+  .wt-pagination__seg::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: #000;
+}
+
+.wt-pagination__seg.is-active::after {
+  animation: wt-mobile-progress 4s linear forwards;
+}
+
+@keyframes wt-mobile-progress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
 
   .wt-pagination__seg.is-active {
     background: #977b4f;
