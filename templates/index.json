@@ -320,6 +320,10 @@
       ],
       "name": "Video Reviews",
       "settings": {
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 160,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 80,
         "heading": "See why they keep one in their bag",
         "subtext": "From Pilates instructors to busy moms, see how Tonique fits into the moments that matter.",
         "disclaimer": "*Testimonials featured in videos or other promotional materials may include individuals who have received compensation, free product, or other incentives."
