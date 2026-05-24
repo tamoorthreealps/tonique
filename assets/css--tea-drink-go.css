@@ -59,9 +59,9 @@
 }
 
 .tdg-content__inner {
-  max-width: 1512px;
-  margin: 0 auto;
-  padding: 0 24px;
+    max-width: 1204px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 /* ── Heading words (TEAR / DRINK / GO) ──────────── */
@@ -98,10 +98,6 @@
     min-height: 800px;
   }
 
-  .tdg-content__inner {
-    padding: 0 calc(8.33% + 52px);
-  }
-
   .tdg-heading {
     gap: 32px;
   }
@@ -110,12 +106,6 @@
     font-size: 48px;
     line-height: 1.167;
     letter-spacing: 3.84px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .tdg-content__inner {
-    padding: 0 calc(8.33% + 52px);
   }
 }
 
