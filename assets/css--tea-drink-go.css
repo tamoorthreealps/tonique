@@ -7,12 +7,12 @@
 
 /* ── Section shell ──────────────────────────────── */
 .tdg-section {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
+position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 480px;
+    display: flex;
+    align-items: end;
 }
 
 /* ── Background media wrapper ───────────────────── */
