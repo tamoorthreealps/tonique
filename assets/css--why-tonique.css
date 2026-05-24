@@ -161,9 +161,12 @@
   padding: 24px 0;
   position: relative;
   border-bottom: 1px solid #D9D7D3;
-  transition: all .2s;
+  transition: all .35s;
+  opacity: .65;
 }
-
+.wt-reason.is-active {
+  opacity: 1;
+}
 .wt-reason::after {
   content: '';
   position: absolute;
@@ -175,7 +178,7 @@
 }
 
 .wt-reason.is-active::after {
-  animation: wt-progress 4s linear forwards;
+  animation: wt-progress 4s ease-in-out forwards;
 }
 
 @keyframes wt-progress {
@@ -214,7 +217,11 @@
     text-transform: uppercase;
     color: #433723;
     margin: 0;
-    transition: color .2s, font-size .2s;
+      transition:
+    color .35s ease,
+    font-size .35s ease,
+    letter-spacing .35s ease;
+    
 }
 
 .wt-reason__desc {
