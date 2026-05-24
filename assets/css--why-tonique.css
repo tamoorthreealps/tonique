@@ -264,6 +264,50 @@
   display: none;
 }
 
+
+.ts-button-wrap {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.wt-link {
+  position: relative;
+  display: inline-block;
+  font-family: Archivo, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #433723;
+  text-decoration: none;
+  padding-bottom: 14px;
+}
+
+.wt-link::before,
+.wt-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+}
+
+.wt-link::before {
+  width: 100%;
+  background: #A88958;
+}
+
+.wt-link::after {
+  width: 60px;
+  background: #A88958;
+  transition: width .45s cubic-bezier(.22,.61,.36,1);
+}
+
+.wt-link:hover::after {
+  width: 100%;
+}
+
 /* ── Mobile ─────────────────────────────────────── */
 @media screen and (max-width: 767px) {
   .wt-section {
