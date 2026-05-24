@@ -154,7 +154,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-    justify-content: end;
+  justify-content: end;
 }
 
 .wt-reason {
@@ -163,6 +163,29 @@
   overflow:hidden;
   border-bottom: 1px solid #D9D7D3;
   transition: all .2s;
+}
+
+.wt-reason::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0%;
+  height: 1px;
+  background: #000;
+}
+
+.wt-reason.is-active::after {
+  animation: wt-progress 4s linear forwards;
+}
+
+@keyframes wt-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .wt-reason:last-child {
