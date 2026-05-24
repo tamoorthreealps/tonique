@@ -1,6 +1,16 @@
 {{ 'css--video-reviews.css' | asset_url | stylesheet_tag }}
 
-<div class="vr-section" id="VideoReviews-{{ section.id }}" {{ section.shopify_attributes }}>
+<div
+  class="vr-section"
+  id="VideoReviews-{{ section.id }}"
+  style="
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+  "
+  {{ section.shopify_attributes }}
+>
   <div class="vr-inner">
     {%- comment -%} ── Heading ── {%- endcomment -%}
     <div class="vr-heading-block">
@@ -229,6 +239,54 @@
   "name": "Video Reviews",
   "class": "section-video-reviews",
   "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 300,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 300,
+      "step": 4,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
     {
       "type": "text",
       "id": "heading",
