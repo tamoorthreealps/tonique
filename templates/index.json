@@ -60,64 +60,46 @@
     "text_scroller_qpPdAt": {
       "type": "text-scroller",
       "blocks": {
-        "item_jdTgbG": {
+        "item_CA6mHG": {
           "type": "item",
           "settings": {
-            "text": "No sucralose"
+            "text": "NO SURCOLOSE"
           }
         },
-        "item_dqgVJ4": {
+        "item_Q96C9B": {
           "type": "item",
           "settings": {
-            "text": "No sodium benzoate"
+            "text": "BEAUTY + PROTEIN"
           }
         },
-        "item_iMV4Fw": {
+        "item_FEF4nD": {
           "type": "item",
           "settings": {
-            "text": "No artificial sweeteners"
+            "text": "ALL NATURAL"
           }
         },
-        "item_YNqUY9": {
+        "item_i4qLRP": {
           "type": "item",
           "settings": {
-            "text": "No sucralose"
+            "text": "Nosodium benzoate"
           }
         },
-        "item_74DriX": {
+        "item_yJNnnL": {
           "type": "item",
           "settings": {
-            "text": "No sodium benzoate"
-          }
-        },
-        "item_3iaraN": {
-          "type": "item",
-          "settings": {
-            "text": "No artificial sweeteners"
+            "text": "Noartificial sweeteners"
           }
         }
       },
       "block_order": [
-        "item_jdTgbG",
-        "item_dqgVJ4",
-        "item_iMV4Fw",
-        "item_YNqUY9",
-        "item_74DriX",
-        "item_3iaraN"
+        "item_CA6mHG",
+        "item_Q96C9B",
+        "item_FEF4nD",
+        "item_i4qLRP",
+        "item_yJNnnL"
       ],
       "name": "Text Scroller",
       "settings": {}
-    },
-    "tea_drink_go_bYVgLf": {
-      "type": "tea-drink-go",
-      "name": "Tea Drink Go",
-      "settings": {
-        "word_1": "Tear",
-        "word_2": "Drink",
-        "word_3": "Go",
-        "background_image": "shopify://shop_images/bg-tea.svg",
-        "overlay_opacity": 0
-      }
     },
     "why_tonique_rCmNeV": {
       "type": "why-tonique",
@@ -187,6 +169,7 @@
           "type": "row",
           "settings": {
             "row_label": "Complete protein",
+            "row_label_mobile": "",
             "tonique_value": "15g complete",
             "comp1_value": "7g",
             "comp2_value": "20g",
@@ -197,6 +180,7 @@
           "type": "row",
           "settings": {
             "row_label": "Beauty nutrients",
+            "row_label_mobile": "",
             "tonique_value": "Biotin · Vit C · Folate",
             "comp1_value": "cross",
             "comp2_value": "cross",
@@ -207,6 +191,7 @@
           "type": "row",
           "settings": {
             "row_label": "Added sugar",
+            "row_label_mobile": "",
             "tonique_value": "0g",
             "comp1_value": "3g",
             "comp2_value": "8g",
@@ -217,6 +202,7 @@
           "type": "row",
           "settings": {
             "row_label": "Calories",
+            "row_label_mobile": "",
             "tonique_value": "<50",
             "comp1_value": "60",
             "comp2_value": "180",
@@ -227,6 +213,7 @@
           "type": "row",
           "settings": {
             "row_label": "All-natural",
+            "row_label_mobile": "",
             "tonique_value": "check",
             "comp1_value": "cross",
             "comp2_value": "cross",
@@ -237,6 +224,7 @@
           "type": "row",
           "settings": {
             "row_label": "No mixing / fridge / goes anywhere",
+            "row_label_mobile": "",
             "tonique_value": "check",
             "comp1_value": "cross",
             "comp2_value": "cross",
@@ -485,7 +473,6 @@
   "order": [
     "hero_banner_bCyNXR",
     "text_scroller_qpPdAt",
-    "tea_drink_go_bYVgLf",
     "why_tonique_rCmNeV",
     "beauty_protein_BfRnyC",
     "video_reviews_Qr8qwf",
