@@ -1,6 +1,13 @@
 {{ 'css--text-scroller.css' | asset_url | stylesheet_tag }}
 
-<div class="ts-section" id="TextScroller-{{ section.id }}" {{ section.shopify_attributes }}>
+<div
+  class="
+    ts-section {% if section.settings.enable_top_border %} ts-section--top-border{% endif %}
+    {% if section.settings.enable_bottom_border %} ts-section--bottom-border{% endif %}
+  "
+  id="TextScroller-{{ section.id }}"
+  {{ section.shopify_attributes }}
+>
   <div class="ts-track-wrap" aria-hidden="true">
     <div class="ts-track" id="ts-track-{{ section.id }}">
       {%- comment -%} First set {%- endcomment -%}
@@ -19,6 +26,20 @@
 {
   "name": "Text Scroller",
   "class": "section-text-scroller",
+    "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_top_border",
+      "label": "Enable top border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_border",
+      "label": "Enable bottom border",
+      "default": true
+    }
+  ],
   "blocks": [
     {
       "type": "item",
