@@ -283,8 +283,7 @@
     padding-bottom: 6px;
 }
 
-.wt-link::before,
-.wt-link::after {
+.wt-link::before{
   content: '';
   position: absolute;
   left: 0;
@@ -293,17 +292,11 @@
 }
 
 .wt-link::before {
-  width: 100%;
+  width: 64px;
   background: #A88958;
 }
 
-.wt-link::after {
-  width: 60px;
-  background: #A88958;
-  transition: width .45s cubic-bezier(.22,.61,.36,1);
-}
-
-.wt-link:hover::after {
+.wt-link:hover::before {
   width: 100%;
 }
 
