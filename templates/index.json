@@ -355,6 +355,7 @@
       "settings": {
         "heading": "FREQUENTLY ASKED QUESTIONS",
         "heading_mobile": "FAQs",
+        "image": "shopify://shop_images/IMG.png",
         "faqs_text_before": "",
         "faqs_text": "More questions? Visit our FAQs",
         "faqs_url": ""
