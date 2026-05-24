@@ -162,10 +162,6 @@
   position: relative;
   border-bottom: 1px solid #D9D7D3;
   transition: all .35s;
-  opacity: .65;
-}
-.wt-reason.is-active {
-  opacity: 1;
 }
 .wt-reason::after {
   content: '';
