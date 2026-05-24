@@ -223,8 +223,8 @@
             "description": "Every pouch delivers collagen, whey protein, vitamin C, biotin, and hyaluronic acid — no stacking required.",
             "badge_top_desktop": 44,
             "badge_left_desktop": 100,
-            "badge_top_mobile": 46,
-            "badge_left_mobile": 68
+            "badge_top_mobile": 40,
+            "badge_left_mobile": 100
           }
         },
         "reason_QqAGpU": {
@@ -234,8 +234,8 @@
             "description": "Inulin feeds your gut microbiome and helps keep you feeling satisfied without bloat.",
             "badge_top_desktop": 64,
             "badge_left_desktop": 0,
-            "badge_top_mobile": 66,
-            "badge_left_mobile": 30
+            "badge_top_mobile": 68,
+            "badge_left_mobile": 0
           }
         },
         "reason_jfgmQF": {
@@ -246,7 +246,7 @@
             "badge_top_desktop": 80,
             "badge_left_desktop": 100,
             "badge_top_mobile": 84,
-            "badge_left_mobile": 68
+            "badge_left_mobile": 100
           }
         }
       },
