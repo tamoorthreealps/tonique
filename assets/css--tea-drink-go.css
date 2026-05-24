@@ -69,21 +69,21 @@ position: relative;
 .tdg-heading {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .tdg-heading__word {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1.167;
-  letter-spacing: 3.2px;
-  text-transform: uppercase;
-  color: #a88958;
-  margin: 0;
+    font-family: Archivo, sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #a88958;
+    margin: 0;
 }
 
 /* ── Desktop ─────────────────────────────────────── */
@@ -106,7 +106,7 @@ position: relative;
 
   .tdg-heading__word {
     font-size: 48px;
-    line-height: 1.167;
+    line-height: 56px;
     letter-spacing: 3.84px;
   }
 }
