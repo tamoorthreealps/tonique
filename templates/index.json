@@ -110,7 +110,10 @@
         "item_yJNnnL"
       ],
       "name": "Text Scroller",
-      "settings": {}
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": true
+      }
     },
     "why_tonique_rCmNeV": {
       "type": "why-tonique",
@@ -170,6 +173,8 @@
       "settings": {
         "heading": "4 reasons WHY TONIQUE",
         "subtext": "Semper vel lacus cras nam. Tempor egestas ipsum consequat libero at sed aenean aenean. Quam sociis id quam.",
+        "button_text": "VIEW ALL BENEFITS",
+        "button_link": "#",
         "product_image": "shopify://shop_images/bottle.svg"
       }
     },
