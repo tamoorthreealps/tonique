@@ -265,23 +265,22 @@
 }
 
 
-.ts-button-wrap {
-  text-align: center;
-  margin-top: 48px;
+.wt-button-wrap {
+    margin: 41px 0 0;
 }
 
 .wt-link {
-  position: relative;
-  display: inline-block;
-  font-family: Archivo, sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 28px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #433723;
-  text-decoration: none;
-  padding-bottom: 14px;
+    position: relative;
+    display: inline-block;
+    font-family: Archivo, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+    color: #433723;
+    text-decoration: none;
+    padding-bottom: 6px;
 }
 
 .wt-link::before,
