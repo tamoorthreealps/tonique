@@ -11,6 +11,14 @@
     padding: 22px 0;
 }
 
+.ts-section--top-border {
+  border-top: 1px solid #977B4F !important;
+}
+
+.ts-section--bottom-border {
+  border-bottom: 1px solid #977B4F !important;
+}
+
 .ts-track-wrap {
   overflow: hidden;
   width: 100%;
