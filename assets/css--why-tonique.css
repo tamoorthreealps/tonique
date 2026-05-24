@@ -160,7 +160,6 @@
 .wt-reason {
   padding: 24px 0;
   position: relative;
-  overflow:hidden;
   border-bottom: 1px solid #D9D7D3;
   transition: all .2s;
 }
@@ -172,7 +171,7 @@
   bottom: -1px;
   width: 0%;
   height: 1px;
-  background: #000;
+  background: #977B4F;
 }
 
 .wt-reason.is-active::after {
