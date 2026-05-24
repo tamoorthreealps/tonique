@@ -52,10 +52,10 @@
 
 /* ── Content overlay ────────────────────────────── */
 .tdg-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 64px 24px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 30px 0;
 }
 
 .tdg-content__inner {
@@ -93,10 +93,11 @@
   }
 
   .tdg-content {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    min-height: 800px;
+        padding: 0 0 80px;
+        display: flex;
+        align-items: self-end;
+        min-height: 800px;
+        justify-content: flex-start;
   }
 
   .tdg-heading {
