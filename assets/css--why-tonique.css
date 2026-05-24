@@ -371,7 +371,7 @@
         max-width: 272px;
   }
 
-  .wt-slide {
+  .wt-slide, .wt-button-wrap {
     display: none;
     animation: wt-fade-in 0.25s ease;
   }
