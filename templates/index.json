@@ -434,6 +434,7 @@
         },
         "quantity_selector_VE6gRj": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "buy_buttons_hqVM7e": {
@@ -456,7 +457,9 @@
         "product_testimonial_xmdc49": {
           "type": "product-testimonial",
           "settings": {
-            "quote": "Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac."
+            "image": "shopify://shop_images/Rectangle_2559.png",
+            "quote": "“Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac.”",
+            "signature": "shopify://shop_images/Vector.svg"
           }
         }
       },
