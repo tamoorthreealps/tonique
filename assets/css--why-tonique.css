@@ -364,6 +364,10 @@
   }
 
   /* Pagination + counter */
+    .wt-badge {
+    top: var(--badge-top-m);
+    left: var(--badge-left-m);
+  }
   .wt-carousel__footer {
     margin-top: 32px;
     display: flex;
