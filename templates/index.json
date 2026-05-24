@@ -57,17 +57,6 @@
         "decorative_image": "shopify://shop_images/waves-tonique.svg"
       }
     },
-    "tea_drink_go_HrV6kf": {
-      "type": "tea-drink-go",
-      "name": "Tea Drink Go",
-      "settings": {
-        "word_1": "Tear",
-        "word_2": "Drink",
-        "word_3": "Go",
-        "background_image": "shopify://shop_images/Rectangle_36_357af943-c142-4101-b058-d342c1116c2d.png",
-        "overlay_opacity": 0
-      }
-    },
     "text_scroller_qpPdAt": {
       "type": "text-scroller",
       "blocks": {
@@ -110,7 +99,21 @@
         "item_yJNnnL"
       ],
       "name": "Text Scroller",
-      "settings": {}
+      "settings": {
+        "enable_top_border": true,
+        "enable_bottom_border": true
+      }
+    },
+    "tea_drink_go_HrV6kf": {
+      "type": "tea-drink-go",
+      "name": "Tea Drink Go",
+      "settings": {
+        "word_1": "Tear",
+        "word_2": "Drink",
+        "word_3": "Go",
+        "background_image": "shopify://shop_images/Rectangle_36_357af943-c142-4101-b058-d342c1116c2d.png",
+        "overlay_opacity": 0
+      }
     },
     "why_tonique_rCmNeV": {
       "type": "why-tonique",
@@ -489,8 +492,8 @@
   },
   "order": [
     "hero_banner_bCyNXR",
-    "tea_drink_go_HrV6kf",
     "text_scroller_qpPdAt",
+    "tea_drink_go_HrV6kf",
     "why_tonique_rCmNeV",
     "beauty_protein_BfRnyC",
     "video_reviews_Qr8qwf",
