@@ -294,6 +294,7 @@
 .wt-link::before {
   width: 64px;
   background: #A88958;
+  transition: width .45s cubic-bezier(.22,.61,.36,1);
 }
 
 .wt-link:hover::before {
