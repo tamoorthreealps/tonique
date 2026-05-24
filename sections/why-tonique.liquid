@@ -114,64 +114,110 @@
 </section>
 
 <script>
-  (function () {
-    var sid   = '{{ section.id }}';
-    var total = {{ section.blocks.size }};
-    var active = 1;
+(function () {
+  var sid = '{{ section.id }}';
+  var total = {{ section.blocks.size }};
+  var active = 1;
+  var autoRotate;
 
-    function activate(num) {
-      if (num === active) return;
-      active = num;
+  function activate(num) {
 
-      // Badges
-      document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (b) {
-        var isActive = parseInt(b.dataset.wtBadge, 10) === num;
-        b.classList.toggle('is-active', isActive);
-      });
+    active = num;
 
-      // Desktop reasons
-      document.querySelectorAll('#wt-reasons-' + sid + ' .wt-reason').forEach(function (r) {
-        var isActive = parseInt(r.dataset.wtReason, 10) === num;
-        r.classList.toggle('is-active', isActive);
-      });
-
-      // Mobile slides
-      document.querySelectorAll('#wt-carousel-' + sid + ' .wt-slide').forEach(function (s) {
-        var isActive = parseInt(s.dataset.wtSlide, 10) === num;
-        s.classList.toggle('is-active', isActive);
-        s.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-      });
-
-      // Pagination segments
-      document.querySelectorAll('#wt-pagination-' + sid + ' .wt-pagination__seg').forEach(function (p) {
-        var isActive = parseInt(p.dataset.wtSeg, 10) === num;
-        p.classList.toggle('is-active', isActive);
-        p.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      });
-
-      // Counter
-      var counter = document.getElementById('wt-counter-' + sid);
-      if (counter) counter.textContent = num + ' OF ' + total;
-    }
-
-    // Badge click
-    document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        activate(parseInt(this.dataset.wtBadge, 10));
-      });
+    // Badges
+    document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (b) {
+      var isActive = parseInt(b.dataset.wtBadge, 10) === num;
+      b.classList.toggle('is-active', isActive);
     });
 
-    // Pagination tap (mobile)
-    var pagination = document.getElementById('wt-pagination-' + sid);
-    if (pagination) {
-      pagination.addEventListener('click', function (e) {
-        var seg = e.target.closest('.wt-pagination__seg');
-        if (seg) activate(parseInt(seg.dataset.wtSeg, 10));
-      });
-    }
-  })();
-</script>
+    // Desktop reasons
+    document.querySelectorAll('#wt-reasons-' + sid + ' .wt-reason').forEach(function (r) {
 
+      var isActive = parseInt(r.dataset.wtReason, 10) === num;
+
+      r.classList.remove('is-active');
+
+      if (isActive) {
+
+        void r.offsetWidth;
+
+        r.classList.add('is-active');
+      }
+    });
+
+    // Mobile slides
+    document.querySelectorAll('#wt-carousel-' + sid + ' .wt-slide').forEach(function (s) {
+      var isActive = parseInt(s.dataset.wtSlide, 10) === num;
+      s.classList.toggle('is-active', isActive);
+      s.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    });
+
+    // Pagination
+    document.querySelectorAll('#wt-pagination-' + sid + ' .wt-pagination__seg').forEach(function (p) {
+      var isActive = parseInt(p.dataset.wtSeg, 10) === num;
+      p.classList.toggle('is-active', isActive);
+      p.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    // Counter
+    var counter = document.getElementById('wt-counter-' + sid);
+
+    if (counter) {
+      counter.textContent = num + ' OF ' + total;
+    }
+
+    restartAutoRotate();
+  }
+
+  function nextSlide() {
+
+    var next = active + 1;
+
+    if (next > total) {
+      next = 1;
+    }
+
+    activate(next);
+  }
+
+  function restartAutoRotate() {
+
+    clearTimeout(autoRotate);
+
+    autoRotate = setTimeout(function () {
+      nextSlide();
+    }, 4000);
+  }
+
+  // Badge click
+  document.querySelectorAll('.wt-badge[data-wt-section="' + sid + '"]').forEach(function (btn) {
+
+    btn.addEventListener('click', function () {
+
+      activate(parseInt(this.dataset.wtBadge, 10));
+    });
+  });
+
+  // Pagination click
+  var pagination = document.getElementById('wt-pagination-' + sid);
+
+  if (pagination) {
+
+    pagination.addEventListener('click', function (e) {
+
+      var seg = e.target.closest('.wt-pagination__seg');
+
+      if (seg) {
+
+        activate(parseInt(seg.dataset.wtSeg, 10));
+      }
+    });
+  }
+
+  restartAutoRotate();
+
+})();
+</script>
 {% schema %}
 {
   "name": "Why Tonique",
