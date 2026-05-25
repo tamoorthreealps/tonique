@@ -45,6 +45,7 @@
 
 .vr-cards .splide__track {
     width: 100%;
+    overflow:visible;
 }
 
 /* ── Single card ────────────────────────────────── */
