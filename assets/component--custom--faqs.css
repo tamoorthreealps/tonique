@@ -154,6 +154,10 @@
 	display:none;
 }
 
+#customFaqs .faq-item.active .faq-question span svg.faq--minus--icon{
+	display:inherit;
+}
+
 #customFaqs .faq-answer {
 	max-height: 0;
 	overflow: hidden;
