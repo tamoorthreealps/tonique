@@ -329,6 +329,22 @@
         "disclaimer": "*Testimonials featured in videos or other promotional materials may include individuals who have received compensation, free product, or other incentives."
       }
     },
+    "founder_note_kNQAyc": {
+      "type": "founder--note",
+      "name": "Founder Note",
+      "settings": {
+        "image": "shopify://shop_images/IMG.png",
+        "heading": "BUILT BY THE CUSTOMER, FOR THE CUSTOMER.",
+        "text": "<p>“I wanted more protein in my day, but bone broth needs heating, powder needs a blender, and the protein sachets that existed were designed for athletes — sucralose, sodium benzoate, aggressive packaging. Nothing about them felt like me.”</p><p>“So I made the one I wanted: clean, complete, with the beauty nutrients I'd otherwise buy separately. A pouch that fits in my purse and looks like it belongs on my bathroom counter next to my skincare.”</p>",
+        "name": "NIMMI ROCHE",
+        "role": "FOUNDER, TONIQUE",
+        "signature": "shopify://shop_images/Vector_bd498e36-b64b-4294-9c3b-568a9fbe0725.svg",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 160,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 80
+      }
+    },
     "product_faqs_rq8D4U": {
       "type": "product-faqs",
       "blocks": {
@@ -510,6 +526,7 @@
     "why_tonique_rCmNeV",
     "beauty_protein_BfRnyC",
     "video_reviews_Qr8qwf",
+    "founder_note_kNQAyc",
     "product_faqs_rq8D4U",
     "featured_product_yi3prj"
   ]
