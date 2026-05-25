@@ -320,6 +320,7 @@
       ],
       "name": "Video Reviews",
       "settings": {
+        "mobile_layout": "slider",
         "padding_top_desktop": 40,
         "padding_bottom_desktop": 160,
         "padding_top_mobile": 16,
