@@ -57,78 +57,79 @@
 {% endschema %}
 
 <section class="custom-faqs" id="customFaqs">
-  <div class="custom-faqs__wrapper">
-    <div class="custom-faqs__mobile-top">
-      <h2>{{ section.settings.mobile_title }}</h2>
+  <div class="custom-faqs__wrapper_container">
+    <div class="custom-faqs__wrapper">
+      <div class="custom-faqs__mobile-top">
+        <h2>{{ section.settings.mobile_title }}</h2>
 
-      <div class="custom-faqs__mobile-dropdown">
-        <select id="faqCategorySelect-{{ section.id }}">
-          {% for block in section.blocks %}
-            {% if block.type == 'category' %}
-              <option value="{{ block.settings.category_title | handle }}">
-                {{ block.settings.category_title }}
-              </option>
-            {% endif %}
-          {% endfor %}
-        </select>
-      </div>
-    </div>
-
-    <div class="custom-faqs__sidebar">
-      <ul>
-        {% for block in section.blocks %}
-          {% if block.type == 'category' %}
-            <li
-              class="{% if forloop.first %}active{% endif %}"
-              data-target="{{ block.settings.category_title | handle }}"
-            >
-              <span>{{ block.settings.category_title }}</span>
-
-              <svg viewBox="0 0 24 24">
-                <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-
-    <div class="custom-faqs__content">
-      {% for block in section.blocks %}
-        {% if block.type == 'category' %}
-          {% assign category_handle = block.settings.category_title | handle %}
-
-          <div
-            class="faq-category {% if forloop.first %}active-mobile{% endif %}"
-            id="{{ category_handle }}"
-          >
-            <h2>{{ block.settings.category_title }}</h2>
-
-            {% for faq in section.blocks %}
-              {% if faq.type == 'faq' %}
-                {% assign faq_handle = faq.settings.faq_category | handle %}
-
-                {% if faq_handle == category_handle %}
-                  <div class="faq-item {% if forloop.first %}active{% endif %}">
-                    <div class="faq-question">
-                      <span>{{ faq.settings.question }}</span>
-                      <span>+</span>
-                    </div>
-
-                    <div class="faq-answer">
-                      {{ faq.settings.answer }}
-                    </div>
-                  </div>
-                {% endif %}
+        <div class="custom-faqs__mobile-dropdown">
+          <select id="faqCategorySelect-{{ section.id }}">
+            {% for block in section.blocks %}
+              {% if block.type == 'category' %}
+                <option value="{{ block.settings.category_title | handle }}">
+                  {{ block.settings.category_title }}
+                </option>
               {% endif %}
             {% endfor %}
-          </div>
-        {% endif %}
-      {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="custom-faqs__sidebar">
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'category' %}
+              <li
+                class="{% if forloop.first %}active{% endif %}"
+                data-target="{{ block.settings.category_title | handle }}"
+              >
+                <span>{{ block.settings.category_title }}</span>
+
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="custom-faqs__content">
+        {% for block in section.blocks %}
+          {% if block.type == 'category' %}
+            {% assign category_handle = block.settings.category_title | handle %}
+
+            <div
+              class="faq-category {% if forloop.first %}active-mobile{% endif %}"
+              id="{{ category_handle }}"
+            >
+              <h2>{{ block.settings.category_title }}</h2>
+
+              {% for faq in section.blocks %}
+                {% if faq.type == 'faq' %}
+                  {% assign faq_handle = faq.settings.faq_category | handle %}
+
+                  {% if faq_handle == category_handle %}
+                    <div class="faq-item {% if forloop.first %}active{% endif %}">
+                      <div class="faq-question">
+                        <span>{{ faq.settings.question }}</span>
+                        <span>+</span>
+                      </div>
+
+                      <div class="faq-answer">
+                        {{ faq.settings.answer }}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
-
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
