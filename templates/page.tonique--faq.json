@@ -19,8 +19,77 @@
     },
     "main_page_faqs_mFi7Lb": {
       "type": "main--page--faqs",
+      "blocks": {
+        "category_dwCBcB": {
+          "type": "category",
+          "settings": {
+            "category_title": "THE PRODUCT"
+          }
+        },
+        "faq_YkXBKy": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "the-product",
+            "question": "How often should I drink it?",
+            "answer": "<p>Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints.</p>"
+          }
+        },
+        "faq_wMBJY8": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "the-product",
+            "question": "What makes the protein complete?",
+            "answer": "<p>Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints.</p>"
+          }
+        },
+        "faq_7kF8q7": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "the-product",
+            "question": "Is the collagen sustainably sourced?",
+            "answer": "<p>Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints.</p>"
+          }
+        },
+        "faq_Q3wLBa": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "the-product",
+            "question": "How does the subscription work?",
+            "answer": "<p>Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints.</p>"
+          }
+        },
+        "faq_MQi8j3": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "the-product",
+            "question": "When will my order arrive?",
+            "answer": "<p>Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints.</p>"
+          }
+        },
+        "faq_xVcyz7": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "the-product",
+            "question": "What if I don't love it?",
+            "answer": "<p>Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category_dwCBcB",
+        "faq_YkXBKy",
+        "faq_wMBJY8",
+        "faq_7kF8q7",
+        "faq_Q3wLBa",
+        "faq_MQi8j3",
+        "faq_xVcyz7"
+      ],
       "name": "FAQs",
-      "settings": {}
+      "settings": {
+        "section_bg": "#ffffff",
+        "content_bg": "#ffffff",
+        "mobile_title": "FAQs"
+      }
     }
   },
   "order": [
