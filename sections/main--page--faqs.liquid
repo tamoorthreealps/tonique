@@ -78,7 +78,10 @@
       <div class="custom-faqs__sidebar">
         <div class="custom-faqs__sidebar_top">
           <h1 class="custom-faqs__sidebar_heading">FAQs</h1>
-          <p class="custom-faqs__sidebar_content">Everything you might want to know about Tonique; the product, the ingredients, and how it fits into your day.</p>
+          <p class="custom-faqs__sidebar_content">
+            Everything you might want to know about Tonique; the product, the ingredients, and how it fits into your
+            day.
+          </p>
         </div>
         <ul>
           {% for block in section.blocks %}
@@ -88,15 +91,17 @@
                 data-target="{{ block.settings.category_title | handle }}"
               >
                 <span>{{ block.settings.category_title }}</span>
-
-                <svg viewBox="0 0 24 24">
-                  <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.85098 0L8.88889 0.935593L13.4275 5.34915H0V6.65085H13.4275L8.88889 11.0644L9.85098 12L15.5399 6.4678L16 6L15.5399 5.5322L9.85098 0Z" fill="#A88958"/>
                 </svg>
               </li>
             {% endif %}
           {% endfor %}
         </ul>
-        <p class="custom-faqs__sidebar_content_footer">Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply within one business day.</p>
+        <p class="custom-faqs__sidebar_content_footer">
+          Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply
+          within one business day.
+        </p>
       </div>
 
       <div class="custom-faqs__content">
