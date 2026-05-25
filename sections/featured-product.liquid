@@ -781,7 +781,7 @@
                 {%- when 'nutrition-facts' -%}
                   {% render 'component--product--nutrition-facts', block: block %}
                 {%- when 'product-tags' -%}
-                  {% render 'component--product--tags', block: block %}
+                  {% render 'component--product--tags--featured', block: block %}
                 {%- when 'pack_size_cards' -%}
                   {%- comment -%} Find pack size option index {%- endcomment -%}
                   {%- assign pp_pack_option_index = null -%}
