@@ -80,6 +80,7 @@
     right: -60px;
     left: auto;
     top: 223px;
+    gap: 8px;
 }
 
 .component--tonique--badges_circle.tonique--badge-3 {
@@ -87,6 +88,7 @@
     height: 126px;
     top: 378px;
     left: -63px;
+    gap: 10px;
 }
 
 .component--tonique--badges_circle.tonique--badge-4 {
@@ -95,6 +97,7 @@
     top: 504px;
     left: auto;
     right: -48px;
+    gap:0;
 }
 
 .component--tonique--badges_circle {
@@ -108,6 +111,7 @@
     position: absolute;
     top: 151px;
     left: -76px;
+    gap:14px;
 }
 
 .component--tonique--badges_heading {
@@ -116,7 +120,7 @@
     letter-spacing: 0;
     color: #A88958;
     font-family: 'Archivo';
-    font-weight: 400;
+    font-weight: 500;
     margin: 0;
 }
 
