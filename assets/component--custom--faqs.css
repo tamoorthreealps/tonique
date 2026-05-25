@@ -104,10 +104,9 @@
     gap: 64px;
 }
 
-/* #customFaqs .faq-category {
-	margin-bottom: 80px;
+#customFaqs .faq-category {
 	scroll-margin-top: 120px;
-} */
+}
 
 #customFaqs .faq-category h2 {
 	font-size: 14px;
