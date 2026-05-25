@@ -1,6 +1,16 @@
 {{ 'css--product-faqs.css' | asset_url | stylesheet_tag }}
 
-<section class="pf-section" id="ProductFAQs-{{ section.id }}" {{ section.shopify_attributes }}>
+<section
+  class="pf-section"
+  id="ProductFAQs-{{ section.id }}"
+  style="
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+  "
+  {{ section.shopify_attributes }}
+>
   {%- comment -%} ── Image: top on mobile ── {%- endcomment -%}
   {%- if section.settings.image != blank -%}
     <div class="pf-image-mobile" aria-hidden="true">
