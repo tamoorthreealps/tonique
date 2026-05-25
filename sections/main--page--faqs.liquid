@@ -1,158 +1,148 @@
-<section class="custom-faqs">
+{% schema %}
+{
+  "name": "Custom FAQs",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#64604d"
+    },
+    {
+      "type": "color",
+      "id": "content_bg",
+      "label": "Content Background",
+      "default": "#f8f6f2"
+    },
+    {
+      "type": "text",
+      "id": "mobile_title",
+      "label": "Mobile Title",
+      "default": "FAQs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "FAQ Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_title",
+          "label": "Category Title",
+          "default": "THE PRODUCT"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "faq_category",
+          "label": "Category Handle",
+          "info": "Example: the-product"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How often should I drink it?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom FAQs"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="custom-faqs" id="customFaqs-{{ section.id }}">
   <div class="custom-faqs__wrapper page-width">
 
-    <div class="custom-faqs__mobile-dropdown">
-      <select id="faqCategorySelect">
-        <option value="product">THE PRODUCT</option>
-        <option value="using">USING IT</option>
-        <option value="ingredients">INGREDIENTS & DIETARY</option>
-        <option value="orders">ORDERS & SHIPPING</option>
-      </select>
+    <div class="custom-faqs__mobile-top">
+      <h2>{{ section.settings.mobile_title }}</h2>
+
+      <div class="custom-faqs__mobile-dropdown">
+        <select id="faqCategorySelect-{{ section.id }}">
+          {% for block in section.blocks %}
+            {% if block.type == 'category' %}
+              <option value="{{ block.settings.category_title | handle }}">
+                {{ block.settings.category_title }}
+              </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
     </div>
 
     <div class="custom-faqs__sidebar">
       <ul>
-        <li class="active" data-target="product">
-          <span>THE PRODUCT</span>
-          <svg viewBox="0 0 24 24">
-            <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </li>
+        {% for block in section.blocks %}
+          {% if block.type == 'category' %}
+            <li
+              class="{% if forloop.first %}active{% endif %}"
+              data-target="{{ block.settings.category_title | handle }}"
+            >
+              <span>{{ block.settings.category_title }}</span>
 
-        <li data-target="using">
-          <span>USING IT</span>
-          <svg viewBox="0 0 24 24">
-            <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </li>
-
-        <li data-target="ingredients">
-          <span>INGREDIENTS & DIETARY</span>
-          <svg viewBox="0 0 24 24">
-            <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </li>
-
-        <li data-target="orders">
-          <span>ORDERS & SHIPPING</span>
-          <svg viewBox="0 0 24 24">
-            <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 6L15 12L9 18" fill="none" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </li>
+          {% endif %}
+        {% endfor %}
       </ul>
     </div>
 
     <div class="custom-faqs__content">
 
-      <div class="faq-category" id="product">
-        <h2>THE PRODUCT</h2>
+      {% for block in section.blocks %}
+        {% if block.type == 'category' %}
 
-        <div class="faq-item active">
-          <div class="faq-question">
-            <span>How often should I drink it?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>
-              Collagen alone is missing essential amino acids your body needs.
-              We add a targeted Amino Complex to fill the gaps — so every sip
-              supports muscle, skin, hair, and joints.
-            </p>
-          </div>
-        </div>
+          {% assign category_handle = block.settings.category_title | handle %}
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>What makes the protein complete?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          </div>
-        </div>
+          <div
+            class="faq-category {% if forloop.first %}active-mobile{% endif %}"
+            id="{{ category_handle }}"
+          >
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>How does the subscription work?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          </div>
-        </div>
-      </div>
+            <h2>{{ block.settings.category_title }}</h2>
 
-      <div class="faq-category" id="using">
-        <h2>USING IT</h2>
+            {% for faq in section.blocks %}
+              {% if faq.type == 'faq' %}
+                {% assign faq_handle = faq.settings.faq_category | handle %}
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>How do I use a pouch?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Mix with water and enjoy daily.</p>
-          </div>
-        </div>
+                {% if faq_handle == category_handle %}
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Can I take it with coffee?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Yes absolutely.</p>
-          </div>
-        </div>
-      </div>
+                  <div class="faq-item {% if forloop.first %}active{% endif %}">
+                    <div class="faq-question">
+                      <span>{{ faq.settings.question }}</span>
+                      <span>+</span>
+                    </div>
 
-      <div class="faq-category" id="ingredients">
-        <h2>INGREDIENTS & DIETARY</h2>
+                    <div class="faq-answer">
+                      {{ faq.settings.answer }}
+                    </div>
+                  </div>
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Is it gluten free?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Yes, it is gluten free.</p>
-          </div>
-        </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Is it dairy free?</span>
-            <span>+</span>
           </div>
-          <div class="faq-answer">
-            <p>Yes, it is dairy free.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="faq-category" id="orders">
-        <h2>ORDERS & SHIPPING</h2>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>How long does shipping take?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Shipping usually takes 3-5 business days.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Can I return products?</span>
-            <span>+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Yes within 30 days.</p>
-          </div>
-        </div>
-      </div>
+        {% endif %}
+      {% endfor %}
 
     </div>
 
@@ -160,188 +150,216 @@
 </section>
 
 <style>
-.custom-faqs {
-  background: #64604d;
+#customFaqs-{{ section.id }}{
+  background: {{ section.settings.section_bg }};
   padding: 80px 20px;
 }
 
-.custom-faqs__wrapper {
-  background: #f8f6f2;
-  display: flex;
-  gap: 80px;
-  padding: 60px;
-  max-width: 1300px;
-  margin: auto;
+#customFaqs-{{ section.id }} .custom-faqs__wrapper{
+  background: {{ section.settings.content_bg }};
+  display:flex;
+  gap:80px;
+  padding:60px;
+  max-width:1300px;
+  margin:auto;
 }
 
-.custom-faqs__sidebar {
-  width: 240px;
-  position: sticky;
-  top: 120px;
-  height: fit-content;
+#customFaqs-{{ section.id }} .custom-faqs__sidebar{
+  width:240px;
+  position:sticky;
+  top:120px;
+  height:fit-content;
 }
 
-.custom-faqs__sidebar ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+#customFaqs-{{ section.id }} .custom-faqs__sidebar ul{
+  margin:0;
+  padding:0;
+  list-style:none;
 }
 
-.custom-faqs__sidebar li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  color: #8b8777;
-  transition: .3s ease;
-  font-size: 13px;
-  letter-spacing: 1px;
+#customFaqs-{{ section.id }} .custom-faqs__sidebar li{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(0,0,0,.1);
+  cursor:pointer;
+  color:#8b8777;
+  transition:.3s ease;
+  font-size:13px;
+  letter-spacing:1px;
 }
 
-.custom-faqs__sidebar li svg {
-  width: 18px;
-  height: 18px;
-  opacity: 0;
-  transform: translateX(-5px);
-  transition: .3s ease;
+#customFaqs-{{ section.id }} .custom-faqs__sidebar li svg{
+  width:18px;
+  height:18px;
+  opacity:0;
+  transform:translateX(-5px);
+  transition:.3s ease;
 }
 
-.custom-faqs__sidebar li.active {
-  color: #000;
+#customFaqs-{{ section.id }} .custom-faqs__sidebar li.active{
+  color:#000;
 }
 
-.custom-faqs__sidebar li.active svg {
-  opacity: 1;
-  transform: translateX(0);
+#customFaqs-{{ section.id }} .custom-faqs__sidebar li.active svg{
+  opacity:1;
+  transform:translateX(0);
 }
 
-.custom-faqs__content {
-  flex: 1;
+#customFaqs-{{ section.id }} .custom-faqs__content{
+  flex:1;
 }
 
-.faq-category {
-  margin-bottom: 80px;
-  scroll-margin-top: 120px;
+#customFaqs-{{ section.id }} .faq-category{
+  margin-bottom:80px;
+  scroll-margin-top:120px;
 }
 
-.faq-category h2 {
-  font-size: 14px;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  color: #9c7d52;
+#customFaqs-{{ section.id }} .faq-category h2{
+  font-size:14px;
+  letter-spacing:2px;
+  margin:0 0 30px;
+  color:#9c7d52;
 }
 
-.faq-item {
-  border-bottom: 1px solid rgba(0,0,0,.1);
+#customFaqs-{{ section.id }} .faq-item{
+  border-bottom:1px solid rgba(0,0,0,.1);
 }
 
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  cursor: pointer;
-  padding: 22px 0;
-  font-size: 15px;
+#customFaqs-{{ section.id }} .faq-question{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  cursor:pointer;
+  padding:22px 0;
 }
 
-.faq-question span:last-child {
-  transition: .3s ease;
+#customFaqs-{{ section.id }} .faq-question span:first-child{
+  font-size:15px;
+  color:#000;
 }
 
-.faq-item.active .faq-question span:last-child {
-  transform: rotate(45deg);
+#customFaqs-{{ section.id }} .faq-question span:last-child{
+  transition:.3s ease;
+  font-size:22px;
+  line-height:1;
 }
 
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .5s ease, padding .5s ease;
-  padding: 0;
+#customFaqs-{{ section.id }} .faq-item.active .faq-question span:last-child{
+  transform:rotate(45deg);
 }
 
-.faq-answer p {
-  margin: 0;
-  padding-bottom: 24px;
-  color: #555;
-  line-height: 1.8;
-  font-size: 14px;
+#customFaqs-{{ section.id }} .faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .5s ease,padding .5s ease;
 }
 
-.faq-item.active .faq-answer {
-  max-height: 300px;
+#customFaqs-{{ section.id }} .faq-answer p{
+  margin:0;
+  padding:0 0 24px;
+  line-height:1.8;
+  color:#555;
 }
 
-.custom-faqs__mobile-dropdown {
-  display: none;
+#customFaqs-{{ section.id }} .faq-item.active .faq-answer{
+  max-height:500px;
 }
 
-html {
-  scroll-behavior: smooth;
+#customFaqs-{{ section.id }} .custom-faqs__mobile-top{
+  display:none;
 }
 
-@media(max-width: 989px){
+html{
+  scroll-behavior:smooth;
+}
 
-  .custom-faqs__wrapper {
-    flex-direction: column;
-    padding: 30px 20px;
-    gap: 40px;
+@media(max-width:989px){
+
+  #customFaqs-{{ section.id }}{
+    padding:40px 16px;
   }
 
-  .custom-faqs__sidebar {
-    display: none;
+  #customFaqs-{{ section.id }} .custom-faqs__wrapper{
+    flex-direction:column;
+    gap:30px;
+    padding:24px 20px;
   }
 
-  .custom-faqs__mobile-dropdown {
-    display: block;
+  #customFaqs-{{ section.id }} .custom-faqs__sidebar{
+    display:none;
   }
 
-  .custom-faqs__mobile-dropdown select {
-    width: 100%;
-    height: 52px;
-    border: 1px solid rgba(0,0,0,.1);
-    background: transparent;
-    padding: 0 16px;
-    font-size: 13px;
-    letter-spacing: 1px;
+  #customFaqs-{{ section.id }} .custom-faqs__mobile-top{
+    display:block;
   }
 
-  .faq-category {
-    display: none;
-    margin-bottom: 0;
+  #customFaqs-{{ section.id }} .custom-faqs__mobile-top h2{
+    margin:0 0 20px;
+    font-size:22px;
   }
 
-  .faq-category.active-mobile {
-    display: block;
+  #customFaqs-{{ section.id }} .custom-faqs__mobile-dropdown select{
+    width:100%;
+    height:52px;
+    padding:0 16px;
+    border:1px solid rgba(0,0,0,.1);
+    background:transparent;
+    font-size:13px;
+    letter-spacing:1px;
   }
 
-  .faq-question {
-    padding: 18px 0;
-    font-size: 14px;
+  #customFaqs-{{ section.id }} .faq-category{
+    display:none;
+    margin-bottom:0;
+  }
+
+  #customFaqs-{{ section.id }} .faq-category.active-mobile{
+    display:block;
+  }
+
+  #customFaqs-{{ section.id }} .faq-question{
+    padding:18px 0;
+  }
+
+  #customFaqs-{{ section.id }} .faq-question span:first-child{
+    font-size:14px;
   }
 
 }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', function(){
 
-  const sidebarItems = document.querySelectorAll(".custom-faqs__sidebar li");
-  const categories = document.querySelectorAll(".faq-category");
+  const section = document.querySelector('#customFaqs-{{ section.id }}');
+
+  if(!section) return;
+
+  const sidebarItems = section.querySelectorAll('.custom-faqs__sidebar li');
+  const categories = section.querySelectorAll('.faq-category');
 
   sidebarItems.forEach(item => {
-    item.addEventListener("click", () => {
 
-      const target = item.dataset.target;
+    item.addEventListener('click', function(){
+
+      const target = this.dataset.target;
       const targetEl = document.getElementById(target);
 
-      window.scrollTo({
-        top: targetEl.offsetTop - 100,
-        behavior: "smooth"
-      });
+      if(targetEl){
+
+        window.scrollTo({
+          top: targetEl.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+      }
 
     });
+
   });
 
   const observer = new IntersectionObserver((entries) => {
@@ -350,14 +368,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if(entry.isIntersecting){
 
-        const id = entry.target.getAttribute("id");
+        const id = entry.target.getAttribute('id');
 
         sidebarItems.forEach(item => {
-          item.classList.remove("active");
+
+          item.classList.remove('active');
 
           if(item.dataset.target === id){
-            item.classList.add("active");
+            item.classList.add('active');
           }
+
         });
 
       }
@@ -372,64 +392,55 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
 
-  const faqItems = document.querySelectorAll(".faq-item");
+  const faqItems = section.querySelectorAll('.faq-item');
 
   faqItems.forEach(item => {
 
-    const question = item.querySelector(".faq-question");
+    const question = item.querySelector('.faq-question');
 
-    question.addEventListener("click", () => {
+    question.addEventListener('click', function(){
 
-      const isActive = item.classList.contains("active");
+      const isActive = item.classList.contains('active');
 
       faqItems.forEach(i => {
-        i.classList.remove("active");
+        i.classList.remove('active');
       });
 
       if(!isActive){
-        item.classList.add("active");
+        item.classList.add('active');
       }
 
     });
 
   });
 
-  const select = document.getElementById("faqCategorySelect");
+  const select = document.getElementById('faqCategorySelect-{{ section.id }}');
 
   function mobileCategoryShow(value){
 
     categories.forEach(cat => {
-      cat.classList.remove("active-mobile");
+      cat.classList.remove('active-mobile');
     });
 
-    document.getElementById(value).classList.add("active-mobile");
+    const target = section.querySelector('#' + value);
+
+    if(target){
+      target.classList.add('active-mobile');
+    }
 
   }
 
-  if(window.innerWidth < 990){
+  if(window.innerWidth < 990 && select){
     mobileCategoryShow(select.value);
   }
 
-  select.addEventListener("change", function(){
-    mobileCategoryShow(this.value);
-  });
+  if(select){
+
+    select.addEventListener('change', function(){
+      mobileCategoryShow(this.value);
+    });
+
+  }
 
 });
 </script>
-
-
-
-{% schema %}
-{
-  "name": "FAQs",
-  "tag": "section",
-  "settings": [
-  ],
-
-  "presets": [
-    {
-      "name": "FAQs"
-    }
-  ]
-}
-{% endschema %}
