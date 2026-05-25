@@ -2,6 +2,12 @@
     padding: 76px 0 160px;
   }
 
+  .custom-faqs__wrapper_container{
+    max-width:1204px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
   #customFaqs .custom-faqs__wrapper{
     display:flex;
     gap:80px;
