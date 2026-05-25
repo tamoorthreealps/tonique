@@ -15,7 +15,12 @@
 }
 
 .component--tonique--heading,
-.component--tonique--heading h1 {
+.component--tonique--heading h1,
+.component--tonique--heading h2,
+.component--tonique--heading h3,
+.component--tonique--heading h4,
+.component--tonique--heading h5,
+.component--tonique--heading h6 {
 	font-size: 27px;
 	line-height: 36px;
 	letter-spacing: 1.08px;
@@ -169,7 +174,13 @@
 		text-align: left;
 	}
 
-	.component--tonique--heading {
+	.component--tonique--heading,
+    .component--tonique--heading h1,
+    .component--tonique--heading h2,
+    .component--tonique--heading h3,
+    .component--tonique--heading h4,
+    .component--tonique--heading h5,
+    .component--tonique--heading h6 {
 		font-size: 48px;
 		line-height: 56px;
 		letter-spacing: 1.92px;
