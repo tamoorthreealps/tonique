@@ -10,7 +10,12 @@
 }
 
 .fn-media {
-  line-height: 0;
+      line-height: 0;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+            border-top: 1px solid #977B4F;
+        border-bottom: 1px solid #977B4F;
 }
 
 .fn-media__img {
@@ -98,13 +103,7 @@
   }
 
 .fn-media {
-    line-height: 0;
-    width: 100%;
     height: 392px;
-    overflow: hidden;
-    display: block;
-            border-top: 1px solid #977B4F;
-        border-bottom: 1px solid #977B4F;
 }
 
   .fn-content {
