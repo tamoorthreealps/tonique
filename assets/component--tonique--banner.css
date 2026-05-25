@@ -76,29 +76,29 @@ font-size: 27px;
 }
 
 .component--tonique--badges_circle.tonique--badge-2 {
-    width: 120px;
-    height: 120px;
-    right: -60px;
+    width: 96px;
+    height: 96px;
+    right: -76px;
     left: auto;
-    top: 223px;
-    gap: 8px;
+    top: 100px;
+    gap: 4px;
 }
 
 .component--tonique--badges_circle.tonique--badge-3 {
-    width: 126px;
-    height: 126px;
-    top: 378px;
-    left: -63px;
-    gap: 10px;
+    width: 104px;
+    height: 104px;
+    top: 170px;
+    left: -65px;
+    gap: 8px;
 }
 
 .component--tonique--badges_circle.tonique--badge-4 {
-    width: 96px;
-    height: 96px;
-    top: 504px;
+    width: 104px;
+    height: 104px;
+    top: 248px;
     left: auto;
-    right: -48px;
-    gap:0;
+    right: -60px;
+    gap: 8px;
 }
 
 .component--tonique--badges_circle {
@@ -213,5 +213,26 @@ font-size: 27px;
 .component--tonique--badges_circle.tonique--badge-1 {
     width: 152px;
     height: 152px;
+}
+.component--tonique--badges_circle.tonique--badge-2 {
+    width: 120px;
+    height: 120px;
+    right: -60px;
+    top: 223px;
+    gap: 8px;
+}
+.component--tonique--badges_circle.tonique--badge-3 {
+    width: 126px;
+    height: 126px;
+    top: 378px;
+    left: -63px;
+    gap: 10px;
+}
+.component--tonique--badges_circle.tonique--badge-4 {
+    width: 96px;
+    height: 96px;
+    top: 504px;
+    right: -48px;
+    gap:0;
 }
 }
