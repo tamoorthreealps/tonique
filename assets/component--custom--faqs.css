@@ -43,37 +43,57 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 #customFaqs .custom-faqs__sidebar li {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 20px;
-	padding: 14px 0;
-	border-bottom: 1px solid rgba(0, 0, 0, .1);
-	cursor: pointer;
-	color: #8b8777;
-	transition: .3s ease;
-	font-size: 13px;
-	letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 0;
+    cursor: pointer;
+    color: #433723;
+    transition: .3s ease;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.44px;
+    text-transform: uppercase;
 }
 
 #customFaqs .custom-faqs__sidebar li svg {
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 12px;
 	opacity: 0;
 	transform: translateX(-5px);
 	transition: .3s ease;
 }
 
 #customFaqs .custom-faqs__sidebar li.active {
-	color: #000;
+	color: #977B4F;
 }
 
 #customFaqs .custom-faqs__sidebar li.active svg {
 	opacity: 1;
 	transform: translateX(0);
+}
+
+.custom-faqs__sidebar_content_footer {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #433723;
+    font-family: 'Archivo';
+    font-weight: 400;
+    margin: 48px 0 0;
+}
+
+.custom-faqs__sidebar_content_footer a {
+    color: #977B4F;
+    font-style: italic;
+    text-decoration: none;
 }
 
 #customFaqs .custom-faqs__content {
