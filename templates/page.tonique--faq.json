@@ -11,13 +11,20 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "main_page_faqs_mFi7Lb": {
+      "type": "main--page--faqs",
+      "name": "FAQs",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "main_page_faqs_mFi7Lb"
   ]
 }
