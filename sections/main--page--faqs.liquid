@@ -123,7 +123,29 @@
                     <div class="faq-item {% if forloop.first %}active{% endif %}">
                       <div class="faq-question">
                         <span>{{ faq.settings.question }}</span>
-                        <span>+</span>
+                        <span>
+                          <svg
+                            class="faq--plus--icon"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M5.40088 0V5.38847H0V6.88657H5.40088V12H6.90015V6.88657H12V5.38847H6.90015V0H5.40088Z" fill="#433723"/>
+                          </svg>
+
+                          <svg
+                            class="faq--minus--icon"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M5.40088 5.38867L0 5.38944V6.88754H5.40088H6.90015H12V5.38944H6.90015L5.40088 5.38867Z" fill="#977B4F"/>
+                          </svg>
+                        </span>
                       </div>
 
                       <div class="faq-answer">
