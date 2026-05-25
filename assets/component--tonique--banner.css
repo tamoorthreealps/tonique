@@ -186,6 +186,7 @@ font-size: 27px;
 .component--tonique--image {
     max-width:100%;
     margin:0;
+    width:auto;
 }
 .component--tonique--image_hold {
     width: 278px;
