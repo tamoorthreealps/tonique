@@ -1,12 +1,12 @@
 .fn-section {
   padding-top: var(--pt-desktop);
   padding-bottom: var(--pb-desktop);
+  display:none;
 }
 
 .fn-inner {
-  max-width: 1200px;
+  max-width: 1204px;
   margin: 0 auto;
-  background: #F4F1E8;
 }
 
 .fn-media {
@@ -90,6 +90,7 @@
   .fn-section {
     padding-top: var(--pt-mobile);
     padding-bottom: var(--pb-mobile);
+    display:block;
   }
 
   .fn-content {
