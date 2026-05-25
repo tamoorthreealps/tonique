@@ -14,8 +14,18 @@
   <div class="vr-inner">
     {%- comment -%} ── Heading ── {%- endcomment -%}
     <div class="vr-heading-block">
+      {%- assign mobile_heading = section.settings.mobile_heading | default: section.settings.heading -%}
+
       {%- if section.settings.heading != blank -%}
-        <h2 class="vr-heading">{{ section.settings.heading }}</h2>
+        <h2 class="vr-heading">
+          <span class="vr-heading--desktop">
+            {{ section.settings.heading }}
+          </span>
+
+          <span class="vr-heading--mobile">
+            {{ mobile_heading }}
+          </span>
+        </h2>
       {%- endif -%}
       {%- if section.settings.subtext != blank -%}
         <p class="vr-subtext">{{ section.settings.subtext }}</p>
@@ -292,6 +302,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "See why they keep one in their bag"
+    },
+    {
+      "type": "text",
+      "id": "mobile_heading",
+      "label": "Mobile heading",
+      "default": "THE COMMUNITY"
     },
     {
       "type": "text",
