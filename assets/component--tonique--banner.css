@@ -116,13 +116,19 @@ font-size: 27px;
 }
 
 .component--tonique--badges_heading {
-    font-size: 40px;
+    font-size: 32px;
     line-height: 32px;
-    letter-spacing: 0;
+    letter-spacing: -0.64px;
     color: #A88958;
     font-family: 'Archivo';
     font-weight: 500;
     margin: 0;
+}
+
+.component--tonique--badges_circle.tonique--badge-2 .component--tonique--badges_heading {
+    font-size: 36px;
+    line-height: 32px;
+    letter-spacing:-0.72px;
 }
 
 .component--tonique--badges_circle.tonique--badge-4 .component--tonique--badges_heading {
@@ -131,8 +137,8 @@ font-size: 27px;
 }
 
 .component--tonique--badges_subheading {
-    font-size: 20px;
-    line-height: 16px;
+    font-size: 12px;
+    line-height: 12px;
     letter-spacing: 0;
     font-weight: 500;
     color: #A88958;
@@ -188,5 +194,14 @@ font-size: 27px;
 .component--tonique--image_hold {
     width: 278px;
     margin:0;
+}
+.component--tonique--badges_heading, .component--tonique--badges_circle.tonique--badge-2 .component--tonique--badges_heading {
+    font-size: 40px;
+    line-height: 32px;
+    letter-spacing: 0;
+}
+.component--tonique--badges_subheading {
+    font-size: 20px;
+    line-height: 16px;
 }
 }
