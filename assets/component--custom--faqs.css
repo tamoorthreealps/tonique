@@ -145,8 +145,13 @@
 	line-height: 1;
 }
 
-#customFaqs .faq-item.active .faq-question span:last-child {
-	transform: rotate(45deg);
+#customFaqs .faq-item .faq-question span svg.faq--minus--icon{
+	display:none;
+}
+
+
+#customFaqs .faq-item.active .faq-question span svg.faq--plus--icon{
+	display:none;
 }
 
 #customFaqs .faq-answer {
