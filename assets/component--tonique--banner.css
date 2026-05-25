@@ -77,16 +77,24 @@
 .component--tonique--badges_circle.tonique--badge-2 {
     width: 120px;
     height: 120px;
+    right: -60px;
+    left: auto;
+    top: 223px;
 }
 
 .component--tonique--badges_circle.tonique--badge-3 {
     width: 126px;
     height: 126px;
+    top: 378px;
+    left: -63px;
 }
 
 .component--tonique--badges_circle.tonique--badge-4 {
     width: 96px;
     height: 96px;
+    top: 504px;
+    left: auto;
+    right: -48px;
 }
 
 .component--tonique--badges_circle {
