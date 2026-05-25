@@ -100,7 +100,7 @@
       "settings": {
         "wave_image": "shopify://shop_images/Vector_2.svg",
         "product_image": "shopify://shop_images/Vector_6.svg",
-        "heading": "<p>Beauty + Protein<br/>in one clean pouch</p>",
+        "heading": "<h1>Beauty + Protein<br/>in one clean pouch</h1>",
         "description": "<p>15g of complete protein. All natural. Zero sugar. Collagen + whey. Beauty nutrients. Adaptogens. One pouch. Done.</p>",
         "button_text": "SHOP NOW",
         "button_link": "#",
