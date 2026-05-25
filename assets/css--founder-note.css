@@ -103,6 +103,8 @@
     height: 392px;
     overflow: hidden;
     display: block;
+            border-top: 1px solid #977B4F;
+        border-bottom: 1px solid #977B4F;
 }
 
   .fn-content {
