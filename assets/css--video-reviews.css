@@ -286,10 +286,25 @@ position: absolute;
   }
 
   /* 2-column grid on mobile */
-  .vr-cards {
-    display: grid;
+  /* GRID MODE */
+  .vr-section--mobile-cards .vr-cards .splide__list {
+    display: grid !important;
     grid-template-columns: 1fr 1fr;
     gap: 19px 0;
+    transform: none !important;
+  }
+
+  .vr-section--mobile-cards .vr-card {
+    width: 100% !important;
+  }
+
+  /* SLIDER MODE */
+  .vr-section--mobile-slider .vr-cards {
+    overflow: hidden;
+  }
+
+  .vr-section--mobile-slider .vr-card {
+    width: 100%;
   }
 
   .vr-card {

@@ -1,7 +1,7 @@
 {{ 'css--video-reviews.css' | asset_url | stylesheet_tag }}
 
 <div
-  class="vr-section"
+  class="vr-section vr-section--mobile-{{ section.settings.mobile_layout }}"
   id="VideoReviews-{{ section.id }}"
   style="
     --pt-desktop: {{ section.settings.padding_top_desktop }}px;
@@ -33,14 +33,16 @@
     </div>
 
     {%- comment -%} ── Cards ── {%- endcomment -%}
-    <div class="vr-cards">
+    <div class="vr-cards splide js-vr-slider">
+  <div class="splide__track">
+    <div class="splide__list">
       {%- for block in section.blocks -%}
         {%- assign has_video = false -%}
         {%- if block.settings.video != blank -%}
           {%- assign has_video = true -%}
         {%- endif -%}
 
-        <div class="vr-card" {{ block.shopify_attributes }}>
+        <div class="vr-card splide__slide" {{ block.shopify_attributes }}>
           {%- comment -%} Video wrapper — click opens popup {%- endcomment -%}
           <div
             class="vr-card__video-wrap"
@@ -118,6 +120,8 @@
           </div>
         </div>
       {%- endfor -%}
+    </div>
+    </div>
     </div>
 
     {%- comment -%} ── Disclaimer ── {%- endcomment -%}
@@ -243,12 +247,48 @@
     });
   })();
 </script>
-
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if(window.innerWidth > 767) return;
+  document.querySelectorAll('.vr-section--mobile-slider .js-vr-slider').forEach(function(slider){
+    new Splide(slider, {
+      type: 'loop',
+      perPage: 1.15,
+      gap: '12px',
+      arrows: false,
+      pagination: false,
+      autoplay: true,
+      interval: 3000,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+      drag: true,
+      snap: true,
+      speed: 800,
+    }).mount();
+  });
+});
+</script>
 {% schema %}
 {
   "name": "Video Reviews",
   "class": "section-video-reviews",
   "settings": [
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "default": "cards",
+      "options": [
+        {
+          "value": "cards",
+          "label": "Cards Grid"
+        },
+        {
+          "value": "slider",
+          "label": "Splide Slider"
+        }
+      ]
+    },
     {
       "type": "header",
       "content": "Desktop Padding"
