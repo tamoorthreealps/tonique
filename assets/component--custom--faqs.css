@@ -178,10 +178,13 @@
 }
 
 #customFaqs .faq-answer p {
-	margin: 0;
-	padding: 0 0 24px;
-	line-height: 1.8;
-	color: #555;
+    margin: 0;
+    padding: 0 0 24px;
+    color: #433723;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    max-width: 464px;
 }
 
 #customFaqs .faq-item.active .faq-answer {
