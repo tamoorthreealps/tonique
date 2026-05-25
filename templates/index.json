@@ -60,8 +60,79 @@
     },
     "component_tonique_banner_HBckAV": {
       "type": "component--tonique--banner",
+      "blocks": {
+        "badge_enAYUc": {
+          "type": "badge",
+          "settings": {
+            "heading": "15g",
+            "subheading": "PROTEIN",
+            "top_desktop": 24,
+            "left_desktop": 12,
+            "size_desktop": 152,
+            "top_mobile": 104,
+            "left_mobile": 0,
+            "size_mobile": 90
+          }
+        },
+        "badge_WRgXt9": {
+          "type": "badge",
+          "settings": {
+            "heading": "70",
+            "subheading": "Calories",
+            "top_desktop": 24,
+            "left_desktop": 12,
+            "size_desktop": 120,
+            "top_mobile": 22,
+            "left_mobile": 0,
+            "size_mobile": 96
+          }
+        },
+        "badge_Lhbt8A": {
+          "type": "badge",
+          "settings": {
+            "heading": "0g",
+            "subheading": "Sugar",
+            "top_desktop": 24,
+            "left_desktop": 12,
+            "size_desktop": 126,
+            "top_mobile": 22,
+            "left_mobile": 0,
+            "size_mobile": 96
+          }
+        },
+        "badge_gGJQrW": {
+          "type": "badge",
+          "settings": {
+            "heading": "1oz",
+            "subheading": "POUCH",
+            "top_desktop": 24,
+            "left_desktop": 12,
+            "size_desktop": 96,
+            "top_mobile": 22,
+            "left_mobile": 0,
+            "size_mobile": 104
+          }
+        }
+      },
+      "block_order": [
+        "badge_enAYUc",
+        "badge_WRgXt9",
+        "badge_Lhbt8A",
+        "badge_gGJQrW"
+      ],
       "name": "Tonique Banner",
-      "settings": {}
+      "settings": {
+        "wave_image": "shopify://shop_images/Vector_2.svg",
+        "product_image": "shopify://shop_images/Vector_6.svg",
+        "heading": "Beauty + Protein\nin one clean pouch",
+        "description": "<p>15g of complete protein. All natural. Zero sugar. Collagen + whey. Beauty nutrients. Adaptogens. One pouch. Done.</p>",
+        "button_text": "SHOP NOW",
+        "button_link": "#",
+        "padding_top_desktop": 96,
+        "padding_bottom_desktop": 120,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 56
+      }
     },
     "text_scroller_qpPdAt": {
       "type": "text-scroller",
