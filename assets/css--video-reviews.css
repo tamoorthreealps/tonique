@@ -43,6 +43,10 @@
   visibility: visible;
 }
 
+.vr-cards .splide__track {
+    width: 100%;
+}
+
 /* ── Single card ────────────────────────────────── */
 .vr-card {
   flex: 1 1 0;
