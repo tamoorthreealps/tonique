@@ -1096,6 +1096,6 @@ font-size: 16px;
   padding-bottom:0 !important;
 }
 .component--featured-product .product__accordion__head{
-  display:inline;
+  display:inherit;
 }
 }
