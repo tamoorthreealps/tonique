@@ -244,7 +244,7 @@
           "type": "row",
           "settings": {
             "row_label": "No mixing / fridge / goes anywhere",
-            "row_label_mobile": "No mixing,goes anywhere",
+            "row_label_mobile": "No mixing, goes anywhere",
             "tonique_value": "check",
             "comp1_value": "cross",
             "comp2_value": "cross",
