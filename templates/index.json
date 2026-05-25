@@ -412,9 +412,17 @@
       "blocks": {
         "text_DQMwHm": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ section.settings.product.vendor }}",
             "text_style": "uppercase"
+          }
+        },
+        "text_cA7UyF": {
+          "type": "text",
+          "settings": {
+            "text": "R E A D Y- TO - D R I N K",
+            "text_style": "body"
           }
         },
         "title_aQmhdP": {
@@ -495,6 +503,7 @@
       },
       "block_order": [
         "text_DQMwHm",
+        "text_cA7UyF",
         "title_aQmhdP",
         "short_description_FXnWL4",
         "nutrition_facts_9XmwKx",
