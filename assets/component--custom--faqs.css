@@ -109,14 +109,16 @@
 }
 
 #customFaqs .faq-category h2 {
-	font-size: 14px;
-	letter-spacing: 2px;
-	margin: 0 0 30px;
-	color: #9c7d52;
+	font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 1.92px;
+    margin: 0 0 32px;
+    color: #977B4F;
+    font-family: 'Archivo';
 }
 
 #customFaqs .faq-item {
-	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	border-bottom: 1px solid #433723;
 }
 
 #customFaqs .faq-question {
@@ -129,8 +131,12 @@
 }
 
 #customFaqs .faq-question span:first-child {
-	font-size: 15px;
-	color: #000;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #433723;
+    font-family: 'Archivo';
+    font-weight: 400;
 }
 
 #customFaqs .faq-question span:last-child {
