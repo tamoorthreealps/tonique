@@ -49,7 +49,6 @@
   <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
 
   {% comment %} TODO: assign `product.selected_or_first_available_variant` to variable and replace usage to reduce verbosity {% endcomment %}
-  {% assign current_product = product | default: section.settings.product %}
   {%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
   {%- if first_3d_model -%}
     {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
@@ -781,43 +780,7 @@
                 {%- when 'nutrition-facts' -%}
                   {% render 'component--product--nutrition-facts', block: block %}
                 {%- when 'product-tags' -%}
-                  {% if current_product.tags.size > 0 %}
-  <div class="product-content--info--tags">
-    {% for tag in current_product.tags %}
-      <span class="product-tag">{{ tag }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
-
-
-<style>
-.product-content--info--tags {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 0 -8px 24px;
-}
-.product-content--info--tags .product-tag {
-    border: 1px solid #977B4F;
-    border-radius: 100px;
-    background: #fff;
-    color: #977B4F;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 500;
-    letter-spacing: 0;
-    font-family: 'Archivo';
-    text-align: center;
-    padding: 4px 11.4px;
-    width: fit-content;
-}
-@media screen and (min-width: 991px) {
-.product-content--info--tags {
-  display: none;
-  }
-}
-</style>
+                  {% render 'component--product--tags--featured', block: block %}
                 {%- when 'pack_size_cards' -%}
                   {%- comment -%} Find pack size option index {%- endcomment -%}
                   {%- assign pp_pack_option_index = null -%}

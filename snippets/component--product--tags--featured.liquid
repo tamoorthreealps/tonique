@@ -1,3 +1,4 @@
+{% assign current_product = product | default: section.settings.product %}
 {% if current_product.tags.size > 0 %}
   <div class="product-content--info--tags">
     {% for tag in current_product.tags %}
