@@ -14,9 +14,11 @@
 }
 
 .fn-media__img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .fn-content {
@@ -56,23 +58,25 @@
 }
 
 .fn-name {
-  margin: 0 0 8px;
-  font-family: Archivo, sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #433723;
+    margin: 0;
+    font-family: Archivo, sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: #433723;
+    font-weight: 500;
 }
 
 .fn-role {
-  margin: 0;
-  font-family: Archivo, sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-  color: #A88958;
+    margin: 0;
+    font-family: Archivo, sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: #a88958;
+    font-weight: 500;
 }
 
 .fn-signature {
@@ -93,30 +97,41 @@
     display:block;
   }
 
+.fn-media {
+    line-height: 0;
+    width: 100%;
+    height: 392px;
+    overflow: hidden;
+    display: block;
+}
+
   .fn-content {
     padding:35px 24px 0;
   }
 
-  .fn-heading {
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: 0.96px;
-    margin-bottom: 20px;
-  }
+    .fn-heading {
+        font-size: 28px;
+        line-height: 40px;
+        letter-spacing: 1.12px;
+        margin-bottom: 14px;
+        padding-right: 40px;
+    }
 
-  .fn-text p {
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 20px;
-  }
+     .fn-text p {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 20px;
+        letter-spacing: 0;
+    }
 
-  .fn-footer {
-    margin-top: 32px;
-    gap: 20px;
-  }
+    .fn-footer {
+        margin-top: 29px;
+        gap: 20px;
+        align-items: center;
+    }
 
   .fn-signature__img {
-    width: 90px;
+    width: 104px;
   }
 
 }
