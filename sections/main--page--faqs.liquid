@@ -76,6 +76,10 @@
       </div>
 
       <div class="custom-faqs__sidebar">
+        <div class="custom-faqs__sidebar_top">
+          <h1 class="custom-faqs__sidebar_heading">FAQs</h1>
+          <p class="custom-faqs__sidebar_content">Everything you might want to know about Tonique; the product, the ingredients, and how it fits into your day.</p>
+        </div>
         <ul>
           {% for block in section.blocks %}
             {% if block.type == 'category' %}
@@ -92,6 +96,7 @@
             {% endif %}
           {% endfor %}
         </ul>
+        <p class="custom-faqs__sidebar_content_footer">Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply within one business day.</p>
       </div>
 
       <div class="custom-faqs__content">
