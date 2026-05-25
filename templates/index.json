@@ -282,33 +282,33 @@
         "video_card_w894f7": {
           "type": "video_card",
           "settings": {
-            "badge_label": "CLEAN LABEL",
-            "handle": "@mayarstudio",
-            "role": "Pilates instructor"
+            "badge_label": "",
+            "handle": "",
+            "role": "“Maecenas in neque ullamcorper eu erat. Et.”"
           }
         },
         "video_card_XpJJ76": {
           "type": "video_card",
           "settings": {
-            "badge_label": "DAILY USE",
-            "handle": "@mayarstudio",
-            "role": "Strength coach"
+            "badge_label": "",
+            "handle": "",
+            "role": "“Maecenas in neque ullamcorper eu erat. Et.”"
           }
         },
         "video_card_CqmjhT": {
           "type": "video_card",
           "settings": {
-            "badge_label": "TASTE",
-            "handle": "Jess T.",
-            "role": "Wellness creator"
+            "badge_label": "",
+            "handle": "",
+            "role": "“Maecenas in neque ullamcorper eu erat. Et.”"
           }
         },
         "video_card_WWUJjg": {
           "type": "video_card",
           "settings": {
-            "badge_label": "FOR YOU",
-            "handle": "@mayarstudio",
-            "role": "Working mom"
+            "badge_label": "",
+            "handle": "",
+            "role": "“Maecenas in neque ullamcorper eu erat. Et.”"
           }
         }
       },
