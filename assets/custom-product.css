@@ -1079,12 +1079,14 @@ font-size: 16px;
 .component--featured-product{
     padding-bottom:48px;
   }
-.component--featured-product .product__info-wrapper{
-  padding:0 !important;
-}
+
 
 @media screen and (min-width: 991px) {
   .component--featured-product{
     padding-bottom:160px;
   }
+  .component--featured-product .product__info-wrapper{
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+}
 }
