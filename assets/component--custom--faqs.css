@@ -51,7 +51,6 @@
 #customFaqs .custom-faqs__sidebar li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 14px;
     padding: 0;
     cursor: pointer;
