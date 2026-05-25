@@ -1,0 +1,93 @@
+.component--tonique--banner {
+    padding: 96px 0 120px;
+}
+
+.component--tonique--banner--container {
+    max-width: 1204px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.component--tonique--content {
+    max-width: 568px;
+}
+
+.component--tonique--heading {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 1.92px;
+    color: #977B4F;
+    font-family: 'Archivo';
+    font-weight: 400;
+    margin: 0 0 16px;
+    text-transform: uppercase;
+}
+
+.component--tonique--description {
+    font-size: 20px;
+    line-height: 32px;
+    color: #433723;
+    letter-spacing: 0;
+    margin: 0 0 32px;
+}
+
+.component--tonique--button {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.64px;
+    text-decoration: none;
+    color: #F9F6EC;
+    background: linear-gradient(90deg, #A88958 0%, #B9A179 50%, #A88958 100%);
+    padding: 16px 43px;
+    display: inline-block;
+}
+
+.component--tonique--badges_circle.tonique--badge-1 {
+    width: 152px;
+    height: 152px;
+}
+
+.component--tonique--badges_circle.tonique--badge-2 {
+    width: 120px;
+    height: 120px;
+}
+
+.component--tonique--badges_circle.tonique--badge-3 {
+    width: 126px;
+    height: 126px;
+}
+
+.component--tonique--badges_circle.tonique--badge-4 {
+    width: 96px;
+    height: 96px;
+}
+
+.component--tonique--badges_circle {
+    border: 1px solid #A88958;
+    border-radius: 100%;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.component--tonique--badges_heading {
+    font-size: 40px;
+    line-height: 32px;
+    letter-spacing: 0;
+    color: #A88958;
+    font-family: 'Archivo';
+    font-weight: 400;
+    margin: 0;
+}
+
+.component--tonique--badges_subheading {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+    font-weight: 500;
+    color: #A88958;
+    font-family: 'Archivo';
+    margin: 0;
+}
