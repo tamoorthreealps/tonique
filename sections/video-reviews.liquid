@@ -1,7 +1,7 @@
 {{ 'css--video-reviews.css' | asset_url | stylesheet_tag }}
 
 <div
-  class="vr-section vr-section--mobile-{{ section.settings.mobile_layout }}"
+  class="vr-section vr-section--mobile-{{ section.settings.mobile_layout }} {% if section.settings.mobile_layout == 'slider' %}vr-section--has-mobile-slider{% endif %}"
   id="VideoReviews-{{ section.id }}"
   style="
     --pt-desktop: {{ section.settings.padding_top_desktop }}px;
@@ -249,26 +249,100 @@
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  if(window.innerWidth > 767) return;
-  document.querySelectorAll('.vr-section--mobile-slider .js-vr-slider').forEach(function(slider){
-    new Splide(slider, {
+
+  let splideInstances = [];
+
+  function initMobileSlider() {
+
+    if(window.innerWidth > 767) {
+
+      destroySliders();
+
+      return;
+    }
+
+    document.querySelectorAll('.vr-section--mobile-slider .js-vr-slider').forEach(function(slider){
+
+      // Prevent duplicate init
+      if(slider.classList.contains('is-initialized')) return;
+
+      slider.classList.add('is-initialized');
+
+      const splide = new Splide(slider, {
+
         type: 'loop',
         perPage: 2,
         perMove: 1,
+
         pagination: false,
         arrows: false,
+
         gap: '0px',
-        focus: '0',
+
+        focus: 0,
+
         autoplay: true,
         interval: 4000,
+
         flickPower: 80,
         speed: 800,
+
         flickMaxPages: 1,
+
         easing: 'ease-in-out',
+
         omitEnd: true,
         trimSpace: true,
-    }).mount();
+
+        breakpoints: {
+          767: {
+            perPage: 2,
+          }
+        }
+
+      });
+
+      splide.mount();
+
+      splideInstances.push({
+        element: slider,
+        instance: splide
+      });
+
+    });
+
+  }
+
+  function destroySliders() {
+
+    splideInstances.forEach(function(item){
+
+      item.instance.destroy(true);
+
+      item.element.classList.remove('is-initialized');
+
+    });
+
+    splideInstances = [];
+
+  }
+
+  initMobileSlider();
+
+  let resizeTimer;
+
+  window.addEventListener('resize', function () {
+
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(function(){
+
+      initMobileSlider();
+
+    }, 200);
+
   });
+
 });
 </script>
 {% schema %}
