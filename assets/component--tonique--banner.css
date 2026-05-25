@@ -42,6 +42,21 @@
     display: inline-block;
 }
 
+.component--tonique--image {
+    position: relative;
+}
+
+.component--tonique--image_hold {
+    width: 278px;
+    position: relative;
+}
+
+.component--tonique--image_hold img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .component--tonique--badges_circle.tonique--badge-1 {
     width: 152px;
     height: 152px;
