@@ -183,6 +183,10 @@ font-size: 27px;
     padding: 16px 43px;
     display:inline-block;
 }
+
+.component--tonique--button:hover{
+    opacity:0.75;
+}
 .component--tonique--image {
     max-width:100%;
     margin:0;
