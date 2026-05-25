@@ -63,7 +63,7 @@
         <h2>{{ section.settings.mobile_title }}</h2>
 
         <div class="custom-faqs__mobile-dropdown">
-          <select id="faqCategorySelect-{{ section.id }}">
+          <select id="faqCategorySelect">
             {% for block in section.blocks %}
               {% if block.type == 'category' %}
                 <option value="{{ block.settings.category_title | handle }}">
@@ -133,7 +133,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const section = document.querySelector('#customFaqs-{{ section.id }}');
+    const section = document.querySelector('#customFaqs');
 
     if (!section) return;
 
@@ -197,7 +197,7 @@
       });
     });
 
-    const select = document.getElementById('faqCategorySelect-{{ section.id }}');
+    const select = document.getElementById('faqCategorySelect');
 
     function mobileCategoryShow(value) {
       categories.forEach((cat) => {
