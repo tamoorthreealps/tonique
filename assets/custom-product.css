@@ -640,7 +640,7 @@ width: 100%;
     max-width: 120px;
     min-width: 120px;
     flex: auto;
-    margin-right: 12px;
+    margin-right: 8px;
 }
 .quantity--buy--buttons product-form.product-form {
     margin: 0 !important;
@@ -889,6 +889,9 @@ a.component--product--nutrition_link:hover{
     opacity:0.75;
 }
 @media screen and (min-width: 991px) {
+  .quantity--buy--buttons .product-form__input{
+    margin-right: 12px;
+}
   .component--product--main--section .page-width{
     overflow: visible;
   }
