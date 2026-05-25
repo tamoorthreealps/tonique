@@ -14,9 +14,9 @@
   }
 
   #customFaqs .custom-faqs__sidebar{
-    width:240px;
+    width:450px;
     position:sticky;
-    top:120px;
+    top:0px;
     height:fit-content;
   }
 
