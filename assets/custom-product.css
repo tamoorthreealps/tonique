@@ -1078,7 +1078,7 @@ font-size: 16px;
 
 
 .component--featured-product .product__info-wrapper{
-  padding:0;
+  padding:0 !important;
 }
 
 @media screen and (min-width: 991px) {
