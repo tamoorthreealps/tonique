@@ -47,6 +47,7 @@
         "stat_badge_9RWJaT",
         "stat_badge_X7KCaw"
       ],
+      "disabled": true,
       "name": "Hero Banner",
       "settings": {
         "heading": "Beauty + Proteinin one clean pouch",
@@ -56,6 +57,11 @@
         "product_image": "shopify://shop_images/bottle.svg",
         "decorative_image": "shopify://shop_images/waves-tonique.svg"
       }
+    },
+    "component_tonique_banner_HBckAV": {
+      "type": "component--tonique--banner",
+      "name": "Tonique Banner",
+      "settings": {}
     },
     "text_scroller_qpPdAt": {
       "type": "text-scroller",
@@ -542,6 +548,7 @@
   },
   "order": [
     "hero_banner_bCyNXR",
+    "component_tonique_banner_HBckAV",
     "text_scroller_qpPdAt",
     "tea_drink_go_HrV6kf",
     "why_tonique_rCmNeV",
