@@ -182,6 +182,7 @@ position: absolute;
     letter-spacing: 0;
     font-style: italic;
     max-width: 228px;
+    text-transform: none;
 }
 
 /* ── Disclaimer note ────────────────────────────── */
