@@ -115,6 +115,7 @@
     margin: 0 0 32px;
     color: #977B4F;
     font-family: 'Archivo';
+	text-transform: uppercase;
 }
 
 #customFaqs .faq-item {
