@@ -1076,11 +1076,15 @@ font-size: 16px;
   }
 }
 
-.component--featured-product{
+.component--featured-product {
     padding-bottom:48px;
   }
   .component--featured-product .product__info-wrapper{
   padding-bottom:0 !important;
+}
+
+.component--featured-product .pp-video-btn{
+  display:none;
 }
 
 @media screen and (min-width: 991px) {
