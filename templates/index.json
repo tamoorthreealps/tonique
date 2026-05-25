@@ -65,52 +65,28 @@
           "type": "badge",
           "settings": {
             "heading": "15g",
-            "subheading": "PROTEIN",
-            "top_desktop": 24,
-            "left_desktop": 12,
-            "size_desktop": 152,
-            "top_mobile": 104,
-            "left_mobile": 0,
-            "size_mobile": 90
+            "subheading": "PROTEIN"
           }
         },
         "badge_WRgXt9": {
           "type": "badge",
           "settings": {
             "heading": "70",
-            "subheading": "Calories",
-            "top_desktop": 24,
-            "left_desktop": 12,
-            "size_desktop": 120,
-            "top_mobile": 22,
-            "left_mobile": 0,
-            "size_mobile": 96
+            "subheading": "Calories"
           }
         },
         "badge_Lhbt8A": {
           "type": "badge",
           "settings": {
             "heading": "0g",
-            "subheading": "Sugar",
-            "top_desktop": 24,
-            "left_desktop": 12,
-            "size_desktop": 126,
-            "top_mobile": 22,
-            "left_mobile": 0,
-            "size_mobile": 96
+            "subheading": "Sugar"
           }
         },
         "badge_gGJQrW": {
           "type": "badge",
           "settings": {
             "heading": "1oz",
-            "subheading": "POUCH",
-            "top_desktop": 24,
-            "left_desktop": 12,
-            "size_desktop": 96,
-            "top_mobile": 22,
-            "left_mobile": 0,
-            "size_mobile": 104
+            "subheading": "POUCH"
           }
         }
       },
@@ -124,7 +100,7 @@
       "settings": {
         "wave_image": "shopify://shop_images/Vector_2.svg",
         "product_image": "shopify://shop_images/Vector_6.svg",
-        "heading": "Beauty + Protein\nin one clean pouch",
+        "heading": "<p>Beauty + Protein<br/>in one clean pouch</p>",
         "description": "<p>15g of complete protein. All natural. Zero sugar. Collagen + whey. Beauty nutrients. Adaptogens. One pouch. Done.</p>",
         "button_text": "SHOP NOW",
         "button_link": "#",
