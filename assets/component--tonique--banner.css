@@ -1,5 +1,5 @@
 .component--tonique--banner {
-    padding: 96px 0 120px;
+    padding: 40px 0 56px;
     position: relative;
     overflow:hidden;
 }
@@ -11,48 +11,53 @@
 }
 
 .component--tonique--content {
-    max-width: 568px;
+    text-align:center;
 }
 
 .component--tonique--heading {
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: 1.92px;
-    color: #977B4F;
-    font-family: 'Archivo';
+font-size: 27px;
+    line-height: 36px;
+    letter-spacing: 1.08px;
+    color: #977b4f;
+    font-family: Archivo;
     font-weight: 400;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
     text-transform: uppercase;
 }
 
 .component--tonique--description {
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 14px;
+    line-height: 20px;
     color: #433723;
     letter-spacing: 0;
-    margin: 0 0 32px;
+    margin: 0 0 24px;
+    padding: 0 10px;
 }
 
 .component--tonique--button {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
-    letter-spacing: 0.64px;
+    letter-spacing: 0.56px;
     text-decoration: none;
-    color: #F9F6EC;
-    background: linear-gradient(90deg, #A88958 0%, #B9A179 50%, #A88958 100%);
-    padding: 16px 43px;
-    display: inline-block;
+    color: #f9f6ec;
+    background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
+    padding: 12px 43px;
+    display: block;
+    font-weight: 700;
 }
 
 .component--tonique--banner--waves {
     position: absolute;
     right: 0;
+        z-index: -1;
 }
 
 .component--tonique--content--image {
     display: flex;
-    gap: 165px;
+    gap: 40px;
+    flex-direction: column;
 }
+
 
 .component--tonique--image {
     position: relative;
@@ -146,4 +151,38 @@
 
 .component--tonique--badges_circle.tonique--badge-4 .component--tonique--badges_subheading {
     font-size:12px;
+}
+
+
+@media screen and (min-width: 767px) {
+    .component--tonique--banner {
+    padding: 96px 0 120px;
+}
+    .component--tonique--content--image {
+    gap: 165px;
+    flex-direction: row;
+}
+.component--tonique--content {
+    max-width: 568px;
+    text-align:left;
+}
+.component--tonique--heading {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 1.92px;
+    margin: 0 0 16px;
+}
+.component--tonique--description {
+    font-size: 20px;
+    line-height: 32px;
+    margin: 0 0 32px;
+    padding:0;
+}
+.component--tonique--button {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.64px;
+    padding: 16px 43px;
+    display:inline-block;
+}
 }
