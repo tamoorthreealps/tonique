@@ -5,9 +5,6 @@
   #customFaqs .custom-faqs__wrapper{
     display:flex;
     gap:80px;
-    padding:60px;
-    max-width:1300px;
-    margin:auto;
   }
 
   #customFaqs .custom-faqs__sidebar{
