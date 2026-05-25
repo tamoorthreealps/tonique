@@ -1,10 +1,8 @@
   #customFaqs-{{ section.id }}{
-    background: {{ section.settings.section_bg }};
     padding: 80px 20px;
   }
 
   #customFaqs-{{ section.id }} .custom-faqs__wrapper{
-    background: {{ section.settings.content_bg }};
     display:flex;
     gap:80px;
     padding:60px;
@@ -119,10 +117,6 @@
 
   #customFaqs-{{ section.id }} .custom-faqs__mobile-top{
     display:none;
-  }
-
-  html{
-    scroll-behavior:smooth;
   }
 
   @media(max-width:989px){
