@@ -252,18 +252,20 @@ document.addEventListener('DOMContentLoaded', function () {
   if(window.innerWidth > 767) return;
   document.querySelectorAll('.vr-section--mobile-slider .js-vr-slider').forEach(function(slider){
     new Splide(slider, {
-      type: 'loop',
-      perPage: 2,
-      gap: '0px',
-      arrows: false,
-      pagination: false,
-      autoplay: true,
-      interval: 3000,
-      pauseOnHover: false,
-      pauseOnFocus: false,
-      drag: true,
-      snap: true,
-      speed: 1000,
+        type: 'loop',
+        perPage: 2,
+        perMove: 1,
+        pagination: true,
+        arrows: false,
+        gap: '0px',
+        focus: '0',
+        autoplay: true,
+        flickPower: 80,
+        flickMaxPages: 1,
+        dragMinThreshold: { mouse: 4, touch: 6 },
+        easing: 'ease-in-out',
+        omitEnd: true,
+        trimSpace: true,
     }).mount();
   });
 });
