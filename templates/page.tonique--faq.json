@@ -119,6 +119,12 @@
             "question": "Can I take it with coffee or supplements?",
             "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
           }
+        },
+        "category_pqmPzE": {
+          "type": "category",
+          "settings": {
+            "category_title": "Ingredients & dietary"
+          }
         }
       },
       "block_order": [
@@ -134,7 +140,8 @@
         "faq_QVnyxK",
         "faq_EfdwhC",
         "faq_yiBYFi",
-        "faq_Uxizyp"
+        "faq_Uxizyp",
+        "category_pqmPzE"
       ],
       "name": "FAQs",
       "settings": {
