@@ -295,6 +295,12 @@ position: absolute;
     padding: 0 10px;
   }
 
+    .vr-section--has-mobile-slider  .vr-heading {
+        font-size: 28px;
+        line-height: 36px;
+        letter-spacing: 1.12px;
+    }
+
   .vr-subtext {
     font-size: 14px;
     line-height: 20px;
