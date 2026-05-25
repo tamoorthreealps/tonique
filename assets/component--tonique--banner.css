@@ -6,7 +6,7 @@
 
 .component--tonique--banner--waves {
     position: absolute;
-    right: 0;
+    right: -40px;
     z-index: -1;
     width: 1031px;
     height: 650px;
