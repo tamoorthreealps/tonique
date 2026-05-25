@@ -125,6 +125,52 @@
           "settings": {
             "category_title": "Ingredients & dietary"
           }
+        },
+        "faq_4TaCrL": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "ingredients-dietary",
+            "question": "Is it gluten-free?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_Xn48w8": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "ingredients-dietary",
+            "question": "Is it dairy-free?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_d7HLQR": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "ingredients-dietary",
+            "question": "Is it keto-friendly?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_ejizTE": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "ingredients-dietary",
+            "question": "Safe during pregnancy or breastfeeding?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_JXcHyk": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "ingredients-dietary",
+            "question": "Are there allergens I should know about?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "category_NMaJUG": {
+          "type": "category",
+          "settings": {
+            "category_title": "Orders & shipping"
+          }
         }
       },
       "block_order": [
@@ -141,7 +187,13 @@
         "faq_EfdwhC",
         "faq_yiBYFi",
         "faq_Uxizyp",
-        "category_pqmPzE"
+        "category_pqmPzE",
+        "faq_4TaCrL",
+        "faq_Xn48w8",
+        "faq_d7HLQR",
+        "faq_ejizTE",
+        "faq_JXcHyk",
+        "category_NMaJUG"
       ],
       "name": "FAQs",
       "settings": {
