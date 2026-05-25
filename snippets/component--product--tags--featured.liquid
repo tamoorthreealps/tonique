@@ -1,6 +1,6 @@
-{% if product.tags.size > 0 %}
+{% if current_product.tags.size > 0 %}
   <div class="product-content--info--tags">
-    {% for tag in product.tags %}
+    {% for tag in current_product.tags %}
       <span class="product-tag">{{ tag }}</span>
     {% endfor %}
   </div>
