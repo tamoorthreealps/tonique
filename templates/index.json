@@ -499,6 +499,10 @@
             "quote": "“Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac.”",
             "signature": "shopify://shop_images/Vector.svg"
           }
+        },
+        "product_tags_eKtbpP": {
+          "type": "product-tags",
+          "settings": {}
         }
       },
       "block_order": [
@@ -515,7 +519,8 @@
         "buy_buttons_hqVM7e",
         "product_benefits_list_en7w9a",
         "metafield_accordions_VaggLt",
-        "product_testimonial_xmdc49"
+        "product_testimonial_xmdc49",
+        "product_tags_eKtbpP"
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
