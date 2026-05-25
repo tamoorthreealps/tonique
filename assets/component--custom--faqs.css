@@ -148,7 +148,7 @@
     font-weight: 400;
 }
 
-#customFaqs .faq-question .faq-item.active  span:first-child{
+#customFaqs .faq-item.active  span:first-child{
 	color: #977B4F;
 }
 
