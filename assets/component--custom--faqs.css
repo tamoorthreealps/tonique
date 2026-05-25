@@ -68,6 +68,7 @@
 	opacity: 0;
 	transform: translateX(-5px);
 	transition: .3s ease;
+	display: none;
 }
 
 #customFaqs .custom-faqs__sidebar li.active {
@@ -77,6 +78,7 @@
 #customFaqs .custom-faqs__sidebar li.active svg {
 	opacity: 1;
 	transform: translateX(0);
+	display: inherit;
 }
 
 .custom-faqs__sidebar_content_footer {
