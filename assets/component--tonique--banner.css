@@ -130,7 +130,7 @@
     margin: 0;
 }
 
-.component--tonique--badges_circle.tonique--badge-4 {
+.component--tonique--badges_circle.tonique--badge-4 .component--tonique--badges_heading {
     font-size:32px;
     line-height:32px;
 }
