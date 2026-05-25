@@ -144,6 +144,7 @@ font-size: 27px;
     color: #A88958;
     font-family: 'Archivo';
     margin: 0;
+    text-transform: uppercase;
 }
 
 .component--tonique--badges_circle.tonique--badge-4 .component--tonique--badges_subheading {
@@ -198,6 +199,7 @@ font-size: 27px;
 .component--tonique--badges_subheading {
     font-size: 20px;
     line-height: 16px;
+    text-transform: none;
 }
 .component--tonique--badges_circle.tonique--badge-2 .component--tonique--badges_subheading,
 .component--tonique--badges_circle.tonique--badge-3 .component--tonique--badges_subheading {
