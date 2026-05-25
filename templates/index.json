@@ -418,6 +418,10 @@
             "text_style": "uppercase"
           }
         },
+        "product_tags_eKtbpP": {
+          "type": "product-tags",
+          "settings": {}
+        },
         "text_cA7UyF": {
           "type": "text",
           "settings": {
@@ -499,14 +503,11 @@
             "quote": "“Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac.”",
             "signature": "shopify://shop_images/Vector.svg"
           }
-        },
-        "product_tags_eKtbpP": {
-          "type": "product-tags",
-          "settings": {}
         }
       },
       "block_order": [
         "text_DQMwHm",
+        "product_tags_eKtbpP",
         "text_cA7UyF",
         "title_aQmhdP",
         "short_description_FXnWL4",
@@ -519,8 +520,7 @@
         "buy_buttons_hqVM7e",
         "product_benefits_list_en7w9a",
         "metafield_accordions_VaggLt",
-        "product_testimonial_xmdc49",
-        "product_tags_eKtbpP"
+        "product_testimonial_xmdc49"
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
