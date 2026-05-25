@@ -171,6 +171,46 @@
           "settings": {
             "category_title": "Orders & shipping"
           }
+        },
+        "faq_EAep9F": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "orders-shipping",
+            "question": "How long does shipping take?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_9JVgTM": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "orders-shipping",
+            "question": "How does the subscription work?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_bHQTGV": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "orders-shipping",
+            "question": "How do I skip, pause, or cancel?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_N9eXAD": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "orders-shipping",
+            "question": "Why does the subscription start at 30 a month?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_WPMhVe": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "orders-shipping",
+            "question": "Can I return Tonique if I don’t like it?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
         }
       },
       "block_order": [
@@ -193,7 +233,12 @@
         "faq_d7HLQR",
         "faq_ejizTE",
         "faq_JXcHyk",
-        "category_NMaJUG"
+        "category_NMaJUG",
+        "faq_EAep9F",
+        "faq_9JVgTM",
+        "faq_bHQTGV",
+        "faq_N9eXAD",
+        "faq_WPMhVe"
       ],
       "name": "FAQs",
       "settings": {
