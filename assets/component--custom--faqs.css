@@ -122,6 +122,10 @@
 	border-bottom: 1px solid #433723;
 }
 
+#customFaqs .faq-item:first-child {
+	border-top: 1px solid #433723;
+}
+
 #customFaqs .faq-question {
 	display: flex;
 	align-items: center;
