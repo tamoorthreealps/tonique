@@ -16,7 +16,7 @@
 #customFaqs .custom-faqs__sidebar {
 	width: 450px;
 	position: sticky;
-	top: 0px;
+	top: 55px;
 	height: fit-content;
 }
 
