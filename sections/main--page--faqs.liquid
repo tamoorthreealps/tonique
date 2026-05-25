@@ -90,10 +90,10 @@
                 class="{% if forloop.first %}active{% endif %}"
                 data-target="{{ block.settings.category_title | handle }}"
               >
-                <span>{{ block.settings.category_title }}</span>
                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9.85098 0L8.88889 0.935593L13.4275 5.34915H0V6.65085H13.4275L8.88889 11.0644L9.85098 12L15.5399 6.4678L16 6L15.5399 5.5322L9.85098 0Z" fill="#A88958"/>
                 </svg>
+                <span>{{ block.settings.category_title }}</span>
               </li>
             {% endif %}
           {% endfor %}
