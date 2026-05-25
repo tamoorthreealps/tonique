@@ -42,6 +42,11 @@
     display: inline-block;
 }
 
+.component--tonique--content--image {
+    display: flex;
+    gap: 165px;
+}
+
 .component--tonique--image {
     position: relative;
 }
