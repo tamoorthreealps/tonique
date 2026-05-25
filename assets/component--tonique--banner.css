@@ -70,6 +70,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: absolute;
+    top: 151px;
+    left: -76px;
 }
 
 .component--tonique--badges_heading {
