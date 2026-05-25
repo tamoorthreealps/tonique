@@ -13,7 +13,6 @@
 
 /* ── Inner layout ───────────────────────────────── */
 .hb-inner {
-  position: relative;
   display: flex;
   flex-direction: column;
 }
