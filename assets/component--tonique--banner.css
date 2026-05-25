@@ -1,5 +1,7 @@
 .component--tonique--banner {
     padding: 96px 0 120px;
+    position: relative;
+    overflow:hidden;
 }
 
 .component--tonique--banner--container {
