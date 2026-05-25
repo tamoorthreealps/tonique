@@ -126,6 +126,10 @@
 	border-top: 1px solid #433723;
 }
 
+#customFaqs .faq-item.active{
+	border-color:#A88958;
+}
+
 #customFaqs .faq-question {
 	display: flex;
 	align-items: center;
