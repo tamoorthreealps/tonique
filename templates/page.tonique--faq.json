@@ -73,6 +73,52 @@
             "question": "What if I don't love it?",
             "answer": "<p>Collagen alone is missing essential amino acids your body needs. We add a Targeted Amino Complex to fill the gaps — so every 16g supports muscle, skin, hair, and joints.</p>"
           }
+        },
+        "category_GnPxp8": {
+          "type": "category",
+          "settings": {
+            "category_title": "Using it"
+          }
+        },
+        "faq_qdqGcK": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "using-it",
+            "question": "How do I use a pouch?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_QVnyxK": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "using-it",
+            "question": "Before or after a workout?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_EfdwhC": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "using-it",
+            "question": "Can I have more than one a day?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_yiBYFi": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "using-it",
+            "question": "Does it need to be refrigerated?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
+        },
+        "faq_Uxizyp": {
+          "type": "faq",
+          "settings": {
+            "faq_category": "using-it",
+            "question": "Can I take it with coffee or supplements?",
+            "answer": "<p>Tear the top, drink it, toss the pouch. That’s it. No mixing, no water needed, no follow-up cleanup.</p>"
+          }
         }
       },
       "block_order": [
@@ -82,12 +128,16 @@
         "faq_7kF8q7",
         "faq_Q3wLBa",
         "faq_MQi8j3",
-        "faq_xVcyz7"
+        "faq_xVcyz7",
+        "category_GnPxp8",
+        "faq_qdqGcK",
+        "faq_QVnyxK",
+        "faq_EfdwhC",
+        "faq_yiBYFi",
+        "faq_Uxizyp"
       ],
       "name": "FAQs",
       "settings": {
-        "section_bg": "#ffffff",
-        "content_bg": "#ffffff",
         "mobile_title": "FAQs"
       }
     }
