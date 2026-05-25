@@ -58,12 +58,7 @@ font-size: 27px;
     flex-direction: column;
 }
 
-
-.component--tonique--image {
-    position: relative;
-}
-
-.component--tonique--image_hold {
+.component--tonique--image_hold, .component--tonique--image {
     width: 152px;
     position: relative;
     margin: 0 auto;
@@ -185,6 +180,10 @@ font-size: 27px;
     letter-spacing: 0.64px;
     padding: 16px 43px;
     display:inline-block;
+}
+.component--tonique--image {
+    max-width:100%;
+    margin:0;
 }
 .component--tonique--image_hold {
     width: 278px;
