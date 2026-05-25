@@ -398,9 +398,9 @@
         "heading": "FREQUENTLY ASKED QUESTIONS",
         "heading_mobile": "FAQs",
         "image": "shopify://shop_images/IMG.png",
-        "faqs_text_before": "",
-        "faqs_text": "More questions? Visit our FAQs",
-        "faqs_url": ""
+        "faqs_text_before": "More questions?",
+        "faqs_text": "Visit our FAQs",
+        "faqs_url": "#"
       }
     },
     "featured_product_yi3prj": {
