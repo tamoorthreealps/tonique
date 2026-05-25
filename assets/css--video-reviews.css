@@ -256,7 +256,9 @@ position: absolute;
   height: 16px;
   stroke: #fff;
 }
-
+.vr-heading--mobile {
+  display: none;
+}
 /* ── Mobile ─────────────────────────────────────── */
 @media screen and (max-width: 767px) {
   .vr-section {
@@ -349,5 +351,12 @@ position: absolute;
 
   .vr-modal__inner {
     width: min(95vw, 360px);
+  }
+    .vr-heading--desktop {
+    display: none;
+  }
+
+  .vr-heading--mobile {
+    display: block;
   }
 }
