@@ -68,7 +68,6 @@
 
 <section class="custom-faqs" id="customFaqs-{{ section.id }}">
   <div class="custom-faqs__wrapper page-width">
-
     <div class="custom-faqs__mobile-top">
       <h2>{{ section.settings.mobile_title }}</h2>
 
@@ -105,17 +104,14 @@
     </div>
 
     <div class="custom-faqs__content">
-
       {% for block in section.blocks %}
         {% if block.type == 'category' %}
-
           {% assign category_handle = block.settings.category_title | handle %}
 
           <div
             class="faq-category {% if forloop.first %}active-mobile{% endif %}"
             id="{{ category_handle }}"
           >
-
             <h2>{{ block.settings.category_title }}</h2>
 
             {% for faq in section.blocks %}
@@ -123,7 +119,6 @@
                 {% assign faq_handle = faq.settings.faq_category | handle %}
 
                 {% if faq_handle == category_handle %}
-
                   <div class="faq-item {% if forloop.first %}active{% endif %}">
                     <div class="faq-question">
                       <span>{{ faq.settings.question }}</span>
@@ -134,313 +129,287 @@
                       {{ faq.settings.answer }}
                     </div>
                   </div>
-
                 {% endif %}
               {% endif %}
             {% endfor %}
-
           </div>
-
         {% endif %}
       {% endfor %}
-
     </div>
-
   </div>
 </section>
 
 <style>
-#customFaqs-{{ section.id }}{
-  background: {{ section.settings.section_bg }};
-  padding: 80px 20px;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__wrapper{
-  background: {{ section.settings.content_bg }};
-  display:flex;
-  gap:80px;
-  padding:60px;
-  max-width:1300px;
-  margin:auto;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__sidebar{
-  width:240px;
-  position:sticky;
-  top:120px;
-  height:fit-content;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__sidebar ul{
-  margin:0;
-  padding:0;
-  list-style:none;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__sidebar li{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:14px 0;
-  border-bottom:1px solid rgba(0,0,0,.1);
-  cursor:pointer;
-  color:#8b8777;
-  transition:.3s ease;
-  font-size:13px;
-  letter-spacing:1px;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__sidebar li svg{
-  width:18px;
-  height:18px;
-  opacity:0;
-  transform:translateX(-5px);
-  transition:.3s ease;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__sidebar li.active{
-  color:#000;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__sidebar li.active svg{
-  opacity:1;
-  transform:translateX(0);
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__content{
-  flex:1;
-}
-
-#customFaqs-{{ section.id }} .faq-category{
-  margin-bottom:80px;
-  scroll-margin-top:120px;
-}
-
-#customFaqs-{{ section.id }} .faq-category h2{
-  font-size:14px;
-  letter-spacing:2px;
-  margin:0 0 30px;
-  color:#9c7d52;
-}
-
-#customFaqs-{{ section.id }} .faq-item{
-  border-bottom:1px solid rgba(0,0,0,.1);
-}
-
-#customFaqs-{{ section.id }} .faq-question{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  cursor:pointer;
-  padding:22px 0;
-}
-
-#customFaqs-{{ section.id }} .faq-question span:first-child{
-  font-size:15px;
-  color:#000;
-}
-
-#customFaqs-{{ section.id }} .faq-question span:last-child{
-  transition:.3s ease;
-  font-size:22px;
-  line-height:1;
-}
-
-#customFaqs-{{ section.id }} .faq-item.active .faq-question span:last-child{
-  transform:rotate(45deg);
-}
-
-#customFaqs-{{ section.id }} .faq-answer{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .5s ease,padding .5s ease;
-}
-
-#customFaqs-{{ section.id }} .faq-answer p{
-  margin:0;
-  padding:0 0 24px;
-  line-height:1.8;
-  color:#555;
-}
-
-#customFaqs-{{ section.id }} .faq-item.active .faq-answer{
-  max-height:500px;
-}
-
-#customFaqs-{{ section.id }} .custom-faqs__mobile-top{
-  display:none;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-@media(max-width:989px){
-
   #customFaqs-{{ section.id }}{
-    padding:40px 16px;
+    background: {{ section.settings.section_bg }};
+    padding: 80px 20px;
   }
 
   #customFaqs-{{ section.id }} .custom-faqs__wrapper{
-    flex-direction:column;
-    gap:30px;
-    padding:24px 20px;
+    background: {{ section.settings.content_bg }};
+    display:flex;
+    gap:80px;
+    padding:60px;
+    max-width:1300px;
+    margin:auto;
   }
 
   #customFaqs-{{ section.id }} .custom-faqs__sidebar{
-    display:none;
+    width:240px;
+    position:sticky;
+    top:120px;
+    height:fit-content;
   }
 
-  #customFaqs-{{ section.id }} .custom-faqs__mobile-top{
-    display:block;
+  #customFaqs-{{ section.id }} .custom-faqs__sidebar ul{
+    margin:0;
+    padding:0;
+    list-style:none;
   }
 
-  #customFaqs-{{ section.id }} .custom-faqs__mobile-top h2{
-    margin:0 0 20px;
-    font-size:22px;
-  }
-
-  #customFaqs-{{ section.id }} .custom-faqs__mobile-dropdown select{
-    width:100%;
-    height:52px;
-    padding:0 16px;
-    border:1px solid rgba(0,0,0,.1);
-    background:transparent;
+  #customFaqs-{{ section.id }} .custom-faqs__sidebar li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    cursor:pointer;
+    color:#8b8777;
+    transition:.3s ease;
     font-size:13px;
     letter-spacing:1px;
   }
 
-  #customFaqs-{{ section.id }} .faq-category{
-    display:none;
-    margin-bottom:0;
+  #customFaqs-{{ section.id }} .custom-faqs__sidebar li svg{
+    width:18px;
+    height:18px;
+    opacity:0;
+    transform:translateX(-5px);
+    transition:.3s ease;
   }
 
-  #customFaqs-{{ section.id }} .faq-category.active-mobile{
-    display:block;
+  #customFaqs-{{ section.id }} .custom-faqs__sidebar li.active{
+    color:#000;
+  }
+
+  #customFaqs-{{ section.id }} .custom-faqs__sidebar li.active svg{
+    opacity:1;
+    transform:translateX(0);
+  }
+
+  #customFaqs-{{ section.id }} .custom-faqs__content{
+    flex:1;
+  }
+
+  #customFaqs-{{ section.id }} .faq-category{
+    margin-bottom:80px;
+    scroll-margin-top:120px;
+  }
+
+  #customFaqs-{{ section.id }} .faq-category h2{
+    font-size:14px;
+    letter-spacing:2px;
+    margin:0 0 30px;
+    color:#9c7d52;
+  }
+
+  #customFaqs-{{ section.id }} .faq-item{
+    border-bottom:1px solid rgba(0,0,0,.1);
   }
 
   #customFaqs-{{ section.id }} .faq-question{
-    padding:18px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    cursor:pointer;
+    padding:22px 0;
   }
 
   #customFaqs-{{ section.id }} .faq-question span:first-child{
-    font-size:14px;
+    font-size:15px;
+    color:#000;
   }
 
-}
-</style>
+  #customFaqs-{{ section.id }} .faq-question span:last-child{
+    transition:.3s ease;
+    font-size:22px;
+    line-height:1;
+  }
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
+  #customFaqs-{{ section.id }} .faq-item.active .faq-question span:last-child{
+    transform:rotate(45deg);
+  }
 
-  const section = document.querySelector('#customFaqs-{{ section.id }}');
+  #customFaqs-{{ section.id }} .faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .5s ease,padding .5s ease;
+  }
 
-  if(!section) return;
+  #customFaqs-{{ section.id }} .faq-answer p{
+    margin:0;
+    padding:0 0 24px;
+    line-height:1.8;
+    color:#555;
+  }
 
-  const sidebarItems = section.querySelectorAll('.custom-faqs__sidebar li');
-  const categories = section.querySelectorAll('.faq-category');
+  #customFaqs-{{ section.id }} .faq-item.active .faq-answer{
+    max-height:500px;
+  }
 
-  sidebarItems.forEach(item => {
+  #customFaqs-{{ section.id }} .custom-faqs__mobile-top{
+    display:none;
+  }
 
-    item.addEventListener('click', function(){
+  html{
+    scroll-behavior:smooth;
+  }
 
-      const target = this.dataset.target;
-      const targetEl = document.getElementById(target);
+  @media(max-width:989px){
 
-      if(targetEl){
+    #customFaqs-{{ section.id }}{
+      padding:40px 16px;
+    }
 
-        window.scrollTo({
-          top: targetEl.offsetTop - 100,
-          behavior: 'smooth'
-        });
+    #customFaqs-{{ section.id }} .custom-faqs__wrapper{
+      flex-direction:column;
+      gap:30px;
+      padding:24px 20px;
+    }
 
-      }
+    #customFaqs-{{ section.id }} .custom-faqs__sidebar{
+      display:none;
+    }
 
-    });
+    #customFaqs-{{ section.id }} .custom-faqs__mobile-top{
+      display:block;
+    }
 
-  });
+    #customFaqs-{{ section.id }} .custom-faqs__mobile-top h2{
+      margin:0 0 20px;
+      font-size:22px;
+    }
 
-  const observer = new IntersectionObserver((entries) => {
+    #customFaqs-{{ section.id }} .custom-faqs__mobile-dropdown select{
+      width:100%;
+      height:52px;
+      padding:0 16px;
+      border:1px solid rgba(0,0,0,.1);
+      background:transparent;
+      font-size:13px;
+      letter-spacing:1px;
+    }
 
-    entries.forEach(entry => {
+    #customFaqs-{{ section.id }} .faq-category{
+      display:none;
+      margin-bottom:0;
+    }
 
-      if(entry.isIntersecting){
+    #customFaqs-{{ section.id }} .faq-category.active-mobile{
+      display:block;
+    }
 
-        const id = entry.target.getAttribute('id');
+    #customFaqs-{{ section.id }} .faq-question{
+      padding:18px 0;
+    }
 
-        sidebarItems.forEach(item => {
-
-          item.classList.remove('active');
-
-          if(item.dataset.target === id){
-            item.classList.add('active');
-          }
-
-        });
-
-      }
-
-    });
-
-  }, {
-    threshold: 0.3
-  });
-
-  categories.forEach(section => {
-    observer.observe(section);
-  });
-
-  const faqItems = section.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-
-    const question = item.querySelector('.faq-question');
-
-    question.addEventListener('click', function(){
-
-      const isActive = item.classList.contains('active');
-
-      faqItems.forEach(i => {
-        i.classList.remove('active');
-      });
-
-      if(!isActive){
-        item.classList.add('active');
-      }
-
-    });
-
-  });
-
-  const select = document.getElementById('faqCategorySelect-{{ section.id }}');
-
-  function mobileCategoryShow(value){
-
-    categories.forEach(cat => {
-      cat.classList.remove('active-mobile');
-    });
-
-    const target = section.querySelector('#' + value);
-
-    if(target){
-      target.classList.add('active-mobile');
+    #customFaqs-{{ section.id }} .faq-question span:first-child{
+      font-size:14px;
     }
 
   }
+</style>
 
-  if(window.innerWidth < 990 && select){
-    mobileCategoryShow(select.value);
-  }
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('#customFaqs-{{ section.id }}');
 
-  if(select){
+    if (!section) return;
 
-    select.addEventListener('change', function(){
-      mobileCategoryShow(this.value);
+    const sidebarItems = section.querySelectorAll('.custom-faqs__sidebar li');
+    const categories = section.querySelectorAll('.faq-category');
+
+    sidebarItems.forEach((item) => {
+      item.addEventListener('click', function () {
+        const target = this.dataset.target;
+        const targetEl = document.getElementById(target);
+
+        if (targetEl) {
+          window.scrollTo({
+            top: targetEl.offsetTop - 100,
+            behavior: 'smooth',
+          });
+        }
+      });
     });
 
-  }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
 
-});
+            sidebarItems.forEach((item) => {
+              item.classList.remove('active');
+
+              if (item.dataset.target === id) {
+                item.classList.add('active');
+              }
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    categories.forEach((section) => {
+      observer.observe(section);
+    });
+
+    const faqItems = section.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item) => {
+      const question = item.querySelector('.faq-question');
+
+      question.addEventListener('click', function () {
+        const isActive = item.classList.contains('active');
+
+        faqItems.forEach((i) => {
+          i.classList.remove('active');
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    const select = document.getElementById('faqCategorySelect-{{ section.id }}');
+
+    function mobileCategoryShow(value) {
+      categories.forEach((cat) => {
+        cat.classList.remove('active-mobile');
+      });
+
+      const target = section.querySelector('#' + value);
+
+      if (target) {
+        target.classList.add('active-mobile');
+      }
+    }
+
+    if (window.innerWidth < 990 && select) {
+      mobileCategoryShow(select.value);
+    }
+
+    if (select) {
+      select.addEventListener('change', function () {
+        mobileCategoryShow(this.value);
+      });
+    }
+  });
 </script>
