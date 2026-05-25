@@ -20,6 +20,25 @@
 	height: fit-content;
 }
 
+.custom-faqs__sidebar_heading {
+    font-family: 'Archivo';
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: 2.88px;
+    color: #977B4F;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+}
+
+.custom-faqs__sidebar_content {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #433723;
+    font-family: 'Archivo';
+    margin: 0 0 28px;
+}
+
 #customFaqs .custom-faqs__sidebar ul {
 	margin: 0;
 	padding: 0;
