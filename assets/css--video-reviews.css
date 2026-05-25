@@ -370,6 +370,13 @@ position: absolute;
     letter-spacing: 0.12px;
   }
 
+  .vr-section--has-mobile-slider .vr-card__role {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    max-width: 144px;
+}
+
   .vr-note {
             margin-top: 37px;
         padding-top: 16px;
