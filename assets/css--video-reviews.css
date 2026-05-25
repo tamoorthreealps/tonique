@@ -312,7 +312,6 @@ position: absolute;
 
   .vr-section--mobile-slider .vr-card {
     width: 100%;
-    gap:0;
     flex:none;
   }
 
