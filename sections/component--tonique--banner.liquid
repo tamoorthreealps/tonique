@@ -1,59 +1,136 @@
 {{ 'component--tonique--banner.css' | asset_url | stylesheet_tag }}
 
-<section class="component--tonique--banner">
-  <div class="component--tonique--banner--waves">
-    <img
-      src="https://cdn.shopify.com/s/files/1/0820/9688/1912/files/Vector_1.svg?v=1779697574"
-      alt=""
-      srcset="//drinktonique.myshopify.com/cdn/shop/files/waves-tonique.svg?v=1779358677&amp;width=352 352w, //drinktonique.myshopify.com/cdn/shop/files/waves-tonique.svg?v=1779358677&amp;width=832 832w, //drinktonique.myshopify.com/cdn/shop/files/waves-tonique.svg?v=1779358677&amp;width=1031 1031w"
-      width="1031"
-      height="708"
-      loading="eager"
-    >
-  </div>
-  <div class="component--tonique--banner--container">
-    <div class="component--tonique--content--image">
-      <div class="component--tonique--content">
-        <h1 class="component--tonique--heading">Beauty + Protein<br /> in one clean pouch</h1>
-        <p class="component--tonique--description">
-          15g of complete protein. All natural. Zero sugar. Collagen + whey. Beauty nutrients. Adaptogens. One pouch.
-          Done.
-        </p>
-        <a href="#" class="component--tonique--button">SHOP NOW</a>
-      </div>
-      <div class="component--tonique--image">
-        <div class="component--tonique--image_hold">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0820/9688/1912/files/Vector_6.svg?v=1779697707"
-            srcset="//drinktonique.myshopify.com/cdn/shop/files/bottle.svg?v=1779190727&amp;width=278 278w, //drinktonique.myshopify.com/cdn/shop/files/bottle.svg?v=1779190727&amp;width=400 400w, //drinktonique.myshopify.com/cdn/shop/files/bottle.svg?v=1779190727&amp;width=556 556w, //drinktonique.myshopify.com/cdn/shop/files/bottle.svg?v=1779190727&amp;width=600 600w"
-            width="640"
-            height="1374"
-            loading="eager"
-            class="hb-media__img"
-            sizes="(min-width: 767px) 278px, 240px"
-          >
-        </div>
-        <div class="component--tonique--badges">
-          <div class="component--tonique--badges_circle tonique--badge-1">
-            <p class="component--tonique--badges_heading">15g</p>
-            <p class="component--tonique--badges_subheading">PROTEIN</p>
-          </div>
-          <div class="component--tonique--badges_circle tonique--badge-2">
-            <p class="component--tonique--badges_heading">70</p>
-            <p class="component--tonique--badges_subheading">Calories</p>
-          </div>
-          <div class="component--tonique--badges_circle tonique--badge-3">
-            <p class="component--tonique--badges_heading">0g</p>
-            <p class="component--tonique--badges_subheading">Sugar</p>
-          </div>
-          <div class="component--tonique--badges_circle tonique--badge-4">
-            <p class="component--tonique--badges_heading">1oz</p>
-            <p class="component--tonique--badges_subheading">POUCH</p>
-          </div>
-        </div>
-      </div>
+{% liquid
+  assign sid = section.id
+%}
+
+<section
+  class="component--tonique--banner"
+  id="ToniqueBanner-{{ sid }}"
+  style="
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+
+    --pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+  "
+  {{ section.shopify_attributes }}
+>
+
+  {%- if section.settings.wave_image != blank -%}
+    <div class="component--tonique--banner--waves">
+
+      {{
+        section.settings.wave_image
+        | image_url: width: 2200
+        | image_tag:
+          loading: 'lazy',
+          class: 'component--tonique--waves-image',
+          widths: '400,600,800,1200,1600,2000',
+          sizes: '(min-width: 768px) 100vw, 150vw',
+          alt: ''
+      }}
+
     </div>
+  {%- endif -%}
+
+  <div class="component--tonique--banner--container page-width">
+
+    <div class="component--tonique--content--image">
+
+      <div class="component--tonique--content">
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="component--tonique--heading">
+            {{ section.settings.heading }}
+          </h1>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="component--tonique--description rte">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank -%}
+          <a
+            href="{{ section.settings.button_link | default: '#' }}"
+            class="component--tonique--button"
+          >
+            {{ section.settings.button_text }}
+          </a>
+        {%- endif -%}
+
+      </div>
+
+      <div class="component--tonique--image">
+
+        {%- if section.settings.product_image != blank -%}
+
+          <div class="component--tonique--image_hold">
+
+            {{
+              section.settings.product_image
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                class: 'hb-media__img',
+                widths: '240,320,400,500,700,900,1200',
+                sizes: '(min-width: 768px) 278px, 240px',
+                alt: section.settings.heading
+            }}
+
+          </div>
+
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+
+          <div class="component--tonique--badges">
+
+            {%- for block in section.blocks -%}
+
+              <div
+                class="component--tonique--badges_circle"
+                {{ block.shopify_attributes }}
+                style="
+                  --badge-top-desktop: {{ block.settings.top_desktop }}%;
+                  --badge-left-desktop: {{ block.settings.left_desktop }}%;
+
+                  --badge-top-mobile: {{ block.settings.top_mobile }}%;
+                  --badge-left-mobile: {{ block.settings.left_mobile }}%;
+
+                  --badge-size-desktop: {{ block.settings.size_desktop }}px;
+                  --badge-size-mobile: {{ block.settings.size_mobile }}px;
+                "
+              >
+
+                {%- if block.settings.heading != blank -%}
+                  <p class="component--tonique--badges_heading">
+                    {{ block.settings.heading }}
+                  </p>
+                {%- endif -%}
+
+                {%- if block.settings.subheading != blank -%}
+                  <p class="component--tonique--badges_subheading">
+                    {{ block.settings.subheading }}
+                  </p>
+                {%- endif -%}
+
+              </div>
+
+            {%- endfor -%}
+
+          </div>
+
+        {%- endif -%}
+
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
 {% schema %}
@@ -61,10 +138,217 @@
   "name": "Tonique Banner",
   "tag": "section",
   "class": "tonique--banner",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "wave_image",
+      "label": "Wave image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Beauty + Protein\nin one clean pouch"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 300,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 300,
+      "step": 4,
+      "unit": "px",
+      "default": 120
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "15g"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "PROTEIN"
+        },
+
+        {
+          "type": "header",
+          "content": "Desktop Position"
+        },
+
+        {
+          "type": "range",
+          "id": "top_desktop",
+          "label": "Top desktop",
+          "min": -20,
+          "max": 120,
+          "step": 2,
+          "unit": "%",
+          "default": 24
+        },
+        {
+          "type": "range",
+          "id": "left_desktop",
+          "label": "Left desktop",
+          "min": -20,
+          "max": 120,
+          "step": 2,
+          "unit": "%",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "size_desktop",
+          "label": "Size desktop",
+          "min": 60,
+          "max": 220,
+          "step": 2,
+          "unit": "px",
+          "default": 120
+        },
+
+        {
+          "type": "header",
+          "content": "Mobile Position"
+        },
+
+        {
+          "type": "range",
+          "id": "top_mobile",
+          "label": "Top mobile",
+          "min": -20,
+          "max": 120,
+          "step": 2,
+          "unit": "%",
+          "default": 22
+        },
+        {
+          "type": "range",
+          "id": "left_mobile",
+          "label": "Left mobile",
+          "min": -20,
+          "max": 120,
+          "step": 2,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "size_mobile",
+          "label": "Size mobile",
+          "min": 50,
+          "max": 180,
+          "step": 2,
+          "unit": "px",
+          "default": 90
+        }
+      ]
+    }
+  ],
+
   "presets": [
     {
-      "name": "Tonique Banner"
+      "name": "Tonique Banner",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "heading": "15g",
+            "subheading": "PROTEIN"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "heading": "70",
+            "subheading": "Calories"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "heading": "0g",
+            "subheading": "Sugar"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "heading": "1oz",
+            "subheading": "POUCH"
+          }
+        }
+      ]
     }
   ]
 }
