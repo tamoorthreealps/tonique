@@ -120,9 +120,14 @@
     margin: 0;
 }
 
+.component--tonique--badges_circle.tonique--badge-4 .component--tonique--badges_heading {
+    font-size:32px;
+    line-height:32px;
+}
+
 .component--tonique--badges_subheading {
     font-size: 20px;
-    line-height: 26px;
+    line-height: 16px;
     letter-spacing: 0;
     font-weight: 500;
     color: #A88958;
@@ -130,7 +135,11 @@
     margin: 0;
 }
 
-.component--tonique--badges_circle.tonique--badge-4 .component--tonique--badges_heading {
-    font-size:32px;
-    line-height:32px;
+.component--tonique--badges_circle.tonique--badge-2 .component--tonique--badges_subheading,
+.component--tonique--badges_circle.tonique--badge-3 .component--tonique--badges_subheading {
+    font-size:18px;
+}
+
+.component--tonique--badges_circle.tonique--badge-4 .component--tonique--badges_subheading {
+    font-size:12px;
 }
