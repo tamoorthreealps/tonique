@@ -65,15 +65,25 @@
           Everything you might want to know about Tonique — the product, the ingredients, and how it fits into your day.
         </p>
         <div class="custom-faqs__mobile-dropdown">
-          <select id="faqCategorySelect">
-            {% for block in section.blocks %}
-              {% if block.type == 'category' %}
-                <option value="{{ block.settings.category_title | handle }}">
-                  {{ block.settings.category_title }}
-                </option>
-              {% endif %}
-            {% endfor %}
-          </select>
+          <label class="faq-mobile-label"> CATEGORY </label>
+
+          <div class="faq-mobile-select">
+            <select id="faqCategorySelect">
+              {% for block in section.blocks %}
+                {% if block.type == 'category' %}
+                  <option value="{{ block.settings.category_title | handle }}">
+                    {{ block.settings.category_title }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+
+            <span class="faq-mobile-arrow">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7L10 13L15 7" fill="#4B3D28"/>
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -162,9 +172,9 @@
         {% endfor %}
       </div>
       <p class="custom-faqs__sidebar_content_footer custom-faqs__sidebar_content_footer_mobile">
-          Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply
-          within one business day.
-        </p>
+        Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply
+        within one business day.
+      </p>
     </div>
   </div>
 </section>
