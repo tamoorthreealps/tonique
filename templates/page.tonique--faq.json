@@ -243,7 +243,8 @@
       "name": "FAQs",
       "settings": {
         "mobile_title": "FAQs",
-        "content": "Everything you might want to know about Tonique — the product, the ingredients, and how it fits into your day."
+        "content": "Everything you might want to know about Tonique — the product, the ingredients, and how it fits into your day.",
+        "bottom_content": "<p>Email us at <a href=\"mailto:hello@tonique.com\" title=\"mailto:hello@tonique.com\">hello@tonique.com</a>. We read everything and reply within one business day.</p>"
       }
     }
   },
