@@ -47,13 +47,21 @@
             "heading": "3. How we use your information",
             "content": "<p>We use your information to:</p><ul><li>Take and fulfill orders, process payments, and run subscriptions</li><li>Send you order confirmations, shipping updates, and account messages</li><li>Send marketing emails and texts you’ve opted in to</li><li>Run our referral and affiliate programs</li><li>Improve the Site, the product, and the customer experience</li><li>Run advertising and measure how it performs</li><li>Prevent fraud and keep the Site secure</li><li>Meet legal and tax requirements</li></ul>"
           }
+        },
+        "content_tDP4hn": {
+          "type": "content",
+          "settings": {
+            "heading": "4. The vendors we use",
+            "content": "<p>We work with a small set of trusted vendors to run Tonique. They process data on our behalf and are held to confidentiality terms. As of the launch, this includes:</p><ul><li><strong>Shopify</strong> — site hosting, checkout, and order management</li><li><strong>Recharge (or our subscription platform of record)</strong> — subscription billing and management</li><li><strong>Klaviyo</strong> — email and SMS marketing</li><li><strong>Shopify Payments / Shop Pay / Apple Pay / Google Pay</strong> — payment processing</li><li><strong>Our fulfillment and shipping partners</strong> — to pack and deliver your order</li><li><strong>Google Analytics, Meta Pixel, TikTok Pixel</strong> — site analytics and ad measurement</li><li><strong>Our reviews app</strong> — collecting and displaying reviews</li><li><strong>Our referral and affiliate platform</strong> — tracking referrals and affiliate links</li></ul><p><em>*Drafting note: This vendor list should be reconfirmed at launch and updated whenever a new tool is added or removed. Some jurisdictions require this list to be specific.</em></p>"
+          }
         }
       },
       "block_order": [
         "content_6A636Y",
         "content_6PiArP",
         "content_awxwaU",
-        "content_iyM4pq"
+        "content_iyM4pq",
+        "content_tDP4hn"
       ],
       "name": "Privacy Policy",
       "settings": {
