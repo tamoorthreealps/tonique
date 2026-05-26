@@ -98,8 +98,8 @@
 	text-decoration: none;
 }
 
-.custom-faqs__sidebar_content_footer_mobile{
-	display:none;
+.custom-faqs__sidebar_content_footer_mobile {
+	display: none;
 }
 
 #customFaqs .custom-faqs__content {
@@ -239,8 +239,9 @@
 		display: block;
 	}
 
-	.faq-mobile-select, .custom-faqs__mobile-dropdown{
-		position:relative;
+	.faq-mobile-select,
+	.custom-faqs__mobile-dropdown {
+		position: relative;
 	}
 
 	.faq-mobile-arrow {
@@ -251,14 +252,14 @@
 	}
 
 	.faq-mobile-label {
-        font-size: 10px;
-        line-height: 12px;
-        color: #977b4f;
-        font-weight: 500;
-        letter-spacing: 1.2px;
-        position: absolute;
-        left: 16px;
-        top: 12px;
+		font-size: 10px;
+		line-height: 12px;
+		color: #977b4f;
+		font-weight: 500;
+		letter-spacing: 1.2px;
+		position: absolute;
+		left: 16px;
+		top: 12px;
 	}
 
 	#customFaqs .custom-faqs__mobile-dropdown select {
@@ -272,9 +273,9 @@
 		outline: none;
 		box-shadow: none;
 		text-transform: uppercase;
-		appearance:none;
-		-webkit-appearance:none;
-		-moz-appearance:none;
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
 	}
 
 	#customFaqs .faq-category {
@@ -301,7 +302,7 @@
 		margin: 0;
 	}
 
-	.custom-faqs__sidebar_content_footer_mobile{
+	.custom-faqs__sidebar_content_footer_mobile {
 		display: initial;
 	}
 
