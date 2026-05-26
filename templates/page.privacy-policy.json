@@ -82,6 +82,41 @@
             "heading": "8. Your rights",
             "content": "<p>Depending on where you live, you may have the right to:</p><ul><li>Know what personal information we have about you</li><li>Get a copy of that information</li><li>Correct anything that’s wrong</li><li>Delete your information</li><li> Opt out of certain uses, including the “sale” or “sharing” of personal information as those terms are defined under California law (we don’t sell, but we want you to know the option exists)</li><li>Withdraw consent where we’re relying on it</li></ul><p>To exercise any of these rights, email privacy@tonique.com. We may need to verify your identity before we act. We won’t discriminate against you for exercising your rights.</p><p><em>*Legal review note: If Tonique sells or ships internationally — particularly to the EU, UK, or Canada — additional rights and disclosures (GDPR/UK GDPR, PIPEDA) apply. Counsel should decide whether to add a region-specific addendum or restrict shipping geographically. The current draft assumes US-only at launch.</em></p>"
           }
+        },
+        "content_zcFbgJ": {
+          "type": "content",
+          "settings": {
+            "heading": "9. Children",
+            "content": "<p>Tonique is meant for adults. We don’t knowingly collect information from children under 13, and our products aren’t marketed to children. If you think a child has given us their information, email privacy@tonique.com and we’ll delete it.</p>"
+          }
+        },
+        "content_7QfEa3": {
+          "type": "content",
+          "settings": {
+            "heading": "10. How long we keep information",
+            "content": "<p>We keep your information as long as we need it to provide the service, run our business, and meet legal requirements. When we no longer need it, we delete or anonymize it. Account and order records are typically kept for the length of the customer relationship plus a reasonable period afterward (generally seven years for tax and accounting purposes).</p>"
+          }
+        },
+        "content_dN7H6A": {
+          "type": "content",
+          "settings": {
+            "heading": "11. Security",
+            "content": "<p>We use industry-standard measures to protect your information — encryption in transit, vetted vendors, and access controls inside our team. No system is perfect, so we can’t promise absolute security, but we treat your data with care.</p>"
+          }
+        },
+        "content_87XWf4": {
+          "type": "content",
+          "settings": {
+            "heading": "12. Changes to this policy",
+            "content": "<p>If we update this policy, we’ll change the “Last updated” date and let you know about material changes by email or a notice on the Site.</p>"
+          }
+        },
+        "content_RVNxBG": {
+          "type": "content",
+          "settings": {
+            "heading": "13. Contact",
+            "content": "<p>Privacy questions go to <a href=\"mailto:privacy@tonique.com\" title=\"mailto:privacy@tonique.com\">privacy@tonique.com</a>. General questions go to <a href=\"mailto:hello@tonique.com\" title=\"mailto:hello@tonique.com\">hello@tonique.com</a>.</p>"
+          }
         }
       },
       "block_order": [
@@ -93,7 +128,12 @@
         "content_P4GJ9P",
         "content_tfDjxP",
         "content_4tNP3x",
-        "content_hgjyUY"
+        "content_hgjyUY",
+        "content_zcFbgJ",
+        "content_7QfEa3",
+        "content_dN7H6A",
+        "content_87XWf4",
+        "content_RVNxBG"
       ],
       "name": "Privacy Policy",
       "settings": {
