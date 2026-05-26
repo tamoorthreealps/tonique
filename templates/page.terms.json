@@ -11,13 +11,20 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "terms_page_content_crMwmR": {
+      "type": "terms--page--content",
+      "name": "Terms & Conditions",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "terms_page_content_crMwmR"
   ]
 }
