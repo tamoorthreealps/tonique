@@ -20,7 +20,11 @@
     "terms_page_content_crMwmR": {
       "type": "terms--page--content",
       "name": "Terms & Conditions",
-      "settings": {}
+      "settings": {
+        "page_heading": "TERMS",
+        "last_updated": "Last updated: [Insert date before launch]",
+        "top_content": "<p>Welcome to Tonique. These Terms of Service (the “Terms”) cover your use of our website at tonique.com (the “Site”) and any orders you place with us. By using the Site or buying from us, you’re agreeing to these Terms. If anything here doesn’t work for you, please don’t use the Site.</p><p>We’ve tried to write this in plain language. Where we’ve had to use formal terms, we mean what they say.</p>"
+      }
     }
   },
   "order": [
