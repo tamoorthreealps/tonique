@@ -1,110 +1,44 @@
-{{ 'css--tonique--terms.css' | asset_url | stylesheet_tag }}
-
-<section class="tonique--terms--page">
-  <div class="tonique--terms--page--container">
-    <div class="tonique--terms--content">
-      <div class="tonique--terms--head">
-        <h1 class="tonique--terms--heading">TERMS</h1>
-        <p class="tonique--terms--last--update">Last updated: [Insert date before launch]</p>
-        <div class="tonique--terms--head--bottom">
-          <p>
-            Welcome to Tonique. These Terms of Service (the “Terms”) cover your use of our website at tonique.com (the
-            “Site”) and any orders you place with us. By using the Site or buying from us, you’re agreeing to these
-            Terms. If anything here doesn’t work for you, please don’t use the Site.
-          </p>
-          <p>
-            We’ve tried to write this in plain language. Where we’ve had to use formal terms, we mean what they say.
-          </p>
-        </div>
-      </div>
-      <div class="tonique--terms--description">
-        <div class="tonique--terms--block">
-          <h2>1. Who we are</h2>
-          <p>
-            Tonique is operated by [Legal entity name], a [State] [entity type] with its principal address at [Address].
-            When we say “Tonique,” “we,” “us,” or “our,” we mean that company. When we say “you” or “your,” we mean you,
-            the person using the Site or buying from us.
-          </p>
-          <p>You can reach us at hello@tonique.com.</p>
-        </div>
-        <div class="tonique--terms--block">
-          <h2>2. Eligibility</h2>
-          <p>
-            You need to be at least 18 years old (or the age of majority in your state) to buy from Tonique. By placing
-            an order, you’re telling us you meet that requirement and that the information you’ve given us is accurate.
-          </p>
-        </div>
-        <div class="tonique--terms--block">
-          <h2>3. Our products</h2>
-          <p>
-            Tonique Protein Tonic is a dietary supplement. It’s a food product, not a drug. It isn’t intended to
-            diagnose, treat, cure, or prevent any disease. The statements we make about our ingredients have not been
-            evaluated by the Food and Drug Administration.
-          </p>
-          <p>
-            We do our best to describe the product accurately. Photography and on-screen colors may vary slightly from
-            the product in your hand. We’re not responsible for those small differences.
-          </p>
-          <p>
-            If you have a medical condition, are pregnant or nursing, or take medication, please talk to your doctor
-            before adding any supplement to your routine — including ours.
-          </p>
-        </div>
-        <div class="tonique--terms--block">
-          <h2>4. Orders, pricing, and availability</h2>
-          <p>
-            Placing an order is an offer to buy. We accept that offer when we send you an order confirmation. Until
-            then, we can decline or cancel any order — for example, if a product is out of stock, if there’s a pricing
-            or description error, or if we suspect fraud. If we cancel an order you’ve already paid for, we’ll refund
-            you in full.
-          </p>
-          <p>
-            Prices on the Site are in U.S. dollars and don’t include taxes or shipping unless we say so. Sales tax is
-            added at checkout where applicable.
-          </p>
-          <p>We reserve the right to change prices, change products, or stop selling something at any time.</p>
-        </div>
-        <div class="tonique--terms--block">
-          <h2>5. Subscriptions</h2>
-          <p>You can subscribe to Tonique on the Site. Our subscription program works like this:</p>
-          <ul>
-            <li>
-              <strong>Commitment level:</strong> Subscriptions are available at the 30/month level (two 15-packs at $2.99 per pouch,
-              $89.70 per month) and the 60/month level (four 15-packs at $2.74 per pouch, $164.40 per month). A single
-              15-pack is sold as a one-off purchase only.
-            </li>
-            <li>
-              <strong>Auto-renewal:</strong> Your subscription renews automatically at the cadence and price you selected, using the
-              payment method on file, until you cancel. We’ll send you a reminder email before each shipment so nothing
-              arrives as a surprise.
-            </li>
-            <li>
-              <strong>Skipping, pausing, and cancelling:</strong> You can skip a shipment, pause your subscription, or cancel at any time
-              from your account page. Changes need to be made before your next renewal date to apply to that shipment.
-              There are no cancellation fees.
-            </li>
-            <li>
-              <strong>Price changes:</strong> If we change subscription pricing, we’ll let you know at least 30 days before the change
-              takes effect, so you can decide whether to stay subscribed.
-            </li>
-          </ul>
-          <p>
-            *Legal review note: Auto-renewal terms must comply with California’s Automatic Renewal Law (ARL) and similar
-            state statutes. Confirm that the checkout flow includes (1) clear and conspicuous disclosure of renewal
-            terms, (2) affirmative consent before charging, (3) post-purchase acknowledgment with cancellation
-            instructions, and (4) an easy online cancellation method. The bullet list above reflects these obligations
-            but the implementation needs to match.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 {% schema %}
 {
   "name": "Terms & Conditions",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_heading",
+      "label": "Heading",
+      "default": "TERMS"
+    },
+    {
+      "type": "text",
+      "id": "last_updated",
+      "label": "Last Updated Text",
+      "default": "Last updated: January 1, 2025"
+    },
+    {
+      "type": "richtext",
+      "id": "top_content",
+      "label": "Top Content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Block Heading",
+          "default": "1. Who we are"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Block Content"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "Terms & Conditions"
@@ -112,3 +46,52 @@
   ]
 }
 {% endschema %}
+
+{{ 'css--tonique--terms.css' | asset_url | stylesheet_tag }}
+
+<section class="tonique--terms--page">
+  <div class="tonique--terms--page--container">
+    <div class="tonique--terms--content">
+      <div class="tonique--terms--head">
+        {% if section.settings.page_heading != blank %}
+          <h1 class="tonique--terms--heading">
+            {{ section.settings.page_heading }}
+          </h1>
+        {% endif %}
+
+        {% if section.settings.last_updated != blank %}
+          <p class="tonique--terms--last--update">
+            {{ section.settings.last_updated }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.top_content != blank %}
+          <div class="tonique--terms--head--bottom">
+            {{ section.settings.top_content }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="tonique--terms--description">
+        {% for block in section.blocks %}
+          <div
+            class="tonique--terms--block"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.heading != blank %}
+              <h2>
+                {{ block.settings.heading }}
+              </h2>
+            {% endif %}
+
+            {% if block.settings.content != blank %}
+              <div class="tonique--terms--block--content">
+                {{ block.settings.content }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
