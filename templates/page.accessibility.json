@@ -38,7 +38,7 @@
           "type": "content",
           "settings": {
             "heading": "Tell us if something isn’t working",
-            "content": "<p>If you run into an accessibility barrier on the Site, please reach out. Email hello@tonique.com with the page you were on and what didn’t work, and we’ll get back to you within five business days. Where we can fix something quickly, we will. Where it’s a bigger lift, we’ll let you know what we’re doing about it.</p>"
+            "content": "<p>If you run into an accessibility barrier on the Site, please reach out. Email <a href=\"mailto:hello@tonique.com\" title=\"mailto:hello@tonique.com\">hello@tonique.com</a> with the page you were on and what didn’t work, and we’ll get back to you within five business days. Where we can fix something quickly, we will. Where it’s a bigger lift, we’ll let you know what we’re doing about it.</p>"
           }
         },
         "content_AqWUUF": {
