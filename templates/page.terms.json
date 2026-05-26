@@ -19,6 +19,58 @@
     },
     "terms_page_content_crMwmR": {
       "type": "terms--page--content",
+      "blocks": {
+        "content_87RDH8": {
+          "type": "content",
+          "settings": {
+            "heading": "1. Who we are",
+            "content": "<p>Tonique is operated by [Legal entity name], a [State] [entity type] with its principal address at [Address]. When we say “Tonique,” “we,” “us,” or “our,” we mean that company. When we say “you” or “your,” we mean you, the person using the Site or buying from us.</p><p>You can reach us at <a href=\"mailto:hello@tonique.com\" title=\"mailto:hello@tonique.com\">hello@tonique.com</a>.</p>"
+          }
+        },
+        "content_ACHCH8": {
+          "type": "content",
+          "settings": {
+            "heading": "2. Eligibility",
+            "content": "<p>You need to be at least 18 years old (or the age of majority in your state) to buy from Tonique. By placing an order, you’re telling us you meet that requirement and that the information you’ve given us is accurate.</p>"
+          }
+        },
+        "content_rHcane": {
+          "type": "content",
+          "settings": {
+            "heading": "3. Our products",
+            "content": "<p>Tonique Protein Tonic is a dietary supplement. It’s a food product, not a drug. It isn’t intended to diagnose, treat, cure, or prevent any disease. The statements we make about our ingredients have not been evaluated by the Food and Drug Administration.</p><p>We do our best to describe the product accurately. Photography and on-screen colors may vary slightly from the product in your hand. We’re not responsible for those small differences.</p><p>If you have a medical condition, are pregnant or nursing, or take medication, please talk to your doctor before adding any supplement to your routine — including ours.</p>"
+          }
+        },
+        "content_MDewXW": {
+          "type": "content",
+          "settings": {
+            "heading": "4. Orders, pricing, and availability",
+            "content": "<p>Placing an order is an offer to buy. We accept that offer when we send you an order confirmation. Until then, we can decline or cancel any order — for example, if a product is out of stock, if there’s a pricing or description error, or if we suspect fraud. If we cancel an order you’ve already paid for, we’ll refund you in full.</p><p>Prices on the Site are in U.S. dollars and don’t include taxes or shipping unless we say so. Sales tax is added at checkout where applicable.</p><p>We reserve the right to change prices, change products, or stop selling something at any time.</p>"
+          }
+        },
+        "content_meTbXe": {
+          "type": "content",
+          "settings": {
+            "heading": "5. Subscriptions",
+            "content": "<p>You can subscribe to Tonique on the Site. Our subscription program works like this:</p><ul><li><strong>Commitment level:</strong> Subscriptions are available at the 30/month level (two 15-packs at $2.99 per pouch, $89.70 per month) and the 60/month level (four 15-packs at $2.74 per pouch, $164.40 per month). A single 15-pack is sold as a one-off purchase only.</li><li><strong>Auto-renewal:</strong> Your subscription renews automatically at the cadence and price you selected, using the payment method on file, until you cancel. We’ll send you a reminder email before each shipment so nothing arrives as a surprise.</li><li><strong>Skipping, pausing, and cancelling:</strong> You can skip a shipment, pause your subscription, or cancel at any time from your account page. Changes need to be made before your next renewal date to apply to that shipment. There are no cancellation fees.</li><li><strong>Price changes:</strong> If we change subscription pricing, we’ll let you know at least 30 days before the change takes effect, so you can decide whether to stay subscribed.</li></ul><p>*Legal review note: Auto-renewal terms must comply with California’s Automatic Renewal Law (ARL) and similar state statutes. Confirm that the checkout flow includes (1) clear and conspicuous disclosure of renewal terms, (2) affirmative consent before charging, (3) post-purchase acknowledgment with cancellation instructions, and (4) an easy online cancellation method. The bullet list above reflects these obligations but the implementation needs to match.</p>"
+          }
+        },
+        "content_bE7PYi": {
+          "type": "content",
+          "settings": {
+            "heading": "6. Payment",
+            "content": "<p>We accept the major payment methods shown at checkout. By submitting payment information, you’re telling us you’re authorized to use that method. Payment is processed by our payment providers — we don’t store full card numbers ourselves. See our Privacy Policy for more on how payment data is handled.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_87RDH8",
+        "content_ACHCH8",
+        "content_rHcane",
+        "content_MDewXW",
+        "content_meTbXe",
+        "content_bE7PYi"
+      ],
       "name": "Terms & Conditions",
       "settings": {
         "page_heading": "TERMS",
