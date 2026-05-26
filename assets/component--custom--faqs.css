@@ -131,7 +131,8 @@
 	border-top: 1px solid #433723;
 }
 
-#customFaqs .faq-item.active {
+#customFaqs .faq-item.active,
+#customFaqs .faq-item.previous-active {
 	border-color: #A88958;
 }
 
