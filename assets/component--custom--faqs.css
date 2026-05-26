@@ -249,6 +249,15 @@
 		text-transform: uppercase;
 	}
 
+	#customFaqs .custom-faqs__mobile-dropdown select{
+		appearance:none;
+		-webkit-appearance:none;
+		-moz-appearance:none;
+		background:transparent;
+		border:none;
+		box-shadow:none;
+	}
+
 	#customFaqs .faq-category {
 		display: none;
 		margin-bottom: 0;
