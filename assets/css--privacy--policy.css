@@ -1,36 +1,36 @@
-.tonique--terms--page {
+.tonique--privacy--page {
     padding: 40px 0 86px;
 }
 
-.tonique--terms--content strong{
+.tonique--privacy--content strong{
     font-weight:600;
     color:#433723;
 }
 
-.tonique--terms--content a{
+.tonique--privacy--content a{
     font-weight: 600;
     color: #977b4f;
     text-decoration: none;
     font-family: 'Archivo';
 }
 
-.tonique--terms--content a:hover{
+.tonique--privacy--content a:hover{
     text-decoration:underline;
 }
 
-.tonique--terms--page--container {
+.tonique--privacy--page--container {
     max-width: 970px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-.tonique--terms--head {
+.tonique--privacy--head {
     padding-bottom: 48px;
     margin-bottom: 40px;
     border-bottom: 1px solid #DCD8CC;
 }
 
-.tonique--terms--heading {
+.tonique--privacy--heading {
 font-size: 24px;
     line-height: 36px;
     letter-spacing: 1.9px;
@@ -38,7 +38,7 @@ font-size: 24px;
     color: #977b4f;
 }
 
-.tonique--terms--last--update {
+.tonique--privacy--last--update {
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0;
@@ -48,13 +48,13 @@ font-size: 24px;
     margin: 0 0 24px;
 }
 
-.tonique--terms--description {
+.tonique--privacy--description {
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-.tonique--terms--block h2 {
+.tonique--privacy--block h2 {
     font-size: 18px;
     line-height: 24px;
     text-transform: uppercase;
@@ -64,7 +64,7 @@ font-size: 24px;
     letter-spacing: 1.44px;
 }
 
-.tonique--terms--description p, .tonique--terms--block ul li, .tonique--terms--head--bottom p {
+.tonique--privacy--description p, .tonique--privacy--block ul li, .tonique--privacy--head--bottom p {
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0;
@@ -74,11 +74,11 @@ font-size: 24px;
     margin: 0 0 20px;
 }
 
-.tonique--terms--description p:last-child, .tonique--terms--head--bottom p:last-child {
+.tonique--privacy--description p:last-child, .tonique--privacy--head--bottom p:last-child {
     margin: 0;
 }
 
-.tonique--terms--block ul {
+.tonique--privacy--block ul {
     margin: 0 0 12px;
     padding-left: 14px;
 }
@@ -86,37 +86,37 @@ font-size: 24px;
 
 
 @media screen and (min-width: 767px) {
-    .tonique--terms--page {
-        padding: 76px 0 160px;
+    .tonique--privacy--page {
+        padding: 76px 0 156px;
     }
 
-    .tonique--terms--head {
+    .tonique--privacy--head {
         margin-bottom: 48px;
     }
 
-    .tonique--terms--heading {
+    .tonique--privacy--heading {
         font-size: 40px;
         line-height: 48px;
         letter-spacing: 3.20px;
     }
 
-    .tonique--terms--last--update {
+    .tonique--privacy--last--update {
         font-size: 18px;
         line-height: 28px;
     }
-    .tonique--terms--description {
+    .tonique--privacy--description {
         gap: 48px;
     }
-    .tonique--terms--block ul {
+    .tonique--privacy--block ul {
     margin: 0 0 16px;
     padding-left: 24px;
 }
-    .tonique--terms--description p, .tonique--terms--block ul li, .tonique--terms--head--bottom p {
+    .tonique--privacy--description p, .tonique--privacy--block ul li, .tonique--privacy--head--bottom p {
         font-size: 16px;
         line-height: 24px;
         margin: 0 0 16px;
     }
-    .tonique--terms--block h2 {
+    .tonique--privacy--block h2 {
         font-size: 24px;
         line-height: 32px;
         margin: 0 0 16px;
