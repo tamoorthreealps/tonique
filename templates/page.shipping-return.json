@@ -33,11 +33,35 @@
             "heading": "Shipping options and costs",
             "content": "<p>We keep this simple:</p><ul><li><strong>Standard shipping (3–5 business days)</strong> — [$X] flat rate, free on orders over [$Y] and on every subscription order.</li><li><strong>Expedited shipping (2 business days)</strong> — [$X] flat rate, available at checkout.</li></ul><p><em>*Drafting note: Replace bracketed amounts with the rates Zaid’s team configures in Shopify. Free shipping for subscriptions is recommended given subscription is the business model — confirm with finance before going live.</em></p><p>Orders ship Monday through Friday, excluding U.S. holidays. Orders placed after 12:00 PM PT typically ship the next business day.</p>"
           }
+        },
+        "content_hzgdaE": {
+          "type": "content",
+          "settings": {
+            "heading": "Tracking",
+            "content": "<p>Once your order ships, you’ll get an email with a tracking link. You can also see tracking information in your account.</p>"
+          }
+        },
+        "content_CDWMTQ": {
+          "type": "content",
+          "settings": {
+            "heading": "Subscriptions",
+            "content": "<p>Subscription orders ship at the cadence you choose — every 30 days for the 30/month plan, every 30 days (with four 15-packs) for the 60/month plan. We send a reminder email a few days before each shipment so you can skip, swap, or update your address. Changes need to be made before the renewal processes.</p>"
+          }
+        },
+        "content_jPBq6a": {
+          "type": "content",
+          "settings": {
+            "heading": "If something goes wrong in transit",
+            "content": "<p>Once a package leaves us, the carrier owns it. That said, we’re not going to leave you hanging if it gets lost or arrives damaged. Email hello@tonique.com within 14 days of the delivery date with your order number and a photo (for damage), and we’ll replace the order or refund you.</p><p>Two notes:</p><ul><li>If tracking shows your package was delivered but you can’t find it, please check with neighbors and your building first, then file a claim with the carrier. We’re happy to help, but stolen-from-porch claims need to start with the carrier.</li><li>If an address is entered incorrectly and the package is returned to us, we’ll reach out to confirm the correct address. Reshipping costs may apply.</li></ul>"
+          }
         }
       },
       "block_order": [
         "content_zTdHHL",
-        "content_LA3bgx"
+        "content_LA3bgx",
+        "content_hzgdaE",
+        "content_CDWMTQ",
+        "content_jPBq6a"
       ],
       "name": "Policy Pages",
       "settings": {
