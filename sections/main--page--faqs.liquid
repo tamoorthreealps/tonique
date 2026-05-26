@@ -9,6 +9,11 @@
       "id": "mobile_title",
       "label": "Add Heading",
       "default": "FAQs"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Add Content"
     }
   ],
   "blocks": [
@@ -60,10 +65,14 @@
   <div class="custom-faqs__wrapper_container">
     <div class="custom-faqs__wrapper">
       <div class="custom-faqs__mobile-top">
-        <h2 class="custom-faqs__sidebar_heading">{{ section.settings.mobile_title }}</h2>
-        <p class="custom-faqs__sidebar_content">
-          Everything you might want to know about Tonique — the product, the ingredients, and how it fits into your day.
-        </p>
+        {% if section.settings.mobile_title != blank %}
+          <h2 class="custom-faqs__sidebar_heading">{{ section.settings.mobile_title }}</h2>
+        {% endif %}
+        {% if section.settings.content != blank %}
+          <p class="custom-faqs__sidebar_content">
+            {{ section.settings.content }}
+          </p>
+        {% endif %}
         <div class="custom-faqs__mobile-dropdown">
           <label class="faq-mobile-label"> CATEGORY </label>
 
@@ -89,10 +98,14 @@
 
       <div class="custom-faqs__sidebar">
         <div class="custom-faqs__sidebar_top">
-          <h1 class="custom-faqs__sidebar_heading">{{ section.settings.mobile_title }}</h1>
-          <p class="custom-faqs__sidebar_content">
-            Everything you might want to know about Tonique — the product, the ingredients, and how it fits into your day.
-          </p>
+          {% if section.settings.mobile_title != blank %}
+            <h1 class="custom-faqs__sidebar_heading">{{ section.settings.mobile_title }}</h1>
+          {% endif %}
+          {% if section.settings.content != blank %}
+            <p class="custom-faqs__sidebar_content">
+              {{ section.settings.content }}
+            </p>
+          {% endif %}
         </div>
         <ul>
           {% for block in section.blocks %}
@@ -110,7 +123,8 @@
           {% endfor %}
         </ul>
         <p class="custom-faqs__sidebar_content_footer">
-          Email us at <a href="mailto:hello@tonique.com">hello@tonique.com</a>. We read everything and reply within one business day.
+          Email us at <a href="mailto:hello@tonique.com">hello@tonique.com</a>. We read everything and reply within one
+          business day.
         </p>
       </div>
 
@@ -170,7 +184,9 @@
         {% endfor %}
       </div>
       <p class="custom-faqs__sidebar_content_footer custom-faqs__sidebar_content_footer_mobile">
-        Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply within one business day.</p>
+        Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply
+        within one business day.
+      </p>
     </div>
   </div>
 </section>
