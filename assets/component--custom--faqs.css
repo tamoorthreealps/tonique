@@ -274,7 +274,7 @@
 	}
 
 	.custom-faqs__sidebar_content_footer_mobile{
-		display:inherit;
+		display: initial;
 	}
 
 }
