@@ -8,8 +8,10 @@
 }
 
 .tonique--terms--content a{
-    font-weight:600;
-    color:#977B4F;
+    font-weight: 600;
+    color: #977b4f;
+    text-decoration: none;
+    font-family: 'Archivo';
 }
 
 .tonique--terms--content a:hover{
