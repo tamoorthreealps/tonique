@@ -12,6 +12,10 @@
     color:#977B4F;
 }
 
+.tonique--terms--content a:hover{
+    text-decoration:underline;
+}
+
 .tonique--terms--page--container {
     max-width: 970px;
     margin: 0 auto;
