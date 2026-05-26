@@ -210,6 +210,13 @@
     letter-spacing: 1.92px;
 }
 
+#customFaqs .faq-category h2 {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 1.44px;
+    margin: 0 0 16px;
+}
+
 .custom-faqs__sidebar_content {
     font-size: 14px;
     line-height: 20px;
