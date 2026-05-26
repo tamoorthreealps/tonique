@@ -2,6 +2,11 @@
     padding: 76px 0 160px;
 }
 
+.tonique--terms--content strong{
+    font-weight:600;
+    #433723
+}
+
 .tonique--terms--page--container {
     max-width: 970px;
     margin: 0 auto;
