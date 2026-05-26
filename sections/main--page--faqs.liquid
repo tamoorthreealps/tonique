@@ -197,110 +197,279 @@
     </div>
   </div>
 </section>
-
+{% comment %} js--faq--accordions {% endcomment %}
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+
     const section = document.querySelector('#customFaqs');
+
     if (!section) return;
+
     const sidebarItems = section.querySelectorAll('.custom-faqs__sidebar li');
     const categories = section.querySelectorAll('.faq-category');
+
+
+
+    /*
+    ==========================
+    SIDEBAR CLICK SCROLL
+    ==========================
+    */
+
+    let isManualScrolling = false;
+
     sidebarItems.forEach((item) => {
+
       item.addEventListener('click', function () {
+
         const target = this.dataset.target;
         const targetEl = document.getElementById(target);
-        if (targetEl) {
-          window.scrollTo({
-            top: targetEl.offsetTop - 100,
-            behavior: 'smooth',
-          });
-        }
-      });
-    });
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            sidebarItems.forEach((item) => {
-              item.classList.remove('active');
-              if (item.dataset.target === id) {
-                item.classList.add('active');
-              }
-            });
-          }
+        if (!targetEl) return;
+
+
+
+        /*
+        ==========================
+        ACTIVE CLASS ON CLICK
+        ==========================
+        */
+
+        sidebarItems.forEach((i) => {
+          i.classList.remove('active');
         });
-      },
-      {
-        threshold: 0.3,
-      }
-    );
 
-    categories.forEach((category) => {
-      observer.observe(category);
+        item.classList.add('active');
+
+
+
+        /*
+        ==========================
+        SMOOTH SCROLL
+        ==========================
+        */
+
+        isManualScrolling = true;
+
+        const headerOffset = 120;
+
+        const elementPosition =
+          targetEl.getBoundingClientRect().top + window.pageYOffset;
+
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+
+
+
+        /*
+        ==========================
+        STOP OBSERVER DURING SCROLL
+        ==========================
+        */
+
+        setTimeout(() => {
+          isManualScrolling = false;
+        }, 1000);
+
+      });
+
     });
+
+
+
+    /*
+    ==========================
+    ACTIVE CATEGORY ON SCROLL
+    ==========================
+    */
+
+    function updateActiveCategory() {
+
+      if (isManualScrolling) return;
+
+      let currentCategory = '';
+
+      categories.forEach((category) => {
+
+        const rect = category.getBoundingClientRect();
+
+        if (rect.top <= 180) {
+          currentCategory = category.getAttribute('id');
+        }
+
+      });
+
+      if (currentCategory) {
+
+        sidebarItems.forEach((item) => {
+
+          item.classList.remove('active');
+
+          if (item.dataset.target === currentCategory) {
+            item.classList.add('active');
+          }
+
+        });
+
+      }
+
+    }
+
+    window.addEventListener('scroll', updateActiveCategory);
+
+    updateActiveCategory();
+
+
+
+    /*
+    ==========================
+    FAQ ACCORDION
+    ==========================
+    */
 
     const faqCategories = section.querySelectorAll('.faq-category');
+
     faqCategories.forEach((category) => {
+
       const faqItems = category.querySelectorAll('.faq-item');
+
       faqItems.forEach((item) => {
 
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
 
+
+
+        /*
+        ==========================
+        FIRST ACTIVE FAQ
+        ==========================
+        */
+
         if (item.classList.contains('active')) {
+
           answer.style.maxHeight = answer.scrollHeight + 'px';
+
           const previousItem = item.previousElementSibling;
+
           if (
             previousItem &&
             previousItem.classList.contains('faq-item')
           ) {
             previousItem.classList.add('previous-active');
           }
+
         }
 
+
+
+        /*
+        ==========================
+        FAQ CLICK
+        ==========================
+        */
+
         question.addEventListener('click', function () {
+
           const isActive = item.classList.contains('active');
+
+
+
+          /*
+          ==========================
+          CLOSE CURRENT CATEGORY FAQS
+          ==========================
+          */
+
           faqItems.forEach((i) => {
+
             i.classList.remove('active');
             i.classList.remove('previous-active');
+
             const otherAnswer = i.querySelector('.faq-answer');
+
             otherAnswer.style.maxHeight = null;
 
           });
 
+
+
+          /*
+          ==========================
+          OPEN CURRENT FAQ
+          ==========================
+          */
+
           if (!isActive) {
+
             item.classList.add('active');
+
             answer.style.maxHeight = answer.scrollHeight + 'px';
+
+
+
+            /*
+            ==========================
+            PREVIOUS ACTIVE
+            ==========================
+            */
+
             const previousItem = item.previousElementSibling;
+
             if (
               previousItem &&
               previousItem.classList.contains('faq-item')
             ) {
               previousItem.classList.add('previous-active');
             }
+
           }
+
         });
+
       });
+
     });
 
+
+
+    /*
+    ==========================
+    MOBILE CATEGORY SELECT
+    ==========================
+    */
+
     const select = document.getElementById('faqCategorySelect');
+
     function mobileCategoryShow(value) {
+
       categories.forEach((cat) => {
         cat.classList.remove('active-mobile');
       });
+
       const target = section.querySelector('#' + value);
+
       if (target) {
         target.classList.add('active-mobile');
       }
+
     }
+
     if (window.innerWidth < 767 && select) {
       mobileCategoryShow(select.value);
     }
+
     if (select) {
+
       select.addEventListener('change', function () {
         mobileCategoryShow(this.value);
       });
+
     }
+
   });
 </script>
