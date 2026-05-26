@@ -1,0 +1,77 @@
+.tonique--terms--page {
+    padding: 76px 0 160px;
+}
+
+.tonique--terms--page--container {
+    max-width: 970px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.tonique--terms--head {
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid #DCD8CC;
+}
+
+.tonique--terms--heading {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: 3.20px;
+    margin: 0 0 8px;
+    color: #977B4F;
+}
+
+.tonique--terms--last--update {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #433723;
+    font-family: 'Archivo';
+    font-weight: 400;
+    margin: 0 0 24px;
+}
+
+.tonique--terms--head--bottom p {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-family: 'Archivo';
+    font-weight: 400;
+    color: #433723;
+    margin: 0 0 16px;
+}
+
+.tonique--terms--head--bottom p:last-child {
+    margin: 0;
+}
+
+.tonique--terms--description {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.tonique--terms--block h2 {
+    font-size: 24px;
+    line-height: 32px;
+    text-transform: uppercase;
+    color: #433723;
+    font-family: 'Archivo';
+    margin: 0 0 16px;
+    letter-spacing: 1.92px;
+}
+
+.tonique--terms--description p {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-family: 'Archivo';
+    font-weight: 400;
+    color: #433723;
+    margin: 0 0 16px;
+}
+
+.tonique--terms--description p:last-child {
+    margin: 0;
+}
