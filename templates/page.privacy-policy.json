@@ -68,6 +68,13 @@
             "heading": "6. Marketing",
             "content": "<p>If you opt in to email or SMS, we’ll send you product updates, restock alerts, the occasional offer, and content we think you’ll like. You can unsubscribe from email at any time using the link at the bottom of every message. For SMS, reply STOP. We may still send you transactional messages (order confirmations, shipping updates, subscription reminders) regardless of your marketing preferences.</p>"
           }
+        },
+        "content_4tNP3x": {
+          "type": "content",
+          "settings": {
+            "heading": "7. Cookies and your choices",
+            "content": "<p>You can manage cookies in your browser settings. If you turn off non-essential cookies, parts of the Site may not work as well. You can also opt out of personalized advertising through industry tools like the Digital Advertising Alliance (optout.aboutads.info) and the Network Advertising Initiative (optout.networkadvertising.org), or through the privacy settings on Meta and TikTok directly.</p><p>We honor Global Privacy Control (GPC) signals where required.</p>"
+          }
         }
       },
       "block_order": [
@@ -77,7 +84,8 @@
         "content_iyM4pq",
         "content_tDP4hn",
         "content_P4GJ9P",
-        "content_tfDjxP"
+        "content_tfDjxP",
+        "content_4tNP3x"
       ],
       "name": "Privacy Policy",
       "settings": {
