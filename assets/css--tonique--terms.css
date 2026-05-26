@@ -1,5 +1,5 @@
 .tonique--terms--page {
-    padding: 76px 0 160px;
+    padding: 40px 0 86px;
 }
 
 .tonique--terms--content strong{
@@ -31,16 +31,16 @@
 }
 
 .tonique--terms--heading {
-    font-size: 40px;
-    line-height: 48px;
-    letter-spacing: 3.20px;
+font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 1.9px;
     margin: 0 0 8px;
-    color: #977B4F;
+    color: #977b4f;
 }
 
 .tonique--terms--last--update {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     letter-spacing: 0;
     color: #433723;
     font-family: 'Archivo';
@@ -65,13 +65,13 @@
 }
 
 .tonique--terms--description p, .tonique--terms--block ul li, .tonique--terms--head--bottom p {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 22px;
     letter-spacing: 0;
     font-family: 'Archivo';
     font-weight: 400;
     color: #433723;
-    margin: 0 0 16px;
+    margin: 0 0 20px;
 }
 
 .tonique--terms--description p:last-child, .tonique--terms--head--bottom p:last-child {
@@ -81,4 +81,28 @@
 .tonique--terms--block ul {
     margin: 0 0 16px;
     padding-left: 24px;
+}
+
+
+
+@media screen and (min-width: 767px) {
+    .tonique--terms--page {
+        padding: 76px 0 160px;
+    }
+
+    .tonique--terms--heading {
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 3.20px;
+    }
+
+    .tonique--terms--last--update {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .tonique--terms--description p, .tonique--terms--block ul li, .tonique--terms--head--bottom p {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 16px;
+    }
 }
