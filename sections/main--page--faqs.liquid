@@ -122,10 +122,11 @@
             {% endif %}
           {% endfor %}
         </ul>
-        <p class="custom-faqs__sidebar_content_footer">
-          Email us at <a href="mailto:hello@tonique.com">hello@tonique.com</a>. We read everything and reply within one
-          business day.
-        </p>
+        {% if section.settings.bottom_content != blank %}
+          <div class="custom-faqs__sidebar_content_footer">
+            {{ section.settings.bottom_content }}
+          </div>
+        {% endif %}
       </div>
 
       <div class="custom-faqs__content">
@@ -183,10 +184,11 @@
           {% endif %}
         {% endfor %}
       </div>
-      <p class="custom-faqs__sidebar_content_footer custom-faqs__sidebar_content_footer_mobile">
-        Email us at <a href="mailto:hello@tonique.com" class="">hello@tonique.com</a>. We read everything and reply
-        within one business day.
-      </p>
+      {% if section.settings.bottom_content != blank %}
+        <div class="custom-faqs__sidebar_content_footer custom-faqs__sidebar_content_footer_mobile">
+          {{ section.settings.bottom_content }}
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
