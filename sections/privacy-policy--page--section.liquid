@@ -1,0 +1,99 @@
+{{ 'css--privacy--policy.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Privacy Policy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_heading",
+      "label": "Heading",
+      "default": "TERMS"
+    },
+    {
+      "type": "text",
+      "id": "last_updated",
+      "label": "Last Updated Text",
+      "default": "Last updated: January 1, 2025"
+    },
+    {
+      "type": "richtext",
+      "id": "top_content",
+      "label": "Top Content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Block Heading",
+          "default": "1. Who we are"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Block Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Privacy Policy"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+<section class="tonique--terms--page">
+  <div class="tonique--terms--page--container">
+    <div class="tonique--terms--content">
+      <div class="tonique--terms--head">
+        {% if section.settings.page_heading != blank %}
+          <h1 class="tonique--terms--heading">
+            {{ section.settings.page_heading }}
+          </h1>
+        {% endif %}
+
+        {% if section.settings.last_updated != blank %}
+          <p class="tonique--terms--last--update">
+            {{ section.settings.last_updated }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.top_content != blank %}
+          <div class="tonique--terms--head--bottom">
+            {{ section.settings.top_content }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="tonique--terms--description">
+        {% for block in section.blocks %}
+          <div
+            class="tonique--terms--block"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.heading != blank %}
+              <h2>
+                {{ block.settings.heading }}
+              </h2>
+            {% endif %}
+
+            {% if block.settings.content != blank %}
+              <div class="tonique--terms--block--content">
+                {{ block.settings.content }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
