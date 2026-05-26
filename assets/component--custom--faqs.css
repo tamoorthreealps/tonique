@@ -204,6 +204,18 @@
 		gap: 30px;
 	}
 
+	.custom-faqs__sidebar_heading {
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 1.92px;
+}
+
+.custom-faqs__sidebar_content {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 20px;
+}
+
 	#customFaqs .custom-faqs__sidebar {
 		display: none;
 	}
