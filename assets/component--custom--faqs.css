@@ -178,7 +178,7 @@
 }
 
 #customFaqs .faq-answer p {
-    margin: 0;
+    margin: -4px 0 0;
     padding: 0 0 24px;
     color: #433723;
     font-size: 16px;
