@@ -51,33 +51,33 @@
 
 
 
-<section class="tonique--terms--page">
-  <div class="tonique--terms--page--container">
-    <div class="tonique--terms--content">
-      <div class="tonique--terms--head">
+<section class="tonique--privacy--page">
+  <div class="tonique--privacy--page--container">
+    <div class="tonique--privacy--content">
+      <div class="tonique--privacy--head">
         {% if section.settings.page_heading != blank %}
-          <h1 class="tonique--terms--heading">
+          <h1 class="tonique--privacy--heading">
             {{ section.settings.page_heading }}
           </h1>
         {% endif %}
 
         {% if section.settings.last_updated != blank %}
-          <p class="tonique--terms--last--update">
+          <p class="tonique--privacy--last--update">
             {{ section.settings.last_updated }}
           </p>
         {% endif %}
 
         {% if section.settings.top_content != blank %}
-          <div class="tonique--terms--head--bottom">
+          <div class="tonique--privacy--head--bottom">
             {{ section.settings.top_content }}
           </div>
         {% endif %}
       </div>
 
-      <div class="tonique--terms--description">
+      <div class="tonique--privacy--description">
         {% for block in section.blocks %}
           <div
-            class="tonique--terms--block"
+            class="tonique--privacy--block"
             {{ block.shopify_attributes }}
           >
             {% if block.settings.heading != blank %}
@@ -87,7 +87,7 @@
             {% endif %}
 
             {% if block.settings.content != blank %}
-              <div class="tonique--terms--block--content">
+              <div class="tonique--privacy--block--content">
                 {{ block.settings.content }}
               </div>
             {% endif %}
