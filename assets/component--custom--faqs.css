@@ -196,7 +196,9 @@
 }
 
 @media(max-width:767px) {
-
+	#customFaqs {
+    padding: 40px 0 147px;
+}
 	#customFaqs .custom-faqs__wrapper {
 		flex-direction: column;
 		gap: 30px;
