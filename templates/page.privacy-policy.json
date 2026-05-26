@@ -61,6 +61,13 @@
             "heading": "5. How we share information",
             "content": "<p>We share information with:</p><ul><li>Vendors, as listed above</li><li>Professional advisers (lawyers, accountants, auditors)</li><li>Authorities, when required by law or to protect rights and safety</li><li>A future buyer or successor, if Tonique is acquired or merges with another company — your information would transfer with the business</li></ul><p>We don’t sell your personal information.</p>"
           }
+        },
+        "content_tfDjxP": {
+          "type": "content",
+          "settings": {
+            "heading": "6. Marketing",
+            "content": "<p>If you opt in to email or SMS, we’ll send you product updates, restock alerts, the occasional offer, and content we think you’ll like. You can unsubscribe from email at any time using the link at the bottom of every message. For SMS, reply STOP. We may still send you transactional messages (order confirmations, shipping updates, subscription reminders) regardless of your marketing preferences.</p>"
+          }
         }
       },
       "block_order": [
@@ -69,7 +76,8 @@
         "content_awxwaU",
         "content_iyM4pq",
         "content_tDP4hn",
-        "content_P4GJ9P"
+        "content_P4GJ9P",
+        "content_tfDjxP"
       ],
       "name": "Privacy Policy",
       "settings": {
