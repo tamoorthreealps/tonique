@@ -92,6 +92,10 @@
 	margin: 48px 0 0;
 }
 
+.custom-faqs__sidebar_content_footer p{
+	margin:0;
+}
+
 .custom-faqs__sidebar_content_footer a {
 	color: #977B4F;
 	font-style: italic;
