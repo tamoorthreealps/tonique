@@ -11,13 +11,68 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "privacy_policy_page_section_x4nDpm": {
+      "type": "privacy-policy--page--section",
+      "blocks": {
+        "content_ViCL9g": {
+          "type": "content",
+          "settings": {
+            "heading": "Our commitment",
+            "content": "<p>We design and build the Site to align with the Web Content Accessibility Guidelines (WCAG) 2.1 at the AA level. That means we work toward:</p><ul><li>Color contrast that’s easy on the eyes</li><li>Text that scales without breaking the layout</li><li>Keyboard navigation across menus, product pages, cart, and checkout</li><li>Alt text on product photography and meaningful imagery</li><li>Clear, descriptive link text and form labels</li><li>Compatibility with the major screen readers</li><li>Captions on video content</li></ul>"
+          }
+        },
+        "content_K4VMVf": {
+          "type": "content",
+          "settings": {
+            "heading": "Ongoing work",
+            "content": "<p>Accessibility isn’t a checkbox — it’s something we keep working on as the Site grows. We test new pages and features for accessibility before they go live, and we re-audit the Site periodically. If we’re falling short somewhere, we want to know.</p>"
+          }
+        },
+        "content_VAX67r": {
+          "type": "content",
+          "settings": {
+            "heading": "Tell us if something isn’t working",
+            "content": "<p>If you run into an accessibility barrier on the Site, please reach out. Email hello@tonique.com with the page you were on and what didn’t work, and we’ll get back to you within five business days. Where we can fix something quickly, we will. Where it’s a bigger lift, we’ll let you know what we’re doing about it.</p>"
+          }
+        },
+        "content_AqWUUF": {
+          "type": "content",
+          "settings": {
+            "heading": "Third-party content",
+            "content": "<p>Some parts of the Site rely on third-party tools — embedded video, reviews, payment, and similar. We choose vendors that take accessibility seriously, but we can’t guarantee every third-party experience meets the same standard. If a third-party feature is causing a problem, please tell us — we’ll work with the vendor or find another way to give you the same information.</p>"
+          }
+        },
+        "content_FB84tL": {
+          "type": "content",
+          "settings": {
+            "heading": "Contact",
+            "content": "<p>Email: <a href=\"mailto:hello@tonique.com\" title=\"mailto:hello@tonique.com\">hello@tonique.com</a><br/>Subject line: Accessibility</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_ViCL9g",
+        "content_K4VMVf",
+        "content_VAX67r",
+        "content_AqWUUF",
+        "content_FB84tL"
+      ],
+      "name": "Policy Pages",
+      "settings": {
+        "page_heading": "ACCESSIBILITY",
+        "last_updated": "Last updated: [Insert date before launch]",
+        "top_content": "<p>Tonique is built for the way you actually live — and that includes how you use the web. We’re committed to making tonique.com usable for as many people as possible, including people who rely on assistive technology.</p>"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "privacy_policy_page_section_x4nDpm"
   ]
 }
