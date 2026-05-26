@@ -54,6 +54,27 @@
             "heading": "If something goes wrong in transit",
             "content": "<p>Once a package leaves us, the carrier owns it. That said, we’re not going to leave you hanging if it gets lost or arrives damaged. Email hello@tonique.com within 14 days of the delivery date with your order number and a photo (for damage), and we’ll replace the order or refund you.</p><p>Two notes:</p><ul><li>If tracking shows your package was delivered but you can’t find it, please check with neighbors and your building first, then file a claim with the carrier. We’re happy to help, but stolen-from-porch claims need to start with the carrier.</li><li>If an address is entered incorrectly and the package is returned to us, we’ll reach out to confirm the correct address. Reshipping costs may apply.</li></ul>"
           }
+        },
+        "content_wXA4En": {
+          "type": "content",
+          "settings": {
+            "heading": "Returns and refunds",
+            "content": "<p>Tonique is a consumable supplement, which means we can’t resell returned product even if it’s unopened — that’s a food-safety standard, not a stinginess thing.</p><p>Here’s how we handle it:</p><ul><li><strong>Unopened orders</strong> — If you change your mind within 14 days of delivery and the box hasn’t been opened, email us. We’ll refund your purchase. You don’t need to ship the product back; please donate it or pass it along to a friend.</li><li><strong>Opened orders</strong> — If you tried it and it’s not for you, email us within 30 days of delivery. We offer a one-time satisfaction refund on your first order. Tell us what didn’t work — we read every note and it shapes the brand.</li><li><strong>Defective or damaged product</strong> — Always covered. Email us with a photo and we’ll make it right.</li></ul><p>Refunds are issued to the original payment method and typically appear within 5–10 business days, depending on your bank.</p>"
+          }
+        },
+        "content_dbDCwD": {
+          "type": "content",
+          "settings": {
+            "heading": "Cancelling or pausing a subscription",
+            "content": "<p>You can manage your subscription from your account page — skip a shipment, change your cadence, swap your address, or cancel. There are no cancellation fees and no calls required. If you’re having trouble, email hello@tonique.com and we’ll handle it for you.</p>"
+          }
+        },
+        "content_BwmAHk": {
+          "type": "content",
+          "settings": {
+            "heading": "Questions",
+            "content": "<p>Email <a href=\"mailto:hello@tonique.com\" title=\"mailto:hello@tonique.com\">hello@tonique.com</a>. We typically reply within one business day.</p>"
+          }
         }
       },
       "block_order": [
@@ -61,7 +82,10 @@
         "content_LA3bgx",
         "content_hzgdaE",
         "content_CDWMTQ",
-        "content_jPBq6a"
+        "content_jPBq6a",
+        "content_wXA4En",
+        "content_dbDCwD",
+        "content_BwmAHk"
       ],
       "name": "Policy Pages",
       "settings": {
