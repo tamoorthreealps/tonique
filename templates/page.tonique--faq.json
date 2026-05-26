@@ -242,7 +242,8 @@
       ],
       "name": "FAQs",
       "settings": {
-        "mobile_title": "FAQs"
+        "mobile_title": "FAQs",
+        "content": "Everything you might want to know about Tonique — the product, the ingredients, and how it fits into your day."
       }
     }
   },
