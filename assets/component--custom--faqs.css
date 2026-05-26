@@ -197,14 +197,9 @@
 
 @media(max-width:767px) {
 
-	#customFaqs {
-		padding: 40px 16px;
-	}
-
 	#customFaqs .custom-faqs__wrapper {
 		flex-direction: column;
 		gap: 30px;
-		padding: 24px 20px;
 	}
 
 	#customFaqs .custom-faqs__sidebar {
