@@ -11,13 +11,24 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "privacy_policy_page_section_g74HT3": {
+      "type": "privacy-policy--page--section",
+      "name": "Privacy Policy",
+      "settings": {
+        "page_heading": "PRIVACY POLICY",
+        "last_updated": "Last updated: [Insert date before launch]",
+        "top_content": "<p>We respect your privacy. This policy explains what information we collect, why we collect it, and what choices you have. If anything here is unclear, email us at privacy@tonique.com.</p>"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "privacy_policy_page_section_g74HT3"
   ]
 }
