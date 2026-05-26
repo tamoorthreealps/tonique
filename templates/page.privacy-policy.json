@@ -19,6 +19,42 @@
     },
     "privacy_policy_page_section_g74HT3": {
       "type": "privacy-policy--page--section",
+      "blocks": {
+        "content_6A636Y": {
+          "type": "content",
+          "settings": {
+            "heading": "The short version",
+            "content": "<ul><li>We collect what we need to run a clean DTC business — orders, accounts, marketing preferences, and the basic web data that comes with running a site.</li><li>We don’t sell your personal information.</li><li>We share data with vendors that help us operate (payments, fulfillment, email, subscriptions, analytics). They’re held to confidentiality terms.</li><li>You can ask to see, correct, or delete your data at any time.</li></ul>"
+          }
+        },
+        "content_6PiArP": {
+          "type": "content",
+          "settings": {
+            "heading": "1. Who this policy covers",
+            "content": "<p>This Privacy Policy covers personal information we collect from visitors and customers of tonique.com, our connected social and email channels, and anyone who interacts with us by email or text.</p>"
+          }
+        },
+        "content_awxwaU": {
+          "type": "content",
+          "settings": {
+            "heading": "2. What we collect",
+            "content": "<p><strong>Information you give us directly</strong></p><ul><li><strong>Account and order details</strong> — name, email, shipping address, billing address, phone number (if you provide one), and password.</li><li><strong>Payment information</strong> — card or payment data, processed by our payment providers (Shopify Payments, Shop Pay, and similar). We don’t store full card numbers on our servers.</li><li><strong>Subscription preferences</strong> — cadence, address, payment method on file, and your skip/pause history.</li><li><strong>Marketing preferences</strong> — whether you’ve opted in to email or SMS, and what you’ve clicked.</li><li><strong>Customer service</strong> — whatever you share with us when you write in. We keep these to learn from and to follow up.</li><li><strong>Reviews and referrals</strong> — review content, referral codes you share or use.</li></ul><p><strong>Information we collect automatically</strong></p><p>Like most sites, ours uses cookies and similar tools to remember your cart, keep you logged in, measure traffic, and improve the experience. This includes:</p><ul><li>IP address, device type, browser, and operating system</li><li>Pages viewed, products clicked, time on site</li><li>Referrer URL (the link or ad that brought you here)</li><li>Cookie identifiers from analytics and advertising tools</li></ul><p><strong>Information from third parties</strong></p><p>If you sign in or interact through a third-party service (for example, Shop Pay, Apple Pay, Google, or social platforms), we may receive limited information from them — usually your name, email, and a payment token.</p>"
+          }
+        },
+        "content_iyM4pq": {
+          "type": "content",
+          "settings": {
+            "heading": "1. Who we are",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_6A636Y",
+        "content_6PiArP",
+        "content_awxwaU",
+        "content_iyM4pq"
+      ],
       "name": "Privacy Policy",
       "settings": {
         "page_heading": "PRIVACY POLICY",
