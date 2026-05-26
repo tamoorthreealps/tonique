@@ -75,6 +75,13 @@
             "heading": "7. Cookies and your choices",
             "content": "<p>You can manage cookies in your browser settings. If you turn off non-essential cookies, parts of the Site may not work as well. You can also opt out of personalized advertising through industry tools like the Digital Advertising Alliance (optout.aboutads.info) and the Network Advertising Initiative (optout.networkadvertising.org), or through the privacy settings on Meta and TikTok directly.</p><p>We honor Global Privacy Control (GPC) signals where required.</p>"
           }
+        },
+        "content_hgjyUY": {
+          "type": "content",
+          "settings": {
+            "heading": "8. Your rights",
+            "content": "<p>Depending on where you live, you may have the right to:</p><ul><li>Know what personal information we have about you</li><li>Get a copy of that information</li><li>Correct anything that’s wrong</li><li>Delete your information</li><li> Opt out of certain uses, including the “sale” or “sharing” of personal information as those terms are defined under California law (we don’t sell, but we want you to know the option exists)</li><li>Withdraw consent where we’re relying on it</li></ul><p>To exercise any of these rights, email privacy@tonique.com. We may need to verify your identity before we act. We won’t discriminate against you for exercising your rights.</p><p><em>*Legal review note: If Tonique sells or ships internationally — particularly to the EU, UK, or Canada — additional rights and disclosures (GDPR/UK GDPR, PIPEDA) apply. Counsel should decide whether to add a region-specific addendum or restrict shipping geographically. The current draft assumes US-only at launch.</em></p>"
+          }
         }
       },
       "block_order": [
@@ -85,7 +92,8 @@
         "content_tDP4hn",
         "content_P4GJ9P",
         "content_tfDjxP",
-        "content_4tNP3x"
+        "content_4tNP3x",
+        "content_hgjyUY"
       ],
       "name": "Privacy Policy",
       "settings": {
