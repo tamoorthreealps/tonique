@@ -97,6 +97,10 @@
 	text-decoration: none;
 }
 
+.custom-faqs__sidebar_content_footer_mobile{
+	display:none;
+}
+
 #customFaqs .custom-faqs__content {
 	flex: 1;
 	display: flex;
@@ -267,6 +271,10 @@
 		font-size: 14px;
 		line-height: 20px;
 		margin: 0;
+	}
+
+	.custom-faqs__sidebar_content_footer_mobile{
+		display:inherit;
 	}
 
 }
