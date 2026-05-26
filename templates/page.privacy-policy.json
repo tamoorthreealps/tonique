@@ -54,6 +54,13 @@
             "heading": "4. The vendors we use",
             "content": "<p>We work with a small set of trusted vendors to run Tonique. They process data on our behalf and are held to confidentiality terms. As of the launch, this includes:</p><ul><li><strong>Shopify</strong> — site hosting, checkout, and order management</li><li><strong>Recharge (or our subscription platform of record)</strong> — subscription billing and management</li><li><strong>Klaviyo</strong> — email and SMS marketing</li><li><strong>Shopify Payments / Shop Pay / Apple Pay / Google Pay</strong> — payment processing</li><li><strong>Our fulfillment and shipping partners</strong> — to pack and deliver your order</li><li><strong>Google Analytics, Meta Pixel, TikTok Pixel</strong> — site analytics and ad measurement</li><li><strong>Our reviews app</strong> — collecting and displaying reviews</li><li><strong>Our referral and affiliate platform</strong> — tracking referrals and affiliate links</li></ul><p><em>*Drafting note: This vendor list should be reconfirmed at launch and updated whenever a new tool is added or removed. Some jurisdictions require this list to be specific.</em></p>"
           }
+        },
+        "content_P4GJ9P": {
+          "type": "content",
+          "settings": {
+            "heading": "5. How we share information",
+            "content": "<p>We share information with:</p><ul><li>Vendors, as listed above</li><li>Professional advisers (lawyers, accountants, auditors)</li><li>Authorities, when required by law or to protect rights and safety</li><li>A future buyer or successor, if Tonique is acquired or merges with another company — your information would transfer with the business</li></ul><p>We don’t sell your personal information.</p>"
+          }
         }
       },
       "block_order": [
@@ -61,7 +68,8 @@
         "content_6PiArP",
         "content_awxwaU",
         "content_iyM4pq",
-        "content_tDP4hn"
+        "content_tDP4hn",
+        "content_P4GJ9P"
       ],
       "name": "Privacy Policy",
       "settings": {
