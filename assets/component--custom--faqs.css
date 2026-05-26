@@ -37,6 +37,7 @@
 	color: #433723;
 	font-family: 'Archivo';
 	margin: 0 0 28px;
+	padding-right: 7px;
 }
 
 #customFaqs .custom-faqs__sidebar ul {
@@ -226,6 +227,7 @@
 		font-size: 14px;
 		line-height: 20px;
 		margin: 0 0 20px;
+		padding-right: 0;
 	}
 
 	#customFaqs .custom-faqs__sidebar {
