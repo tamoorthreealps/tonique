@@ -253,9 +253,18 @@
         const isActive = item.classList.contains('active');
         faqItems.forEach((i) => {
           i.classList.remove('active');
+          i.classList.remove('previous-active');
         });
+
         if (!isActive) {
           item.classList.add('active');
+          const previousItem = item.previousElementSibling;
+          if (
+            previousItem &&
+            previousItem.classList.contains('faq-item')
+          ) {
+            previousItem.classList.add('previous-active');
+          }
         }
       });
     });
