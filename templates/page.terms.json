@@ -61,6 +61,97 @@
             "heading": "6. Payment",
             "content": "<p>We accept the major payment methods shown at checkout. By submitting payment information, you’re telling us you’re authorized to use that method. Payment is processed by our payment providers — we don’t store full card numbers ourselves. See our Privacy Policy for more on how payment data is handled.</p>"
           }
+        },
+        "content_nNWPrt": {
+          "type": "content",
+          "settings": {
+            "heading": "7. Shipping, returns, and refunds",
+            "content": "<p>Shipping, returns, and refunds are covered in our Shipping & Returns policy, which is part of these Terms.</p>"
+          }
+        },
+        "content_EkKJcd": {
+          "type": "content",
+          "settings": {
+            "heading": "8. Discount codes and referrals",
+            "content": "<p>Discount codes are for personal use only — one per order unless we say otherwise. Codes can’t be combined, can’t be redeemed for cash, and may expire. We can change or end any promotion at any time.</p><p>Our referral program lets you share Tonique with friends. Both sides get a perk when a friend uses your link. Referrals must be genuine — please don’t use your own referral code on your own orders, post codes on coupon-aggregator sites, or use bots. We can pause or remove rewards if we see abuse.</p>"
+          }
+        },
+        "content_iNAdk9": {
+          "type": "content",
+          "settings": {
+            "heading": "9. Your account",
+            "content": "<p>You don’t need an account to browse, but you’ll need one to subscribe or check order history. Keep your password to yourself, and let us know if you think someone else has accessed your account. You’re responsible for activity that happens under your login.</p>"
+          }
+        },
+        "content_RGGF9i": {
+          "type": "content",
+          "settings": {
+            "heading": "10. Acceptable use",
+            "content": "<p>Please use the Site for its intended purpose. Don’t try to break it, scrape it, reverse-engineer it, use it to send spam, impersonate someone else, or upload anything illegal, infringing, or harmful. We can suspend or close accounts that do.</p>"
+          }
+        },
+        "content_BpP9kQ": {
+          "type": "content",
+          "settings": {
+            "heading": "11. Intellectual property",
+            "content": "<p>Everything on the Site — the Tonique name and logo, our product photography, copy, illustrations, and design — belongs to us or to people who’ve licensed it to us. You can browse, screenshot for personal reference, and share product links. You can’t copy our content for commercial use, train AI models on it, or pretend it’s your own.</p><p>If you tag us on social media or send us photos, you’re giving us permission to repost that content with credit to you. If you’d rather we didn’t, just let us know.</p>"
+          }
+        },
+        "content_NDwrib": {
+          "type": "content",
+          "settings": {
+            "heading": "12. User-generated content and reviews",
+            "content": "<p>When you leave a review or post about Tonique, please be honest and kind. Reviews should reflect your real experience. We don’t edit reviews to make them more flattering, and we don’t pay people to write positive ones. We may remove reviews that contain personal information, hate speech, or unrelated content.</p>"
+          }
+        },
+        "content_ztrd3t": {
+          "type": "content",
+          "settings": {
+            "heading": "13. Health claims and your judgment",
+            "content": "<p>We talk about Tonique in terms of what it is and what it does as a food: protein, vitamins, minerals, and adaptogens. We don’t make medical claims. The Site, our emails, and our social channels are not medical advice. If you have questions about whether Tonique is right for you, please talk to a healthcare professional.</p>"
+          }
+        },
+        "content_qDUdPQ": {
+          "type": "content",
+          "settings": {
+            "heading": "14. Disclaimers",
+            "content": "<p>The Site and the products are provided “as is.” To the maximum extent allowed by law, we disclaim all implied warranties — including merchantability, fitness for a particular purpose, and non-infringement. We don’t warrant that the Site will be uninterrupted, error-free, or free of viruses.</p>"
+          }
+        },
+        "content_eDwhDc": {
+          "type": "content",
+          "settings": {
+            "heading": "15. Limitation of liability",
+            "content": "<p>To the maximum extent allowed by law, Tonique and our team won’t be liable for indirect, incidental, special, consequential, or punitive damages, or for any loss of profits, revenue, or data, arising from your use of the Site or our products. Our total liability for any claim related to these Terms or your use of the Site is limited to the amount you paid us in the 12 months before the claim, or $100, whichever is greater.</p><p>Some states don’t allow these limitations, so they may not apply to you in full.</p>"
+          }
+        },
+        "content_tVhhFC": {
+          "type": "content",
+          "settings": {
+            "heading": "16. Indemnification",
+            "content": "<p>You agree to defend and indemnify Tonique from claims arising out of your misuse of the Site, your violation of these Terms, or your violation of someone else’s rights.</p>"
+          }
+        },
+        "content_PTqDU8": {
+          "type": "content",
+          "settings": {
+            "heading": "17. Governing law and disputes",
+            "content": "<p>These Terms are governed by the laws of the State of [State], without regard to conflict-of-laws rules. Any dispute will be resolved in the state or federal courts located in [County], [State], and you agree to that jurisdiction.</p><p><em>*Legal review note: If you intend to require arbitration or include a class action waiver, that language needs to be added here and surfaced clearly at sign-up. Counsel should decide whether to include those provisions and, if so, draft them in line with current FAA and state law.</em></p>"
+          }
+        },
+        "content_jXkqVh": {
+          "type": "content",
+          "settings": {
+            "heading": "18. Changes to these Terms",
+            "content": "<p>We may update these Terms from time to time. When we do, we’ll change the “Last updated” date at the top. Material changes will be communicated by email or a notice on the Site. Continuing to use the Site after changes go live means you accept the updated Terms.</p>"
+          }
+        },
+        "content_7MPt7G": {
+          "type": "content",
+          "settings": {
+            "heading": "19. Contact",
+            "content": "<p>Questions about these Terms? Email <a href=\"mailto:hello@tonique.com\" title=\"mailto:hello@tonique.com\">hello@tonique.com</a>. We read everything.</p>"
+          }
         }
       },
       "block_order": [
@@ -69,7 +160,20 @@
         "content_rHcane",
         "content_MDewXW",
         "content_meTbXe",
-        "content_bE7PYi"
+        "content_bE7PYi",
+        "content_nNWPrt",
+        "content_EkKJcd",
+        "content_iNAdk9",
+        "content_RGGF9i",
+        "content_BpP9kQ",
+        "content_NDwrib",
+        "content_ztrd3t",
+        "content_qDUdPQ",
+        "content_eDwhDc",
+        "content_tVhhFC",
+        "content_PTqDU8",
+        "content_jXkqVh",
+        "content_7MPt7G"
       ],
       "name": "Terms & Conditions",
       "settings": {
