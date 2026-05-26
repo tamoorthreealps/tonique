@@ -236,7 +236,7 @@
 		display: block;
 	}
 
-	.faq-mobile-select{
+	.faq-mobile-select, .custom-faqs__mobile-dropdown{
 		position:relative;
 	}
 
@@ -257,7 +257,7 @@
 
 	#customFaqs .custom-faqs__mobile-dropdown select {
 		width: 100%;
-		padding: 12px 16px;
+		padding: 28px 16px 12px 16px;
 		border: 1px solid #DCD8CC;
 		background: transparent;
 		font-size: 14px;
