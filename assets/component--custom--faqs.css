@@ -236,6 +236,17 @@
 		display: block;
 	}
 
+	.faq-mobile-select{
+		position:relative;
+	}
+
+	span.faq-mobile-arrow {
+		position: absolute;
+		right: 16px;
+		top: 50%;
+		transform: translate(0px, -50%);
+	}
+
 	#customFaqs .custom-faqs__mobile-dropdown select {
 		width: 100%;
 		padding: 12px 16px;
