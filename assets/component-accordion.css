@@ -154,4 +154,8 @@
 	.product__accordion .accordion__content {
 		margin-bottom: 32px;
 	}
+
+    .product__accordion details[open] .accordion__content {
+        margin-bottom: 32px;
+    }
 }
