@@ -1,8 +1,36 @@
 {{ 'css--product-faqs.css' | asset_url | stylesheet_tag }}
 
 <section class="pf-section" id="ProductFAQs-{{ section.id }}" {{ section.shopify_attributes }}>
-  {%- comment -%} ── Decorative beige panel (right half, desktop) ── {%- endcomment -%}
-  <div class="pf-bg-panel" aria-hidden="true"></div>
+  {%- comment -%} ── Image: top on mobile ── {%- endcomment -%}
+  {%- if section.settings.image != blank -%}
+    <div class="pf-image-mobile" aria-hidden="true">
+      {{
+        section.settings.image
+        | image_url: width: 900
+        | image_tag:
+          loading: 'lazy',
+          widths: '375, 600, 750, 900',
+          sizes: '100vw',
+          alt: section.settings.image.alt | escape
+      }}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── Right panel (desktop): beige bg + optional image ── {%- endcomment -%}
+  <div class="pf-bg-panel" aria-hidden="true">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          loading: 'lazy',
+          widths: '756, 900, 1100, 1400, 1600',
+          sizes: '56vw',
+          class: 'pf-bg-panel__img',
+          alt: ''
+      }}
+    {%- endif -%}
+  </div>
 
   <div class="pf-inner--container">
     <div class="pf-inner">
@@ -117,6 +145,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Displayed on the right on desktop, and above the accordion on mobile."
     },
     {
       "type": "text",
