@@ -24,7 +24,7 @@
 	transition: max-height .45s cubic-bezier(.22, .61, .36, 1), opacity .3s ease, margin-bottom .3s ease;
 }
 
-.product__accordion details[open] .accordion__content {
+.product__accordion details[open] .accordion__content .accordion__content_hold {
 	opacity: 1;
 	margin-bottom: 24px;
 }
@@ -155,7 +155,7 @@
 		margin-bottom: 32px;
 	}
 
-    .product__accordion details[open] .accordion__content {
+    .product__accordion details[open] .accordion__content .accordion__content_hold {
         margin-bottom: 32px;
     }
 }
