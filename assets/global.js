@@ -800,6 +800,13 @@ class SliderComponent extends HTMLElement {
     } else {
       this.nextButton.removeAttribute('disabled');
     }
+
+    const progressFill = this.querySelector('.slider-progress__fill');
+
+if (progressFill) {
+  progressFill.style.width =
+    (this.currentPage / this.totalPages) * 100 + '%';
+}
   }
 
   isSlideVisible(element, offset = 0) {
