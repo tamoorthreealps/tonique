@@ -48,7 +48,34 @@
       </div>
 
       {%- comment -%} Right: detail cards ── {%- endcomment -%}
-      <div class="wi-right">
+      <div
+        class="wi-right"
+        style="background-color: {{ section.settings.right_bg_color }};"
+      >
+        {% if section.settings.right_bg_video != blank %}
+          <video
+            class="wi-right__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            {% if section.settings.right_bg_image != blank %}
+              poster="{{ section.settings.right_bg_image | image_url: width: 1600 }}"
+            {% endif %}
+          >
+            {% for source in section.settings.right_bg_video.sources %}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {% endfor %}
+          </video>
+
+        {% elsif section.settings.right_bg_image != blank %}
+          {{
+            section.settings.right_bg_image
+            | image_url: width: 1600
+            | image_tag: class: 'wi-right__bg-image', loading: 'lazy'
+          }}
+        {% endif %}
         <div class="wi-panel" id="wi-panel-{{ section.id }}">
           {%- for block in section.blocks -%}
             <div
@@ -159,58 +186,58 @@
 </section>
 
 <script>
-    (function () {
-      var sid = '{{ section.id }}';
+      (function () {
+        var sid = '{{ section.id }}';
 
-      function activate(num) {
-        document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (r) {
-          r.classList.toggle('is-active', parseInt(r.dataset.wiRow, 10) === num);
-        });
-        document.querySelectorAll('#wi-panel-' + sid + ' .wi-card').forEach(function (c) {
-          var isActive = parseInt(c.dataset.wiCard, 10) === num;
-          c.classList.toggle('is-active', isActive);
-          c.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-        });
-      }
+        function activate(num) {
+          document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (r) {
+            r.classList.toggle('is-active', parseInt(r.dataset.wiRow, 10) === num);
+          });
+          document.querySelectorAll('#wi-panel-' + sid + ' .wi-card').forEach(function (c) {
+            var isActive = parseInt(c.dataset.wiCard, 10) === num;
+            c.classList.toggle('is-active', isActive);
+            c.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+          });
+        }
 
-      document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          activate(parseInt(this.dataset.wiRow, 10));
+        document.querySelectorAll('#wi-list-' + sid + ' .wi-row').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            activate(parseInt(this.dataset.wiRow, 10));
+          });
         });
+      })();
+
+      document.addEventListener('DOMContentLoaded', function () {
+        let splide = new Splide('#wi-mobile-{{ section.id }}', {
+          type: 'slide',
+          perPage: 2,
+          perMove: 1,
+          pagination: true,
+          arrows: false,
+          gap: '0px',
+          focus: '0',
+          flickPower: 80,
+          flickMaxPages: 1,
+          dragMinThreshold: { mouse: 4, touch: 6 },
+          easing: 'ease-in-out',
+          omitEnd: true,
+          trimSpace: true,
+        });
+
+        splide.mount();
       });
-    })();
 
-    document.addEventListener('DOMContentLoaded', function () {
-      let splide = new Splide('#wi-mobile-{{ section.id }}', {
-        type: 'slide',
-        perPage: 2,
-        perMove: 1,
-        pagination: true,
-        arrows: false,
-        gap: '0px',
-        focus: '0',
-        flickPower: 80,
-        flickMaxPages: 1,
-        dragMinThreshold: { mouse: 4, touch: 6 },
-        easing: 'ease-in-out',
-        omitEnd: true,
-        trimSpace: true,
+      {% comment %} slide--up--the--info {% endcomment %}
+       document.querySelectorAll('.wi--scroll--info--opener').forEach((btn) => {
+      btn.addEventListener('click', function () {
+        this.closest('.wi-scroll-card').classList.toggle('is-open');
       });
-
-      splide.mount();
     });
-
-    {% comment %} slide--up--the--info {% endcomment %}
-     document.querySelectorAll('.wi--scroll--info--opener').forEach((btn) => {
+    document.querySelectorAll('.wi--scroll--info--closer').forEach((btn) => {
     btn.addEventListener('click', function () {
-      this.closest('.wi-scroll-card').classList.toggle('is-open');
+      this.closest('.wi-scroll-card').classList.remove('is-open');
     });
   });
-  document.querySelectorAll('.wi--scroll--info--closer').forEach((btn) => {
-  btn.addEventListener('click', function () {
-    this.closest('.wi-scroll-card').classList.remove('is-open');
-  });
-});
 </script>
 
 {% schema %}
@@ -229,6 +256,22 @@
       "id": "subtext",
       "label": "Subtext",
       "default": "Every ingredient, every amount — nothing hidden."
+    },
+    {
+      "type": "color",
+      "id": "right_bg_color",
+      "label": "Right Background Color",
+      "default": "#E8E5D8"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_bg_image",
+      "label": "Right Background Image"
+    },
+    {
+      "type": "video",
+      "id": "right_bg_video",
+      "label": "Right Background Video"
     }
   ],
   "blocks": [
