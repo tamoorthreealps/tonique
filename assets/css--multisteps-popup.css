@@ -141,27 +141,27 @@ body.msp-body-lock {
 
 /* ── Heading ────────────────────────────────────── */
 .msp-heading {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 1.05;
-  letter-spacing: -0.5px;
-  color: #2d2315;
-  margin: 0 0 6px;
-  text-align: center;
+    font-family: Archivo, sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 1.28px;
+    color: #433723;
+    margin: 0 0 4px;
+    text-align: center;
 }
 
 /* ── Subheading ─────────────────────────────────── */
 .msp-subheading {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 1.4;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #433723;
-  margin: 0 0 16px;
-  text-align: center;
+font-family: Archivo, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #433723;
+    margin: 0 0 12px;
+    text-align: center;
 }
 
 /* Gold subheading variant (step 2 & 3) */
@@ -171,19 +171,22 @@ body.msp-body-lock {
 
 /* ── Body text ──────────────────────────────────── */
 .msp-body {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.55;
-  color: #433723;
-  margin: 0 0 20px;
-  text-align: center;
+font-family: Archivo, sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #433723;
+    margin: 0 0 16px;
+    text-align: center;
 }
 
 /* ── Klaviyo form wrapper ───────────────────────── */
 .msp-klaviyo-form {
   width: 100%;
-  margin-bottom: 16px;
+      display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 /*
@@ -202,32 +205,34 @@ body.msp-body-lock {
 .msp-klaviyo-form input[type="email"],
 .msp-klaviyo-form input[type="text"],
 .msp-klaviyo-form input[type="tel"] {
-  width: 100%;
-  box-sizing: border-box;
-  height: 52px;
-  padding: 0 16px;
-  font-family: 'Archivo', sans-serif;
-  font-size: 15px;
-  color: #433723;
-  background: #fefefc;
-  border: 1.5px solid #d4cdc0;
-  border-radius: 0;
-  outline: none;
-  transition: border-color 0.2s;
-  -webkit-appearance: none;
-  appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    padding: 0 16px;
+    font-family: Archivo, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #827A69;
+    background: #fefefc;
+    border: 1px solid #D8D1BF;
+    border-radius: 0;
+    outline: none;
+    transition: border-color .2s;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .msp-klaviyo-form input[type="email"]::placeholder,
 .msp-klaviyo-form input[type="text"]::placeholder,
 .msp-klaviyo-form input[type="tel"]::placeholder {
-  color: #b5ae9f;
+  color: #827A69;
 }
 
 .msp-klaviyo-form input[type="email"]:focus,
 .msp-klaviyo-form input[type="text"]:focus,
 .msp-klaviyo-form input[type="tel"]:focus {
-  border-color: #a88958;
+  border-color: #D8D1BF;
 }
 
 /* Submit buttons from Klaviyo */
@@ -359,10 +364,20 @@ body.msp-body-lock {
   }
 
   .msp-heading {
-    font-size: 52px;
+    font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 1.6px;
+  }
+
+  .msp-subheading {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 1.0px;
   }
 
   .msp-body {
-    font-size: 15px;
+    font-size: 14px;
+        line-height: 24px;
+        margin: 0 0 20px;
   }
 }
