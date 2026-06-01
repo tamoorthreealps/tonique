@@ -237,7 +237,8 @@ font-family: Archivo, sans-serif;
 
 /* Submit buttons from Klaviyo */
 .msp-klaviyo-form input[type="submit"],
-.msp-klaviyo-form button[type="submit"] {
+.msp-klaviyo-form button[type="submit"],
+.msp-klaviyo-form button[type="button"] {
   width: 100%;
   height: 52px;
   margin-top: 8px;
@@ -257,7 +258,8 @@ font-family: Archivo, sans-serif;
 }
 
 .msp-klaviyo-form input[type="submit"]:hover,
-.msp-klaviyo-form button[type="submit"]:hover {
+.msp-klaviyo-form button[type="submit"]:hover,
+.msp-klaviyo-form button[type="button"]:hover {
   opacity: 0.88;
 }
 
