@@ -600,7 +600,10 @@
                                     | money_with_currency
                                   -%}
                                   <span class="price-per-item--current">
-                                    {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                    {{-
+                                      'products.product.volume_pricing.price_at_each_html'
+                                      | t: price: variant_price
+                                    -}}
                                   </span>
                                 {%- else -%}
                                   {%- for price_break in volume_pricing_array -%}
@@ -647,7 +650,10 @@
                                   </dl>
                                 {%- else -%}
                                   <span class="price-per-item--current">
-                                    {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                    {{-
+                                      'products.product.volume_pricing.price_at_each_html'
+                                      | t: price: variant_price
+                                    -}}
                                   </span>
                                 {%- endif -%}
                               </div>
@@ -889,7 +895,9 @@
                               {{- 'icon-caret.svg' | inline_asset_content -}}
                             </summary>
                             <div class="accordion__content rte" id="Accordion-mf-{{ pp_mf_key }}-{{ section.id }}">
-                              {{ pp_mf_content | metafield_tag }}
+                              <div class="accordion__content_hold">
+                                {{ pp_mf_content | metafield_tag }}
+                              </div>
                             </div>
                           </details>
                         </div>
@@ -904,17 +912,19 @@
                   {% render 'icon-with-text', block: block %}
               {%- endcase -%}
             {%- endfor -%}
-            {% comment %} <a
-              {% if product == blank %}
-                role="link" aria-disabled="true"
-              {% else %}
-                href="{{ product.url }}"
-              {% endif %}
-              class="link product__view-details animate-arrow"
-            >
-              {{ 'products.product.view_full_details' | t }}
-              {{- 'icon-arrow.svg' | inline_asset_content -}}
-            </a> {% endcomment %}
+            {% comment %}
+              <a
+                {% if product == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ product.url }}"
+                {% endif %}
+                class="link product__view-details animate-arrow"
+              >
+                {{ 'products.product.view_full_details' | t }}
+                {{- 'icon-arrow.svg' | inline_asset_content -}}
+              </a>
+            {% endcomment %}
           </section>
         </div>
       </div>
@@ -1283,22 +1293,22 @@
       "name": "Product Testimonial Card",
       "limit": 1,
       "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          },
-          {
-            "type": "textarea",
-            "id": "quote",
-            "label": "Quote",
-            "default": "Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac."
-          },
-          {
-            "type": "image_picker",
-            "id": "signature",
-            "label": "Signature Image"
-          }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Tempus eu congue velit placerat. Dictum turpis nisi volutpat donec mollis ornare eu. Feugiat mi in lectus ac."
+        },
+        {
+          "type": "image_picker",
+          "id": "signature",
+          "label": "Signature Image"
+        }
       ]
     },
     {
