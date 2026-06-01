@@ -120,45 +120,69 @@
 </section>
 
 <script>
-  (function () {
-    var sid = '{{ section.id }}';
-    var accordion = document.getElementById('pf-accordion-' + sid);
-    if (!accordion) return;
+(function () {
+  var sid = '{{ section.id }}';
+  var accordion = document.getElementById('pf-accordion-' + sid);
+  if (!accordion) return;
 
-    accordion.addEventListener('click', function (e) {
-      var trigger = e.target.closest('[data-pf-trigger]');
-      if (!trigger) return;
+  function openItem(item) {
+    var trigger = item.querySelector('.pf-item__trigger');
+    var body = item.querySelector('.pf-item__body');
 
-      var idx = trigger.dataset.pfTrigger;
-      var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
-      var body = document.getElementById('pf-answer-' + sid + '-' + idx);
-      if (!item || !body) return;
+    item.classList.add('is-open');
+    trigger.setAttribute('aria-expanded', 'true');
+    body.setAttribute('aria-hidden', 'false');
 
-      var isOpen = item.classList.contains('is-open');
-
-      // Close all
-      accordion.querySelectorAll('.pf-item').forEach(function (el) {
-  el.classList.remove('is-open');
-  el.querySelector('.pf-item__trigger').setAttribute('aria-expanded', 'false');
-
-  var b = el.querySelector('.pf-item__body');
-
-  if (b) {
-    b.style.maxHeight = '0px';
-    b.setAttribute('aria-hidden', 'true');
+    requestAnimationFrame(function () {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
   }
-});
 
-      // Open clicked (toggle)
-      if (!isOpen) {
-        item.classList.add('is-open');
-trigger.setAttribute('aria-expanded', 'true');
-body.setAttribute('aria-hidden', 'false');
+  function closeItem(item) {
+    var trigger = item.querySelector('.pf-item__trigger');
+    var body = item.querySelector('.pf-item__body');
 
-body.style.maxHeight = body.scrollHeight + 'px';
+    body.style.maxHeight = body.scrollHeight + 'px';
+
+    requestAnimationFrame(function () {
+      item.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      body.setAttribute('aria-hidden', 'true');
+      body.style.maxHeight = '0px';
+    });
+  }
+
+  window.addEventListener('load', function () {
+    accordion.querySelectorAll('.pf-item.is-open').forEach(function (item) {
+      var body = item.querySelector('.pf-item__body');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
+  });
+
+  accordion.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-pf-trigger]');
+    if (!trigger) return;
+
+    var idx = trigger.dataset.pfTrigger;
+    var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
+
+    if (!item) return;
+
+    var isOpen = item.classList.contains('is-open');
+
+    accordion.querySelectorAll('.pf-item').forEach(function (el) {
+      if (el !== item) {
+        closeItem(el);
       }
     });
-  })();
+
+    if (isOpen) {
+      closeItem(item);
+    } else {
+      openItem(item);
+    }
+  });
+})();
 </script>
 
 {% schema %}
