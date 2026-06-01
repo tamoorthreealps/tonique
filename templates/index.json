@@ -9,55 +9,6 @@
  */
 {
   "sections": {
-    "hero_banner_bCyNXR": {
-      "type": "hero-banner",
-      "blocks": {
-        "stat_badge_hkfzF4": {
-          "type": "stat_badge",
-          "settings": {
-            "value": "15g",
-            "label": "PROTEIN"
-          }
-        },
-        "stat_badge_WPKxik": {
-          "type": "stat_badge",
-          "settings": {
-            "value": "0g",
-            "label": "Sugar"
-          }
-        },
-        "stat_badge_9RWJaT": {
-          "type": "stat_badge",
-          "settings": {
-            "value": "1oz",
-            "label": "POUCH"
-          }
-        },
-        "stat_badge_X7KCaw": {
-          "type": "stat_badge",
-          "settings": {
-            "value": "70",
-            "label": "Calories"
-          }
-        }
-      },
-      "block_order": [
-        "stat_badge_hkfzF4",
-        "stat_badge_WPKxik",
-        "stat_badge_9RWJaT",
-        "stat_badge_X7KCaw"
-      ],
-      "disabled": true,
-      "name": "Hero Banner",
-      "settings": {
-        "heading": "Beauty + Proteinin one clean pouch",
-        "subtext": "15g of complete protein. All natural. Zero sugar. Collagen + whey. Beauty nutrients. Adaptogens. One pouch. Done.",
-        "cta_label": "SHOP NOW",
-        "cta_link": "",
-        "product_image": "shopify://shop_images/bottle.svg",
-        "decorative_image": "shopify://shop_images/waves-tonique.svg"
-      }
-    },
     "component_tonique_banner_HBckAV": {
       "type": "component--tonique--banner",
       "blocks": {
@@ -594,7 +545,6 @@
     }
   },
   "order": [
-    "hero_banner_bCyNXR",
     "component_tonique_banner_HBckAV",
     "text_scroller_qpPdAt",
     "tea_drink_go_HrV6kf",
