@@ -384,8 +384,10 @@ slider-component.slider-component-full-width {
   padding:0;
 }
 
-.slider-button .svg-wrapper{
+.slider-button .svg-wrapper,
+.slider-button .svg-wrapper svg{
   height: 0.6rem;
+  width:1rem;
 }
 
 .slider-button:not([disabled]):hover {
