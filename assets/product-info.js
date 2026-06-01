@@ -192,7 +192,10 @@ if (!customElements.get('product-info')) {
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');
           updateSourceFromDestination('Price-Per-Item', ({ classList }) => classList.contains('hidden'));
-          
+          const buttonText = this.querySelector(`#add-to-cart-text-${this.sectionId}`);
+          if (buttonText && variant) {
+            buttonText.textContent = `ADD TO BAG - $${(variant.price / 100).toFixed(2)}`;
+          }
           this.updateQuantityRules(this.sectionId, html);
           this.querySelector(`#Quantity-Rules-${this.dataset.section}`)?.classList.remove('hidden');
           this.querySelector(`#Volume-Note-${this.dataset.section}`)?.classList.remove('hidden');
