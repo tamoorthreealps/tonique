@@ -239,22 +239,22 @@ font-family: Archivo, sans-serif;
 .msp-klaviyo-form input[type="submit"],
 .msp-klaviyo-form button[type="submit"],
 .msp-klaviyo-form button[type="button"] {
-  width: 100%;
-  height: 52px;
-  margin-top: 8px;
-  background: #a88958;
-  color: #faf7f0;
-  font-family: 'Archivo', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  -webkit-appearance: none;
-  appearance: none;
+    width: 100%;
+    height: 48px;
+    background: linear-gradient(90deg, #A88958 0%, #B9A179 50%, #A88958 100%);
+    color: #F9F7F0;
+    font-family: Archivo, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.64px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: opacity .2s;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .msp-klaviyo-form input[type="submit"]:hover,
