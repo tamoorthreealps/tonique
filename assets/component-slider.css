@@ -332,11 +332,11 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button--prev {
-    left: 16px;
+    left: 14px;
 }
 
 .slider-button--next {
-    right: 16px;
+    right: 14px;
 }
 
 .slider-counter {
