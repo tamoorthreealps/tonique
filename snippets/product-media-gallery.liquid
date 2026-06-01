@@ -133,7 +133,15 @@
         aria-label="{{ 'general.slider.previous_slide' | t }}"
       >
         <span class="svg-wrapper">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
+          <svg
+            width="7"
+            height="11"
+            viewBox="0 0 7 11"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M6.5 0.5L0.5 5.5L6.5 10.5" stroke="#8E877B" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </span>
       </button>
       <div class="slider-counter caption">
@@ -149,7 +157,15 @@
         aria-label="{{ 'general.slider.next_slide' | t }}"
       >
         <span class="svg-wrapper">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
+          <svg
+            width="7"
+            height="11"
+            viewBox="0 0 7 11"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0.5 0.5L6.5 5.5L0.5 10.5" stroke="#8E877B" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </span>
       </button>
     </div>
@@ -358,10 +374,10 @@
     </button>
   {%- endif -%}
   {% if product.tags.size > 0 %}
-  <div class="product-tags--media">
-    {% for tag in product.tags %}
-      <span class="product-tag">{{ tag }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
+    <div class="product-tags--media">
+      {% for tag in product.tags %}
+        <span class="product-tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
 </media-gallery>
