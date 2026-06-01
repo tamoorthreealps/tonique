@@ -14,11 +14,10 @@
 	overflow: hidden;
 }
 
-.product__accordion .accordion__content .accordion__content_hold {
+.product__accordion .accordion__content {
 	padding: 0;
 	overflow: hidden;
 	max-height: 0;
-	opacity: 0;
 	margin-bottom: 0;
 	transition: max-height .45s cubic-bezier(.22, .61, .36, 1), opacity .3s ease, margin-bottom .3s ease;
 }
