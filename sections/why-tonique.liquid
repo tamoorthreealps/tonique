@@ -133,7 +133,7 @@
   </div>
 </section>
 
-<script>
+{% comment %} <script>
   (function () {
     var sid = '{{ section.id }}';
     var total = {{ section.blocks.size }};
@@ -237,7 +237,7 @@
     restartAutoRotate();
 
   })();
-</script>
+</script> {% endcomment %}
 {% schema %}
 {
   "name": "Why Tonique",
