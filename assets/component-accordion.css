@@ -7,6 +7,11 @@
 	position: relative;
 	line-height: 1;
 	padding: 20px 0;
+    transition: background .3s ease;
+}
+
+.accordion details {
+  overflow: hidden;
 }
 
 .product__accordion .accordion__content {
