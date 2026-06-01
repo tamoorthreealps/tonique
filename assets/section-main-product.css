@@ -394,6 +394,10 @@ a.product__text {
   .slider.product__media-list::after {
     display: none;
   }
+    .product__media-list.slider::after {
+    display: none !important;
+    content: none !important;
+  }
   .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
       margin-left: 0;
     margin-right: 0;
