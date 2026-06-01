@@ -343,8 +343,8 @@ font-weight: 400;
     cursor: pointer;
     font-family: Archivo, sans-serif;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 16px;
     letter-spacing: 0;
     color: #827A69;
     text-decoration: underline;
@@ -433,5 +433,9 @@ font-weight: 400;
 }
 .msp-step.msp-step--two .msp-disclaimer{
   font-size: 9px;
+}
+.msp-skip {
+    font-size: 14px;
+    line-height: 20px;
 }
 }
