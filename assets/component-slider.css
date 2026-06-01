@@ -348,8 +348,8 @@ slider-component.slider-component-full-width {
 
 .slider-progress {
     position: absolute;
-    left: 24px;
-    right: 24px;
+    left: 0;
+    right: 0;
     bottom: 0;
 }
 
