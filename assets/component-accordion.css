@@ -26,6 +26,7 @@
 
 .product__accordion details[open] .accordion__content {
   opacity: 1;
+  margin-bottom: 24px;
 }
 
 .product__accordion .accordion__content ul {
