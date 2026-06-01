@@ -383,10 +383,10 @@ slider-component.slider-component-full-width {
   justify-content: center;
   padding:0;
 }
-.slider-button .svg-wrapper svg{
+/* .slider-button .svg-wrapper svg{
   height: 0.6rem;
   width:1rem;
-}
+} */
 
 .slider-button:not([disabled]):hover {
   color: rgb(var(--color-foreground));
