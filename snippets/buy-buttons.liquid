@@ -55,12 +55,12 @@
           {% endif %}
           class="product-variant-id"
         >
-          <input
-  type="hidden"
-  name="selling_plan"
-  id="selling-plan-input"
-  value=""
->
+        <input
+          type="hidden"
+          name="selling_plan"
+          id="selling-plan-input"
+          value=""
+        >
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
