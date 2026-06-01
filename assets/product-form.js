@@ -140,7 +140,7 @@ if (!customElements.get('product-form')) {
     this.submitButtonText.textContent =
       `ADD TO BAG - $${(variantData.price / 100).toFixed(2)}`;
   } else {
-    this.submitButtonText.textContent = window.variantStrings.addToCart;
+    this.submitButtonText.textContent = 'ADD TO BAG';
   }
 }
       }
