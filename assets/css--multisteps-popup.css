@@ -187,6 +187,7 @@ font-family: Archivo, sans-serif;
       display: flex;
     flex-direction: column;
     gap: 8px;
+        margin-bottom: 12px;
 }
 
 /*
@@ -301,12 +302,13 @@ font-family: Archivo, sans-serif;
 /* ── Disclaimer ─────────────────────────────────── */
 .msp-disclaimer {
   font-family: 'Archivo', sans-serif;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 1.5;
-  color: #8e877b;
-  margin: 12px 0 0;
-  text-align: center;
+font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: #827A69;
+    margin: 0;
+    text-align: center;
 }
 
 .msp-disclaimer a {
@@ -316,19 +318,20 @@ font-family: Archivo, sans-serif;
 
 /* ── Skip link ──────────────────────────────────── */
 .msp-skip {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: 'Archivo', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #433723;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  margin-top: 16px;
-  transition: color 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: Archivo, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #827A69;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin-top: 0;
+    transition: color .2s;
 }
 
 .msp-skip:hover {
@@ -343,8 +346,16 @@ font-family: Archivo, sans-serif;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #433723;
-  margin-top: 28px;
+  margin-top: 24px;
   text-align: center;
+}
+
+.msp-logo img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: 184px;
+    margin: 0 auto;
 }
 
 /* ── Desktop ─────────────────────────────────────── */

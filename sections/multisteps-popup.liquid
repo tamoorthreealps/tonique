@@ -101,19 +101,22 @@
               <button type="button">YES, I WANT IT</button>
             </div>
           {%- endif -%}
+          {%- if section.settings.step2_disclaimer or section.settings.step2_skip_label != blank -%}
+          <div class="msp-disclaimer--msp-skip">
+            {%- if section.settings.step2_disclaimer != blank -%}
+              <p class="msp-disclaimer">{{ section.settings.step2_disclaimer }}</p>
+            {%- endif -%}
 
-          {%- if section.settings.step2_disclaimer != blank -%}
-            <p class="msp-disclaimer">{{ section.settings.step2_disclaimer }}</p>
-          {%- endif -%}
-
-          {%- if section.settings.step2_skip_label != blank -%}
-            <button
-              class="msp-skip"
-              type="button"
-              data-msp-action="advance"
-            >
-              {{ section.settings.step2_skip_label }}
-            </button>
+            {%- if section.settings.step2_skip_label != blank -%}
+              <button
+                class="msp-skip"
+                type="button"
+                data-msp-action="advance"
+              >
+                {{ section.settings.step2_skip_label }}
+              </button>
+            {%- endif -%}
+          </div>
           {%- endif -%}
         </div>
 
