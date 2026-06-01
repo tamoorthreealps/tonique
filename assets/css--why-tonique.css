@@ -162,7 +162,8 @@
   padding: 24px 0;
   position: relative;
   border-bottom: 1px solid #D9D7D3;
-  transition: all .35s;
+  overflow: hidden;
+  transition: all .45s ease;
 }
 .wt-reason::after {
   content: '';
@@ -199,10 +200,13 @@
 
 /* Wavy line icon — only visible when active */
 .wt-reason__icon {
-  display: none;
+  display: block;
   flex-shrink: 0;
   width: 24px;
+  opacity: 0;
   color: #977b4f;
+  transform: translateX(-8px);
+  transition: opacity .35s ease, transform .35s ease;
 }
 
 .wt-reason__title {
@@ -229,27 +233,28 @@
   color: #433723;
   margin: 16px 0 0;
   letter-spacing: 0;
-    max-height: 0;
+  max-height: 0;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(12px);
   overflow: hidden;
   transition:
-    max-height .5s ease,
-    opacity .4s ease,
-    transform .4s ease,
-    margin .4s ease;
+    max-height .6s cubic-bezier(.22,.61,.36,1),
+    opacity .45s ease,
+    transform .45s ease,
+    margin-top .45s ease;
 
   margin-top: 0;
 }
 .wt-reason.is-active .wt-reason__desc {
-  max-height: 200px;
+  max-height: 300px;
   opacity: 1;
   transform: translateY(0);
   margin-top: 16px;
 }
 /* Active reason */
 .wt-reason.is-active .wt-reason__icon {
-  display: block;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .wt-reason.is-active .wt-reason__title {
