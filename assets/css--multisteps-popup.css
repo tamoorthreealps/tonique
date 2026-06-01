@@ -1,0 +1,368 @@
+/* ─────────────────────────────────────────────────────────────────
+   css--multisteps-popup.css
+   Multi-step email/SMS popup — Tonique pouch silhouette shape
+   Mobile-first; desktop tweaks at 480px+
+───────────────────────────────────────────────────────────────── */
+
+/* ── Scroll lock ────────────────────────────────── */
+body.msp-body-lock {
+  overflow: hidden;
+}
+
+/* ── Overlay ────────────────────────────────────── */
+.msp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(55, 48, 32, 0.90);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.msp-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Popup wrapper ──────────────────────────────── */
+.msp-popup {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  transform: translateY(24px);
+  transition: transform 0.35s cubic-bezier(0.34, 1.26, 0.64, 1);
+}
+
+.msp-overlay.is-visible .msp-popup {
+  transform: translateY(0);
+}
+
+/* ── Close button ───────────────────────────────── */
+.msp-close {
+  position: absolute;
+  top: 88px; /* sits at top of card body, below neck */
+  right: 0;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8e877b;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.msp-close:hover {
+  color: #433723;
+}
+
+.msp-close svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Pouch neck shape ───────────────────────────── */
+/*
+  Creates the Tonique pouch silhouette at the top of the popup.
+  Technique: narrow div with rounded top + radial-gradient
+  pseudo-elements for the smooth shoulder curves.
+*/
+.msp-neck {
+  width: 44%;
+  margin: 0 auto;
+  height: 88px;
+  background: #f5f0e3;
+  border-radius: 18px 18px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left shoulder curve */
+.msp-neck::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -32px;
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(
+    circle at 100% 0%,
+    transparent 31px,
+    #f5f0e3 32px
+  );
+}
+
+/* Right shoulder curve */
+.msp-neck::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -32px;
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(
+    circle at 0% 0%,
+    transparent 31px,
+    #f5f0e3 32px
+  );
+}
+
+/* ── Card body ──────────────────────────────────── */
+.msp-card {
+  position: relative;
+  z-index: 0;
+  background: #f5f0e3;
+  border-radius: 24px;
+  margin-top: -1px; /* overlap seam with neck */
+  padding: 12px 32px 36px;
+  text-align: center;
+}
+
+/* ── Steps ──────────────────────────────────────── */
+.msp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.msp-step[hidden] {
+  display: none;
+}
+
+/* ── Heading ────────────────────────────────────── */
+.msp-heading {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  color: #2d2315;
+  margin: 0 0 6px;
+  text-align: center;
+}
+
+/* ── Subheading ─────────────────────────────────── */
+.msp-subheading {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #433723;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+/* Gold subheading variant (step 2 & 3) */
+.msp-subheading--gold {
+  color: #a88958;
+}
+
+/* ── Body text ──────────────────────────────────── */
+.msp-body {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #433723;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+/* ── Klaviyo form wrapper ───────────────────────── */
+.msp-klaviyo-form {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/*
+  Override Klaviyo's default form styles to match the brand.
+  These target common Klaviyo embed selectors.
+*/
+.msp-klaviyo-form .klaviyo-form,
+.msp-klaviyo-form form {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Input fields from Klaviyo */
+.msp-klaviyo-form input[type="email"],
+.msp-klaviyo-form input[type="text"],
+.msp-klaviyo-form input[type="tel"] {
+  width: 100%;
+  box-sizing: border-box;
+  height: 52px;
+  padding: 0 16px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 15px;
+  color: #433723;
+  background: #fefefc;
+  border: 1.5px solid #d4cdc0;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.msp-klaviyo-form input[type="email"]::placeholder,
+.msp-klaviyo-form input[type="text"]::placeholder,
+.msp-klaviyo-form input[type="tel"]::placeholder {
+  color: #b5ae9f;
+}
+
+.msp-klaviyo-form input[type="email"]:focus,
+.msp-klaviyo-form input[type="text"]:focus,
+.msp-klaviyo-form input[type="tel"]:focus {
+  border-color: #a88958;
+}
+
+/* Submit buttons from Klaviyo */
+.msp-klaviyo-form input[type="submit"],
+.msp-klaviyo-form button[type="submit"] {
+  width: 100%;
+  height: 52px;
+  margin-top: 8px;
+  background: #a88958;
+  color: #faf7f0;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.msp-klaviyo-form input[type="submit"]:hover,
+.msp-klaviyo-form button[type="submit"]:hover {
+  opacity: 0.88;
+}
+
+/* Phone input row (country code + number) */
+.msp-klaviyo-form .phone-input-row,
+.msp-klaviyo-form [class*="phone"] {
+  display: flex;
+  gap: 0;
+}
+
+/* ── Standalone CTA button (step 3) ─────────────── */
+.msp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  background: #a88958;
+  color: #faf7f0;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  margin-bottom: 0;
+  transition: opacity 0.2s;
+}
+
+.msp-btn:hover {
+  opacity: 0.88;
+  color: #faf7f0;
+  text-decoration: none;
+}
+
+/* ── Disclaimer ─────────────────────────────────── */
+.msp-disclaimer {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #8e877b;
+  margin: 12px 0 0;
+  text-align: center;
+}
+
+.msp-disclaimer a {
+  color: #8e877b;
+  text-decoration: underline;
+}
+
+/* ── Skip link ──────────────────────────────────── */
+.msp-skip {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #433723;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-top: 16px;
+  transition: color 0.2s;
+}
+
+.msp-skip:hover {
+  color: #977b4f;
+}
+
+/* ── Logo ───────────────────────────────────────── */
+.msp-logo {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #433723;
+  margin-top: 28px;
+  text-align: center;
+}
+
+/* ── Desktop ─────────────────────────────────────── */
+@media screen and (min-width: 480px) {
+  .msp-popup {
+    max-width: 440px;
+  }
+
+  .msp-neck {
+    height: 96px;
+  }
+
+  .msp-close {
+    top: 96px;
+  }
+
+  .msp-card {
+    padding: 16px 44px 44px;
+  }
+
+  .msp-heading {
+    font-size: 52px;
+  }
+
+  .msp-body {
+    font-size: 15px;
+  }
+}
