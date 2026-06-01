@@ -102,6 +102,7 @@
 .gh-bar__nav a:before, .gh-bar__account:before {
     transform: translate(-100%);
     z-index: 1;
+    left:-1px;
 }
 
 .gh-bar__nav a:after, .gh-bar__account:after {
@@ -109,6 +110,7 @@
     transform: translate(100%);
     transition: none;
     transition: transform .35s ease;
+    right:-1px;
 }
 
 .gh-bar__nav a:hover:before, .gh-bar__account:hover:before {
