@@ -60,7 +60,8 @@
               <button type="button">UNLOCK {{ section.settings.step1_heading | escape }}</button>
             </div>
           {%- endif -%}
-
+          {%- if section.settings.step1_disclaimer != blank or section.settings.step1_skip_label != blank -%}
+          <div class="msp-disclaimer--msp-skip">
           {%- if section.settings.step1_disclaimer != blank -%}
             <p class="msp-disclaimer">{{ section.settings.step1_disclaimer }}</p>
           {%- endif -%}
@@ -73,6 +74,8 @@
             >
               {{ section.settings.step1_skip_label }}
             </button>
+          {%- endif -%}
+          </div>
           {%- endif -%}
         </div>
 
@@ -101,7 +104,7 @@
               <button type="button">YES, I WANT IT</button>
             </div>
           {%- endif -%}
-          {%- if section.settings.step2_disclaimer or section.settings.step2_skip_label != blank -%}
+          {%- if section.settings.step2_disclaimer != blank or section.settings.step2_skip_label != blank -%}
           <div class="msp-disclaimer--msp-skip">
             {%- if section.settings.step2_disclaimer != blank -%}
               <p class="msp-disclaimer">{{ section.settings.step2_disclaimer }}</p>
