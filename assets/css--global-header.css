@@ -85,6 +85,7 @@
   color: #977B4F;
   text-decoration: none;
   position:relative;
+  overflow:hidden;
 }
 
 .gh-bar__nav a:after, .gh-bar__nav a:before {
