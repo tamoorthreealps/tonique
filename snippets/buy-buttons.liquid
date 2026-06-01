@@ -87,7 +87,7 @@
               disabled
             {% endif %}
           >
-            <span>
+            <span id="add-to-cart-text-{{ section_id }}">
               {%- if product.selected_or_first_available_variant == null -%}
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
