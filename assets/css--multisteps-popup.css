@@ -300,6 +300,11 @@ font-family: Archivo, sans-serif;
 }
 
 /* ── Disclaimer ─────────────────────────────────── */
+.msp-disclaimer--msp-skip {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
 .msp-disclaimer {
   font-family: 'Archivo', sans-serif;
 font-weight: 400;
