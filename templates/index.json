@@ -286,6 +286,7 @@
         "video_card_w894f7": {
           "type": "video_card",
           "settings": {
+            "video": "shopify://files/videos/file_example_MP4_480_1_5MG.mp4",
             "badge_label": "",
             "handle": "",
             "role": "“Maecenas in neque ullamcorper eu erat. Et.”"
