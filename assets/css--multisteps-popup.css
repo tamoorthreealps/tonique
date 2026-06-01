@@ -123,7 +123,7 @@ body.msp-body-lock {
   background: url('https://cdn.shopify.com/s/files/1/0820/9688/1912/files/popup--desktop--bg.png') center top / cover no-repeat;
   border-radius: 24px;
   margin-top: 0px;
-  padding: 12px 32px 36px;
+  padding: 176px 24px 40px;
   text-align: center;
       display: flex;
     flex-direction: column;
@@ -214,8 +214,8 @@ font-family: Archivo, sans-serif;
     height: 48px;
     padding: 0 16px;
     font-family: Archivo, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 20px;
     letter-spacing: 0;
     color: #827A69;
     background: #fefefc;
@@ -304,9 +304,9 @@ font-family: Archivo, sans-serif;
 
 /* ── Disclaimer ─────────────────────────────────── */
 .msp-disclaimer--msp-skip {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+   display: flex;
+    flex-direction: column-reverse;
+    gap: 12px;
 }
 .msp-disclaimer {
   font-family: 'Archivo', sans-serif;
@@ -402,4 +402,16 @@ font-weight: 400;
         line-height: 24px;
         margin: 0 0 20px;
   }
+
+  /* Input fields from Klaviyo */
+.msp-klaviyo-form input[type="email"],
+.msp-klaviyo-form input[type="text"],
+.msp-klaviyo-form input[type="tel"] {
+    font-size: 16px;
+    line-height: 24px;
+}
+.msp-disclaimer--msp-skip {
+    flex-direction: column;
+    gap: 24px;
+}
 }
