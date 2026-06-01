@@ -216,10 +216,49 @@
   color: #29241c;
   text-decoration: none;
   line-height: 20px;
+  position:relative;
+  overflow:hidden;
 }
 
 .gf-nav-group__links a:hover {
   opacity: 0.7;
+}
+
+.gf-nav-group__links a:after, .gf-nav-group__links a:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    background: #977B4F;
+    height: 1px;
+}
+
+.gf-nav-group__links a:before {
+    transform: translate(-100%);
+    z-index: 1;
+    left:-1px;
+}
+
+.gf-nav-group__links a:after {
+    z-index: 0;
+    transform: translate(100%);
+    transition: none;
+    transition: transform .35s ease;
+    right:-1px;
+}
+
+.gf-nav-group__links a:hover:before {
+    transform: translate(0);
+    transition: transform .35s ease;
+    opacity: .8;
+}
+
+.gf-nav-group__links a:hover:after {
+    opacity: .8;
+    transform: translate(0);
+    transition: transform .35s .36s ease;
 }
 
 /* ── Bottom bar ──────────────────────────────────────────────────────────── */
