@@ -91,7 +91,9 @@
       class="pp-sub-widget"
       id="pp-sub-widget-{{ section.id }}"
       data-section-id="{{ section.id }}"
-      {% unless pp_variant_has_sub %}style="display:none"{% endunless %}
+      {% unless pp_variant_has_sub %}
+        style="display:none"
+      {% endunless %}
       {{ block.shopify_attributes }}
     >
       {%- if block.settings.label != blank -%}
@@ -105,7 +107,9 @@
             type="radio"
             name="pp-purchase-type-{{ section.id }}"
             value="subscribe"
-            {% if pp_variant_has_sub %}checked{% endif %}
+            {% if pp_variant_has_sub %}
+              checked
+            {% endif %}
           >
 
           <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
@@ -117,7 +121,9 @@
           <div class="pp-sub-option__pricing">
             <s
               class="pp-sub-option__price-compare"
-              {% unless pp_sub_compare > pp_sub_price %}style="display:none"{% endunless %}
+              {% unless pp_sub_compare > pp_sub_price %}
+                style="display:none"
+              {% endunless %}
             >
               {{ pp_sub_compare | money }}
             </s>
@@ -135,11 +141,11 @@
         <div class="pp-sub-option__body">
           <div
             class="pp-sub-savings-banner"
-            {% if pp_savings <= 0 %}style="display:none"{% endif %}
+            {% if pp_savings <= 0 %}
+              style="display:none"
+            {% endif %}
           >
-            <span class="pp-sub-savings-banner__text">
-              Save {{ pp_savings_pct }}% ({{ pp_savings | money }} off)
-            </span>
+            <span class="pp-sub-savings-banner__text"> Save {{ pp_savings_pct }}% ({{ pp_savings | money }} off) </span>
           </div>
 
           <ul class="pp-sub-benefits">
@@ -169,7 +175,9 @@
                 {%- for alloc in pp_variant.selling_plan_allocations -%}
                   <option
                     value="{{ alloc.selling_plan.id }}"
-                    {% if forloop.first %}selected{% endif %}
+                    {% if forloop.first %}
+                      selected
+                    {% endif %}
                   >
                     {{ alloc.selling_plan.name }}
                   </option>
@@ -193,7 +201,9 @@
             type="radio"
             name="pp-purchase-type-{{ section.id }}"
             value="onetime"
-            {% unless pp_variant_has_sub %}checked{% endunless %}
+            {% unless pp_variant_has_sub %}
+              checked
+            {% endunless %}
           >
 
           <span class="pp-sub-option__radio-dot" aria-hidden="true"></span>
