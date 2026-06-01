@@ -406,6 +406,7 @@
         "padding_bottom_mobile": 60,
         "heading": "FREQUENTLY ASKED QUESTIONS",
         "heading_mobile": "FAQs",
+        "video": "shopify://files/videos/file_example_MP4_480_1_5MG.mp4",
         "image": "shopify://shop_images/IMG.png",
         "faqs_text_before": "More questions?",
         "faqs_text": "Visit our FAQs",
