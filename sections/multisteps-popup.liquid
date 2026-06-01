@@ -143,8 +143,14 @@
         </div>
 
         {%- comment -%} ── Logo ── {%- endcomment -%}
-        {%- if section.settings.logo_text != blank -%}
-          <div class="msp-logo" aria-hidden="true">{{ section.settings.logo_text }}</div>
+        {%- if section.settings.logo_image != blank -%}
+          <div class="msp-logo" aria-hidden="true">
+            {{ section.settings.logo_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: shop.name }}
+          </div>
+        {%- elsif section.settings.logo_text != blank -%}
+          <div class="msp-logo" aria-hidden="true">
+            {{ section.settings.logo_text }}
+          </div>
         {%- endif -%}
       </div>
       {%- comment -%} /.msp-card {%- endcomment -%}
@@ -475,6 +481,11 @@
     {
       "type": "header",
       "content": "Branding"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
     },
     {
       "type": "text",
