@@ -200,7 +200,10 @@
         "item_NAGrhH"
       ],
       "name": "Text Scroller",
-      "settings": {}
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": true
+      }
     },
     "why_tonique_QYHPbC": {
       "type": "why-tonique",
@@ -258,8 +261,14 @@
       ],
       "name": "Why Tonique",
       "settings": {
+        "padding_top_desktop": 120,
+        "padding_bottom_desktop": 136,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64,
         "heading": "4 reasons WHY TONIQUE",
         "subtext": "Semper vel lacus cras nam. Tempor egestas ipsum consequat libero at sed aenean aenean. Quam sociis id quam.",
+        "button_text": "",
+        "button_link": "",
         "product_image": "shopify://shop_images/bottle.svg"
       }
     },
@@ -365,7 +374,13 @@
       ],
       "name": "Video Reviews",
       "settings": {
+        "mobile_layout": "cards",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 120,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 80,
         "heading": "See why they keep one in their bag",
+        "mobile_heading": "",
         "subtext": "From Pilates instructors to busy moms, see how Tonique fits into the moments that matter.",
         "disclaimer": "*Testimonials featured in videos or other promotional materials may include individuals who have received compensation, free product, or other incentives."
       }
@@ -467,7 +482,8 @@
       "name": "What's Inside",
       "settings": {
         "heading": "WHAT'S INSIDE",
-        "subtext": "Our six-ingredient Beauty + Protein complex — clinically dosed, single-pouch delivery, no fillers between you and the result."
+        "subtext": "Our six-ingredient Beauty + Protein complex — clinically dosed, single-pouch delivery, no fillers between you and the result.",
+        "right_bg_color": "#e8e5d8"
       }
     },
     "protein_intake_time_mERrHH": {
@@ -520,6 +536,7 @@
       ],
       "name": "Protein Intake Time",
       "settings": {
+        "video": "shopify://files/videos/file_example_MP4_480_1_5MG.mp4",
         "image": "shopify://shop_images/Rectangle_36.png",
         "body_text": "Take anytime you need a clean protein boost:"
       }
@@ -674,6 +691,10 @@
       ],
       "name": "Product FAQs",
       "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 120,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 96,
         "heading": "FREQUENTLY ASKED QUESTIONS",
         "heading_mobile": "FAQs",
         "image": "shopify://shop_images/IMG.png",
