@@ -53,7 +53,9 @@ slider-component.slider-component-full-width {
     width: 0;
     padding-left: 1.5rem;
   }
-
+.slider--mobile.thumbnail-list:after {
+  content: none;
+}
   .slider.slider--mobile .slider__slide {
     margin-bottom: 0;
     padding-top: max(var(--focus-outline-padding), var(--shadow-padding-top));
