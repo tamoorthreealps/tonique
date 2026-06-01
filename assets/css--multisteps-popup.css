@@ -122,9 +122,12 @@ body.msp-body-lock {
   z-index: 0;
   background: url('https://cdn.shopify.com/s/files/1/0820/9688/1912/files/popup--desktop--bg.png') center top / cover no-repeat;
   border-radius: 24px;
-  margin-top: -1px; /* overlap seam with neck */
+  margin-top: 0px;
   padding: 12px 32px 36px;
   text-align: center;
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* ── Steps ──────────────────────────────────────── */
@@ -378,7 +381,8 @@ font-weight: 400;
   }
 
   .msp-card {
-    padding: 16px 44px 44px;
+   padding: 212px 36px 44px;
+        min-height: 700px;
   }
 
   .msp-heading {
