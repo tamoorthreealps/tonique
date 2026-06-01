@@ -159,13 +159,17 @@ font-family: Archivo, sans-serif;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
+  transform: translateY(-8px);
+  will-change: max-height, opacity, transform;
   transition:
-    max-height .45s cubic-bezier(.22,.61,.36,1),
-    opacity .3s ease;
+    max-height .55s cubic-bezier(.25,.46,.45,.94),
+    opacity .35s ease,
+    transform .45s ease;
 }
 
 .pf-item.is-open .pf-item__body {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .pf-item__body[aria-hidden="true"] {
