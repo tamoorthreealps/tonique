@@ -7,59 +7,61 @@
 	position: relative;
 	line-height: 1;
 	padding: 20px 0;
-    transition: background .3s ease;
+	transition: background .3s ease;
 }
 
 .accordion details {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 .product__accordion .accordion__content {
-    padding: 0;
-    margin-bottom: 24px;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    margin-bottom: 0;
-    transition:max-height .45s cubic-bezier(.22,.61,.36,1), opacity .3s ease, margin-bottom .3s ease;
+	padding: 0;
+	margin-bottom: 24px;
+	overflow: hidden;
+	max-height: 0;
+	opacity: 0;
+	margin-bottom: 0;
+	transition: max-height .45s cubic-bezier(.22, .61, .36, 1), opacity .3s ease, margin-bottom .3s ease;
 }
 
 .product__accordion details[open] .accordion__content {
-  opacity: 1;
-  margin-bottom: 24px;
+	opacity: 1;
+	margin-bottom: 24px;
 }
 
 .product__accordion .accordion__content ul {
-   margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    margin-bottom: 11px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	margin-bottom: 11px;
 }
+
 .product__accordion .accordion__content li {
-    list-style: none;
-    font-size: 14px;
-    line-height: 20px;
-    color: #433723;
-    letter-spacing: 0;
-    position: relative;
-    padding-left: 20px;
+	list-style: none;
+	font-size: 14px;
+	line-height: 20px;
+	color: #433723;
+	letter-spacing: 0;
+	position: relative;
+	padding-left: 20px;
 }
-.product__accordion .accordion__content li::before{
-    content: "\2022";
-    position: absolute;
-    left: 7px;
-    top: 1px;
-    font-size: 14px;
+
+.product__accordion .accordion__content li::before {
+	content: "\2022";
+	position: absolute;
+	left: 7px;
+	top: 1px;
+	font-size: 14px;
 }
 
 .product__accordion .accordion__content p {
-        font-size: 14px;
-    line-height: 20px;
-    color: #433723;
-    margin: 0;
-    padding: 0;
+	font-size: 14px;
+	line-height: 20px;
+	color: #433723;
+	margin: 0;
+	padding: 0;
 }
 
 .accordion .summary__title {
@@ -95,13 +97,13 @@
 
 .accordion__title {
 	margin: 0;
-    word-break: break-word;
-    color: #433723;
-    font-size: 14px;
-    line-height: 20px;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 1.12px;
+	word-break: break-word;
+	color: #433723;
+	font-size: 14px;
+	line-height: 20px;
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 1.12px;
 }
 
 .accordion .svg-wrapper {
@@ -129,22 +131,27 @@
 
 
 @media screen and (min-width: 767px) {
-.product__accordion__head {
-	margin-top: 48px;
-}
-.accordion__title {
-	font-size: 16px;
-	line-height: 24px;
-	letter-spacing: 1.28px;
-}
-.product__accordion .accordion__content li, .product__accordion .accordion__content p {
-    font-size: 16px;
-    line-height: 24px;
-}
-.product__accordion .accordion__content li::before{
-    font-size: 18px;
-}
-.product__accordion .accordion__content {
-    margin-bottom: 32px;
-}
+	.product__accordion__head {
+		margin-top: 48px;
+	}
+
+	.accordion__title {
+		font-size: 16px;
+		line-height: 24px;
+		letter-spacing: 1.28px;
+	}
+
+	.product__accordion .accordion__content li,
+	.product__accordion .accordion__content p {
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+	.product__accordion .accordion__content li::before {
+		font-size: 18px;
+	}
+
+	.product__accordion .accordion__content {
+		margin-bottom: 32px;
+	}
 }
