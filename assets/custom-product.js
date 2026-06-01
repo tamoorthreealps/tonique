@@ -859,3 +859,40 @@
     init();
   }
 })();
+
+
+
+// accordions--js
+document.querySelectorAll('.product__accordion details').forEach(function(details) {
+
+  const content = details.querySelector('.accordion__content');
+
+  if (!content) return;
+
+  if (details.open) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+  }
+
+  details.addEventListener('toggle', function() {
+
+    if (details.open) {
+
+      content.style.maxHeight = '0px';
+
+      requestAnimationFrame(function() {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      });
+
+    } else {
+
+      content.style.maxHeight = content.scrollHeight + 'px';
+
+      requestAnimationFrame(function() {
+        content.style.maxHeight = '0px';
+      });
+
+    }
+
+  });
+
+});

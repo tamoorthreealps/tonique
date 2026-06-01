@@ -12,6 +12,16 @@
 .product__accordion .accordion__content {
     padding: 0;
     margin-bottom: 24px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    transition:max-height .45s cubic-bezier(.22,.61,.36,1), opacity .3s ease, margin-bottom .3s ease;
+}
+
+.product__accordion details[open] .accordion__content {
+  opacity: 1;
+  margin-bottom: 24px;
 }
 
 .product__accordion .accordion__content ul {
