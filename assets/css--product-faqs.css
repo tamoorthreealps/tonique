@@ -247,7 +247,7 @@ a.pf-footer__link{
   }
 
   /* Image inside desktop panel — covers the full panel */
-  .pf-bg-panel__img {
+  .pf-bg-panel__img, .pf-bg-panel__video {
     position: absolute;
     top: 0;
     left: 0;
