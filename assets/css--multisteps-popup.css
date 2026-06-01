@@ -120,7 +120,7 @@ body.msp-body-lock {
 .msp-card {
   position: relative;
   z-index: 0;
-  background: #f5f0e3;
+  background: url('https://cdn.shopify.com/s/files/1/0820/9688/1912/files/popup--desktop--bg.png') center top / contain no-repeat;
   border-radius: 24px;
   margin-top: -1px; /* overlap seam with neck */
   padding: 12px 32px 36px;
