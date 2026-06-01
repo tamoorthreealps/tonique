@@ -129,6 +129,7 @@ body.msp-body-lock {
       display: flex;
     flex-direction: column;
     justify-content: space-between;
+        background-size: 100% 100%;
 }
 
 /* ── Steps ──────────────────────────────────────── */
