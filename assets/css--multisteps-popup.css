@@ -328,6 +328,7 @@ font-weight: 400;
 
 .msp-step.msp-step--two .msp-disclaimer{
   font-size: 8px;
+  line-height: 12px;
 }
 
 .msp-disclaimer a {
@@ -393,7 +394,7 @@ font-weight: 400;
 
   .msp-card {
    padding: 212px 36px 44px;
-        min-height: 700px;
+        min-height: 720px;
   }
 
   .msp-heading {
@@ -413,6 +414,10 @@ font-weight: 400;
         line-height: 24px;
         margin: 0 0 20px;
   }
+
+  .msp-step.msp-step--three .msp-body {
+  padding:0 25px;
+}
 
   /* Input fields from Klaviyo */
 .msp-klaviyo-form input[type="email"],
@@ -437,5 +442,8 @@ font-weight: 400;
 .msp-skip {
     font-size: 14px;
     line-height: 20px;
+}
+.msp-step.msp-step--three .msp-body {
+  padding:0 40px;
 }
 }
