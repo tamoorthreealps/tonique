@@ -416,18 +416,3 @@ slider-component.slider-component-full-width {
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) scale(1.1);
 }
-
-.slider-progress {
-  width: 100%;
-  height: 2px;
-  background: #D8D1BF;
-  overflow: hidden;
-}
-
-.slider-progress__fill {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: #433723;
-  transition: width .3s ease;
-}
