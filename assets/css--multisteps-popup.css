@@ -124,6 +124,7 @@ body.msp-body-lock {
   border-radius: 24px;
   margin-top: 0px;
   padding: 176px 24px 40px;
+  min-height: 620px;
   text-align: center;
       display: flex;
     flex-direction: column;
