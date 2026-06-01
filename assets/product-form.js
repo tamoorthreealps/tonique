@@ -129,20 +129,9 @@ if (!customElements.get('product-form')) {
           this.submitButton.setAttribute('disabled', 'disabled');
           if (text) this.submitButtonText.textContent = text;
         } else {
-  this.submitButton.removeAttribute('disabled');
-
-  const variantId = this.variantIdInput?.value;
-  const variantData = window.variantData?.find(
-    (v) => String(v.id) === String(variantId)
-  );
-
-  if (variantData) {
-    this.submitButtonText.textContent =
-      `ADD TO BAG - $${(variantData.price / 100).toFixed(2)}`;
-  } else {
-    this.submitButtonText.textContent = 'ADD TO BAG';
-  }
-}
+          this.submitButton.removeAttribute('disabled');
+          this.submitButtonText.textContent = window.variantStrings.addToCart;
+        }
       }
 
       get variantIdInput() {
