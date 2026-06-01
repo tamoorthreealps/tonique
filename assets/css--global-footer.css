@@ -218,6 +218,7 @@
   line-height: 20px;
   position:relative;
   overflow:hidden;
+  width: fit-content;
 }
 
 .gf-nav-group__links a:hover {
