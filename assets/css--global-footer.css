@@ -311,8 +311,15 @@
   display: none;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.gf-bottom__links a {
   position:relative;
   overflow:hidden;
+}
+
+.gf-bottom__links a:after, .gf-bottom__links a:before {
+    background: #977b4f;
 }
 
 .gf-bottom__links a:hover {
