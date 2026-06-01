@@ -1,5 +1,11 @@
 {{ 'css--product-faqs.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign has_video = false
 
+  if section.settings.video != blank
+    assign has_video = true
+  endif
+-%}
 <section
   class="pf-section"
   id="ProductFAQs-{{ section.id }}"
@@ -12,16 +18,32 @@
   {{ section.shopify_attributes }}
 >
   {%- comment -%} ── Image: top on mobile ── {%- endcomment -%}
-  {%- if section.settings.image != blank -%}
-    <div class="pf-image-mobile" aria-hidden="true">
+  <div class="pf-image-mobile" aria-hidden="true">
+    {% if has_video %}
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="pf-mobile-video"
+        {% if section.settings.image != blank %}
+          poster="{{ section.settings.image | image_url: width: 900 }}"
+        {% endif %}
+      >
+        {% for source in section.settings.video.sources %}
+          <source src="{{ source.url }}" type="{{ source.mime_type }}">
+        {% endfor %}
+      </video>
+
+    {% elsif section.settings.image != blank %}
       {{
         section.settings.image
         | image_url: width: 900
-        | image_tag: loading: 'lazy', widths: '375, 600, 750, 900', sizes: '100vw', alt: section.settings.image.alt
-        | escape
+        | image_tag: loading: 'lazy', widths: '375, 600, 750, 900', sizes: '100vw'
       }}
-    </div>
-  {%- endif -%}
+    {% endif %}
+  </div>
   <div class="pf-inner--container">
     <div class="pf-inner">
       {%- comment -%} ── Content column ── {%- endcomment -%}
@@ -102,7 +124,24 @@
         {%- endif -%}
       </div>
       <div class="pf-bg-panel" aria-hidden="true">
-        {%- if section.settings.image != blank -%}
+        {% if has_video %}
+          <video
+            class="pf-bg-panel__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            {% if section.settings.image != blank %}
+              poster="{{ section.settings.image | image_url: width: 1600 }}"
+            {% endif %}
+          >
+            {% for source in section.settings.video.sources %}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {% endfor %}
+          </video>
+
+        {% elsif section.settings.image != blank %}
           {{
             section.settings.image
             | image_url: width: 1600
@@ -113,68 +152,68 @@
               class: 'pf-bg-panel__img',
               alt: ''
           }}
-        {%- endif -%}
+        {% endif %}
       </div>
     </div>
   </div>
 </section>
 
 <script>
-(function () {
-  var sid = '{{ section.id }}';
-  var accordion = document.getElementById('pf-accordion-' + sid);
+  (function () {
+    var sid = '{{ section.id }}';
+    var accordion = document.getElementById('pf-accordion-' + sid);
 
-  if (!accordion) return;
+    if (!accordion) return;
 
-  function setInitialHeight() {
-    accordion.querySelectorAll('.pf-item.is-open').forEach(function (item) {
-      var body = item.querySelector('.pf-item__body');
+    function setInitialHeight() {
+      accordion.querySelectorAll('.pf-item.is-open').forEach(function (item) {
+        var body = item.querySelector('.pf-item__body');
 
-      if (body) {
+        if (body) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    }
+
+    window.addEventListener('load', setInitialHeight);
+
+    accordion.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-pf-trigger]');
+      if (!trigger) return;
+
+      var idx = trigger.dataset.pfTrigger;
+      var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
+      var body = document.getElementById('pf-answer-' + sid + '-' + idx);
+
+      if (!item || !body) return;
+
+      var isOpen = item.classList.contains('is-open');
+
+      accordion.querySelectorAll('.pf-item').forEach(function (el) {
+        el.classList.remove('is-open');
+
+        var btn = el.querySelector('.pf-item__trigger');
+        var b = el.querySelector('.pf-item__body');
+
+        if (btn) {
+          btn.setAttribute('aria-expanded', 'false');
+        }
+
+        if (b) {
+          b.setAttribute('aria-hidden', 'true');
+          b.style.maxHeight = null;
+        }
+      });
+
+      if (!isOpen) {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        body.setAttribute('aria-hidden', 'false');
+
         body.style.maxHeight = body.scrollHeight + 'px';
       }
     });
-  }
-
-  window.addEventListener('load', setInitialHeight);
-
-  accordion.addEventListener('click', function (e) {
-    var trigger = e.target.closest('[data-pf-trigger]');
-    if (!trigger) return;
-
-    var idx = trigger.dataset.pfTrigger;
-    var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
-    var body = document.getElementById('pf-answer-' + sid + '-' + idx);
-
-    if (!item || !body) return;
-
-    var isOpen = item.classList.contains('is-open');
-
-    accordion.querySelectorAll('.pf-item').forEach(function (el) {
-      el.classList.remove('is-open');
-
-      var btn = el.querySelector('.pf-item__trigger');
-      var b = el.querySelector('.pf-item__body');
-
-      if (btn) {
-        btn.setAttribute('aria-expanded', 'false');
-      }
-
-      if (b) {
-        b.setAttribute('aria-hidden', 'true');
-        b.style.maxHeight = null;
-      }
-    });
-
-    if (!isOpen) {
-      item.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-      body.setAttribute('aria-hidden', 'false');
-
-      body.style.maxHeight = body.scrollHeight + 'px';
-    }
-  });
-})();
+  })();
 </script>
 
 {% schema %}
@@ -241,6 +280,12 @@
       "id": "heading_mobile",
       "label": "Mobile Heading",
       "default": "FAQs"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video (MP4)",
+      "info": "Displayed on the right on desktop, and above the accordion on mobile."
     },
     {
       "type": "image_picker",
