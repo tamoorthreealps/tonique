@@ -376,8 +376,8 @@ slider-component.slider-component-full-width {
   background: transparent;
   border: none;
   cursor: pointer;
-  width: 32px;
-  height: 32px;
+  width: 10px;
+  height: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
