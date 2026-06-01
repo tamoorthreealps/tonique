@@ -336,20 +336,20 @@ if (!customElements.get('product-info')) {
         publish(PUB_SUB_EVENTS.quantityUpdate, undefined);
       }
 
-      fetchQuantityRules() {
-        const currentVariantId = this.productForm?.variantIdInput?.value;
-        if (!currentVariantId) return;
+      // fetchQuantityRules() {
+      //   const currentVariantId = this.productForm?.variantIdInput?.value;
+      //   if (!currentVariantId) return;
 
-        this.querySelector('.quantity__rules-cart .loading__spinner').classList.remove('hidden');
-        return fetch(`${this.dataset.url}?variant=${currentVariantId}&section_id=${this.dataset.section}`)
-          .then((response) => response.text())
-          .then((responseText) => {
-            const html = new DOMParser().parseFromString(responseText, 'text/html');
-            this.updateQuantityRules(this.dataset.section, html);
-          })
-          .catch((e) => console.error(e))
-          .finally(() => this.querySelector('.quantity__rules-cart .loading__spinner').classList.add('hidden'));
-      }
+      //   this.querySelector('.quantity__rules-cart .loading__spinner').classList.remove('hidden');
+      //   return fetch(`${this.dataset.url}?variant=${currentVariantId}&section_id=${this.dataset.section}`)
+      //     .then((response) => response.text())
+      //     .then((responseText) => {
+      //       const html = new DOMParser().parseFromString(responseText, 'text/html');
+      //       this.updateQuantityRules(this.dataset.section, html);
+      //     })
+      //     .catch((e) => console.error(e))
+      //     .finally(() => this.querySelector('.quantity__rules-cart .loading__spinner').classList.add('hidden'));
+      // }
 
       updateQuantityRules(sectionId, html) {
         if (!this.quantityInput) return;
