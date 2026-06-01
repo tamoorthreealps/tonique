@@ -362,7 +362,7 @@ font-weight: 400;
     display: block;
     max-width: 100%;
     height: auto;
-    width: 184px;
+    width: 158px;
     margin: 0 auto;
 }
 
@@ -413,5 +413,8 @@ font-weight: 400;
 .msp-disclaimer--msp-skip {
     flex-direction: column;
     gap: 24px;
+}
+.msp-logo img {
+    width: 184px;
 }
 }
