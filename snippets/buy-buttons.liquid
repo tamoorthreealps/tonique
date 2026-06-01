@@ -10,7 +10,21 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
- <div
+ 
+<div class="buy--add--cart--btn" {{ block.shopify_attributes }}>
+  {%- if product != blank -%}
+    {%- liquid
+      assign gift_card_recipient_feature_active = false
+      if block.settings.show_gift_card_recipient and product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
+
+      assign show_dynamic_checkout = false
+      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+        assign show_dynamic_checkout = true
+      endif
+    -%}
+<div
                     id="Quantity-Form-{{ section.id }}"
                     class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                     {{ block.shopify_attributes }}
@@ -254,20 +268,6 @@
                       </volume-pricing>
                     {%- endif -%}
                   </div>
-<div class="buy--add--cart--btn" {{ block.shopify_attributes }}>
-  {%- if product != blank -%}
-    {%- liquid
-      assign gift_card_recipient_feature_active = false
-      if block.settings.show_gift_card_recipient and product.gift_card?
-        assign gift_card_recipient_feature_active = true
-      endif
-
-      assign show_dynamic_checkout = false
-      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
-        assign show_dynamic_checkout = true
-      endif
-    -%}
-
     <product-form
       class="product-form"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
