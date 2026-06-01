@@ -192,12 +192,7 @@ if (!customElements.get('product-info')) {
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');
           updateSourceFromDestination('Price-Per-Item', ({ classList }) => classList.contains('hidden'));
-          const submitButton = this.querySelector(`#ProductSubmitButton-${this.sectionId} span`);
-
-if (submitButton && variant) {
-  submitButton.textContent =
-    `ADD TO BAG - $${(variant.price / 100).toFixed(2)}`;
-}
+          
           this.updateQuantityRules(this.sectionId, html);
           this.querySelector(`#Quantity-Rules-${this.dataset.section}`)?.classList.remove('hidden');
           this.querySelector(`#Volume-Note-${this.dataset.section}`)?.classList.remove('hidden');
