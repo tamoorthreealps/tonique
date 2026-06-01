@@ -318,14 +318,39 @@ slider-component.slider-component-full-width {
 }
 
 .slider-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.slider-button {
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
-    transform: translate(0, -50%);
+    transform: translateY(-50%);
+    pointer-events: auto;
+    z-index: 2;
+}
+
+.slider-button--prev {
+    left: 16px;
+}
+
+.slider-button--next {
+    right: 16px;
+}
+
+.slider-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slider-progress {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 0;
 }
 
 @media screen and (min-width: 990px) {
