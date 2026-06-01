@@ -897,3 +897,30 @@ document.querySelectorAll('.product__accordion details').forEach((details) => {
     }
   });
 });
+
+
+// slider--prgress--bar--pagination
+document.addEventListener('DOMContentLoaded', () => {
+
+  const slider = document.querySelector('#Slider-{{ block.id }}');
+
+  if (!slider) return;
+
+  const fill = document.querySelector('.pp-progress-fill');
+
+  const updateProgress = () => {
+    const slides = slider.querySelectorAll('.slider__slide');
+    const current = slider.querySelector('.slider__slide[aria-hidden="false"]');
+
+    if (!slides.length || !current) return;
+
+    const index = [...slides].indexOf(current) + 1;
+    const percent = (index / slides.length) * 100;
+
+    fill.style.width = percent + '%';
+  };
+
+  updateProgress();
+
+  slider.addEventListener('scroll', updateProgress);
+});
