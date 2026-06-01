@@ -388,9 +388,12 @@ a.product__text {
 @media screen and (max-width: 749px) {
   .product__media-list {
      margin-left: 0;
+     scroll-padding-left: 0;
     width: 100%;
   }
-
+  .slider.product__media-list::after {
+    display: none;
+  }
   .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
       margin-left: 0;
     margin-right: 0;
@@ -410,7 +413,10 @@ a.product__text {
   }
 
   .product__media-list .product__media-item {
-    width: 100%;
+       width: 100%;
+    min-width: 100%;
+    padding-left: 0;
+    margin-left: 0;
   }
 
   .product--mobile-columns .product__media-item {
