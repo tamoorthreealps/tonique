@@ -821,9 +821,9 @@ background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
     padding: 16px 24px 36px !important;
 }
 
-.product-media-container.media-type-image {
+/* .product-media-container.media-type-image {
     border: 0 !important;
-}
+} */
 
 p.product__text{
     color: #977b4f;
