@@ -158,7 +158,6 @@ font-family: Archivo, sans-serif;
 .pf-item__body {
   overflow: hidden;
   max-height: 0;
-  opacity: 0;
   transform: translateY(-8px);
   will-change: max-height, opacity, transform;
   transition:
@@ -168,7 +167,6 @@ font-family: Archivo, sans-serif;
 }
 
 .pf-item.is-open .pf-item__body {
-  opacity: 1;
   transform: translateY(0);
 }
 
