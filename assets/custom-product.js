@@ -897,6 +897,3 @@ document.querySelectorAll('.product__accordion details').forEach((details) => {
     }
   });
 });
-
-
-// slider--prgress--bar--pagination
