@@ -481,7 +481,6 @@
         },
         "quantity_selector_VE6gRj": {
           "type": "quantity_selector",
-          "disabled": true,
           "settings": {}
         },
         "buy_buttons_hqVM7e": {
