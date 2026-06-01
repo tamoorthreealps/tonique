@@ -536,7 +536,6 @@
       ],
       "name": "Protein Intake Time",
       "settings": {
-        "video": "shopify://files/videos/file_example_MP4_480_1_5MG.mp4",
         "image": "shopify://shop_images/Rectangle_36.png",
         "body_text": "Take anytime you need a clean protein boost:"
       }
