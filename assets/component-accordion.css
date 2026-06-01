@@ -16,7 +16,6 @@
 
 .product__accordion .accordion__content {
 	padding: 0;
-	margin-bottom: 24px;
 	overflow: hidden;
 	max-height: 0;
 	opacity: 0;
@@ -149,10 +148,6 @@
 
 	.product__accordion .accordion__content li::before {
 		font-size: 18px;
-	}
-
-	.product__accordion .accordion__content {
-		margin-bottom: 32px;
 	}
 
     .product__accordion details[open] .accordion__content .accordion__content_hold {
