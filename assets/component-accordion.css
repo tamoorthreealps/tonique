@@ -14,7 +14,7 @@
 	overflow: hidden;
 }
 
-.product__accordion .accordion__content {
+.product__accordion .accordion__content .accordion__content_hold {
 	padding: 0;
 	overflow: hidden;
 	max-height: 0;
