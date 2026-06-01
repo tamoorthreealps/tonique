@@ -385,22 +385,3 @@ slider-component.slider-component-full-width {
   transform: rotate(90deg) scale(1.1);
 }
 
-
-.pp-progress-bar {
-  width: 100%;
-  max-width: 200px;
-  height: 2px;
-  background: #d8d2c7;
-  position: relative;
-  overflow: hidden;
-}
-
-.pp-progress-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0%;
-  background: #5d5446;
-  transition: width .3s ease;
-}
