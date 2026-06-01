@@ -156,23 +156,14 @@ font-family: Archivo, sans-serif;
 
 /* ── Answer body ────────────────────────────────── */
 .pf-item__body {
-  overflow: hidden;
   max-height: 0;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.pf-item.is-open .pf-item__body {
-  max-height: 400px;
+  overflow: hidden;
+  transition: max-height .5s ease;
 }
 
 .pf-item__body[aria-hidden="true"] {
   max-height: 0;
   padding-bottom: 0;
-}
-
-.pf-item__body[aria-hidden="false"] {
-  max-height: 400px;
-  padding-bottom: 16px;
 }
 
 .pf-item__answer {
