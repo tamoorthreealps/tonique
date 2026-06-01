@@ -331,25 +331,10 @@ slider-component.slider-component-full-width {
     z-index: 2;
 }
 
-.slider-button--prev {
-    left: 16px;
-}
-
-.slider-button--next {
-    right: 16px;
-}
-
-.slider-counter {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .slider-progress {
     position: absolute;
-    left: 24px;
-    right: 24px;
+    left: 0;
+    right: 0;
     bottom: 0;
 }
 
