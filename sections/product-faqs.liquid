@@ -120,38 +120,61 @@
 </section>
 
 <script>
-  (function () {
-    var sid = '{{ section.id }}';
-    var accordion = document.getElementById('pf-accordion-' + sid);
-    if (!accordion) return;
+(function () {
+  var sid = '{{ section.id }}';
+  var accordion = document.getElementById('pf-accordion-' + sid);
 
-    accordion.addEventListener('click', function (e) {
-      var trigger = e.target.closest('[data-pf-trigger]');
-      if (!trigger) return;
+  if (!accordion) return;
 
-      var idx = trigger.dataset.pfTrigger;
-      var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
-      var body = document.getElementById('pf-answer-' + sid + '-' + idx);
-      if (!item || !body) return;
+  function setInitialHeight() {
+    accordion.querySelectorAll('.pf-item.is-open').forEach(function (item) {
+      var body = item.querySelector('.pf-item__body');
 
-      var isOpen = item.classList.contains('is-open');
-
-      // Close all
-      accordion.querySelectorAll('.pf-item').forEach(function (el) {
-        el.classList.remove('is-open');
-        el.querySelector('.pf-item__trigger').setAttribute('aria-expanded', 'false');
-        var b = el.querySelector('.pf-item__body');
-        if (b) b.setAttribute('aria-hidden', 'true');
-      });
-
-      // Open clicked (toggle)
-      if (!isOpen) {
-        item.classList.add('is-open');
-        trigger.setAttribute('aria-expanded', 'true');
-        body.setAttribute('aria-hidden', 'false');
+      if (body) {
+        body.style.maxHeight = body.scrollHeight + 'px';
       }
     });
-  })();
+  }
+
+  window.addEventListener('load', setInitialHeight);
+
+  accordion.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-pf-trigger]');
+    if (!trigger) return;
+
+    var idx = trigger.dataset.pfTrigger;
+    var item = accordion.querySelector('[data-pf-item="' + idx + '"]');
+    var body = document.getElementById('pf-answer-' + sid + '-' + idx);
+
+    if (!item || !body) return;
+
+    var isOpen = item.classList.contains('is-open');
+
+    accordion.querySelectorAll('.pf-item').forEach(function (el) {
+      el.classList.remove('is-open');
+
+      var btn = el.querySelector('.pf-item__trigger');
+      var b = el.querySelector('.pf-item__body');
+
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+      }
+
+      if (b) {
+        b.setAttribute('aria-hidden', 'true');
+        b.style.maxHeight = null;
+      }
+    });
+
+    if (!isOpen) {
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      body.setAttribute('aria-hidden', 'false');
+
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
+})();
 </script>
 
 {% schema %}
