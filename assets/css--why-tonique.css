@@ -284,6 +284,10 @@
     padding-bottom: 6px;
 }
 
+.wt-link:hover{
+    color: #A88958;
+}
+
 .wt-link::before{
   content: '';
   position: absolute;
