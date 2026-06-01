@@ -39,9 +39,12 @@ slider-component.slider-component-full-width {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scroll-padding-left: 1.5rem;
+    scroll-padding-left: 0;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 0;
+            margin-bottom: 0;
+        gap: 0;
+        border: 0;
   }
 
   /* Fix to show some space at the end of our sliders in all browsers */
@@ -56,7 +59,7 @@ slider-component.slider-component-full-width {
     padding-top: max(var(--focus-outline-padding), var(--shadow-padding-top));
     padding-bottom: max(var(--focus-outline-padding), var(--shadow-padding-bottom));
     padding:0;
-    margin:0 !important;
+    margin:0;
   }
 
   .slider.slider--mobile.contains-card--standard .slider__slide:not(.collection-list__item--no-media) {
