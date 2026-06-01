@@ -248,7 +248,7 @@ slider-component.slider-component-full-width {
 }
 
 .slider-counter {
-  display: flex;
+  display: none;
   justify-content: center;
   min-width: 4.4rem;
 }
