@@ -60,9 +60,6 @@ slider-component.slider-component-full-width {
     padding-bottom: max(var(--focus-outline-padding), var(--shadow-padding-bottom));
     padding:0;
     margin:0;
-            width: 100%;
-        max-width: 100%;
-        min-width: 100%;
   }
 
   .slider.slider--mobile.contains-card--standard .slider__slide:not(.collection-list__item--no-media) {
@@ -383,4 +380,19 @@ slider-component.slider-component-full-width {
 
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) scale(1.1);
+}
+
+.slider-progress {
+  width: 100%;
+  height: 3px;
+  background: #d8d2c7;
+  overflow: hidden;
+}
+
+.slider-progress__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #5d5446;
+  transition: width .3s ease;
 }
