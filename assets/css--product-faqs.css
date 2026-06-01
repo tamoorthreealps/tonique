@@ -158,11 +158,14 @@ font-family: Archivo, sans-serif;
 .pf-item__body {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  opacity: 0;
+  transition:
+    max-height .45s cubic-bezier(.22,.61,.36,1),
+    opacity .3s ease;
 }
 
 .pf-item.is-open .pf-item__body {
-  max-height: 400px;
+  opacity: 1;
 }
 
 .pf-item__body[aria-hidden="true"] {

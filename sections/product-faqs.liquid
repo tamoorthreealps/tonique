@@ -138,17 +138,24 @@
 
       // Close all
       accordion.querySelectorAll('.pf-item').forEach(function (el) {
-        el.classList.remove('is-open');
-        el.querySelector('.pf-item__trigger').setAttribute('aria-expanded', 'false');
-        var b = el.querySelector('.pf-item__body');
-        if (b) b.setAttribute('aria-hidden', 'true');
-      });
+  el.classList.remove('is-open');
+  el.querySelector('.pf-item__trigger').setAttribute('aria-expanded', 'false');
+
+  var b = el.querySelector('.pf-item__body');
+
+  if (b) {
+    b.style.maxHeight = '0px';
+    b.setAttribute('aria-hidden', 'true');
+  }
+});
 
       // Open clicked (toggle)
       if (!isOpen) {
         item.classList.add('is-open');
-        trigger.setAttribute('aria-expanded', 'true');
-        body.setAttribute('aria-hidden', 'false');
+trigger.setAttribute('aria-expanded', 'true');
+body.setAttribute('aria-hidden', 'false');
+
+body.style.maxHeight = body.scrollHeight + 'px';
       }
     });
   })();
