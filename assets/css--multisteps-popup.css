@@ -187,6 +187,10 @@ font-family: Archivo, sans-serif;
     padding: 0 15px;
 }
 
+.msp-step.msp-step--two .msp-body{
+  padding:0;
+}
+
 /* ── Klaviyo form wrapper ───────────────────────── */
 .msp-klaviyo-form {
   width: 100%;
@@ -314,12 +318,16 @@ font-family: Archivo, sans-serif;
 .msp-disclaimer {
   font-family: 'Archivo', sans-serif;
 font-weight: 400;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 16px;
     letter-spacing: 0;
     color: #827A69;
     margin: 0;
     text-align: center;
+}
+
+.msp-step.msp-step--two .msp-disclaimer{
+  font-size: 8px;
 }
 
 .msp-disclaimer a {
@@ -417,7 +425,13 @@ font-weight: 400;
     flex-direction: column;
     gap: 24px;
 }
+.msp-disclaimer {
+    font-size: 12px;
+}
 .msp-logo img {
     width: 184px;
+}
+.msp-step.msp-step--two .msp-disclaimer{
+  font-size: 9px;
 }
 }
