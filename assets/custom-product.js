@@ -863,36 +863,37 @@
 
 
 // accordions--js
-document.querySelectorAll('.product__accordion details').forEach(function(details) {
-
+document.querySelectorAll('.product__accordion details').forEach((details) => {
+  const summary = details.querySelector('summary');
   const content = details.querySelector('.accordion__content');
 
-  if (!content) return;
+  if (!summary || !content) return;
 
-  if (details.open) {
-    content.style.maxHeight = content.scrollHeight + 'px';
-  }
-
-  details.addEventListener('toggle', function() {
+  summary.addEventListener('click', (e) => {
+    e.preventDefault();
 
     if (details.open) {
-
-      content.style.maxHeight = '0px';
-
-      requestAnimationFrame(function() {
-        content.style.maxHeight = content.scrollHeight + 'px';
-      });
-
-    } else {
-
       content.style.maxHeight = content.scrollHeight + 'px';
 
-      requestAnimationFrame(function() {
+      requestAnimationFrame(() => {
         content.style.maxHeight = '0px';
       });
 
+      content.addEventListener(
+        'transitionend',
+        function handler() {
+          details.removeAttribute('open');
+          content.removeEventListener('transitionend', handler);
+        },
+        { once: true }
+      );
+
+    } else {
+      details.setAttribute('open', '');
+
+      requestAnimationFrame(() => {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      });
     }
-
   });
-
 });
