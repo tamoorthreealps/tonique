@@ -1,5 +1,5 @@
 /* ===== CUSTOM CART DRAWER — Tonique Brand =====
-   Mobile-first: base = mobile, min-width:768px = tablet, min-width:992px = desktop */
+   Mobile-first: base = mobile, min-width:768px = tablet, min-width:767px = desktop */
 
 :root {
 	--cd-bg: #f9f7f0;
@@ -56,10 +56,10 @@ cart-drawer.is-empty .drawer__header {
 }
 
 /* =============================================
-   DRAWER ANIMATION — DESKTOP (992px+): slide in from right
+   DRAWER ANIMATION — DESKTOP (767px+): slide in from right
    ============================================= */
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.drawer {
 		flex-direction: row !important;
 		justify-content: flex-end !important;
@@ -104,7 +104,7 @@ cart-drawer.is-empty .drawer__header {
 	background: #FEFEFC;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-drawer__header {
 		height: 44px;
 		padding: 0 32px;
@@ -121,7 +121,7 @@ cart-drawer.is-empty .drawer__header {
 	line-height: 16px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-drawer__title {
 		font-size: 14px;
 		line-height: 20px;
@@ -169,7 +169,7 @@ cart-drawer.is-empty .drawer__header {
   border-top: 1px solid #D8D1BF;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-empty {
 		padding: 40px 32px 28px;
 	}
@@ -191,7 +191,7 @@ position: relative;
     height: auto;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-empty__ring-wrap {
 width: 80px;
         height: 80px;
@@ -212,7 +212,7 @@ position: absolute;
     transform: translate(-50%, -50%);
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-empty__number {
 		        font-size: 32px;
         line-height: 32px;
@@ -231,7 +231,7 @@ position: absolute;
     line-height: 32px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-empty__title {
 		        font-size: 32px;
         line-height: 40px;
@@ -248,7 +248,7 @@ position: absolute;
     letter-spacing: 0;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-empty__subtitle {
 		        font-size: 16px;
         line-height: 24px;
@@ -270,7 +270,7 @@ position: absolute;
     margin: 0 0 16px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
   .cd-empty__start-label {
     font-size: 14px;
     line-height: 20px;
@@ -287,7 +287,7 @@ position: absolute;
     background: #FFFFFF;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
   .cd-product-card {
     padding: 28px 36px 28px 40px;
     gap: 48px;
@@ -302,7 +302,7 @@ position: absolute;
 	justify-content: center;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
   .cd-product-card__image {
 	width: 112px;
 }
@@ -341,7 +341,7 @@ width: 100%;
     order: 999;
     margin-top:14px;
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 .cd-product-card__type {
     font-size: 12px;
     line-height: 16px;
@@ -365,7 +365,7 @@ width: 100%;
     line-height: 28px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 .cd-product-card__title {
     font-size: 24px;
     letter-spacing: 3.84px;
@@ -382,7 +382,7 @@ width: 100%;
     letter-spacing: 0;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 .cd-product-card__desc {
     margin: 0 0 8px;
 }
@@ -401,7 +401,7 @@ width: 100%;
     font-family: 'Archivo';
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
   .cd-product-card__bullets {
     margin: 0 0 24px;
 }
@@ -454,7 +454,7 @@ width: 100%;
 	line-height: 20px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-shipping-bar {
 		padding: 16px 24px 20px;
 	}
@@ -538,7 +538,7 @@ width: 100%;
 	color: #977B4F;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-pill::before {
 		background-image: var(--cd-pill-grey-url-desktop);
 		height: 16px;
@@ -857,7 +857,7 @@ quantity-input.cd-quantity {
 	width: 100%;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-cart-item {
 		padding: 0 24px 32px 0;
 		gap: 28px;
@@ -1016,7 +1016,7 @@ cart-drawer-items.is-empty+.drawer__footer {
 	height: 10px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 767px) {
 	.cd-checkout-btn {
 		font-size: 18px;
 		font-weight: 600;
