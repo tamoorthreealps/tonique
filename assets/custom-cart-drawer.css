@@ -330,11 +330,21 @@ width: 100%;
     margin: 0 0 8px;
 }
 
+.desktop--view--content{
+  display:none;
+}
+
 @media screen and (min-width: 992px) {
 .cd-product-card__type {
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.48px;
+}
+.desktop--view--content{
+  display:flex;
+}
+.mobile--view--content{
+  display:none;
 }
 }
 
