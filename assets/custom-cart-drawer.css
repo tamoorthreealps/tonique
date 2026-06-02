@@ -307,13 +307,6 @@ position: absolute;
 	object-fit: contain;
 }
 
-.cd-product-card__image-placeholder {
-	width: 90px;
-	height: 120px;
-	background: var(--cd-bg);
-	border-radius: 2px;
-}
-
 .cd-product-card__body {
 	flex: 1;
 	display: flex;
