@@ -99,13 +99,13 @@ cart-drawer.is-empty .drawer__header {
 
 .cd-drawer__header {
   height: 40px;
-  padding: 0 24px !important;
+  padding: 0 24px;
   flex-shrink: 0;
   background: #FEFEFC;
 }
 
 @media screen and (min-width: 992px) {
-  .cd-drawer__header { height: 48px; }
+  .cd-drawer__header { height: 44px; padding: 0 32px; }
 }
 
 .cd-drawer__title {
