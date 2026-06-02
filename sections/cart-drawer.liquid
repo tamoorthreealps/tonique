@@ -164,17 +164,27 @@
                 {%- endif -%}
               </div>
 
-              <div class="cd-product-card__body">
+              <div class="cd-product-card__body mobile--view--content">
                 <p class="cd-product-card__type">READY-TO-DRINK</p>
                 <h3 class="cd-product-card__title">PROTEIN TONIC</h3>
                 <p class="cd-product-card__desc">Beauty + protein in one clean pouch.</p>
-                <ul class="cd-product-card__bullets">
-                  <li>15g complete protein</li>
-                  <li>All natural &middot; zero sugar &middot; 60 cal</li>
-                  <li>Fits in your purse. Tear, sip, go.</li>
-                </ul>
-                <a href="{{ routes.all_products_collection_url }}" class="cd-product-card__btn">SHOP NOW</a>
+                <div class="desktop--view--content">
+                  <ul class="cd-product-card__bullets">
+                    <li>15g complete protein</li>
+                    <li>All natural &middot; zero sugar &middot; 60 cal</li>
+                    <li>Fits in your purse. Tear, sip, go.</li>
+                  </ul>
+                  <a href="{{ routes.all_products_collection_url }}" class="cd-product-card__btn">SHOP NOW</a>
+                </div>
               </div>
+            </div>
+            <div class="mobile--view--content">
+              <ul class="cd-product-card__bullets">
+                <li>15g complete protein</li>
+                <li>All natural &middot; zero sugar &middot; 60 cal</li>
+                <li>Fits in your purse. Tear, sip, go.</li>
+              </ul>
+              <a href="{{ routes.all_products_collection_url }}" class="cd-product-card__btn">SHOP NOW</a>
             </div>
           </div>
         </div>
