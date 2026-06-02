@@ -242,6 +242,10 @@
   flex-shrink: 0;
 }
 
+.gh-bar__cart.gh-bar__cart__empty .gh-bar__cart-count {
+  
+}
+
 /* ── Mobile menu overlay ─────────────────────────────────────────────────── */
 
 .gh-mobile-menu {
