@@ -294,11 +294,17 @@ position: absolute;
 }
 
 .cd-product-card__image {
-	width: 112px;
+	width: 65.33px;
 	flex-shrink: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+@media screen and (min-width: 992px) {
+  .cd-product-card__image {
+	width: 112px;
+}
 }
 
 .cd-product-card__image img {
