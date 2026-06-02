@@ -24,9 +24,9 @@
   assign cart_cents = cart.total_price
 
   # Threshold blocks: find max, next, and progress
-  assign max_threshold_cents  = 0
-  assign next_threshold_block = nil
-  assign all_unlocked         = true
+  assign max_threshold_cents = 0
+  assign next_threshold_block = null
+  assign all_unlocked = true
 
   for block in section.blocks
     if block.type == 'threshold'
@@ -36,7 +36,7 @@
       endif
       if cart_cents < block_cents
         assign all_unlocked = false
-        if next_threshold_block == nil
+        if next_threshold_block == null
           assign next_threshold_block = block
         endif
       endif
@@ -53,14 +53,14 @@
 
   # Savings — compare against the highest available compare-at price per item
   # Priority: selling_plan_allocation.compare_at_price > variant.compare_at_price > original_price
-  assign has_savings   = false
+  assign has_savings = false
   assign total_savings = 0
   for item in cart.items
     assign compare_unit = 0
     if item.variant.compare_at_price > 0
       assign compare_unit = item.variant.compare_at_price
     endif
-    if item.selling_plan_allocation != nil
+    if item.selling_plan_allocation != null
       if item.selling_plan_allocation.compare_at_price > 0
         assign compare_unit = item.selling_plan_allocation.compare_at_price
       endif
@@ -69,9 +69,9 @@
       assign compare_unit = item.original_price
     endif
     if compare_unit > item.final_price
-      assign has_savings  = true
-      assign item_saving  = compare_unit | minus: item.final_price
-      assign item_saving  = item_saving | times: item.quantity
+      assign has_savings = true
+      assign item_saving = compare_unit | minus: item.final_price
+      assign item_saving = item_saving | times: item.quantity
       assign total_savings = total_savings | plus: item_saving
     endif
   endfor
@@ -88,7 +88,6 @@
       aria-label="{{ 'sections.cart.title' | t }}"
       tabindex="-1"
     >
-
       <!-- Stash section.id so JS can fetch this section via AJAX -->
       <span id="CartDrawer-SectionId" data-section-id="{{ section.id }}" hidden></span>
 
@@ -96,7 +95,10 @@
       <div class="drawer__header cd-drawer__header">
         <h2 class="drawer__heading cd-drawer__title">
           YOUR BAG
-          <span class="cd-drawer__count">[{{ cart.item_count }} {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }}]</span>
+          <span class="cd-drawer__count"
+            >[{{ cart.item_count }}
+            {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }}]</span
+          >
         </h2>
         <button
           class="drawer__close cd-drawer__close"
@@ -104,23 +106,25 @@
           onclick="this.closest('cart-drawer').close()"
           aria-label="{{ 'accessibility.close' | t }}"
         >
-         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-  <path d="M5.87988 4.91895L6.00488 5.04688L6.12988 4.91895L10.6943 0.260742L11.7539 1.3418L7.18457 6.00586L7.06445 6.12793L7.18457 6.25098L11.5029 10.6572L10.4443 11.7373L6.13086 7.33594L6.00586 7.20898L5.88086 7.33594L1.55469 11.75L0.494141 10.668L4.82617 6.25L4.94629 6.12695L4.82617 6.00488L0.244141 1.33008L1.30371 0.249023L5.87988 4.91895Z" fill="#433723" stroke="#F9F7F0" stroke-width="0.35"/>
-</svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M5.87988 4.91895L6.00488 5.04688L6.12988 4.91895L10.6943 0.260742L11.7539 1.3418L7.18457 6.00586L7.06445 6.12793L7.18457 6.25098L11.5029 10.6572L10.4443 11.7373L6.13086 7.33594L6.00586 7.20898L5.88086 7.33594L1.55469 11.75L0.494141 10.668L4.82617 6.25L4.94629 6.12695L4.82617 6.00488L0.244141 1.33008L1.30371 0.249023L5.87988 4.91895Z" fill="#433723" stroke="#F9F7F0" stroke-width="0.35"/>
+          </svg>
         </button>
       </div>
 
       <!-- ===== EMPTY STATE ===== -->
       {%- if cart == empty -%}
-        <div class="drawer__inner-empty cd-empty dd">
-
+        <div class="drawer__inner-empty cd-empty">
           <div class="cd-empty__ring-wrap">
             <div class="cd-empty__ring">
               <span class="cd-empty__number">{{ cart.item_count }}</span>
             </div>
           </div>
 
-          <h2 class="cd-empty__title">NOTHING IN<br>YOUR BAG YET.</h2>
+          <h2 class="cd-empty__title">
+            NOTHING IN<br>
+            YOUR BAG YET.
+          </h2>
           <p class="cd-empty__subtitle">Beauty and protein in the same pouch</p>
 
           <div class="cd-empty__start">
@@ -157,7 +161,6 @@
                 <a href="{{ routes.all_products_collection_url }}" class="cd-product-card__btn">SHOP NOW</a>
               </div>
             </div>
-
           </div>
         </div>
       {%- endif -%}
@@ -167,12 +170,17 @@
         <div class="cd-shipping-bar">
           {%- if all_unlocked -%}
             <p class="cd-shipping-bar__text">You&rsquo;ve unlocked all rewards!</p>
-          {%- elsif next_threshold_block != nil -%}
+          {%- elsif next_threshold_block != null -%}
             {%- assign next_block_cents = next_threshold_block.settings.amount | times: 100 -%}
-            {%- assign remaining_cents  = next_block_cents | minus: cart_cents -%}
-            {%- assign remaining_money  = remaining_cents | money -%}
-            {%- assign remaining_span   = '<span class="cd-shipping-bar__amount">' | append: remaining_money | append: '</span>' -%}
-            {%- assign bar_message = next_threshold_block.settings.reward_message | replace: '{remaining}', remaining_span -%}
+            {%- assign remaining_cents = next_block_cents | minus: cart_cents -%}
+            {%- assign remaining_money = remaining_cents | money -%}
+            {%- assign remaining_span = '<span class="cd-shipping-bar__amount">'
+              | append: remaining_money
+              | append: '</span>'
+            -%}
+            {%- assign bar_message = next_threshold_block.settings.reward_message
+              | replace: '{remaining}', remaining_span
+            -%}
             <p class="cd-shipping-bar__text">{{ bar_message }}</p>
           {%- endif -%}
 
@@ -180,9 +188,9 @@
             {%- assign pill_index = 0 -%}
             {%- for block in section.blocks -%}
               {%- if block.type == 'threshold' -%}
-                {%- assign b_cents      = block.settings.amount | times: 100 -%}
-                {%- assign b_reached    = false -%}
-                {%- assign pill_delay   = pill_index | times: 120 -%}
+                {%- assign b_cents = block.settings.amount | times: 100 -%}
+                {%- assign b_reached = false -%}
+                {%- assign pill_delay = pill_index | times: 120 -%}
                 {%- if cart_cents >= b_cents -%}{%- assign b_reached = true -%}{%- endif -%}
 
                 <div
@@ -190,7 +198,9 @@
                   style="--pill-delay: {{ pill_delay }}ms"
                   {{ block.shopify_attributes }}
                 >
-                  <span class="cd-pill__label">${{ block.settings.amount }} &middot; {{ block.settings.reward_label }}</span>
+                  <span class="cd-pill__label"
+                    >${{ block.settings.amount }} &middot; {{ block.settings.reward_label -}}
+                  </span>
                 </div>
 
                 {%- assign pill_index = pill_index | plus: 1 -%}
@@ -201,7 +211,11 @@
       {%- endif -%}
 
       <!-- ===== CART ITEMS ===== -->
-      <cart-drawer-items{% if cart == empty %} class="is-empty"{% endif %}>
+      <cart-drawer-items
+        {% if cart == empty %}
+          class="is-empty"
+        {% endif %}
+      >
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
@@ -215,7 +229,7 @@
                   {%- liquid
                     assign discount_pct = 0
                     if item.original_price > 0 and item.original_price > item.final_price
-                      assign saved_unit   = item.original_price | minus: item.final_price
+                      assign saved_unit = item.original_price | minus: item.final_price
                       assign discount_pct = saved_unit | times: 100 | divided_by: item.original_price
                     endif
 
@@ -251,8 +265,7 @@
 
                     <!-- Details -->
                     <div class="cd-cart-item__details">
-
-                      {%- if item.selling_plan_allocation != nil -%}
+                      {%- if item.selling_plan_allocation != null -%}
                         <p class="cd-cart-item__plan-type">SUBSCRIPTION</p>
                       {%- endif -%}
 
@@ -266,16 +279,16 @@
                         {%- assign show_variant = true -%}
                       {%- endunless -%}
 
-                      {%- if show_variant or item.selling_plan_allocation != nil -%}
+                      {%- if show_variant or item.selling_plan_allocation != null -%}
                         <p class="cd-cart-item__variant">
                           {%- if show_variant -%}
                             {%- for option in item.options_with_values -%}
                               {{- option.value -}}
-                              {%- unless forloop.last -%} &middot; {%- endunless -%}
+                              {%- unless forloop.last -%}&middot;{%- endunless -%}
                             {%- endfor -%}
                           {%- endif -%}
-                          {%- if item.selling_plan_allocation != nil and show_variant -%} &middot; {%- endif -%}
-                          {%- if item.selling_plan_allocation != nil -%}
+                          {%- if item.selling_plan_allocation != null and show_variant -%}&middot;{%- endif -%}
+                          {%- if item.selling_plan_allocation != null -%}
                             {{ item.quantity }} &times; {{ item.final_price | money }} ea
                           {%- endif -%}
                         </p>
@@ -286,7 +299,7 @@
                       {%- if item.variant.compare_at_price > 0 -%}
                         {%- assign item_compare_unit = item.variant.compare_at_price -%}
                       {%- endif -%}
-                      {%- if item.selling_plan_allocation != nil -%}
+                      {%- if item.selling_plan_allocation != null -%}
                         {%- if item.selling_plan_allocation.compare_at_price > 0 -%}
                           {%- assign item_compare_unit = item.selling_plan_allocation.compare_at_price -%}
                         {%- endif -%}
@@ -304,12 +317,18 @@
 
                       <!-- Item savings -->
                       {%- if item_compare_unit > item.final_price -%}
-                        {%- assign item_line_saving = item_compare_unit | minus: item.final_price | times: item.quantity -%}
-                        <p class="cd-cart-item__savings">Save {{ item_line_saving | money }}{% if item.selling_plan_allocation != nil %}/mo{% endif %}</p>
+                        {%- assign item_line_saving = item_compare_unit
+                          | minus: item.final_price
+                          | times: item.quantity
+                        -%}
+                        <p class="cd-cart-item__savings">
+                          Save {{ item_line_saving | money -}}
+                          {%- if item.selling_plan_allocation != null %}/mo{% endif %}
+                        </p>
                       {%- endif -%}
 
                       <!-- Delivery / selling plan -->
-                      {%- if item.selling_plan_allocation != nil -%}
+                      {%- if item.selling_plan_allocation != null -%}
                         <div class="cd-cart-item__delivery">
                           <span class="cd-cart-item__delivery-label">DELIVERY</span>
                           {%- if plan_count > 1 -%}
@@ -324,8 +343,12 @@
                                   {%- for plan in group.selling_plans -%}
                                     <option
                                       value="{{ plan.id }}"
-                                      {% if plan.id == item.selling_plan_allocation.selling_plan.id %}selected{% endif %}
-                                    >{{ plan.name }}</option>
+                                      {% if plan.id == item.selling_plan_allocation.selling_plan.id %}
+                                        selected
+                                      {% endif %}
+                                    >
+                                      {{ plan.name }}
+                                    </option>
                                   {%- endfor -%}
                                 {%- endfor -%}
                               </select>
@@ -347,10 +370,14 @@
                               class="cd-qty__btn"
                               name="minus"
                               type="button"
-                              {% if item.instructions and item.instructions.can_update_quantity == false %}disabled{% endif %}
+                              {% if item.instructions and item.instructions.can_update_quantity == false %}
+                                disabled
+                              {% endif %}
                             >
                               <span aria-hidden="true">&ndash;</span>
-                              <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+                              <span class="visually-hidden">
+                                {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
+                              </span>
                             </button>
                             <input
                               class="cd-qty__input"
@@ -361,21 +388,29 @@
                               data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
                               min="0"
                               data-min="{{ item.variant.quantity_rule.min }}"
-                              {% if item.variant.quantity_rule.max != null %}max="{{ item.variant.quantity_rule.max }}"{% endif %}
+                              {% if item.variant.quantity_rule.max != null %}
+                                max="{{ item.variant.quantity_rule.max }}"
+                              {% endif %}
                               step="{{ item.variant.quantity_rule.increment }}"
                               aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                               id="Drawer-quantity-{{ item.index | plus: 1 }}"
                               data-index="{{ item.index | plus: 1 }}"
-                              {% if item.instructions and item.instructions.can_update_quantity == false %}disabled{% endif %}
+                              {% if item.instructions and item.instructions.can_update_quantity == false %}
+                                disabled
+                              {% endif %}
                             >
                             <button
                               class="cd-qty__btn"
                               name="plus"
                               type="button"
-                              {% if item.instructions and item.instructions.can_update_quantity == false %}disabled{% endif %}
+                              {% if item.instructions and item.instructions.can_update_quantity == false %}
+                                disabled
+                              {% endif %}
                             >
                               <span aria-hidden="true">+</span>
-                              <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+                              <span class="visually-hidden">
+                                {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
+                              </span>
                             </button>
                           </quantity-input>
 
@@ -388,9 +423,17 @@
                               class="cd-cart-item__remove"
                               aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
                               data-variant-id="{{ item.variant.id }}"
-                              {% if item.instructions and item.instructions.can_remove == false %}hidden{% endif %}
+                              {% if item.instructions and item.instructions.can_remove == false %}
+                                hidden
+                              {% endif %}
                             >
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                              >
                                 <rect x="5" y="1.77783" width="10.6667" height="0.888889" fill="#8E877B"/>
                                 <rect x="6.38867" y="4.05566" width="7.88889" height="11.4444" stroke="#8E877B"/>
                                 <rect x="8.55566" width="3.55556" height="0.888889" fill="#8E877B"/>
@@ -407,10 +450,8 @@
                           </div>
                         </quantity-popover>
                       </div>
-
                     </div>
                   </div>
-
                 {%- endfor -%}
               </div>
             {%- endif -%}
@@ -444,15 +485,17 @@
 
               <div class="cd-totals__row cd-totals__row_shipping">
                 <span>Shipping</span>
-                {%- assign first_threshold_block = nil -%}
+                {%- assign first_threshold_block = null -%}
                 {%- for block in section.blocks -%}
-                  {%- if block.type == 'threshold' and first_threshold_block == nil -%}
+                  {%- if block.type == 'threshold' and first_threshold_block == null -%}
                     {%- assign first_threshold_block = block -%}
                   {%- endif -%}
                 {%- endfor -%}
-                {%- if first_threshold_block != nil -%}
+                {%- if first_threshold_block != null -%}
                   {%- assign free_ship_cents = first_threshold_block.settings.amount | times: 100 -%}
-                  <span>{% if cart_cents >= free_ship_cents %}FREE{% else %}Calculated at checkout{% endif %}</span>
+                  <span>
+                    {%- if cart_cents >= free_ship_cents %}FREE{% else %}Calculated at checkout{% endif -%}
+                  </span>
                 {%- else -%}
                   <span>Calculated at checkout</span>
                 {%- endif -%}
@@ -475,7 +518,9 @@
             class="cd-checkout-btn"
             name="checkout"
             form="CartDrawer-Form"
-            {% if cart == empty %}disabled{% endif %}
+            {% if cart == empty %}
+              disabled
+            {% endif %}
           >
             PROCEED TO CHECKOUT
           </button>
@@ -485,7 +530,6 @@
           <p class="cd-drawer__tax-note">Shipping and taxes calculated at checkout</p>
         {%- endif -%}
       </div>
-
     </div>
   </div>
 </cart-drawer>
