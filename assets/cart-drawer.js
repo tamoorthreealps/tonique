@@ -76,6 +76,9 @@ class CartDrawer extends HTMLElement {
   renderContents(parsedState) {
     this.querySelector('.drawer__inner').classList.contains('is-empty') &&
       this.querySelector('.drawer__inner').classList.remove('is-empty');
+        document.querySelectorAll('.gh-bar__cart').forEach((cart) => {
+    cart.classList.toggle('gh-bar__cart__empty', parsedState.item_count === 0);
+  });
     this.productId = parsedState.id;
     this.getSectionsToRender().forEach((section) => {
       const sectionElement = section.selector
