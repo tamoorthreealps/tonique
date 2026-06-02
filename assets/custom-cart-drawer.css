@@ -391,18 +391,18 @@ position: absolute;
 }
 
 .cd-product-card__btn {
-	display: block;
-	background: var(--cd-gold);
-	color: #fff;
-	text-align: center;
-	font-size: 11px;
-	font-weight: 600;
-	letter-spacing: 0.16em;
-	text-transform: uppercase;
-	text-decoration: none;
-	padding: 14px 20px;
-	border-radius: 2px;
-	transition: opacity 0.15s;
+  display: block;
+  background: linear-gradient(90deg, #a88958, #b9a179, #a88958);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 1.92px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px;
+  transition: opacity .15s;
 }
 
 .cd-product-card__btn:hover {
