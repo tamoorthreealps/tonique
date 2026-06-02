@@ -181,7 +181,9 @@ class CartItems extends HTMLElement {
 
           if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
           if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
-
+          document.querySelectorAll('.gh-bar__cart').forEach((cart) => {
+            cart.classList.toggle('gh-bar__cart__empty', parsedState.item_count === 0);
+          });
           this.getSectionsToRender().forEach((section) => {
             const elementToReplace =
               document.getElementById(section.id).querySelector(section.selector) ||
