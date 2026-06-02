@@ -240,10 +240,13 @@
   font-size: 10px;
   color: #fefefc;
   flex-shrink: 0;
+  border:1px solid #977B4F;
 }
 
 .gh-bar__cart.gh-bar__cart__empty .gh-bar__cart-count {
-  
+    background: #F9F7F0;
+    border-color: #977B4F;
+    color: #977B4F;
 }
 
 /* ── Mobile menu overlay ─────────────────────────────────────────────────── */
