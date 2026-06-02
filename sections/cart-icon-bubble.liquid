@@ -1,10 +1,10 @@
 {% if cart == empty %}
-<span class="gh-bar__cart-label">CART</span>
-        <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+  <span class="gh-bar__cart-label">CART</span>
+  <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
 {% endif %}
 
 <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
 {%- if cart != empty -%}
   <span class="gh-bar__cart-label">CART</span>
-        <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+  <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
 {%- endif -%}
