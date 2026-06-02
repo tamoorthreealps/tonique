@@ -94,7 +94,7 @@
           {{- 'ACCOUNT' -}}
         </a>
       {%- endif -%}
-      <a href="{{ routes.cart_url }}" class="gh-bar__cart {% if cart.item_count == 0 %} gh-bar__cart__empty{% endif %}" aria-label="Cart ({{ cart.item_count }} items)" id="cart-icon-bubble" role="button" aria-haspopup="dialog">
+      <a href="{{ routes.cart_url }}" class="gh-bar__cart {% if cart == empty %} gh-bar__cart__empty{% endif %}" aria-label="Cart ({{ cart.item_count }} items)" id="cart-icon-bubble" role="button" aria-haspopup="dialog">
         <span class="gh-bar__cart-label">CART</span>
         <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
       </a>
@@ -135,7 +135,7 @@
           <span class="gh-mobile-menu__logo-text">{{ shop.name }}</span>
         {%- endif -%}
       </a>
-      <a href="{{ routes.cart_url }}" class="gh-bar__cart {% if cart.item_count == 0 %} gh-bar__cart__empty{% endif %}" aria-label="Cart ({{ cart.item_count }} items)" id="cart-icon-bubble" role="button" aria-haspopup="dialog">
+      <a href="{{ routes.cart_url }}" class="gh-bar__cart {% if cart == empty %} gh-bar__cart__empty{% endif %}" aria-label="Cart ({{ cart.item_count }} items)" id="cart-icon-bubble" role="button" aria-haspopup="dialog">
         <span class="gh-bar__cart-label">CART</span>
         <span class="gh-bar__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
       </a>
