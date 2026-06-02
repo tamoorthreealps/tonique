@@ -280,7 +280,7 @@ position: absolute;
 
 .cd-product-card {
     border: 1px solid #A88958;
-    padding: 20px;
+    padding: 22.86px 20px 20px;
     display: flex;
     flex-wrap: wrap;
     column-gap: 23px;
@@ -339,7 +339,7 @@ width: 100%;
     width: 100%;
     max-width: 100%;
     order: 999;
-    margin-top:14px;
+    margin-top:14.86px;
 }
 @media screen and (min-width: 767px) {
 .cd-product-card__type {
