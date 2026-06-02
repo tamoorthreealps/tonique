@@ -191,19 +191,6 @@ class CartItems extends HTMLElement {
               section.selector
             );
           });
-          updateCartEmptyClass();
-          document.querySelectorAll('.gh-bar__cart').forEach((cartBubble) => {
-            const countEl = cartBubble.querySelectorAll('.gh-bar__cart-count');
-
-            if (countEl) {
-              countEl.textContent = parsedState.item_count;
-            }
-
-            cartBubble.classList.toggle(
-              'gh-bar__cart__empty',
-              parsedState.item_count === 0
-            );
-          });
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
           let message = '';
           if (items.length === parsedState.items.length && updatedValue !== parseInt(quantityElement.value)) {
@@ -308,15 +295,3 @@ if (!customElements.get('cart-note')) {
     }
   );
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const cartBubble = document.querySelector('.gh-bar__cart');
-  const cartCount = document.querySelector('.gh-bar__cart-count');
-
-  if (!cartBubble || !cartCount) return;
-
-  const count = parseInt(cartCount.textContent.trim(), 10) || 0;
-
-  cartBubble.classList.toggle('gh-bar__cart__empty', count === 0);
-});
