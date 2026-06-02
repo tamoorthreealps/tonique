@@ -179,11 +179,6 @@ class CartItems extends HTMLElement {
           const cartDrawerWrapper = document.querySelector('cart-drawer');
           const cartFooter = document.getElementById('main-cart-footer');
 
-          const cartBubble = document.querySelector('.gh-bar__cart');
-          if (cartBubble) {
-            cartBubble.classList.toggle('gh-bar__cart__empty', parsedState.item_count === 0);
-          }
-
           if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
           if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
 
@@ -196,6 +191,10 @@ class CartItems extends HTMLElement {
               section.selector
             );
           });
+          const cartBubble = document.querySelector('.gh-bar__cart');
+          if (cartBubble) {
+            cartBubble.classList.toggle('gh-bar__cart__empty', parsedState.item_count === 0);
+          }
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
           let message = '';
           if (items.length === parsedState.items.length && updatedValue !== parseInt(quantityElement.value)) {
