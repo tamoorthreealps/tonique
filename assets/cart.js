@@ -192,8 +192,17 @@ class CartItems extends HTMLElement {
             );
           });
           document.querySelectorAll('.gh-bar__cart').forEach((cartBubble) => {
-  cartBubble.classList.toggle('gh-bar__cart__empty', parsedState.item_count === 0);
-});
+            const countEl = cartBubble.querySelector('.gh-bar__cart-count');
+
+            if (countEl) {
+              countEl.textContent = parsedState.item_count;
+            }
+
+            cartBubble.classList.toggle(
+              'gh-bar__cart__empty',
+              parsedState.item_count === 0
+            );
+          });
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
           let message = '';
           if (items.length === parsedState.items.length && updatedValue !== parseInt(quantityElement.value)) {
