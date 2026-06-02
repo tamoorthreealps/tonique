@@ -372,16 +372,22 @@ position: absolute;
 }
 
 .cd-product-card__bullets {
-	list-style: disc;
-	padding-left: 16px;
-	margin: 0 0 16px;
-	font-size: 13px;
-	color: var(--cd-dark);
-	line-height: 1.6;
+    padding-left: 16px;
+    margin: 0 0 16px;
 }
 
-.cd-product-card__bullets li+li {
-	margin-top: 2px;
+.cd-product-card__bullets li {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Archivo';
+}
+
+@media screen and (min-width: 992px) {
+  .cd-product-card__bullets {
+    margin: 0 0 24px;
+}
 }
 
 .cd-product-card__btn {
