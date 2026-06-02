@@ -341,7 +341,7 @@ width: 100%;
     letter-spacing: 0.48px;
 }
 .desktop--view--content{
-  display:flex;
+  display:inherit;
 }
 .mobile--view--content{
   display:none;
