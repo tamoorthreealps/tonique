@@ -401,10 +401,15 @@ width: 100%;
     font-family: 'Archivo';
 }
 
+.mobile--view--content li:not(:first-child){
+    margin-top: 2px;
+}
+
 @media screen and (min-width: 767px) {
   .cd-product-card__bullets {
     margin: 0 0 24px;
 }
+.cd-product-card__bullets li {margin:0;}
 }
 
 .cd-product-card__btn {
