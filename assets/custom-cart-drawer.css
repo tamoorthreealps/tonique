@@ -357,10 +357,18 @@ position: absolute;
 }
 
 .cd-product-card__desc {
-	font-size: 13px;
-	color: var(--cd-dark);
-	margin: 0 0 10px;
-	line-height: 1.4;
+    font-size: 14px;
+    color: var(--cd-dark);
+    margin: 0;
+    line-height: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 992px) {
+.cd-product-card__desc {
+    margin: 0 0 8px;
+}
 }
 
 .cd-product-card__bullets {
