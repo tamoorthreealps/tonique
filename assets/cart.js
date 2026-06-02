@@ -191,10 +191,9 @@ class CartItems extends HTMLElement {
               section.selector
             );
           });
-          const cartBubble = document.querySelector('.gh-bar__cart');
-          if (cartBubble) {
-            cartBubble.classList.toggle('gh-bar__cart__empty', parsedState.item_count === 0);
-          }
+          document.querySelectorAll('.gh-bar__cart').forEach((cartBubble) => {
+  cartBubble.classList.toggle('gh-bar__cart__empty', parsedState.item_count === 0);
+});
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
           let message = '';
           if (items.length === parsedState.items.length && updatedValue !== parseInt(quantityElement.value)) {
