@@ -193,7 +193,7 @@ class CartItems extends HTMLElement {
           });
           updateCartEmptyClass();
           document.querySelectorAll('.gh-bar__cart').forEach((cartBubble) => {
-            const countEl = cartBubble.querySelector('.gh-bar__cart-count');
+            const countEl = cartBubble.querySelectorAll('.gh-bar__cart-count');
 
             if (countEl) {
               countEl.textContent = parsedState.item_count;
